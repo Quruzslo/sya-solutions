@@ -55,8 +55,8 @@ export default function Hero() {
       </div>
 
       {/* TARTALOM */}
-      <div className="hero-bal w-[100%] md:w-[50%] flex flex-col p-[10px] relative z-20 ">
-        <div className="hero-logo relative text-zold text-[20px] md:text-[40px] ml-[-10px] mt-[-60px] bg-feher w-fit px-[15px] rounded-br-[20px] font-bold z-30">
+      <div className="hero-bal w-[100%] md:w-[50%] flex flex-col p-[10px] relative z-20  ">
+        <div className="hero-logo relative text-zold text-[20px] md:text-[40px] ml-[-10px] mt-[-60px] bg-feher w-fit px-[15px] rounded-br-[20px]  font-bold z-30">
           <p>S.Y.A Solutions</p>
         </div>
 
