@@ -1,9 +1,9 @@
 import { TiArrowRightOutline } from 'react-icons/ti'
 
-export default function HeroButton({ title, link, icon, setImage, image }) {
+export default function HeroButton({ title, link, icon, setImage, image, indx }) {
   return (
     <div
-      onMouseEnter={() => setImage(image)}
+      onMouseEnter={() => setImage(image, indx)}
       className="flex flex-row nowrap cursor-pointer gap-[5px] bg-vilagos font-bold text-zold p-[10px] rounded-[50px] items-center group "
     >
       {' '}

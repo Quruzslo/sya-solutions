@@ -29,16 +29,16 @@ export default function Hero() {
   }
 
   return (
-    <div className="hero w-[90%] max-w-[1800px] rounded-[20px] flex flex-col md:flex-row mx-auto py-[50px] mt-[120px] bg-transparent text-white relative overflow-hidden h-[calc(100vh-150px)] min-h-[650px]">
+    <div className="hero w-[90%] max-w-[2560px] rounded-[20px] flex flex-col md:flex-row mx-auto py-[50px] mt-[120px] text-white relative overflow-hidden h-[calc(100vh-150px)] min-h-[650px]">
       {/* HÁTTÉRKÉP CONTAINER */}
-      <div className="absolute top-0 left-0 w-full h-full hero-kep rounded-[20px] overflow-hidden bg-zold">
+      <div className="absolute top-0 left-0 w-full h-full hero-kep rounded-[20px] overflow-hidden [transform:translateZ(0)]">
         {prevImage && (
           <Image
             key={`prev-${currentKey}`}
             src={prevImage}
             alt="Pénzügy támogatás vállalkozásokhoz, családoknak és magánszemélyeknek."
             fill
-            className="object-cover object-center z-0"
+            className="object-cover object-center z-0 brightness-60"
           />
         )}
 
@@ -50,43 +50,60 @@ export default function Hero() {
           fill
           priority
           sizes="(max-width: 768px) 90vw, (max-width: 1200px) 80vw, 1800px"
-          className={`object-cover object-center z-10 ${animationClass}`}
+          className={`object-cover object-center z-1 ${animationClass} brightness-60`}
         />
       </div>
 
       {/* TARTALOM */}
-      <div className="hero-bal w-[100%] md:w-[50%] flex flex-col p-[10px] relative z-20">
-        <p className="text-zold text-[40px] ml-[-10px] bg-feher w-fit px-[15px] rounded-r-[20px] font-bold">
-          S.Y.A Solutions
-        </p>
-        <h1 className="!text-[40px] font-bold my-auto">Megbízható pénzügyi védőháló </h1>
+      <div className="hero-bal w-[100%] md:w-[50%] flex flex-col p-[10px] relative z-20 ">
+        <div className="hero-logo relative text-zold text-[20px] md:text-[40px] ml-[-10px] mt-[-60px] bg-feher w-fit px-[15px] rounded-br-[20px] font-bold z-30">
+          <p>S.Y.A Solutions</p>
+        </div>
+
+        <h1 className="!text-[40px] font-bold my-auto ml-[10px]">
+          Megbízható pénzügyi védőháló a <span>személyes</span> igényekre szabva{' '}
+        </h1>
 
         <div className="flex flex-row wrap gap-3">
           <HeroButton
             title="Családomnak"
             icon={<TiArrowRightOutline />}
-            setImage={(img) => handleImageChange(img, 1)}
+            setImage={handleImageChange}
             image={Family}
+            indx={1}
           />
 
           <HeroButton
             title="Vállalkozásomnak"
             icon={<TiArrowRightOutline />}
-            setImage={(img) => handleImageChange(img, 2)}
+            setImage={handleImageChange}
             image={Engineer}
+            indx={2}
           />
 
           <HeroButton
             title="Jövőmnek"
             icon={<TiArrowRightOutline />}
-            setImage={(img) => handleImageChange(img, 3)}
+            setImage={handleImageChange}
             image={Future}
+            indx={3}
           />
         </div>
       </div>
 
-      <div className="hero-jobb w-[100%] md:w-[50%] flex flex-col p-[10px] relative z-20">
-        <p>Hero jobb oldala</p>
+      <div className="hero-jobb mt-auto md:mt-0 w-[100%] md:w-[50%] flex flex-col p-[10px] relative z-20 items-end ">
+        <div className="text-[20px] flex flex-row gap-[5px] items-end ">
+          <span className="text-transparent font-bold text-5xl [-webkit-text-stroke:1px_#ffffff] ">
+            100 +
+          </span>
+          <p>elégedett ügyfél</p>
+        </div>
+        <div className="text-[20px] flex flex-row gap-[5px] items-end ">
+          <span className="text-transparent font-bold text-5xl [-webkit-text-stroke:1px_#ffffff] ">
+            250 +
+          </span>
+          <p>megkötött szerződés</p>
+        </div>
       </div>
     </div>
   )
