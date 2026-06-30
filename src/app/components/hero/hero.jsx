@@ -29,7 +29,7 @@ export default function Hero() {
   }
 
   return (
-    <div className="hero w-[90%] max-w-[2560px] rounded-[20px] flex flex-col md:flex-row mx-auto py-[50px] mt-[120px] text-white relative overflow-hidden h-[calc(100vh-150px)] min-h-[650px]">
+    <div className="hero w-[90%] max-w-[2560px] rounded-[20px] flex flex-col xl:flex-row mx-auto py-[50px] mt-[120px] text-white relative overflow-hidden h-[calc(100vh-150px)] min-h-[650px]">
       {/* HÁTTÉRKÉP CONTAINER */}
       <div className="absolute top-0 left-0 w-full h-full hero-kep rounded-[20px] overflow-hidden [transform:translateZ(0)]">
         {prevImage && (
@@ -55,8 +55,8 @@ export default function Hero() {
       </div>
 
       {/* TARTALOM */}
-      <div className="hero-bal w-[100%] md:w-[50%] flex flex-col p-[10px] relative z-20  ">
-        <div className="hero-logo relative text-zold text-[20px] md:text-[40px] ml-[-10px] mt-[-60px] bg-feher w-fit px-[15px] rounded-br-[20px]  font-bold z-30">
+      <div className="hero-bal w-[100%] xl:w-[50%] flex flex-col p-[10px] relative z-20  ">
+        <div className="hero-logo min-h-[50px] relative text-zold text-[20px] md:text-[40px] ml-[-10px] mt-[-60px] bg-feher w-fit px-[15px] rounded-br-[20px] font-bold z-30">
           <p>S.Y.A Solutions</p>
         </div>
 
@@ -64,7 +64,7 @@ export default function Hero() {
           Megbízható pénzügyi védőháló a <span>személyes</span> igényekre szabva{' '}
         </h1>
 
-        <div className="flex flex-row wrap gap-3">
+        <div className="flex flex-col md:flex-row wrap gap-3 mt-[35px] xl:mt-[0]">
           <HeroButton
             title="Családomnak"
             icon={<TiArrowRightOutline />}
@@ -91,7 +91,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="hero-jobb mt-auto md:mt-0 w-[100%] md:w-[50%] flex flex-col p-[10px] relative z-20 items-end ">
+      <div className="hero-jobb mt-auto xl:mt-0 w-[100%] xl:w-[50%] flex flex-col xl:flex-row gap-[15px] p-[10px] relative z-20 items-end justify-center ">
         <div className="text-[20px] flex flex-row gap-[5px] items-end ">
           <span className="text-transparent font-bold text-5xl [-webkit-text-stroke:1px_#ffffff] ">
             100 +

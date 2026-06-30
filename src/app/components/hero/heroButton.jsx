@@ -4,7 +4,7 @@ export default function HeroButton({ title, link, icon, setImage, image, indx })
   return (
     <div
       onMouseEnter={() => setImage(image, indx)}
-      className="flex flex-row nowrap cursor-pointer gap-[5px] bg-vilagos font-bold text-zold p-[10px] rounded-[50px] items-center group "
+      className="flex flex-row nowrap cursor-pointer gap-[5px] bg-vilagos font-bold text-zold p-[10px] rounded-[50px] items-center group w-fit"
     >
       {' '}
       <p>{title}</p>
