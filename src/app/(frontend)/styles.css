@@ -4,7 +4,8 @@
   --color-zold: #3f4603;
   --color-vilagos: #e7ebe3;
   --color-arany: #bfa06a;
-  --color-feher: #f6f7f2;
+  --color-feher: #ffffff;
+  /* --color-feher: #f6f7f2;  */
   --color-sotet: #1f241b;
   --color-text-alap: #2b2b2b;
 
@@ -39,9 +40,9 @@ html {
   -webkit-font-smoothing: antialiased;
 }
 
-section {
+/* section {
   overflow: hidden;
-}
+} */
 
 h1,
 h2,

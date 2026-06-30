@@ -5,6 +5,8 @@ import React from 'react'
 import { fileURLToPath } from 'url'
 import Hero from '../components/hero/hero'
 import SectionOne from '../components/section1/sectionOne'
+import SectionTwo from '../components/section2/sectionTwo'
+import SectionThree from '../components/section3/sectionThree'
 
 import config from '@/payload.config'
 import './styles.css'
@@ -21,6 +23,8 @@ export default async function HomePage() {
     <section className="w-full flex flex-col justify-center items-center">
       <Hero></Hero>
       <SectionOne></SectionOne>
+      <SectionTwo></SectionTwo>
+      <SectionThree></SectionThree>
     </section>
   )
 }

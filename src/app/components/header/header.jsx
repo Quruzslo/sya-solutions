@@ -23,9 +23,9 @@ export default function Header() {
   }, [])
 
   return (
-    <section className="w-full fixed top-0 left-0 flex flex-col justify-center items-center z-[999]">
+    <section className="w-full fixed top-0 left-0 flex flex-col justify-center items-center z-[999] ">
       <header
-        className={`flex flex-row w-full max-w-[2560px] md:w-[90%] h-[75px] md:h-[100px] p-[10px] items-center
+        className={`flex flex-row  max-w-[2560px] w-[90%] h-[75px] md:h-[100px] p-[10px] items-center
           transition-all duration-500 ease-in-out
           ${
             activeHeader
