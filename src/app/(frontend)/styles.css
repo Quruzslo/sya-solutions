@@ -119,7 +119,7 @@ a {
 }
 
 .out-img {
-  animation: fadeOut 0.1s both;
+  animation: fadeOut 0.4s both;
 }
 .out-name {
   animation: slideOut 0.3s 0.1s both;
@@ -132,7 +132,7 @@ a {
 }
 
 .in-img {
-  animation: fadeIn 0.1s both;
+  animation: fadeIn 0.4s both;
 }
 .in-name {
   animation: slideIn 0.4s 0.1s both;

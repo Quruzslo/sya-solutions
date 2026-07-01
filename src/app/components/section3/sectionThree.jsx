@@ -29,7 +29,7 @@ export default function SectionOne() {
             desc={activeMember.desc}
           ></TeamBigPic>
         </div>
-        <div className="grid grid-cols-2 grid-rows-2 w-[450px] h-[450px] rounded-full overflow-hidden [&>*]:w-full [&>*]:h-full mx-auto">
+        <div className="grid grid-cols-2 grid-rows-2 w-[450px] h-[450px] [clip-path:circle(50%_at_50%_50%)] overflow-hidden [&>*]:w-full [&>*]:h-full mx-auto">
           <TeamCard
             image={Zso}
             title={'Tanácsadó Leader'}
