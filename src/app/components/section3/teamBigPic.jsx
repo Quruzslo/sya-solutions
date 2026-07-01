@@ -24,7 +24,7 @@ export default function TeamBigPic({ title, name, desc, image }) {
 
   return (
     <div
-      className={`flex flex-col gap-3 w-full relative h-full min-h-[350px] rounded-md overflow-hidden duration-400  ${phase === 'out' ? 'shadow-[10px_10px_15px_rgba(0,0,0,0.0)]' : 'shadow-[10px_10px_15px_rgba(0,0,0,0.6)]'}`}
+      className={`flex flex-col gap-3 w-full relative h-full min-h-[350px] rounded-md overflow-hidden duration-600  ${phase === 'out' ? 'shadow-[10px_10px_15px_rgba(0,0,0,0.0)]' : 'shadow-[10px_10px_15px_rgba(0,0,0,0.6)]'}`}
     >
       <div className="w-full h-full absolute top-0 left-0 z-0 ">
         <Image
