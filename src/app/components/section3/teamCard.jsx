@@ -13,7 +13,7 @@ export default function TeamCard({ title, name, desc, num, image, setActiveMembe
 
   return (
     <div
-      onMouseEnter={settingMember}
+      onClick={settingMember}
 
       className="flex flex-col gap-3 w-full h-full relative overflow-hidden cursor-pointer transition-all duration-300"
     >
