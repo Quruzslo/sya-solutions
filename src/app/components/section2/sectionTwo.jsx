@@ -57,7 +57,7 @@ export default function SectionTwo() {
               viewBox="0 0 115 115"
               className="w-full h-full "
             >
-              <g transform="translate(15, 15)">
+              <g transform="translate(28.5, 15)">
                 {/* 1. Oszlop - S (Safety / Biztonság) */}
                 {/* 1. Oszlop */}
                 <motion.rect
