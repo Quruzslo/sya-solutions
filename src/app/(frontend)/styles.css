@@ -80,3 +80,66 @@ a {
   aspect-ratio: 1;
   background: radial-gradient(circle 20px at bottom right, #ffffff00 98%, var(--color-feher));
 }
+
+/* Team Card animáció--------------- */
+
+@keyframes slideOut {
+  to {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+@keyframes fadeIn {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+
+.out-img {
+  animation: fadeOut 0.1s both;
+}
+.out-name {
+  animation: slideOut 0.3s 0.1s both;
+}
+.out-title {
+  animation: slideOut 0.3s 0.2s both;
+}
+.out-desc {
+  animation: slideOut 0.3s 0.3s both;
+}
+
+.in-img {
+  animation: fadeIn 0.1s both;
+}
+.in-name {
+  animation: slideIn 0.4s 0.1s both;
+}
+.in-title {
+  animation: slideIn 0.4s 0.2s both;
+}
+.in-desc {
+  animation: slideIn 0.4s 0.3s both;
+}
