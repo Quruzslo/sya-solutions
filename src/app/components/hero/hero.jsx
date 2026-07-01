@@ -60,7 +60,7 @@ export default function Hero() {
           <p>S.Y.A Solutions</p>
         </div>
 
-        <h1 className="!text-[40px] font-bold my-auto ml-[10px]">
+        <h1 className="!text-[25px] !md:text-[40px] font-bold my-auto ml-[10px]">
           Megbízható pénzügyi védőháló a <span>személyes</span> igényekre szabva{' '}
         </h1>
 
@@ -93,13 +93,13 @@ export default function Hero() {
 
       <div className="hero-jobb mt-auto xl:mt-0 w-[100%] xl:w-[50%] flex flex-col xl:flex-row gap-[15px] p-[10px] relative z-20 items-end justify-center ">
         <div className="text-[20px] flex flex-row gap-[5px] items-end ">
-          <span className="text-transparent font-bold text-5xl [-webkit-text-stroke:1px_#ffffff] ">
+          <span className="text-transparent font-bold text-[25px] md:text-5xl [-webkit-text-stroke:1px_#ffffff] ">
             100 +
           </span>
           <p>elégedett ügyfél</p>
         </div>
         <div className="text-[20px] flex flex-row gap-[5px] items-end ">
-          <span className="text-transparent font-bold text-5xl [-webkit-text-stroke:1px_#ffffff] ">
+          <span className="text-transparent font-bold text-[25px] md:text-5xl [-webkit-text-stroke:1px_#ffffff] ">
             250 +
           </span>
           <p>megkötött szerződés</p>
