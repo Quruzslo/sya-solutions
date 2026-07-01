@@ -29,7 +29,7 @@ export default function Hero() {
   }
 
   return (
-    <div className="hero w-[90%] max-w-[2560px] rounded-[20px] flex flex-col xl:flex-row mx-auto py-[50px] mt-[120px] text-white relative overflow-hidden h-[calc(100vh-150px)] min-h-[650px]">
+    <div className="hero w-[90%] max-w-[2560px] rounded-[20px] flex flex-col xl:flex-row mx-auto py-[50px] mt-[120px] text-white relative overflow-hidden h-auto xl:h-[calc(100vh-150px)] md:min-h-[650px]">
       {/* HÁTTÉRKÉP CONTAINER */}
       <div className="absolute top-0 left-0 w-full h-full hero-kep rounded-[20px] overflow-hidden [transform:translateZ(0)]">
         {prevImage && (
@@ -60,7 +60,7 @@ export default function Hero() {
           <p>S.Y.A Solutions</p>
         </div>
 
-        <h1 className="!text-[25px] !md:text-[40px] font-bold my-auto ml-[10px]">
+        <h1 className="!text-[25px] !md:text-[40px] font-bold mt-[50px] xl:my-auto ml-[10px]">
           Megbízható pénzügyi védőháló a <span>személyes</span> igényekre szabva{' '}
         </h1>
 
@@ -91,7 +91,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="hero-jobb mt-auto xl:mt-0 w-[100%] xl:w-[50%] flex flex-col xl:flex-row gap-[15px] p-[10px] relative z-20 items-end justify-center ">
+      <div className="hero-jobb self-end mt-auto xl:mt-0 w-[100%] xl:w-[50%] flex flex-col xl:flex-row gap-[15px] p-[10px] relative z-20 items-end justify-center ">
         <div className="text-[20px] flex flex-row gap-[5px] items-end ">
           <span className="text-transparent font-bold text-[25px] md:text-5xl [-webkit-text-stroke:1px_#ffffff] ">
             100 +
