@@ -52,15 +52,15 @@ export default function Header() {
   // A menüpontokat egy tömbbe, késleltetést könnyebb rákötni
 
   const navItems = [
-    { name: 'Csapatunk', path: '/csapat' },
+    { name: 'Csapatunk', path: '/' },
 
-    { name: 'Esettanulmányok', path: '/esettanulmanyok' },
+    { name: 'Esettanulmányok', path: '/' },
 
     { name: 'Termékek', path: '/' },
 
     { name: 'Konzultáció', path: '/' },
 
-    { name: 'GY.I.K', path: '/gyik' },
+    { name: 'GY.I.K', path: '/' },
   ]
 
   return (
