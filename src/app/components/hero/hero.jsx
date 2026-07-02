@@ -67,6 +67,7 @@ export default function Hero() {
         <div className="flex flex-col md:flex-row wrap gap-3 mt-[35px] xl:mt-[0]">
           <HeroButton
             title="Családomnak"
+            link={'csalad-tamogatas'}
             icon={<TiArrowRightOutline />}
             setImage={handleImageChange}
             image={Family}

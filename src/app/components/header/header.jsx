@@ -65,7 +65,9 @@ export default function Header() {
         >
           {/* Logo Container */}
           <div className="w-fit h-fit min-w-[75px] max-h-[75px] xl:max-h-[100px] relative z-50">
-            <SyaLogo activeHeader={activeHeader || isMenuOpen} />
+            <Link href="/">
+              <SyaLogo activeHeader={activeHeader || isMenuOpen} />
+            </Link>
           </div>
 
           {/* Menü Gomb  */}
