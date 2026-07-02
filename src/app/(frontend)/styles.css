@@ -265,36 +265,44 @@ a {
 
 @keyframes slideUpInMenu {
   from {
-    transform: translateY(200%);
+    opacity: 0;
+    transform: translateY(200vh);
   }
   to {
+    opacity: 1;
     transform: translateY(0);
   }
 }
 @keyframes slideDownOutMenu {
   from {
+    opacity: 1;
     transform: translateY(0);
   }
   to {
-    transform: translateY(200%);
+    opacity: 0;
+    transform: translateY(200vh);
   }
 }
 
 /* Jobb panel (Világos): Fentről csúszik LE, felfelé csúszik KI */
 @keyframes slideDownInMenu {
   from {
-    transform: translateY(-200%);
+    opacity: 0;
+    transform: translateY(-200vh);
   }
   to {
+    opacity: 1;
     transform: translateY(0);
   }
 }
 @keyframes slideUpOutMenu {
   from {
+    opacity: 1;
     transform: translateY(0);
   }
   to {
-    transform: translateY(-200%);
+    opacity: 0;
+    transform: translateY(-200vh);
   }
 }
 

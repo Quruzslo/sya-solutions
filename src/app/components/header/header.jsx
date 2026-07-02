@@ -95,10 +95,10 @@ export default function Header() {
 
       {/* OVERLAY  */}
       <div
-        className={`fixed inset-0 w-full h-[100dvh] z-[998] flex flex-col md:flex-row 
+        className={`fixed inset-0 w-full min-h-[550px] h-[100vh] z-[998] flex flex-col md:flex-row 
           ${!hasRendered ? 'hidden' : ''} 
-          /* Csak nyitott állapotban engedjük a görgetést, hogy az animáció alatt ne ugráljon a scrollbar */
-          ${isMenuOpen ? 'pointer-events-auto overflow-y-auto overflow-x-hidden' : 'pointer-events-none overflow-hidden'}`}
+         
+          ${isMenuOpen ? 'pointer-events-auto overflow-y-auto overflow-x-hidden ' : 'pointer-events-none overflow-hidden '}`}
       >
         {/* BAL PANEL (ZÖLD) - Lentről felfelé */}
         <div
