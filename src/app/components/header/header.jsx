@@ -94,7 +94,6 @@ export default function Header() {
       </section>
 
       {/* OVERLAY  */}
-      {/* OVERLAY */}
       <div
         className={`fixed inset-0 w-full h-[100dvh] z-[998] flex flex-col md:flex-row 
           ${!hasRendered ? 'hidden' : ''} 
@@ -147,7 +146,6 @@ export default function Header() {
                 </li>
               ))}
 
-              {/* Kapcsolat gomb külön stílussal (utolsó késleltetés) */}
               <li
                 className={`${isMenuOpen ? 'menu-item-open' : 'menu-item-close'} menu-delay-6 mt-4`}
               >
