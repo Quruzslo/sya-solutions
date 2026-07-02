@@ -20,10 +20,10 @@ export default function SectionTwo() {
   const arrowOpacity = useTransform(scrollYProgress, [0.69, 0.7], [0, 1])
 
   return (
-    <div className="w-[90%] max-w-[2560px] flex flex-col mx-auto py-[50px] relative">
+    <div className="w-[90%] max-w-[2560px] flex flex-col mx-auto  relative">
       <SectionTitles title={'Hogyan dolgozunk érted?'} bgText={'Ismerd meg a folyamatot'} />
 
-      <div className="w-full flex flex-col md:flex-row gap-[20px] my-[50px] h-full items-start">
+      <div className="w-full flex flex-col md:flex-row gap-[20px]  h-full items-start">
         {/* BAL OLDAL */}
         <div className="w-full md:w-[50%] flex flex-col justify-between h-[80%] py-[5vh] pr-0 md:pr-10">
           <div className=" flex flex-col justify-center">

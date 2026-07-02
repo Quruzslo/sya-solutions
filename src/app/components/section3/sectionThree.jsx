@@ -21,7 +21,7 @@ export default function SectionOne() {
   return (
     <div className=" w-[90%] max-w-[2560px] rounded-[20px] flex flex-col mx-auto py-[50px]">
       <SectionTitles title={'Csapatunk'} bgText={'Akik segítenek az utadon'}></SectionTitles>
-      <div className="w-full flex flex-col xl:flex-row gap-[20px] my-[150px] min-h-[650px] items-center">
+      <div className="w-full flex flex-col xl:flex-row gap-[20px] min-h-[650px] items-center">
         <div className="flex w-[100%] xl:w-[50%] h-full">
           <TeamBigPic
             image={activeMember.image}
