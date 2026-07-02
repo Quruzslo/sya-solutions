@@ -15,7 +15,7 @@ export default function SectionOne() {
     title: 'Tanácsadó',
     name: 'Szőgyényi Zsófia Zsó Cunn',
     desc: 'Ide jön a bla bla , meow és cunn',
-    isActive: 1,
+    isActive: 2,
   })
 
   return (
