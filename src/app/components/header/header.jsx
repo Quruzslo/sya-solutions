@@ -1,13 +1,18 @@
 'use client'
+
 import SyaLogo from './syaLogo'
+
 import Link from 'next/link'
+
 import { useEffect, useState } from 'react'
 
 export default function Header() {
   const [activeHeader, setActiveHeader] = useState(false)
 
   // Menü kezeléséhez szükséges állapotok
+
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+
   const [hasRendered, setHasRendered] = useState(false) // Megakadályozza, hogy betöltéskor lefusson a kilépő animáció
 
   useEffect(() => {
@@ -20,6 +25,7 @@ export default function Header() {
     }
 
     window.addEventListener('scroll', handleScroll)
+
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
@@ -27,6 +33,7 @@ export default function Header() {
 
   const toggleMenu = () => {
     setHasRendered(true)
+
     setIsMenuOpen(!isMenuOpen)
   }
 
@@ -42,11 +49,17 @@ export default function Header() {
     }
   }, [isMenuOpen])
 
+  // A menüpontokat egy tömbbe, késleltetést könnyebb rákötni
+
   const navItems = [
     { name: 'Csapatunk', path: '/csapat' },
+
     { name: 'Esettanulmányok', path: '/esettanulmanyok' },
+
     { name: 'Termékek', path: '/' },
+
     { name: 'Konzultáció', path: '/' },
+
     { name: 'GY.I.K', path: '/gyik' },
   ]
 
@@ -55,7 +68,9 @@ export default function Header() {
       <section className="w-full fixed top-0 left-0 flex flex-col justify-center items-center z-[999]">
         <header
           className={`flex flex-row max-w-[2560px] w-[90%] h-[75px] md:h-[100px] p-[10px] items-center
+
             transition-all duration-500 ease-in-out
+
             ${
               activeHeader && !isMenuOpen
                 ? 'rounded-[50px] bg-black/50 backdrop-blur-md shadow-sm mt-2 md:mt-4'
@@ -63,6 +78,7 @@ export default function Header() {
             }`}
         >
           {/* Logo Container */}
+
           <div className="w-fit h-fit min-w-[75px] max-h-[75px] xl:max-h-[100px] relative z-50">
             <Link href="/">
               <SyaLogo activeHeader={activeHeader || isMenuOpen} />
@@ -70,41 +86,52 @@ export default function Header() {
           </div>
 
           {/* Menü Gomb  */}
+
           <button
             onClick={toggleMenu}
+
             className="ml-auto w-10 h-10 flex flex-col justify-center items-center gap-1.5 z-50 relative group cursor-pointer overflow-hidden"
+
             aria-label="Menü megnyitása"
           >
             <span
               className={`block h-[4px] rounded-full w-8 bg-[#3f4603] transition-all duration-300 ease-in-out
-                ${isMenuOpen ? 'rotate-45 translate-y-2 bg-arany' : ''} 
+
+                ${isMenuOpen ? 'rotate-45 translate-y-2 bg-arany' : ''}
+
                 ${activeHeader && !isMenuOpen ? 'bg-white' : ''}`}
             />
+
             <span
               className={`block h-[4px] rounded-full w-8 bg-[#3f4603] transition-all duration-300 ease-in-out
-                ${isMenuOpen ? 'translate-x-[50px]' : 'translate-x-[0px]'} 
+
+                ${isMenuOpen ? 'translate-x-[50px]' : 'translate-x-[0px]'}
+
                 ${activeHeader && !isMenuOpen ? 'bg-white' : ''}`}
             />
+
             <span
               className={`block h-[4px] rounded-full w-8 bg-[#3f4603] transition-all duration-300 ease-in-out
-                ${isMenuOpen ? '-rotate-45 -translate-y-2 bg-arany' : ''} 
+
+                ${isMenuOpen ? '-rotate-45 -translate-y-2 bg-arany' : ''}
+
                 ${activeHeader && !isMenuOpen ? 'bg-white' : ''}`}
             />
           </button>
         </header>
       </section>
 
-      {/* OVERLAY (A KÜLSŐ KONTÉNER - Csak a képernyő lefogásáért és a görgetősávért felel) */}
+      {/* OVERLAY (A KÜLSŐ KONTÉNER - h-[100dvh] a mobil sávok miatt!) */}
       <div
-        className={`fixed inset-0 w-full h-[100vh] z-[998]
+        className={`fixed inset-0 w-full h-[100dvh] z-[998]
           ${!hasRendered ? 'hidden' : ''} 
           ${isMenuOpen ? 'pointer-events-auto overflow-y-auto overflow-x-hidden' : 'pointer-events-none overflow-hidden'}`}
       >
-        {/* BELSŐ RUGALMAS KONTÉNER  */}
+        {/* BELSŐ RUGALMAS KONTÉNER */}
         <div className="w-full min-h-full flex flex-col md:flex-row">
           {/* BAL PANEL */}
           <div
-            className={`w-full md:w-1/2 h-[50%] md:h-auto min-h-[300px] md:min-h-[420px] bg-[#3f4603] flex flex-col justify-center items-center px-10 pt-[120px] pb-10 md:py-0 relative shrink-0
+            className={`w-full md:w-1/2 flex-1 md:flex-none min-h-[300px] md:min-h-[420px] bg-[#3f4603] flex flex-col justify-center items-center px-10 pt-[120px] pb-10 md:py-0 relative shrink-0
               ${isMenuOpen ? 'panel-left-open' : 'panel-left-close'}`}
           >
             <div
@@ -124,9 +151,9 @@ export default function Header() {
             </div>
           </div>
 
-          {/* JOBB PANEL (VÁLTOZÁS: szintén md:h-auto, a min-h-[420px] pedig kényszeríti a növekedést) */}
+          {/* JOBB PANEL */}
           <div
-            className={`w-full md:w-1/2 h-[50%] md:h-auto min-h-[420px] bg-[#e7ebe3] flex flex-col justify-center items-center relative py-12 md:py-0 shrink-0
+            className={`w-full md:w-1/2 flex-1 md:flex-none min-h-[420px] bg-[#e7ebe3] flex flex-col justify-center items-center relative py-12 md:py-0 shrink-0
               ${isMenuOpen ? 'panel-right-open' : 'panel-right-close'}`}
           >
             <nav className="w-full">
