@@ -93,16 +93,16 @@ export default function Header() {
         </header>
       </section>
 
-      {/* OVERLAY  */}
+      {/* OVERLAY (A KÜLSŐ KONTÉNER) */}
       <div
-        className={`fixed inset-0 w-full min-h-[550px] h-[100vh] z-[998] flex flex-col md:flex-row 
+        className={`fixed inset-0 w-full !h-[100vh] z-[998] flex flex-col md:flex-row 
           ${!hasRendered ? 'hidden' : ''} 
-         
-          ${isMenuOpen ? 'pointer-events-auto  overflow-x-hidden ' : 'pointer-events-none overflow-hidden '}`}
+          /* Mobilon az EGÉSZ ablak görgethető, ha a tartalom magasabb mint a kijelző. Asztalin tiltjuk. */
+          ${isMenuOpen ? 'pointer-events-auto overflow-y-auto md:overflow-hidden overflow-x-hidden' : 'pointer-events-none overflow-hidden'}`}
       >
-        {/* BAL PANEL (ZÖLD) - Lentről felfelé */}
+        {/* BAL PANEL (VÁLTOZÁS: h-auto és fix min-h mobilon, nincs belső overflow!) */}
         <div
-          className={`w-full md:w-1/2 flex-1 shrink-0  overflow-y-auto md:min-h-0 bg-[#3f4603] flex flex-col justify-center items-center px-10 pt-[100px] md:pt-0 relative
+          className={`w-full md:w-1/2 h-[50%] md:h-full min-h-[280px]  bg-[#3f4603] flex flex-col justify-center items-center px-10 pt-[90px] pb-10 md:py-0 relative shrink-0
             ${isMenuOpen ? 'panel-left-open' : 'panel-left-close'}`}
         >
           <div
@@ -115,20 +115,20 @@ export default function Header() {
               <br />
               Solutions
             </h2>
-            <p className="text-[#e7ebe3]/70 text-lg md:text-xl text-center max-w-sm">
+            <p className="text-[#e7ebe3]/70 text-base md:text-xl text-center max-w-sm">
               Prémium pénzügyi pajzs és stratégiai vagyonépítés. Biztosítsd be vállalkozásod és
               saját anyagi hátterét. Az öngondoskodás már nem luxus.
             </p>
           </div>
         </div>
 
-        {/* JOBB PANEL (VILÁGOS) - Fentről lefelé */}
+        {/* JOBB PANEL (VÁLTOZÁS: h-auto és fix min-h a gomboknak mobilon, nincs belső overflow!) */}
         <div
-          className={`w-full md:w-1/2 flex-1 shrink-0  overflow-y-auto md:min-h-0 bg-[#e7ebe3] flex flex-col justify-center items-center relative py-10
+          className={`w-full md:w-1/2 h-[50%] md:h-full min-h-[420px] bg-[#e7ebe3] flex flex-col justify-center items-center relative py-12 md:py-0 shrink-0
             ${isMenuOpen ? 'panel-right-open' : 'panel-right-close'}`}
         >
           <nav className="w-full">
-            <ul className="flex flex-col gap-6 text-center">
+            <ul className="flex flex-col gap-5 md:gap-6 text-center">
               {navItems.map((item, index) => (
                 <li
                   key={index}
@@ -148,7 +148,7 @@ export default function Header() {
               ))}
 
               <li
-                className={`${isMenuOpen ? 'menu-item-open' : 'menu-item-close'} menu-delay-6 mt-4`}
+                className={`${isMenuOpen ? 'menu-item-open' : 'menu-item-close'} menu-delay-6 mt-2`}
               >
                 <Link
                   href="/kapcsolat"
