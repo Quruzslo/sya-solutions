@@ -147,11 +147,11 @@ export default function FavProds() {
                 {/* beágyazott SEO Meta adatok a Google-nek és az átláthatóságnak */}
                 <div className="mt-auto pt-6 border-t border-text-alap/50 flex flex-col gap-3">
                   <div className="text-xs text-zold">
-                    <strong className=" block mb-0.5">Kulcsszavak (LSI Index):</strong>
+                    <strong className=" block mb-0.5">Index:</strong>
                     <span className="italic">{prod.seoKeywords}</span>
                   </div>
                   <div className="text-xs text-zold">
-                    <strong className=" block mb-0.5">Keresési szándék optimalizálás (GEO):</strong>
+                    <strong className=" block mb-0.5">-</strong>
                     <span className="italic">{prod.geoIntent}</span>
                   </div>
                 </div>
