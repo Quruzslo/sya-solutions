@@ -21,8 +21,8 @@ export default function SectionOne() {
   return (
     <div className=" w-[90%] max-w-[2560px] rounded-[20px] flex flex-col mx-auto py-[50px]">
       <SectionTitles title={'Csapatunk'} bgText={'Akik segítenek az utadon'}></SectionTitles>
-      <div className="w-full flex flex-col xl:flex-row gap-[20px] min-h-[650px] items-center">
-        <div className="flex w-[100%] xl:w-[50%] h-full">
+      <div className="w-full flex flex-col xl:flex-row gap-[20px] min-h-[650px] items-center overflow-hiden pb-[35px]">
+        <div className="flex w-[100%] xl:w-[50%] h-full ">
           <TeamBigPic
             image={activeMember.image}
             title={activeMember.title}
@@ -30,7 +30,7 @@ export default function SectionOne() {
             desc={activeMember.desc}
           ></TeamBigPic>
         </div>
-        <div className="grid grid-cols-2 grid-rows-2 w-[350px] h-[350px] md:w-[450px] md:h-[450px] [clip-path:circle(50%_at_50%_50%)] overflow-hidden [&>*]:w-full [&>*]:h-full mx-auto filter:drop-shadow-[10px_10px_15px_rgba(0,0,0,0.6)]">
+        <div className="grid grid-cols-2 grid-rows-2 w-[350px] h-[350px] md:w-[450px] md:h-[450px] [clip-path:circle(50%_at_50%_50%)] overflow-hidden  mx-auto filter:drop-shadow-[10px_10px_15px_rgba(0,0,0,0.6)]">
           <TeamCard
             image={Viola}
             title={'Fiókvezető'}
