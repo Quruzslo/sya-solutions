@@ -18,7 +18,8 @@ const inter = Inter({
 })
 
 export const metadata = {
-  description: 'Személyre szabott pénzügyi segítség az egész családnak',
+  description:
+    'Személyre szabott pénzügyi segítség az egész családnak, vállalkozóknak és magánszemélyeknek. Vállalkozások biztosítása. Nyugdíjtartalék felhalmozása.',
   title: 'S.Y.A Solutions',
 }
 

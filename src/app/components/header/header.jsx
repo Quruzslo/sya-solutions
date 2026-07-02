@@ -116,7 +116,8 @@ export default function Header() {
               Solutions
             </h2>
             <p className="text-[#e7ebe3]/70 text-lg md:text-xl text-center max-w-sm">
-              Prémium pénzügyi pajzs és stratégiai vagyonépítés.
+              Prémium pénzügyi pajzs és stratégiai vagyonépítés. Biztosítsd be vállalkozásod és
+              saját anyagi hátterét. Az öngondoskodás már nem luxus.
             </p>
           </div>
         </div>

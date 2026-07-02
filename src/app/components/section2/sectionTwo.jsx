@@ -58,7 +58,6 @@ export default function SectionTwo() {
               className="w-full h-full "
             >
               <g transform="translate(28.5, 15)">
-                {/* 1. Oszlop - S (Safety / Biztonság) */}
                 {/* 1. Oszlop */}
                 <motion.rect
                   x="0"
