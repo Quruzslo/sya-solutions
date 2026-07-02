@@ -98,11 +98,11 @@ export default function Header() {
         className={`fixed inset-0 w-full min-h-[550px] h-[100vh] z-[998] flex flex-col md:flex-row 
           ${!hasRendered ? 'hidden' : ''} 
          
-          ${isMenuOpen ? 'pointer-events-auto overflow-y-auto overflow-x-hidden ' : 'pointer-events-none overflow-hidden '}`}
+          ${isMenuOpen ? 'pointer-events-auto  overflow-x-hidden ' : 'pointer-events-none overflow-hidden '}`}
       >
         {/* BAL PANEL (ZÖLD) - Lentről felfelé */}
         <div
-          className={`w-full md:w-1/2 flex-1 shrink-0 min-h-[300px] md:min-h-0 bg-[#3f4603] flex flex-col justify-center items-center px-10 pt-[100px] md:pt-0 relative
+          className={`w-full md:w-1/2 flex-1 shrink-0  overflow-y-auto md:min-h-0 bg-[#3f4603] flex flex-col justify-center items-center px-10 pt-[100px] md:pt-0 relative
             ${isMenuOpen ? 'panel-left-open' : 'panel-left-close'}`}
         >
           <div
@@ -124,7 +124,7 @@ export default function Header() {
 
         {/* JOBB PANEL (VILÁGOS) - Fentről lefelé */}
         <div
-          className={`w-full md:w-1/2 flex-1 shrink-0 min-h-[450px] md:min-h-0 bg-[#e7ebe3] flex flex-col justify-center items-center relative py-10
+          className={`w-full md:w-1/2 flex-1 shrink-0  overflow-y-auto md:min-h-0 bg-[#e7ebe3] flex flex-col justify-center items-center relative py-10
             ${isMenuOpen ? 'panel-right-open' : 'panel-right-close'}`}
         >
           <nav className="w-full">
