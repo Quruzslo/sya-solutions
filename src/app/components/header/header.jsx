@@ -42,7 +42,6 @@ export default function Header() {
     }
   }, [isMenuOpen])
 
-  // A menüpontokat egy tömbbe, késleltetést könnyebb rákötni
   const navItems = [
     { name: 'Csapatunk', path: '/csapat' },
     { name: 'Esettanulmányok', path: '/esettanulmanyok' },
@@ -95,73 +94,75 @@ export default function Header() {
         </header>
       </section>
 
-      {/* OVERLAY (A KÜLSŐ KONTÉNER) */}
+      {/* OVERLAY (A KÜLSŐ KONTÉNER - Csak a képernyő lefogásáért és a görgetősávért felel) */}
       <div
-        className={`fixed inset-0 w-full !h-[100vh]  z-[998] flex flex-col md:flex-row 
+        className={`fixed inset-0 w-full h-[100vh] z-[998]
           ${!hasRendered ? 'hidden' : ''} 
-          
-          ${isMenuOpen ? 'pointer-events-auto overflow-y-auto  overflow-x-hidden' : 'pointer-events-none overflow-hidden'}`}
+          ${isMenuOpen ? 'pointer-events-auto overflow-y-auto overflow-x-hidden' : 'pointer-events-none overflow-hidden'}`}
       >
-        {/* BAL PANEL (VÁLTOZÁS: h-auto és fix min-h mobilon, nincs belső overflow!) */}
-        <div
-          className={`w-full md:w-1/2 h-[50%] md:h-full min-h-[500px]  bg-[#3f4603] flex flex-col justify-center items-center px-10 pt-[120px] pb-10 md:py-0 relative shrink-0
-            ${isMenuOpen ? 'panel-left-open' : 'panel-left-close'}`}
-        >
+        {/* BELSŐ RUGALMAS KONTÉNER  */}
+        <div className="w-full min-h-full flex flex-col md:flex-row">
+          {/* BAL PANEL */}
           <div
-            className={`transition-opacity duration-700 delay-300 flex flex-col items-center ${
-              isMenuOpen ? 'opacity-100' : 'opacity-0'
-            }`}
+            className={`w-full md:w-1/2 h-[50%] md:h-auto min-h-[300px] md:min-h-[420px] bg-[#3f4603] flex flex-col justify-center items-center px-10 pt-[120px] pb-10 md:py-0 relative shrink-0
+              ${isMenuOpen ? 'panel-left-open' : 'panel-left-close'}`}
           >
-            <h2 className="!text-[25px] md:!text-3xl font-bold text-[#e7ebe3] mb-4 text-center leading-tight">
-              S.Y.A.
-              <br />
-              Solutions
-            </h2>
-            <p className="text-[#e7ebe3]/70 text-base md:text-xl text-center max-w-sm">
-              Prémium pénzügyi pajzs és stratégiai vagyonépítés. Biztosítsd be vállalkozásod és
-              saját anyagi hátterét. Az öngondoskodás már nem luxus.
-            </p>
+            <div
+              className={`transition-opacity duration-700 delay-300 flex flex-col items-center ${
+                isMenuOpen ? 'opacity-100' : 'opacity-0'
+              }`}
+            >
+              <h2 className="!text-[25px] md:!text-3xl font-bold text-[#e7ebe3] mb-4 text-center leading-tight">
+                S.Y.A.
+                <br />
+                Solutions
+              </h2>
+              <p className="text-[#e7ebe3]/70 text-base md:text-xl text-center max-w-sm">
+                Prémium pénzügyi pajzs és stratégiai vagyonépítés. Biztosítsd be vállalkozásod és
+                saját anyagi hátterét. Az öngondoskodás már nem luxus.
+              </p>
+            </div>
           </div>
-        </div>
 
-        {/* JOBB PANEL (VÁLTOZÁS: h-auto és fix min-h a gomboknak mobilon, nincs belső overflow!) */}
-        <div
-          className={`w-full md:w-1/2 h-[50%] md:h-full min-h-[500px] bg-[#e7ebe3] flex flex-col justify-center items-center relative py-12 md:py-0 shrink-0
-            ${isMenuOpen ? 'panel-right-open' : 'panel-right-close'}`}
-        >
-          <nav className="w-full">
-            <ul className="flex flex-col gap-5 md:gap-6 text-center">
-              {navItems.map((item, index) => (
+          {/* JOBB PANEL (VÁLTOZÁS: szintén md:h-auto, a min-h-[420px] pedig kényszeríti a növekedést) */}
+          <div
+            className={`w-full md:w-1/2 h-[50%] md:h-auto min-h-[420px] bg-[#e7ebe3] flex flex-col justify-center items-center relative py-12 md:py-0 shrink-0
+              ${isMenuOpen ? 'panel-right-open' : 'panel-right-close'}`}
+          >
+            <nav className="w-full">
+              <ul className="flex flex-col gap-5 md:gap-6 text-center">
+                {navItems.map((item, index) => (
+                  <li
+                    key={index}
+                    className={`
+                      ${isMenuOpen ? 'menu-item-open' : 'menu-item-close'} 
+                      menu-delay-${index + 1}
+                    `}
+                  >
+                    <Link
+                      href={item.path}
+                      onClick={toggleMenu}
+                      className="text-[20px] md:text-[30px] font-extrabold text-[#3f4603] hover:text-[#3f4603]/60 transition-colors"
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
+
                 <li
-                  key={index}
-                  className={`
-                    ${isMenuOpen ? 'menu-item-open' : 'menu-item-close'} 
-                    menu-delay-${index + 1}
-                  `}
+                  className={`${isMenuOpen ? 'menu-item-open' : 'menu-item-close'} menu-delay-6 mt-2`}
                 >
                   <Link
-                    href={item.path}
+                    href="/kapcsolat"
                     onClick={toggleMenu}
-                    className="text-[20px] md:text-[30px] font-extrabold text-[#3f4603] hover:text-[#3f4603]/60 transition-colors"
+                    className="inline-block p-[10px] px-8 rounded-full border-2 border-[#3f4603] text-[#3f4603] text-[20px] font-bold hover:bg-[#3f4603] hover:text-[#e7ebe3] transition-all"
                   >
-                    {item.name}
+                    Kapcsolat
                   </Link>
                 </li>
-              ))}
-
-              <li
-                className={`${isMenuOpen ? 'menu-item-open' : 'menu-item-close'} menu-delay-6 mt-2`}
-              >
-                <Link
-                  href="/kapcsolat"
-                  onClick={toggleMenu}
-                  className="inline-block p-[10px] px-8 rounded-full border-2 border-[#3f4603] text-[#3f4603] text-[20px] font-bold hover:bg-[#3f4603] hover:text-[#e7ebe3] transition-all"
-                >
-                  Kapcsolat
-                </Link>
-              </li>
-            </ul>
-          </nav>
+              </ul>
+            </nav>
+          </div>
         </div>
       </div>
     </>
