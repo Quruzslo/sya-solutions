@@ -161,7 +161,6 @@ export default function FavProds() {
             if (isActive) {
               containerClass = 'block tab-entering z-10 relative'
             } else if (isExiting) {
-              // Fontos: a w-full h-full kell, hogy az abszolút pozicionált régi doboz ne essen össze!
               containerClass = 'block tab-exiting z-0 absolute top-0 left-0 w-full h-full'
             }
 

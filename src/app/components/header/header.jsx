@@ -97,14 +97,14 @@ export default function Header() {
 
       {/* OVERLAY (A KÜLSŐ KONTÉNER) */}
       <div
-        className={`fixed inset-0 w-full !h-[100vh] z-[998] flex flex-col md:flex-row 
+        className={`fixed inset-0 w-full !h-[100vh]  z-[998] flex flex-col md:flex-row 
           ${!hasRendered ? 'hidden' : ''} 
-          /* Mobilon az EGÉSZ ablak görgethető, ha a tartalom magasabb mint a kijelző. Asztalin tiltjuk. */
-          ${isMenuOpen ? 'pointer-events-auto overflow-y-auto md:overflow-hidden overflow-x-hidden' : 'pointer-events-none overflow-hidden'}`}
+          
+          ${isMenuOpen ? 'pointer-events-auto overflow-y-auto  overflow-x-hidden' : 'pointer-events-none overflow-hidden'}`}
       >
         {/* BAL PANEL (VÁLTOZÁS: h-auto és fix min-h mobilon, nincs belső overflow!) */}
         <div
-          className={`w-full md:w-1/2 h-[50%] md:h-full min-h-[280px]  bg-[#3f4603] flex flex-col justify-center items-center px-10 pt-[90px] pb-10 md:py-0 relative shrink-0
+          className={`w-full md:w-1/2 h-[50%] md:h-full min-h-[500px]  bg-[#3f4603] flex flex-col justify-center items-center px-10 pt-[120px] pb-10 md:py-0 relative shrink-0
             ${isMenuOpen ? 'panel-left-open' : 'panel-left-close'}`}
         >
           <div
@@ -126,7 +126,7 @@ export default function Header() {
 
         {/* JOBB PANEL (VÁLTOZÁS: h-auto és fix min-h a gomboknak mobilon, nincs belső overflow!) */}
         <div
-          className={`w-full md:w-1/2 h-[50%] md:h-full min-h-[420px] bg-[#e7ebe3] flex flex-col justify-center items-center relative py-12 md:py-0 shrink-0
+          className={`w-full md:w-1/2 h-[50%] md:h-full min-h-[500px] bg-[#e7ebe3] flex flex-col justify-center items-center relative py-12 md:py-0 shrink-0
             ${isMenuOpen ? 'panel-right-open' : 'panel-right-close'}`}
         >
           <nav className="w-full">
