@@ -175,17 +175,88 @@ a {
 
 /* Termékek tab css------------- */
 
-@keyframes fadeIn {
+/* Konténer áttűnés (hogy a szürke háttér finoman váltson) */
+@keyframes fadeContainer {
   from {
     opacity: 0;
-    transform: perspective(1000px) rotateX(-4deg) translateY(10px);
   }
   to {
     opacity: 1;
-    transform: perspective(1000px) rotateX(0deg) translateY(0);
+  }
+}
+@keyframes fadeOutContainer {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }
 
-.animate-fadeIn {
-  animation: fadeIn 0.4s ease-out forwards;
+.tab-entering {
+  animation: fadeContainer 0.3s ease-out forwards;
+}
+.tab-exiting {
+  animation: fadeOutContainer 0.5s ease-in forwards;
+}
+
+/* Belső elemek csúszása (Stagger) */
+@keyframes slideDownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUpOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+}
+
+/* Alapállapot beállítása */
+.tab-entering .stagger-item {
+  opacity: 0; /* Kezdeti rejtés, amíg a delay le nem jár */
+  animation: slideDownIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.tab-exiting .stagger-item {
+  animation: slideUpOut 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Késleltetések (Stagger) - Belépés (fentről lefelé épül fel) */
+.tab-entering .delay-1 {
+  animation-delay: 0.1s;
+}
+.tab-entering .delay-2 {
+  animation-delay: 0.2s;
+}
+.tab-entering .delay-3 {
+  animation-delay: 0.3s;
+}
+.tab-entering .delay-4 {
+  animation-delay: 0.4s;
+}
+
+/* Kilépés - Gyorsabban pörög le */
+.tab-exiting .delay-1 {
+  animation-delay: 0s;
+}
+.tab-exiting .delay-2 {
+  animation-delay: 0.05s;
+}
+.tab-exiting .delay-3 {
+  animation-delay: 0.1s;
+}
+.tab-exiting .delay-4 {
+  animation-delay: 0.15s;
 }
