@@ -13,9 +13,7 @@ export default auth((req) => {
     }
 
     if (userRole !== "admin") {
-      return NextResponse.redirect(
-        new URL("/admin-belepes?error=Unauthorized", req.url),
-      );
+      return NextResponse.redirect(new URL("/admin-belepes", req.url));
     }
   }
 
@@ -23,5 +21,5 @@ export default auth((req) => {
 });
 
 export const config = {
-  matcher: ["/admin-belepes/fiok/:path*", "/api/admin/:path*"],
+  matcher: ["/admin-belepes/:path*", "/api/admin/:path*"],
 };
