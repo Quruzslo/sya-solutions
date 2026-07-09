@@ -1,11 +1,11 @@
-import Link from 'next/link'
-import SyaLogo from '../header/syaLogo'
+import Link from "next/link";
+import SyaLogo from "../header/syaLogo";
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear()
+  const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="w-full bg-[#1f241b] flex flex-col justify-center items-center pt-16 pb-6 text-[#e7ebe3] border-t border-[#3f4603]/30 mt-20">
+    <footer className="w-full bg-[#1f241b] flex flex-col justify-center items-center pt-16 pb-6 text-[#e7ebe3] border-t border-[#3f4603]/30 ">
       <div className="max-w-[2560px] w-[90%] flex flex-col gap-12">
         {/* Felső rész: Oszlopok */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
@@ -16,10 +16,10 @@ export default function Footer() {
             </div>
             <p
               className="text-sm leading-relaxed opacity-80"
-              style={{ fontFamily: 'var(--font-inter), sans-serif' }}
+              style={{ fontFamily: "var(--font-inter), sans-serif" }}
             >
-              Innovatív megoldások és prémium tanácsadás a jövő kihívásaira. Építsük együtt a
-              sikert, stabil alapokon.
+              Innovatív megoldások és prémium tanácsadás a jövő kihívásaira.
+              Építsük együtt a sikert, stabil alapokon.
             </p>
           </div>
 
@@ -27,13 +27,13 @@ export default function Footer() {
           <div className="flex flex-col gap-4">
             <h4
               className="!text-[25px] text-[#bfa06a] mb-2"
-              style={{ fontFamily: 'var(--font-playfair), serif' }}
+              style={{ fontFamily: "var(--font-playfair), serif" }}
             >
               Navigáció
             </h4>
             <ul
               className="flex flex-col gap-3 text-sm font-light"
-              style={{ fontFamily: 'var(--font-inter), sans-serif' }}
+              style={{ fontFamily: "var(--font-inter), sans-serif" }}
             >
               <li>
                 <Link
@@ -74,13 +74,13 @@ export default function Footer() {
           <div className="flex flex-col gap-4">
             <h4
               className="!text-[25px] text-[#bfa06a] mb-2"
-              style={{ fontFamily: 'var(--font-playfair), serif' }}
+              style={{ fontFamily: "var(--font-playfair), serif" }}
             >
               Információk
             </h4>
             <ul
               className="flex flex-col gap-3 text-sm font-light"
-              style={{ fontFamily: 'var(--font-inter), sans-serif' }}
+              style={{ fontFamily: "var(--font-inter), sans-serif" }}
             >
               <li>
                 <Link
@@ -113,13 +113,13 @@ export default function Footer() {
           <div className="flex flex-col gap-4">
             <h4
               className="!text-[25px] text-[#bfa06a] mb-2"
-              style={{ fontFamily: 'var(--font-playfair), serif' }}
+              style={{ fontFamily: "var(--font-playfair), serif" }}
             >
               Kapcsolat
             </h4>
             <ul
               className="flex flex-col gap-3 text-sm font-light"
-              style={{ fontFamily: 'var(--font-inter), sans-serif' }}
+              style={{ fontFamily: "var(--font-inter), sans-serif" }}
             >
               <li className="flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity">
                 <svg
@@ -158,7 +158,10 @@ export default function Footer() {
                     d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.896-1.596-5.273-3.974-6.869-6.87l1.292-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"
                   />
                 </svg>
-                <a href="tel:+36301234567" className="hover:text-[#bfa06a] transition-colors">
+                <a
+                  href="tel:+36301234567"
+                  className="hover:text-[#bfa06a] transition-colors"
+                >
                   +36 30 123 4567
                 </a>
               </li>
@@ -168,7 +171,7 @@ export default function Footer() {
             <Link
               href="/kapcsolat"
               className="mt-2 w-fit py-[10px] px-[24px] rounded-[5px] bg-[#3f4603] text-[#e7ebe3] font-semibold hover:bg-[#bfa06a] hover:text-[#1f241b] transition-all duration-300"
-              style={{ fontFamily: 'var(--font-inter), sans-serif' }}
+              style={{ fontFamily: "var(--font-inter), sans-serif" }}
             >
               Konzultáció kérése
             </Link>
@@ -178,14 +181,15 @@ export default function Footer() {
         {/* Alsó rész: Copyright */}
         <div
           className="w-full pt-6 border-t border-[#3f4603]/50 flex flex-col md:flex-row justify-between items-center gap-4 text-xs opacity-60 font-light"
-          style={{ fontFamily: 'var(--font-inter), sans-serif' }}
+          style={{ fontFamily: "var(--font-inter), sans-serif" }}
         >
           <p>© {currentYear} S.Y.A Solutions. Minden jog fenntartva.</p>
           <p>
-            Fejlesztő: <span className="font-semibold text-[#bfa06a]">Prefer Site</span>
+            Fejlesztő:{" "}
+            <span className="font-semibold text-[#bfa06a]">Prefer Site</span>
           </p>
         </div>
       </div>
     </footer>
-  )
+  );
 }
