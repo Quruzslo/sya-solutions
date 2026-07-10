@@ -36,7 +36,7 @@ export default function Hero({
   };
 
   return (
-    <div className="hero w-[90%] h-[calc(100vh-150px)] min-h-fit  max-h-[750px] max-w-[2560px] rounded-[20px] flex flex-col xl:flex-row mx-auto pt-[50px] mt-[120px] text-white relative overflow-hidden h-auto xl:h-[calc(100vh-150px)] xl:min-h-[650px] xl:max-h-[1250px]">
+    <div className="hero w-[90%] !h-[calc(100vh-150px)] min-h-fit  max-h-[750px] max-w-[2560px] rounded-[20px] flex flex-col xl:flex-row mx-auto pt-[50px] mt-[120px] text-white relative overflow-hidden xl:min-h-[650px]  xl:h-[calc(100vh-150px)] xl:max-h-[1250px]">
       {/* HÁTTÉRKÉP CONTAINER */}
       <div className="absolute top-0 left-0 w-full h-full hero-kep rounded-[20px] overflow-hidden [transform:translateZ(0)]">
         {!justOnePicture && prevImage && (
@@ -64,7 +64,7 @@ export default function Hero({
       </div>
 
       {/* TARTALOM */}
-      <div className="hero-bal w-[100%] xl:w-[50%] flex-1 flex flex-col p-[10px] relative z-20 ">
+      <div className="hero-bal w-[100%] xl:w-[50%] flex-1 flex flex-col p-[10px] relative z-20 !min-h-fit">
         <div className="hero-logo min-h-[50px] relative text-zold text-[20px] md:text-[40px] ml-[-10px] mt-[-60px] bg-feher w-fit px-[15px] rounded-br-[20px] font-bold z-30">
           <p>S.Y.A Solutions</p>
         </div>
