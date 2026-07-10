@@ -36,7 +36,7 @@ export default function Hero({
   };
 
   return (
-    <div className="hero w-[90%] !h-[calc(100vh-170px)] min-h-fit  max-h-[750px] max-w-[2560px] rounded-[20px] flex flex-col xl:flex-row mx-auto pt-[50px] mt-[120px] text-white relative overflow-hidden xl:min-h-[650px]  xl:h-[calc(100vh-150px)] xl:max-h-[1250px]">
+    <div className="hero w-[90%] !h-[calc(100vh-180px)] min-h-fit  max-h-[750px] max-w-[2560px] rounded-[20px] flex flex-col xl:flex-row mx-auto pt-[50px] mt-[120px] text-white relative overflow-hidden xl:min-h-[650px]  xl:!h-[calc(100vh-150px)] xl:max-h-[1250px]">
       {/* HÁTTÉRKÉP CONTAINER */}
       <div className="absolute top-0 left-0 w-full h-full hero-kep rounded-[20px] overflow-hidden [transform:translateZ(0)]">
         {!justOnePicture && prevImage && (
