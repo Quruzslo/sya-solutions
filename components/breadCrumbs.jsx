@@ -1,5 +1,5 @@
-import Link from 'next/link'
-import { HiChevronRight } from 'react-icons/hi'
+import Link from "next/link";
+import { HiChevronRight } from "react-icons/hi";
 
 export default function BreadCrumbs({ items }) {
   return (
@@ -12,7 +12,7 @@ export default function BreadCrumbs({ items }) {
       </Link>
 
       {items.map((item, index) => {
-        const isLast = index === items.length - 1
+        const isLast = index === items.length - 1;
 
         return (
           <div key={index} className="flex items-center gap-2 ">
@@ -23,13 +23,16 @@ export default function BreadCrumbs({ items }) {
                 {item.label}
               </span>
             ) : (
-              <Link href={item.url} className="hover:text-arany transition-colors">
+              <Link
+                href={item.url}
+                className="hover:text-arany transition-colors"
+              >
                 {item.label}
               </Link>
             )}
           </div>
-        )
+        );
       })}
     </nav>
-  )
+  );
 }
