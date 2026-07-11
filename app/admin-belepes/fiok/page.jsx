@@ -15,7 +15,7 @@ export default async function FiokPage() {
           <AdminNavComp></AdminNavComp>
         </div>
         <div className="w-full flex flex-col md:w-[100%]  p-[10px]">
-          Tartalom
+          Grafikonok és minden más
         </div>
       </div>
     </section>

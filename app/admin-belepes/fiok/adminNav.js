@@ -1,5 +1,9 @@
 const navItem = [
   {
+    name: "Áttekintés",
+    path: "/admin-belepes/fiok",
+  },
+  {
     name: "Bejegyzések",
     path: "/admin-belepes/fiok/bejegyzesek",
   },
