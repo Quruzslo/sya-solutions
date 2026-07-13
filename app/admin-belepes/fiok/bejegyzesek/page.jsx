@@ -1,6 +1,6 @@
 import AdminNavComp from "../adminNavComp";
 import Link from "next/link";
-import BlogPosts from "./BlogPosts";
+import BlogPosts from "./posts";
 
 export default async function BlogPage() {
   return (
