@@ -6,13 +6,9 @@ export default async function BlogPosts() {
   let posts = [];
 
   try {
-    // 1. Megadjuk az adatbázis nevét (írd át a sajátodra, pl. "sya-blog") és a kollekciót
-    const db = client.db("sya-blog").collection("posts");
-
-    // 2. Lekérjük a posztokat, a legfrissebbet téve előre (sort)
+    const db = client.db("main").collection("posts");
     const rawPosts = await db.find({}).sort({ createdAt: -1 }).toArray();
 
-    // 3. Biztonságosan átalakítjuk a MongoDB ObjectId-t sima stringgé
     posts = rawPosts.map((post) => ({
       ...post,
       _id: post._id.toString(),
