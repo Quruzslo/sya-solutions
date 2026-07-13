@@ -47,15 +47,32 @@ export default function BlogUploadForm({ session }) {
     }
 
     try {
-      const user = session.user;
+      let finalImageUrl = null;
 
+      if (image) {
+        const imageFormData = new FormData();
+        imageFormData.append("file", image);
+
+        const uploadRes = await fetch("/api/admin/upload-image", {
+          method: "POST",
+          body: imageFormData,
+        });
+
+        if (!uploadRes.ok) throw new Error("Hiba a kép feltöltése során");
+
+        const uploadData = await uploadRes.json();
+        finalImageUrl = uploadData.url;
+      }
+
+      // 2. BLOG ADATOK MENTÉSE A MONGODB-BE
+      const user = session.user;
       const blogContent = {
         userId: user.id,
         authorName: user.name,
         authorRole: user.role,
         blogTitle: title,
         blogDescription: description,
-        //   blogImage: image,
+        blogImage: finalImageUrl,
         blogContent: content,
         blogStatus: status,
       };
@@ -76,12 +93,18 @@ export default function BlogUploadForm({ session }) {
       alert(
         status === "published"
           ? "Bejegyzés sikeresen közzétéve!"
-          : "Vázlat sikeresen elmentve!",
+          : "Vázlat elmentve!",
       );
 
+      // Form űrítése sikeres mentés után
       setErrors({ title: "", description: "", content: "" });
+      setTitle("");
+      setDescription("");
+      setContent("");
+      handleRemoveImage();
     } catch (err) {
       console.error("Hiba történt a küldés során:", err);
+      alert("Hiba történt a mentés során. Próbáld újra!");
     }
   };
 

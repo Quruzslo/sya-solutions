@@ -24,6 +24,7 @@ export async function POST(request: NextRequest) {
       category: body.blogCategory || "Általános",
       description: body.blogDescription,
       content: body.blogContent,
+      imageUrl: body.blogImage,
       createdAt: new Date(),
       status: body.blogStatus,
     });

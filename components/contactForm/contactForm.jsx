@@ -60,7 +60,6 @@ export default function ContactForm() {
                 throw new Error(data.message || "Szerver hiba történt.");
               }
 
-              // ÚJ: Ha minden sikeres, töröljük a formot és jelezzük a sikert
               setFormData({});
               setIsSuccess(true);
             } catch (error) {
@@ -82,7 +81,6 @@ export default function ContactForm() {
     }
   };
 
-  // ÚJ: Ha már sikeresen elment az üzenet, ezt mutatjuk a form helyett
   if (isSuccess) {
     return (
       <div className="text-center p-8 bg-green-50 rounded-xl border border-green-200 my-4">
