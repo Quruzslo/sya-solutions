@@ -1,4 +1,4 @@
-import { client } from "@/lib/mongodb.js"; // Ügyelj az elérési útra (@ vagy @/)
+import { client } from "@/lib/mongodb.js";
 import Image from "next/image";
 import Link from "next/link";
 
