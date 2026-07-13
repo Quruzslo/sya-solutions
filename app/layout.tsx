@@ -32,9 +32,7 @@ export default async function RootLayout({
     <html lang="hu" className={`${playfair.variable} ${inter.variable}`}>
       <body className="flex flex-col min-h-screen bg-[var(--color-feher)]">
         <Header></Header>
-        <main className="flex-1 flex flex-col w-full !overflow-x-hidden">
-          {children}
-        </main>
+        <main className="flex-1 flex flex-col w-full ">{children}</main>
         <ScrollToTop />
         <Footer></Footer>
         <SpeedInsights />

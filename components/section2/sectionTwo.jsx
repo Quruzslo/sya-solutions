@@ -27,9 +27,9 @@ export default function SectionTwo() {
         bgText={"Ismerd meg a folyamatot"}
       />
 
-      <div className="w-full flex flex-col md:flex-row gap-[20px] h-full items-start">
-        {/* BAL OLDAL - FRISSÍTETT ÉS STRUKTURÁLT SZÖVEG */}
-        <div className="w-full md:w-[50%] flex flex-col justify-between h-[80%] py-[5vh] pr-0 md:pr-10">
+      <div className="w-full flex flex-col md:flex-row gap-[20px] h-full ">
+        {/* BAL OLDAL  */}
+        <div className="w-full md:w-[50%] flex flex-col justify-between py-[5vh] pr-0 md:pr-10">
           <div className="flex flex-col justify-center">
             <h3 className="text-2xl font-bold mb-4 text-[#3f4603]">
               A S.Y.A. Solutions filozófiája
@@ -134,7 +134,7 @@ export default function SectionTwo() {
               zajlik a közös munka:
             </p>
 
-            {/* Rendezett lista (Zöld, számozott badge-ekkel) */}
+            {/* Rendezett lista  */}
             <ol className="space-y-4">
               <li className="flex items-start gap-4 p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200">
                 <span className="flex-shrink-0 w-7 h-7 flex items-center justify-center rounded-full bg-[#3f4603] text-white font-bold text-sm shadow-md shadow-[#3f4603]/20">
@@ -193,9 +193,9 @@ export default function SectionTwo() {
         {/* JOBB OLDAL: ANIMÁLT DIV - SZÖVEGEK INTEGRÁLÁSÁVAL */}
         <div
           ref={sectionRef}
-          className="w-full md:w-[50%] flex items-center justify-center"
+          className="w-full md:w-[50%] relative items-start flex flex-col"
         >
-          <div className="w-full max-w-md aspect-square flex items-center justify-center">
+          <div className="w-full max-w-md aspect-square mx-auto flex items-center justify-center md:sticky md:top-[130px]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 115 115"
