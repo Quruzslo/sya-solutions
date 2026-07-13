@@ -4,7 +4,9 @@ import { Resend } from "resend";
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { recaptchaToken, fax_number, name, email, message } = body;
+
+    const { recaptchaToken, fax_number, name, email, tel, subject, message } =
+      body;
 
     if (!recaptchaToken || fax_number) {
       return NextResponse.json(
@@ -13,7 +15,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // 2. ReCAPTCHA
+    // 2. ReCAPTCHA ellenőrzés
     const secretKey = process.env.RECAPTCHA_SECRET_KEY;
     const verificationUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${recaptchaToken}`;
 
@@ -36,8 +38,15 @@ export async function POST(req: NextRequest) {
     await resend.emails.send({
       from: "onboarding@resend.dev",
       to: "buliii1010@gmail.com",
-      subject: "Hello World",
-      html: "<p>Congrats on sending your <strong>first email</strong>!</p>",
+      subject: `Weboldal Kapcsolat: ${subject || "Nincs tárgy megadva"}`,
+      html: `
+        <h3>Új üzenet érkezett a weboldalról!</h3>
+        <p><strong>Név:</strong> ${name}</p>
+        <p><strong>E-mail:</strong> ${email}</p>
+        <p><strong>Telefon:</strong> ${tel || "Nem adta meg"}</p>
+        <p><strong>Üzenet:</strong></p>
+        <p style="white-space: pre-wrap; background: #f4f4f4; padding: 10px; rounded: 5px;">${message}</p>
+      `,
     });
 
     return NextResponse.json(
