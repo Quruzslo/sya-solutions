@@ -12,7 +12,7 @@ export default async function BlogPage() {
         </div>
 
         {/* Fő tartalom */}
-        <div className="w-full flex flex-col md:flex-1 p-[10px]">
+        <div className="w-full flex flex-col p-[10px]">
           <div>
             <Link
               className="flex flex-row bg-zold/50 text-white gap-3 p-3 rounded-sm w-fit font-semibold hover:bg-zold/70 transition-colors"
