@@ -12,7 +12,7 @@ export default function SectionTwo() {
   });
 
   // Eredeti animációs logikák (hozzányúlás nélkül)
-  const scaleOszlop1 = useTransform(scrollYProgress, [0.2, 0.55], [0, 1]);
+  const scaleOszlop1 = useTransform(scrollYProgress, [0.3, 0.75], [0, 1]);
   const scaleOszlop2 = useTransform(scrollYProgress, [0.3, 0.75], [0, 1]);
   const scaleOszlop3 = useTransform(scrollYProgress, [0.45, 0.95], [0, 1]);
 
@@ -113,7 +113,7 @@ export default function SectionTwo() {
               </li>
             </ul>
 
-            <p className="text-lg leading-relaxed text-pretty text-gray-700 bg-gray-50 p-4 rounded-xl border-l-4 border-[#3f4603] shadow-2xl">
+            <p className="text-lg leading-relaxed text-pretty text-gray-700 bg-gray-50 p-4 rounded-xl  border-[#3f4603] shadow-2xl">
               Célunk, hogy a lehető legmagasabb szinten biztosítsuk számodra
               ezeket az értékeket. Legyél alkalmazott, egyéni vállalkozó vagy
               cégtulajdonos, a küldetésünk közös:{" "}

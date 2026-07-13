@@ -1,66 +1,66 @@
-'use client'
+"use client";
 
-import SyaLogo from './syaLogo'
+import SyaLogo from "./syaLogo";
 
-import Link from 'next/link'
+import Link from "next/link";
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react";
 
 export default function Header() {
-  const [activeHeader, setActiveHeader] = useState(false)
+  const [activeHeader, setActiveHeader] = useState(false);
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const [hasRendered, setHasRendered] = useState(false)
+  const [hasRendered, setHasRendered] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 15) {
-        setActiveHeader(true)
+        setActiveHeader(true);
       } else {
-        setActiveHeader(false)
+        setActiveHeader(false);
       }
-    }
-    handleScroll()
+    };
+    handleScroll();
 
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const toggleMenu = () => {
-    setHasRendered(true)
+    setHasRendered(true);
 
-    setIsMenuOpen(!isMenuOpen)
-  }
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   useEffect(() => {
-    const htmlElem = document.documentElement
+    const htmlElem = document.documentElement;
 
     if (isMenuOpen) {
-      htmlElem.style.overflow = 'hidden'
+      htmlElem.style.overflow = "hidden";
     } else {
-      htmlElem.style.overflow = ''
+      htmlElem.style.overflow = "";
     }
 
     return () => {
-      htmlElem.style.overflow = ''
-    }
-  }, [isMenuOpen])
+      htmlElem.style.overflow = "";
+    };
+  }, [isMenuOpen]);
 
   const navItems = [
-    { name: 'Csapatunk', path: '/#csapat' },
+    { name: "Csapatunk", path: "/#csapat" },
 
-    { name: 'Esettanulmányok', path: '/' },
+    { name: "Esettanulmányok", path: "/" },
 
-    { name: 'Népszerű termékek', path: '/#termekek' },
+    { name: "Népszerű termékek", path: "/#termekek" },
 
-    { name: 'Konzultáció', path: '/' },
+    { name: "Konzultáció", path: "/" },
 
-    { name: 'GY.I.K', path: '/#gyik' },
-  ]
+    { name: "GY.I.K", path: "/#gyik" },
+  ];
 
   return (
     <>
@@ -72,14 +72,14 @@ export default function Header() {
 
             ${
               activeHeader && !isMenuOpen
-                ? 'rounded-[50px] bg-black/50 backdrop-blur-md shadow-sm mt-2 md:mt-4'
-                : 'rounded-none bg-transparent mt-0'
+                ? "rounded-[50px] bg-black/50 backdrop-blur-md shadow-sm mt-2 md:mt-4"
+                : "rounded-none bg-transparent mt-0"
             }`}
         >
           {/* Logo Container */}
 
           <div className="w-fit h-fit min-w-[75px] max-h-[75px] xl:max-h-[100px] relative z-50">
-            <Link href="/">
+            <Link href="/" className="z-50">
               <SyaLogo activeHeader={activeHeader || isMenuOpen} />
             </Link>
           </div>
@@ -88,54 +88,52 @@ export default function Header() {
 
           <button
             onClick={toggleMenu}
-
             className="ml-auto w-10 h-10 flex flex-col justify-center items-center gap-1.5 z-50 relative group cursor-pointer overflow-hidden"
-
             aria-label="Menü megnyitása"
           >
             <span
               className={`block h-[4px] rounded-full w-8 bg-[#3f4603] transition-all duration-300 ease-in-out
 
-                ${isMenuOpen ? 'rotate-45 translate-y-2 bg-arany' : ''}
+                ${isMenuOpen ? "rotate-45 translate-y-2 bg-arany" : ""}
 
-                ${activeHeader && !isMenuOpen ? 'bg-white' : ''}`}
+                ${activeHeader && !isMenuOpen ? "bg-white" : ""}`}
             />
 
             <span
               className={`block h-[4px] rounded-full w-8 bg-[#3f4603] transition-all duration-300 ease-in-out
 
-                ${isMenuOpen ? 'translate-x-[50px]' : 'translate-x-[0px]'}
+                ${isMenuOpen ? "translate-x-[50px]" : "translate-x-[0px]"}
 
-                ${activeHeader && !isMenuOpen ? 'bg-white' : ''}`}
+                ${activeHeader && !isMenuOpen ? "bg-white" : ""}`}
             />
 
             <span
               className={`block h-[4px] rounded-full w-8 bg-[#3f4603] transition-all duration-300 ease-in-out
 
-                ${isMenuOpen ? '-rotate-45 -translate-y-2 bg-arany' : ''}
+                ${isMenuOpen ? "-rotate-45 -translate-y-2 bg-arany" : ""}
 
-                ${activeHeader && !isMenuOpen ? 'bg-white' : ''}`}
+                ${activeHeader && !isMenuOpen ? "bg-white" : ""}`}
             />
           </button>
         </header>
       </section>
 
-      {/* OVERLAY (A KÜLSŐ KONTÉNER - h-[100dvh] a mobil sávok miatt!) */}
+      {/* OVERLAY (A KÜLSŐ KONTÉNER - h-[100dvh] a mobil miatt!) */}
       <div
         className={`fixed inset-0 w-full h-[100dvh] z-[998]
-          ${!hasRendered ? 'hidden' : ''} 
-          ${isMenuOpen ? 'pointer-events-auto overflow-y-auto overflow-x-hidden' : 'pointer-events-none overflow-hidden'}`}
+          ${!hasRendered ? "hidden" : ""} 
+          ${isMenuOpen ? "pointer-events-auto overflow-y-auto overflow-x-hidden" : "pointer-events-none overflow-hidden"}`}
       >
         {/* BELSŐ RUGALMAS KONTÉNER */}
         <div className="w-full min-h-full flex flex-col md:flex-row">
           {/* BAL PANEL */}
           <div
             className={`w-full md:w-1/2 flex-1 md:flex-none min-h-[300px] md:min-h-[420px] bg-[#3f4603] flex flex-col justify-center items-center px-10 pt-[120px] pb-10 md:py-0 relative shrink-0
-              ${isMenuOpen ? 'panel-left-open' : 'panel-left-close'}`}
+              ${isMenuOpen ? "panel-left-open" : "panel-left-close"}`}
           >
             <div
               className={`transition-opacity duration-700 delay-300 flex flex-col items-center ${
-                isMenuOpen ? 'opacity-100' : 'opacity-0'
+                isMenuOpen ? "opacity-100" : "opacity-0"
               }`}
             >
               <h2 className="!text-[25px] md:!text-3xl font-bold text-[#e7ebe3] mb-4 text-center leading-tight">
@@ -144,8 +142,9 @@ export default function Header() {
                 Solutions
               </h2>
               <p className="text-[#e7ebe3]/70 text-base md:text-xl text-center max-w-sm">
-                Prémium pénzügyi pajzs és stratégiai vagyonépítés. Biztosítsd be vállalkozásod és
-                saját anyagi háttered. Az öngondoskodás már nem luxus.
+                Prémium pénzügyi pajzs és stratégiai vagyonépítés. Biztosítsd be
+                vállalkozásod és saját anyagi háttered. Az öngondoskodás már nem
+                luxus.
               </p>
             </div>
           </div>
@@ -153,7 +152,7 @@ export default function Header() {
           {/* JOBB PANEL */}
           <div
             className={`w-full md:w-1/2 flex-1 md:flex-none min-h-[420px] bg-[#e7ebe3] flex flex-col justify-center items-center relative py-12 md:py-0 shrink-0
-              ${isMenuOpen ? 'panel-right-open' : 'panel-right-close'}`}
+              ${isMenuOpen ? "panel-right-open" : "panel-right-close"}`}
           >
             <nav className="w-full">
               <ul className="flex flex-col gap-5 md:gap-6 text-center">
@@ -161,7 +160,7 @@ export default function Header() {
                   <li
                     key={index}
                     className={`
-                      ${isMenuOpen ? 'menu-item-open' : 'menu-item-close'} 
+                      ${isMenuOpen ? "menu-item-open" : "menu-item-close"} 
                       menu-delay-${index + 1}
                     `}
                   >
@@ -176,7 +175,7 @@ export default function Header() {
                 ))}
 
                 <li
-                  className={`${isMenuOpen ? 'menu-item-open' : 'menu-item-close'} menu-delay-6 mt-2`}
+                  className={`${isMenuOpen ? "menu-item-open" : "menu-item-close"} menu-delay-6 mt-2`}
                 >
                   <Link
                     href="/kapcsolat"
@@ -192,5 +191,5 @@ export default function Header() {
         </div>
       </div>
     </>
-  )
+  );
 }
