@@ -9,11 +9,46 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       credentials: {
         email: { label: "Email", type: "text" },
         password: { label: "Password", type: "password" },
+        recaptchaToken: { type: "text" },
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) return null;
+
         const safeEmail = String(credentials.email);
         const safePassword = String(credentials.password);
+        const token = credentials.recaptchaToken
+          ? String(credentials.recaptchaToken)
+          : null;
+
+        //  RECAPTCHA ELLENŐRZÉS
+
+        if (!token) {
+          console.error("Biztonsági hiba: Hiányzó reCAPTCHA token!");
+          throw new Error("reCAPTCHA ellenőrzés szükséges.");
+        }
+
+        try {
+          const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+          const verificationUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${token}`;
+
+          const recaptchaRes = await fetch(verificationUrl, { method: "POST" });
+          const recaptchaData = await recaptchaRes.json();
+
+          if (!recaptchaData.success || recaptchaData.score < 0.6) {
+            console.warn(
+              `Blokkolt bot kísérlet! Pontszám: ${recaptchaData.score || "N/A"}`,
+            );
+            throw new Error(
+              "Automatizált hálózatot érzékeltünk. Belépés megtagadva.",
+            );
+          }
+        } catch (captchaError: any) {
+          console.error("reCAPTCHA validációs hiba:", captchaError);
+
+          if (captchaError.message?.includes("Automatizált"))
+            throw captchaError;
+          throw new Error("Biztonsági ellenőrzési hiba történt.");
+        }
 
         try {
           const { client } = await import("./lib/mongodb");
