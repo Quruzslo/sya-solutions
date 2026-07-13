@@ -24,9 +24,9 @@ export default async function BlogPage() {
 
           {/* Listázás szekció */}
           <div className="flex flex-col mt-6">
-            <h2 className="text-xl font-bold text-slate-800">
+            <p className="!text-[20px] font-bold text-slate-800">
               Eddigi bejegyzések
-            </h2>
+            </p>
 
             <BlogPosts />
           </div>
