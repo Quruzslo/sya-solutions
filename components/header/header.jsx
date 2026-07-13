@@ -151,7 +151,7 @@ export default function Header() {
 
           {/* JOBB PANEL */}
           <div
-            className={`w-full md:w-1/2 flex-1 md:flex-none min-h-[420px] bg-[#e7ebe3] flex flex-col justify-center items-center relative py-12 md:py-0 shrink-0
+            className={`w-full md:w-1/2 flex-1 md:flex-none min-h-[420px] bg-[#e7ebe3] flex flex-col justify-center items-center relative !py-[100px] md:py-0 shrink-0
               ${isMenuOpen ? "panel-right-open" : "panel-right-close"}`}
           >
             <nav className="w-full">
