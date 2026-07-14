@@ -70,10 +70,10 @@ export default async function BlogPosts() {
       {posts.map((post) => (
         <div
           key={post._id}
-          className="w-full flex flex-row items-center justify-between border border-slate-200 p-4 rounded-md bg-white shadow-sm hover:shadow-md transition-shadow"
+          className="w-full flex flex-col md:flex-row items-center justify-between border border-slate-200 p-4 rounded-md bg-white shadow-sm hover:shadow-md transition-shadow"
         >
           {/* Kép és Szöveg bal oldalon */}
-          <div className="flex flex-row items-center gap-4">
+          <div className="flex flex-col md:flex-row items-center gap-4">
             <div className="w-16 h-16 relative bg-slate-100 rounded overflow-hidden flex-shrink-0 border border-slate-200">
               {post.imageUrl ? (
                 <Image
