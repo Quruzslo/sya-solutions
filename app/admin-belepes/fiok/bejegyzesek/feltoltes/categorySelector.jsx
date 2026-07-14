@@ -25,7 +25,7 @@ export default function CategorySelector({
   const fetchCategories = async () => {
     try {
       setLoading(true);
-      const res = await fetch("/api/admin/categories");
+      const res = await fetch("/api/admin/blog-upload/categories");
       if (res.ok) {
         const data = await res.json();
         setCategories(data);
@@ -58,7 +58,7 @@ export default function CategorySelector({
   const handleAddCategory = async () => {
     if (!newCategoryName.trim()) return;
     try {
-      const res = await fetch("/api/admin/categories", {
+      const res = await fetch("/api/admin/blog-upload/categories", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: newCategoryName }),
@@ -66,7 +66,7 @@ export default function CategorySelector({
       if (res.ok) {
         const data = await res.json();
         await fetchCategories();
-        setSelectedCategory(data.category._id); // Automatikusan kiválasztjuk az újat
+        setSelectedCategory(data.category._id);
         setNewCategoryName("");
         setIsAdding(false);
       } else {
@@ -83,7 +83,7 @@ export default function CategorySelector({
   const handleEditCategory = async (id) => {
     if (!editCategoryName.trim()) return;
     try {
-      const res = await fetch(`/api/admin/categories/${id}`, {
+      const res = await fetch(`/api/admin/blog-upload/categories/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: editCategoryName }),
@@ -108,12 +108,12 @@ export default function CategorySelector({
     if (!confirm("Biztosan törlöd ezt a kategóriát?")) return;
 
     try {
-      const res = await fetch(`/api/admin/categories/${id}`, {
+      const res = await fetch(`/api/admin/blog-upload/categories/${id}`, {
         method: "DELETE",
       });
       if (res.ok) {
         if (selectedCategory === id) {
-          setSelectedCategory(""); // Ha a kiválasztottat töröljük, ürítjük
+          setSelectedCategory("");
         }
         await fetchCategories();
       } else {

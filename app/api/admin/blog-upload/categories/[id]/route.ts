@@ -96,7 +96,7 @@ export async function PUT(
 }
 
 // ==========================================
-// 2. TÖRLÉS (DELETE) - /api/admin/categories/[id]
+//  TÖRLÉS (DELETE) - /api/admin/categories/[id]
 // ==========================================
 export async function DELETE(
   request: Request,
