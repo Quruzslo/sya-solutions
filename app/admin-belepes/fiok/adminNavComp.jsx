@@ -1,34 +1,24 @@
-"use client";
-import { signOut } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import navItem from "./adminNav";
-import { RxExit } from "react-icons/rx";
 import UserPanel from "./userPanel";
+import SignOutButton from "./SignOutButton";
 
 export default function AdminNavComp() {
-  const router = useRouter();
-
   return (
     <div className="flex flex-col gap-3 w-full h-full">
-      <UserPanel></UserPanel>
+      <UserPanel />
+
       {navItem.map((item, ind) => (
-        <div
+        <Link
           key={ind}
-          onClick={() => router.push(item.path)}
-          className="flex flex-row gap-3 cursor-pointer hover:opacity-80 bg-zold/10 w-full p-[5px] items-center justify-center rounded-md"
+          href={item.path}
+          className="flex flex-row gap-3 cursor-pointer hover:opacity-80 bg-zold/10 w-full p-[5px] items-center justify-center rounded-md text-slate-700 hover:text-slate-900"
         >
           <p>{item.name}</p>
-        </div>
+        </Link>
       ))}
-      <button
-        className="mt-auto cursor-pointer bg-stone-200 p-[5px] rounded-md flex flex-row nowrap gap-3 items-center justify-center"
-        onClick={() => {
-          signOut();
-        }}
-      >
-        <RxExit size={20} className="text-red-600" />
-        Kilépés
-      </button>
+
+      <SignOutButton />
     </div>
   );
 }
