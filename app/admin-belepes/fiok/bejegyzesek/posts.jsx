@@ -62,6 +62,12 @@ export default async function BlogPosts() {
               <p className="text-xs text-slate-500 line-clamp-1 mt-0.5">
                 {post.description}
               </p>
+              <p className="text-xs text-slate-500 line-clamp-1 mt-0.5">
+                {post.author}
+              </p>
+              <p className="text-xs text-slate-500 line-clamp-1 mt-0.5">
+                {post.category}
+              </p>
               <span className="text-[10px] text-slate-400 mt-1">
                 {post.createdAt
                   ? new Date(post.createdAt).toLocaleDateString("hu-HU")

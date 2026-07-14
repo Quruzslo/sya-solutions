@@ -104,7 +104,7 @@ export default function CategorySelector({
 
   // Kategória törlése
   const handleDeleteCategory = async (id, e) => {
-    e.stopPropagation(); // Ne válassza ki a kategóriát törléskor
+    e.stopPropagation();
     if (!confirm("Biztosan törlöd ezt a kategóriát?")) return;
 
     try {

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Image from "@tiptap/extension-image";
@@ -41,6 +41,13 @@ export default function TextEditor({ value, onChange, onImageAdd }) {
     },
   });
 
+  // FIGYELEM: Ez a useEffect szinkronizálja az aszinkron betöltődő adatokat!
+  useEffect(() => {
+    if (editor && value !== editor.getHTML()) {
+      editor.commands.setContent(value || "");
+    }
+  }, [value, editor]);
+
   if (!editor) return null;
 
   const isImageSelected = editor.isActive("image");
@@ -56,20 +63,17 @@ export default function TextEditor({ value, onChange, onImageAdd }) {
     if (command === "clear") editor.chain().focus().unsetAllMarks().run();
   };
 
-  // ideiglenes blob URL generálás
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
-      const maxFileSize = 5 * 1024 * 1024; // 5 MB limit
+      const maxFileSize = 5 * 1024 * 1024;
       if (file.size > maxFileSize) {
         alert("A kép mérete túl nagy! A megengedett maximum 5 MB.");
         return;
       }
 
-      // ideiglenes helyi linket
       const blobUrl = URL.createObjectURL(file);
 
-      // Átadjuk a szülőnek a blob URL-t és a fizikai File objektumot is
       if (onImageAdd) {
         onImageAdd(blobUrl, file);
       }
@@ -202,7 +206,7 @@ export default function TextEditor({ value, onChange, onImageAdd }) {
         <button
           type="button"
           onClick={() => fileInputRef.current?.click()}
-          className="p-2 text-arany text-sm font-medium hover:bg-emerald-150 dark:hover:bg-emerald-500/10 rounded"
+          className="p-2 text-slate-800 text-sm font-medium hover:bg-slate-100 rounded"
         >
           + Kép beszúrása
         </button>

@@ -1,11 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TextEditor from "./textEditor";
 import Link from "next/link";
 import CategorySelector from "./categorySelector";
+import { useRouter } from "next/navigation";
 
-export default function BlogUploadForm({ session }) {
+export default function BlogUploadForm({ session, postId = null }) {
+  const router = useRouter();
+  const [loading, setLoading] = useState(!!postId);
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
@@ -19,6 +23,34 @@ export default function BlogUploadForm({ session }) {
     content: "",
     category: "",
   });
+
+  const isEditMode = !!postId;
+
+  // 1. Adatok betöltése Módosítás módban
+  useEffect(() => {
+    if (!postId) return;
+
+    const fetchPostData = async () => {
+      try {
+        const res = await fetch(`/api/admin/blog-upload/${postId}`);
+        if (!res.ok) throw new Error("Nem sikerült lekérni a poszt adatait!");
+
+        const data = await res.json();
+        setTitle(data.title || "");
+        setDescription(data.description || "");
+        setContent(data.content || "");
+        setSelectedCategory(data.category || "");
+        setImagePreview(data.imageUrl || null);
+      } catch (err) {
+        console.error("Hiba a poszt betöltésekor:", err);
+        alert("Nem sikerült betölteni a bejegyzést!");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPostData();
+  }, [postId]);
 
   const handleEditorImageAdd = (blobUrl, file) => {
     setPendingImages((prev) => ({
@@ -51,7 +83,6 @@ export default function BlogUploadForm({ session }) {
       isValid = false;
     }
 
-    // Kategória validáció
     if (!selectedCategory) {
       currentErrors.category = "A kategória kiválasztása kötelező!";
       isValid = false;
@@ -70,9 +101,11 @@ export default function BlogUploadForm({ session }) {
     const uploadedBlobs = [];
 
     try {
-      let finalImageUrl = null;
+      // 2. Képkezelés logikája
+      let finalImageUrl = imagePreview;
 
       if (image) {
+        // Ha van új fájl kiválasztva, feltöltjük azt
         const imageFormData = new FormData();
         imageFormData.append("file", image);
 
@@ -87,6 +120,7 @@ export default function BlogUploadForm({ session }) {
         finalImageUrl = uploadData.url;
       }
 
+      // 3. Inline szerkesztő képek feltöltése
       let finalContent = content;
 
       if (content.includes("blob:")) {
@@ -125,6 +159,7 @@ export default function BlogUploadForm({ session }) {
         finalContent = doc.body.innerHTML;
       }
 
+      // 4. Payload összeállítása
       const user = session.user;
       const blogContent = {
         userId: user.id,
@@ -138,8 +173,14 @@ export default function BlogUploadForm({ session }) {
         categoryId: selectedCategory,
       };
 
-      const response = await fetch("/api/admin/blog-upload", {
-        method: "POST",
+      // Dinamikus API URL és Metódus kiválasztása
+      const apiUrl = isEditMode
+        ? `/api/admin/blog-upload/${postId}`
+        : "/api/admin/blog-upload";
+      const apiMethod = isEditMode ? "PUT" : "POST";
+
+      const response = await fetch(apiUrl, {
+        method: apiMethod,
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -151,12 +192,16 @@ export default function BlogUploadForm({ session }) {
 
       const data = await response.json();
       console.log("Sikeres mentés!", data);
+
       alert(
-        status === "published"
-          ? "Bejegyzés sikeresen közzétéve!"
-          : "Vázlat elmentve!",
+        isEditMode
+          ? "Bejegyzés sikeresen frissítve!"
+          : status === "published"
+            ? "Bejegyzés sikeresen közzétéve!"
+            : "Vázlat elmentve!",
       );
 
+      // Blob URL-ek felszabadítása
       uploadedBlobs.forEach((blobUrl) => {
         try {
           URL.revokeObjectURL(blobUrl);
@@ -169,13 +214,17 @@ export default function BlogUploadForm({ session }) {
         }
       });
 
-      setErrors({ title: "", description: "", content: "", category: "" });
-      setTitle("");
-      setDescription("");
-      setContent("");
-      setSelectedCategory("");
-      setPendingImages({});
-      handleRemoveImage();
+      if (isEditMode) {
+        router.push("/admin-belepes/fiok/bejegyzesek");
+      } else {
+        setErrors({ title: "", description: "", content: "", category: "" });
+        setTitle("");
+        setDescription("");
+        setContent("");
+        setSelectedCategory("");
+        setPendingImages({});
+        handleRemoveImage();
+      }
     } catch (err) {
       console.error("Hiba történt a küldés során:", err);
       alert("Hiba történt a mentés során. Próbáld újra!");
@@ -192,7 +241,8 @@ export default function BlogUploadForm({ session }) {
         return;
       }
 
-      if (imagePreview) {
+      // Csak akkor szabadítjuk fel a régit, ha az blob URL volt
+      if (imagePreview && imagePreview.startsWith("blob:")) {
         URL.revokeObjectURL(imagePreview);
       }
 
@@ -202,12 +252,22 @@ export default function BlogUploadForm({ session }) {
   };
 
   const handleRemoveImage = () => {
-    if (imagePreview) {
+    if (imagePreview && imagePreview.startsWith("blob:")) {
       URL.revokeObjectURL(imagePreview);
     }
     setImage(null);
     setImagePreview(null);
   };
+
+  if (loading) {
+    return (
+      <div className="w-full min-h-screen flex items-center justify-center">
+        <p className="text-lg font-semibold animate-pulse text-slate-600">
+          Bejegyzés adatainak betöltése...
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="w-[90%] my-[150px] flex flex-col mx-auto p-[10px] text-slate-800">
@@ -219,10 +279,14 @@ export default function BlogUploadForm({ session }) {
           Vissza
         </Link>
         <p className="text-[25px] font-bold tracking-tight">
-          Új blogbejegyzés hozzáadása
+          {isEditMode
+            ? "Blogbejegyzés módosítása"
+            : "Új blogbejegyzés hozzáadása"}
         </p>
         <p className="text-sm text-text-alap">
-          Írd meg a legújabb szakmai anyagodat.
+          {isEditMode
+            ? "Szerkeszd a már közzétett szakmai anyagodat."
+            : "Írd meg a legújabb szakmai anyagodat."}
         </p>
       </div>
 
@@ -272,7 +336,7 @@ export default function BlogUploadForm({ session }) {
             )}
           </div>
 
-          {/* Tartalom */}
+          {/* Tartalom (Tiptap TextEditor) */}
           <div className="flex flex-col gap-2">
             <label className="text-sm font-semibold text-text-alap">
               Tartalom <span className="text-red-500">*</span>
@@ -354,7 +418,7 @@ export default function BlogUploadForm({ session }) {
           </div>
         </div>
 
-        {/* JOBB OLDAL */}
+        {/* JOBB OLDAL (Beállítások) */}
         <div className="w-full xl:w-[280px] flex flex-col gap-4 xl:sticky xl:top-6 shrink-0">
           <div className="bg-white rounded-xl p-4 shadow-sm flex flex-col gap-4">
             <h3 className="font-semibold border-b border-slate-100 pb-2 text-sm text-slate-500">
@@ -363,9 +427,9 @@ export default function BlogUploadForm({ session }) {
 
             <div className="flex flex-col gap-2 text-xs">
               <div className="flex justify-between">
-                <span className="text-slate-400">Státusz:</span>
-                <span className="font-semibold text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded">
-                  Vázlat
+                <span className="text-slate-400">Típus:</span>
+                <span className="font-semibold text-emerald-600">
+                  {isEditMode ? "Módosítás" : "Új poszt"}
                 </span>
               </div>
               <div className="flex justify-between">
@@ -376,7 +440,6 @@ export default function BlogUploadForm({ session }) {
 
             <hr className="border-slate-100" />
 
-            {/* ITT KAPOTT HELYET A KATEGÓRIA VÁLASZTÓ! */}
             <CategorySelector
               selectedCategory={selectedCategory}
               setSelectedCategory={setSelectedCategory}
@@ -399,7 +462,7 @@ export default function BlogUploadForm({ session }) {
                 onClick={() => sendingBlogPost("published")}
                 className="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm rounded-lg shadow-sm transition-all"
               >
-                Közzététel most
+                {isEditMode ? "Módosítások mentése" : "Közzététel most"}
               </button>
             </div>
           </div>
@@ -409,18 +472,22 @@ export default function BlogUploadForm({ session }) {
               type="button"
               onClick={() => {
                 if (confirm("Biztosan elveted a módosításokat?")) {
-                  handleRemoveImage();
-                  setTitle("");
-                  setDescription("");
-                  setContent("");
-                  setSelectedCategory("");
-                  setPendingImages({});
-                  setErrors({
-                    title: "",
-                    description: "",
-                    content: "",
-                    category: "",
-                  });
+                  if (isEditMode) {
+                    router.push("/admin-belepes/fiok/bejegyzesek");
+                  } else {
+                    handleRemoveImage();
+                    setTitle("");
+                    setDescription("");
+                    setContent("");
+                    setSelectedCategory("");
+                    setPendingImages({});
+                    setErrors({
+                      title: "",
+                      description: "",
+                      content: "",
+                      category: "",
+                    });
+                  }
                 }
               }}
               className="w-full py-2 text-red-500 hover:text-red-600 hover:bg-red-50 font-medium text-sm rounded-lg transition-colors"
