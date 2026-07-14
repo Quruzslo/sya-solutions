@@ -8,39 +8,37 @@ export default async function BlogPosts() {
   try {
     const db = client.db("main");
 
-    // A sima .find() helyett aggregációt használunk az összekapcsoláshoz
     const rawPosts = await db
       .collection("posts")
       .aggregate([
-        { $sort: { createdAt: -1 } }, // Először rendezzük a legújabbtól a legrégebbiig
+        { $sort: { createdAt: -1 } },
         {
           $lookup: {
-            from: "categories", // A kategóriák kollekciójának pontos neve az adatbázisodban!
-            localField: "category", // A posts kollekcióban lévő ID mező neve
-            foreignField: "_id", // A categories kollekció azonosítója
-            as: "categoryData", // Ideiglenes tömb neve, amibe a találatot teszi
+            from: "posts-category",
+            localField: "category",
+            foreignField: "_id",
+            as: "categoryData",
           },
         },
         {
           $unwind: {
             path: "$categoryData",
-            preserveNullAndEmptyArrays: true, // Ha véletlenül nincs kategória, a poszt megmarad
+            preserveNullAndEmptyArrays: true,
           },
         },
         {
           $addFields: {
-            category: "$categoryData", // Felülírjuk az eredeti category ID-t a teljes objektummal
+            category: "$categoryData",
           },
         },
         {
           $project: {
-            categoryData: 0, // Eltávolítjuk a feleslegessé vált ideiglenes mezőt
+            categoryData: 0,
           },
         },
       ])
       .toArray();
 
-    // Átalakítjuk az ObjectId-kat stringgé, hogy a Next.js ne panaszkodjon
     posts = rawPosts.map((post) => ({
       ...post,
       _id: post._id.toString(),
@@ -49,7 +47,7 @@ export default async function BlogPosts() {
             ...post.category,
             _id: post.category._id?.toString(),
           }
-        : { name: "Nincs kategória" }, // Fallback, ha törölték volna a kategóriát
+        : { name: "Nincs kategória" },
     }));
   } catch (error) {
     console.error("Hiba történt a bejegyzések lekérésekor:", error);
