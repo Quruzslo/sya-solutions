@@ -1,7 +1,6 @@
 "use client";
-
+import navItems from "@/lib/navItems";
 import SyaLogo from "./syaLogo";
-
 import Link from "next/link";
 
 import { useEffect, useState } from "react";
@@ -50,17 +49,17 @@ export default function Header() {
     };
   }, [isMenuOpen]);
 
-  const navItems = [
-    { name: "Csapatunk", path: "/#csapat" },
+  // const navItems = [
+  //   { name: "Csapatunk", path: "/#csapat" },
 
-    { name: "Esettanulmányok", path: "/" },
+  //   { name: "Esettanulmányok", path: "/" },
 
-    { name: "Népszerű termékek", path: "/#termekek" },
+  //   { name: "Népszerű termékek", path: "/#termekek" },
 
-    { name: "Konzultáció", path: "/" },
+  //   { name: "Konzultáció", path: "/" },
 
-    { name: "GY.I.K", path: "/#gyik" },
-  ];
+  //   { name: "GY.I.K", path: "/#gyik" },
+  // ];
 
   return (
     <>
