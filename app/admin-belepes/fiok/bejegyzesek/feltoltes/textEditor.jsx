@@ -16,10 +16,8 @@ const CustomImage = Image.extend({
   },
 });
 
-export default function TextEditor({ value, onChange }) {
+export default function TextEditor({ value, onChange, onImageAdd }) {
   const fileInputRef = useRef(null);
-
-  // Pofonegyszerű state: nyitva van a panel vagy sem?
   const [isPanelOpen, setIsPanelOpen] = useState(false);
 
   const editor = useEditor({
@@ -34,12 +32,11 @@ export default function TextEditor({ value, onChange }) {
     onUpdate: ({ editor }) => {
       onChange(editor.getHTML());
     },
-    // EZ A LÉNYEG: A Tiptap azonnal szól, ha megváltozik a kijelölés
     onSelectionUpdate: ({ editor }) => {
       if (editor.isActive("image")) {
-        setIsPanelOpen(true); // Ha képre lépsz, nyíljon meg
+        setIsPanelOpen(true);
       } else {
-        setIsPanelOpen(false); // Ha elgépelsz onnan, záródjon be
+        setIsPanelOpen(false);
       }
     },
   });
@@ -59,18 +56,29 @@ export default function TextEditor({ value, onChange }) {
     if (command === "clear") editor.chain().focus().unsetAllMarks().run();
   };
 
+  // ideiglenes blob URL generálás
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onload = (upload) => {
-        editor
-          .chain()
-          .focus()
-          .setImage({ src: upload.target.result, alt: "Feltöltött kép" })
-          .run();
-      };
-      reader.readAsDataURL(file);
+      const maxFileSize = 5 * 1024 * 1024; // 5 MB limit
+      if (file.size > maxFileSize) {
+        alert("A kép mérete túl nagy! A megengedett maximum 5 MB.");
+        return;
+      }
+
+      // ideiglenes helyi linket
+      const blobUrl = URL.createObjectURL(file);
+
+      // Átadjuk a szülőnek a blob URL-t és a fizikai File objektumot is
+      if (onImageAdd) {
+        onImageAdd(blobUrl, file);
+      }
+
+      editor
+        .chain()
+        .focus()
+        .setImage({ src: blobUrl, alt: file.name || "Feltöltött kép" })
+        .run();
     }
   };
 
@@ -148,7 +156,6 @@ export default function TextEditor({ value, onChange }) {
   return (
     <div
       className="w-full border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden bg-white dark:bg-slate-900 relative"
-      // Ha újra rákattintasz egy képre (miután bezártad a panelt), ez azonnal visszahozza
       onClick={() => {
         if (editor.isActive("image")) setIsPanelOpen(true);
       }}
@@ -191,10 +198,11 @@ export default function TextEditor({ value, onChange }) {
           • lista
         </ToolbarButton>
         <span className="w-px h-5 bg-slate-300 dark:bg-slate-600 mx-1"></span>
+
         <button
           type="button"
           onClick={() => fileInputRef.current?.click()}
-          className="p-2 text-arany  text-sm font-medium hover:bg-emerald-150 dark:hover:bg-emerald-500/10 rounded"
+          className="p-2 text-arany text-sm font-medium hover:bg-emerald-150 dark:hover:bg-emerald-500/10 rounded"
         >
           + Kép beszúrása
         </button>

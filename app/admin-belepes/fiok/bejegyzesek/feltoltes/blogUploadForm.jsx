@@ -11,11 +11,22 @@ export default function BlogUploadForm({ session }) {
   const [imagePreview, setImagePreview] = useState(null);
   const [content, setContent] = useState("");
 
+  // Az ideiglenes blob URL-ek és a hozzájuk tartozó fizikai File objektumok gyűjtőhelye az editorból
+  const [pendingImages, setPendingImages] = useState({});
+
   const [errors, setErrors] = useState({
     title: "",
     description: "",
     content: "",
   });
+
+  // Ezt a függvényt hívja meg a TextEditor, amikor új képet szúrsz be
+  const handleEditorImageAdd = (blobUrl, file) => {
+    setPendingImages((prev) => ({
+      ...prev,
+      [blobUrl]: file,
+    }));
+  };
 
   const validateForm = () => {
     let isValid = true;
@@ -46,7 +57,10 @@ export default function BlogUploadForm({ session }) {
       return;
     }
 
+    const uploadedBlobs = [];
+
     try {
+      // 1. KIEMELT KÉP FELTÖLTÉSE
       let finalImageUrl = null;
 
       if (image) {
@@ -64,7 +78,49 @@ export default function BlogUploadForm({ session }) {
         finalImageUrl = uploadData.url;
       }
 
-      // 2. BLOG ADATOK MENTÉSE A MONGODB-BE
+      // 2. TEXT EDITORBAN LÉVŐ BLOB KÉPEK KISZŰRÉSE ÉS FELTÖLTÉSE
+      let finalContent = content;
+
+      if (content.includes("blob:")) {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(content, "text/html");
+        const embeddedImages = doc.querySelectorAll("img");
+
+        for (let img of embeddedImages) {
+          const src = img.getAttribute("src");
+
+          // Csak azt a képet töltjük fel az R2-re, ami még mindig benne van a HTML-ben
+          if (src && src.startsWith("blob:")) {
+            const fileObj = pendingImages[src];
+
+            if (fileObj) {
+              const inlineImageFormData = new FormData();
+              inlineImageFormData.append("file", fileObj);
+
+              const inlineUploadRes = await fetch("/api/admin/upload-image", {
+                method: "POST",
+                body: inlineImageFormData,
+              });
+
+              if (!inlineUploadRes.ok) {
+                throw new Error(
+                  "Hiba a szerkesztő egyik képének feltöltésekor",
+                );
+              }
+
+              const inlineUploadData = await inlineUploadRes.json();
+
+              //  végleges URL-re
+              img.setAttribute("src", inlineUploadData.url);
+              uploadedBlobs.push(src);
+            }
+          }
+        }
+
+        finalContent = doc.body.innerHTML;
+      }
+
+      // 3. BLOG ADATOK MENTÉSE A MONGODB-BE
       const user = session.user;
       const blogContent = {
         userId: user.id,
@@ -73,7 +129,7 @@ export default function BlogUploadForm({ session }) {
         blogTitle: title,
         blogDescription: description,
         blogImage: finalImageUrl,
-        blogContent: content,
+        blogContent: finalContent,
         blogStatus: status,
       };
 
@@ -96,11 +152,25 @@ export default function BlogUploadForm({ session }) {
           : "Vázlat elmentve!",
       );
 
-      // Form űrítése sikeres mentés után
+      // Memóriatakarítás
+      uploadedBlobs.forEach((blobUrl) => {
+        try {
+          URL.revokeObjectURL(blobUrl);
+        } catch (e) {
+          console.error(
+            "Nem sikerült felszabadítani a blob URL-t:",
+            blobUrl,
+            e,
+          );
+        }
+      });
+
+      // Form és állapotok ürítése sikeres mentés után
       setErrors({ title: "", description: "", content: "" });
       setTitle("");
       setDescription("");
       setContent("");
+      setPendingImages({});
       handleRemoveImage();
     } catch (err) {
       console.error("Hiba történt a küldés során:", err);
@@ -202,12 +272,16 @@ export default function BlogUploadForm({ session }) {
             )}
           </div>
 
-          {/* TipTap editor */}
+          {/* TipTap editor - onImageAdd átadva! */}
           <div className="flex flex-col gap-2">
             <label className="text-sm font-semibold text-text-alap">
               Tartalom <span className="text-red-500">*</span>
             </label>
-            <TextEditor value={content} onChange={setContent} />
+            <TextEditor
+              value={content}
+              onChange={setContent}
+              onImageAdd={handleEditorImageAdd}
+            />
             {errors.content && (
               <p className="text-red-500 text-xs font-medium mt-1">
                 {errors.content}
@@ -332,6 +406,7 @@ export default function BlogUploadForm({ session }) {
                   setTitle("");
                   setDescription("");
                   setContent("");
+                  setPendingImages({});
                   setErrors({ title: "", description: "", content: "" });
                 }
               }}
