@@ -12,7 +12,7 @@ export default function AdminNavComp() {
         <Link
           key={ind}
           href={item.path}
-          className="flex flex-row gap-3 cursor-pointer hover:opacity-80 bg-zold/10 w-full p-[5px] items-center justify-center rounded-full shadow-[5px_9px_28px_5px_rgba(0,0,0,0.1)] hover:shadow-[5px_9px_28px_5px_rgba(0,0,0,0.6)] text-slate-700 hover:text-slate-900"
+          className="flex flex-row gap-3 cursor-pointer hover:opacity-80 bg-zold/10 w-full p-[5px] items-center justify-center rounded-full shadow-[5px_9px_5px_5px_rgba(0,0,0,0.1)] hover:shadow-[5px_9px_5px_5px_rgba(0,0,0,0.6)] text-slate-700 hover:text-slate-900"
         >
           <p>{item.name}</p>
         </Link>
