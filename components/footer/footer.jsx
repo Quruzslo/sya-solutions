@@ -1,5 +1,6 @@
 import Link from "next/link";
 import SyaLogo from "../header/syaLogo";
+import navItems from "@/lib/navItems";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -35,38 +36,16 @@ export default function Footer() {
               className="flex flex-col gap-3 text-sm font-light"
               style={{ fontFamily: "var(--font-inter), sans-serif" }}
             >
-              <li>
-                <Link
-                  href="/csapat"
-                  className="hover:text-[#bfa06a] hover:pl-2 transition-all duration-300"
-                >
-                  Csapatunk
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/esettanulmanyok"
-                  className="hover:text-[#bfa06a] hover:pl-2 transition-all duration-300"
-                >
-                  Esettanulmányok
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/"
-                  className="hover:text-[#bfa06a] hover:pl-2 transition-all duration-300"
-                >
-                  Termékek
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/gyik"
-                  className="hover:text-[#bfa06a] hover:pl-2 transition-all duration-300"
-                >
-                  GY.I.K
-                </Link>
-              </li>
+              {navItems.map((item, idx) => {
+                <li key={idx}>
+                  <Link
+                    href={item.path}
+                    className="hover:text-[#bfa06a] hover:pl-2 transition-all duration-300"
+                  >
+                    {item.name}
+                  </Link>
+                </li>;
+              })}
             </ul>
           </div>
 
@@ -109,7 +88,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* 4. Oszlop: Kapcsolat */}
+          {/*  Kapcsolat */}
           <div className="flex flex-col gap-4">
             <h4
               className="!text-[25px] text-[#bfa06a] mb-2"
@@ -167,7 +146,6 @@ export default function Footer() {
               </li>
             </ul>
 
-            {/* CTA Gomb a láblécben */}
             <Link
               href="/kapcsolat"
               className="mt-2 w-fit py-[10px] px-[24px] rounded-[5px] bg-[#3f4603] text-[#e7ebe3] font-semibold hover:bg-[#bfa06a] hover:text-[#1f241b] transition-all duration-300"
@@ -178,7 +156,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Alsó rész: Copyright */}
+        {/* Copyright */}
         <div
           className="w-full pt-6 border-t border-[#3f4603]/50 flex flex-col md:flex-row justify-between items-center gap-4 text-xs opacity-60 font-light"
           style={{ fontFamily: "var(--font-inter), sans-serif" }}
