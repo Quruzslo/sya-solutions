@@ -62,24 +62,27 @@ export default async function BlogPosts() {
               <p className="text-xs text-slate-500 line-clamp-1 mt-0.5">
                 {post.description}
               </p>
-              <p className="text-xs text-slate-500 line-clamp-1 mt-0.5">
-                {post.author}
-              </p>
+
               <p className="text-xs text-slate-500 line-clamp-1 mt-0.5">
                 {post.category}
               </p>
-              <span className="text-[10px] text-slate-400 mt-1">
-                {post.createdAt
-                  ? new Date(post.createdAt).toLocaleDateString("hu-HU")
-                  : ""}
-              </span>
+              <div className="flex flex-col md:flex-row gap-3 bg-slate-100 py-2 px-[10px] rounded-md">
+                <p className="text-xs font-bold text-slate-500 line-clamp-1 mt-0.5">
+                  {post.author} -
+                </p>
+                <span className="text-[10px] text-slate-400 mt-1">
+                  {post.createdAt
+                    ? new Date(post.createdAt).toLocaleDateString("hu-HU")
+                    : ""}
+                </span>
+              </div>
             </div>
           </div>
 
           {/* Műveletek jobb oldalon (Szerkesztés/Törlés gombok) */}
           <div className="flex flex-row gap-2">
             <Link
-              href={`/admin-belepes/fiok/bejegyzesek/szerkesztes/${post._id}`}
+              href={`/admin-belepes/fiok/bejegyzesek/modositas/${post._id}`}
               className="text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 px-3 py-2 rounded transition-colors"
             >
               Szerkesztés
