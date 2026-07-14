@@ -39,7 +39,16 @@ export default function BlogUploadForm({ session, postId = null }) {
         setTitle(data.title || "");
         setDescription(data.description || "");
         setContent(data.content || "");
-        setSelectedCategory(data.category || "");
+
+        let catId = "";
+        if (data.category) {
+          catId =
+            typeof data.category === "object"
+              ? data.category._id?.$oid || data.category._id || data.category.id
+              : data.category;
+        }
+        setSelectedCategory(catId || "");
+
         setImagePreview(data.imageUrl || null);
       } catch (err) {
         console.error("Hiba a poszt betöltésekor:", err);

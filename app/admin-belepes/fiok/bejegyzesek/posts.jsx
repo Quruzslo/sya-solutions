@@ -6,12 +6,50 @@ export default async function BlogPosts() {
   let posts = [];
 
   try {
-    const db = client.db("main").collection("posts");
-    const rawPosts = await db.find({}).sort({ createdAt: -1 }).toArray();
+    const db = client.db("main");
 
+    // A sima .find() helyett aggregációt használunk az összekapcsoláshoz
+    const rawPosts = await db
+      .collection("posts")
+      .aggregate([
+        { $sort: { createdAt: -1 } }, // Először rendezzük a legújabbtól a legrégebbiig
+        {
+          $lookup: {
+            from: "categories", // A kategóriák kollekciójának pontos neve az adatbázisodban!
+            localField: "category", // A posts kollekcióban lévő ID mező neve
+            foreignField: "_id", // A categories kollekció azonosítója
+            as: "categoryData", // Ideiglenes tömb neve, amibe a találatot teszi
+          },
+        },
+        {
+          $unwind: {
+            path: "$categoryData",
+            preserveNullAndEmptyArrays: true, // Ha véletlenül nincs kategória, a poszt megmarad
+          },
+        },
+        {
+          $addFields: {
+            category: "$categoryData", // Felülírjuk az eredeti category ID-t a teljes objektummal
+          },
+        },
+        {
+          $project: {
+            categoryData: 0, // Eltávolítjuk a feleslegessé vált ideiglenes mezőt
+          },
+        },
+      ])
+      .toArray();
+
+    // Átalakítjuk az ObjectId-kat stringgé, hogy a Next.js ne panaszkodjon
     posts = rawPosts.map((post) => ({
       ...post,
       _id: post._id.toString(),
+      category: post.category
+        ? {
+            ...post.category,
+            _id: post.category._id?.toString(),
+          }
+        : { name: "Nincs kategória" }, // Fallback, ha törölték volna a kategóriát
     }));
   } catch (error) {
     console.error("Hiba történt a bejegyzések lekérésekor:", error);
@@ -63,10 +101,12 @@ export default async function BlogPosts() {
                 {post.description}
               </p>
 
-              <p className="text-xs text-slate-500 line-clamp-1 mt-0.5">
-                {post.category.name}
+              {/* Itt már tökéletesen fog működni a név kiírása! */}
+              <p className="text-xs font-medium text-emerald-600 line-clamp-1 mt-1">
+                {post.category?.name}
               </p>
-              <div className="flex flex-col md:flex-row gap-3 bg-slate-100 py-2 px-[10px] rounded-md items-center justify-center w-fit">
+
+              <div className="flex flex-col md:flex-row gap-3 bg-slate-100 py-2 px-[10px] rounded-md items-center justify-center w-fit mt-2">
                 <p className="text-xs font-bold text-slate-500 line-clamp-1 mt-0.5">
                   {post.author} -
                 </p>
