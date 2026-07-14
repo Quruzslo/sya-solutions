@@ -2,6 +2,7 @@
 import navItems from "@/lib/navItems";
 import SyaLogo from "./syaLogo";
 import Link from "next/link";
+import { SiMinutemailer } from "react-icons/si";
 
 import { useEffect, useState } from "react";
 
@@ -140,7 +141,7 @@ export default function Header() {
                 <br />
                 Solutions
               </h2>
-              <p className="text-[#e7ebe3]/70 text-base md:text-xl text-center max-w-sm">
+              <p className="text-[#e7ebe3]/70 text-base md:text-xl text-start max-w-sm">
                 Prémium pénzügyi pajzs és stratégiai vagyonépítés. Biztosítsd be
                 vállalkozásod és saját anyagi háttered. Az öngondoskodás már nem
                 luxus.
@@ -179,9 +180,18 @@ export default function Header() {
                   <Link
                     href="/kapcsolat"
                     onClick={toggleMenu}
-                    className="inline-block p-[10px] px-8 rounded-full border-2 border-[#3f4603] text-[#3f4603] text-[20px] font-bold hover:bg-[#3f4603] hover:text-[#e7ebe3] transition-all"
+                    className="w-fit mx-auto kapcsolat-btn flex flex-row items-center gap-3 p-[10px] px-8 rounded-full border-2 border-[#3f4603] text-[#3f4603] text-[20px] font-bold hover:bg-[#3f4603] hover:text-[#e7ebe3] transition-all"
                   >
-                    Kapcsolat
+                    <span className="icon-slot">
+                      <span className="before-hover bg-transparent ">
+                        <SiMinutemailer size={50} className="text-zold" />
+                      </span>
+                      <span className="after-hover bg-transparent">
+                        <SiMinutemailer size={50} className="text-feher" />
+                      </span>
+                    </span>
+
+                    <p>Kapcsolat</p>
                   </Link>
                 </li>
               </ul>
