@@ -34,7 +34,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           const recaptchaRes = await fetch(verificationUrl, { method: "POST" });
           const recaptchaData = await recaptchaRes.json();
 
-          if (!recaptchaData.success || recaptchaData.score < 0.6) {
+          if (!recaptchaData.success || recaptchaData.score < 0.7) {
             console.warn(
               `Blokkolt bot kísérlet! Pontszám: ${recaptchaData.score || "N/A"}`,
             );

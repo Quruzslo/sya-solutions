@@ -22,11 +22,11 @@ export async function POST(req: NextRequest) {
     const recaptchaRes = await fetch(verificationUrl, { method: "POST" });
     const recaptchaData = await recaptchaRes.json();
 
-    if (!recaptchaData.success || recaptchaData.score < 0.6) {
+    if (!recaptchaData.success || recaptchaData.score < 0.7) {
       return NextResponse.json(
         {
           success: false,
-          message: "reCAPTCHA ellenőrzés sikertelen. (Spam gyanú)",
+          message: "reCAPTCHA ellenőrzés sikertelen.",
         },
         { status: 400 },
       );
