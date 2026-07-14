@@ -36,7 +36,7 @@ export default function Footer() {
               className="flex flex-col gap-3 text-sm font-light"
               style={{ fontFamily: "var(--font-inter), sans-serif" }}
             >
-              {navItems.map((item, idx) => {
+              {navItems.map((item, idx) => (
                 <li key={idx}>
                   <Link
                     href={item.path}
@@ -44,8 +44,8 @@ export default function Footer() {
                   >
                     {item.name}
                   </Link>
-                </li>;
-              })}
+                </li>
+              ))}
             </ul>
           </div>
 
