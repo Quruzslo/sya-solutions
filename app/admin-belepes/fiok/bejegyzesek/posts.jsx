@@ -64,9 +64,9 @@ export default async function BlogPosts() {
               </p>
 
               <p className="text-xs text-slate-500 line-clamp-1 mt-0.5">
-                {post.category}
+                {post.category.name}
               </p>
-              <div className="flex flex-col md:flex-row gap-3 bg-slate-100 py-2 px-[10px] rounded-md">
+              <div className="flex flex-col md:flex-row gap-3 bg-slate-100 py-2 px-[10px] rounded-md items-center justify-center w-fit">
                 <p className="text-xs font-bold text-slate-500 line-clamp-1 mt-0.5">
                   {post.author} -
                 </p>
