@@ -8,7 +8,7 @@ export default function UserPanel({ session }) {
   const imgUrl = profilePicture || profilePic || image;
 
   return (
-    <div className="flex items-center gap-3 p-3  border border-slate-200 rounded-lg w-full mb-[25px]">
+    <div className="flex items-center gap-3 p-3  border border-slate-300 rounded-lg w-full mb-[25px]">
       {imgUrl ? (
         <div className="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0 border border-slate-200">
           <Image
@@ -25,7 +25,7 @@ export default function UserPanel({ session }) {
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="currentColor"
-            className="w-6 h-6 text-feher"
+            className="w-6 h-6 text-zold"
           >
             <path
               fillRule="evenodd"
