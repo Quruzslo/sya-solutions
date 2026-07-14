@@ -5,12 +5,12 @@ import navItem from "./adminNav";
 import { RxExit } from "react-icons/rx";
 import UserPanel from "./userPanel";
 
-export default function AdminNavComp({ session }) {
+export default function AdminNavComp() {
   const router = useRouter();
 
   return (
     <div className="flex flex-col gap-3 w-full h-full">
-      <UserPanel session={session}></UserPanel>
+      <UserPanel></UserPanel>
       {navItem.map((item, ind) => (
         <div
           key={ind}

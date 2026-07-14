@@ -1,14 +1,16 @@
 import Image from "next/image";
+import { auth } from "@/auth";
 
-export default function UserPanel({ session }) {
+export default async function UserPanel() {
+  const session = await auth();
+
   if (!session || !session.user) return null;
 
   const { name, role, profilePicture, profilePic, image } = session.user;
-
   const imgUrl = profilePicture || profilePic || image;
 
   return (
-    <div className="flex items-center gap-3 p-3  border border-slate-300 rounded-lg w-full mb-[25px]">
+    <div className="flex items-center gap-3 p-3 border border-slate-300 rounded-lg w-full mb-[25px]">
       {imgUrl ? (
         <div className="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0 border border-slate-200">
           <Image
@@ -20,7 +22,7 @@ export default function UserPanel({ session }) {
           />
         </div>
       ) : (
-        <div className="w-12 h-12 rounded-full bg-zold/10  flex items-center justify-center flex-shrink-0 border border-zold">
+        <div className="w-12 h-12 rounded-full bg-zold/10 flex items-center justify-center flex-shrink-0 border border-zold">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
