@@ -43,7 +43,7 @@ export default function DeletePostButton({ postId }) {
       type="button"
       onClick={handleDelete}
       disabled={isDeleting}
-      className="text-xs font-semibold bg-red-50 text-red-600 hover:bg-red-100 px-3 py-2 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+      className="text-xs w-fit font-semibold bg-red-50 text-red-600 hover:bg-red-100 px-3 py-2 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
     >
       {isDeleting ? "Törlés..." : "Törlés"}
     </button>

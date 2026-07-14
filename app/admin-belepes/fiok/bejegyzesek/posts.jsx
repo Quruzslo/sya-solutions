@@ -73,8 +73,8 @@ export default async function BlogPosts() {
           className="w-full flex flex-col md:flex-row items-center justify-between border border-slate-200 p-4 rounded-md bg-white shadow-sm hover:shadow-md transition-shadow"
         >
           {/* Kép és Szöveg bal oldalon */}
-          <div className="flex flex-col md:flex-row items-center gap-4">
-            <div className="w-16 h-16 relative bg-slate-100 rounded overflow-hidden flex-shrink-0 border border-slate-200">
+          <div className="flex flex-col md:flex-row items-start gap-4">
+            <div className="w-16 h-16 relative bg-slate-100 rounded overflow-hidden flex-shrink-0 border border-slate-200 gap-4">
               {post.imageUrl ? (
                 <Image
                   src={post.imageUrl}
@@ -115,10 +115,10 @@ export default async function BlogPosts() {
           </div>
 
           {/* Műveletek jobb oldalon */}
-          <div className="flex flex-row gap-2">
+          <div className="flex flex-row gap-2 justify-between">
             <Link
               href={`/admin-belepes/fiok/bejegyzesek/modositas/${post._id}`}
-              className="text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 px-3 py-2 rounded transition-colors"
+              className="text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 px-3 py-2 rounded transition-colors w-fit"
             >
               Szerkesztés
             </Link>
