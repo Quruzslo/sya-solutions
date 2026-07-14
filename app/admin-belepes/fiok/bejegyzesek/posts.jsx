@@ -1,6 +1,7 @@
 import { client } from "@/lib/mongodb.js";
 import Image from "next/image";
 import Link from "next/link";
+import DeletePostButton from "./DeletePostButton"; // <-- Importáld be a gombot (az útvonalat igazítsd a mappastruktúrádhoz)
 
 export default async function BlogPosts() {
   let posts = [];
@@ -73,7 +74,6 @@ export default async function BlogPosts() {
         >
           {/* Kép és Szöveg bal oldalon */}
           <div className="flex flex-row items-center gap-4">
-            {/* Előnézeti kép az R2-ből */}
             <div className="w-16 h-16 relative bg-slate-100 rounded overflow-hidden flex-shrink-0 border border-slate-200">
               {post.imageUrl ? (
                 <Image
@@ -90,7 +90,6 @@ export default async function BlogPosts() {
               )}
             </div>
 
-            {/* Cím és leírás */}
             <div className="flex flex-col">
               <h3 className="font-bold text-slate-800 line-clamp-1">
                 {post.title}
@@ -98,8 +97,6 @@ export default async function BlogPosts() {
               <p className="text-xs text-slate-500 line-clamp-1 mt-0.5">
                 {post.description}
               </p>
-
-              {/* Itt már tökéletesen fog működni a név kiírása! */}
               <p className="text-xs font-medium text-emerald-600 line-clamp-1 mt-1">
                 {post.category?.name}
               </p>
@@ -117,7 +114,7 @@ export default async function BlogPosts() {
             </div>
           </div>
 
-          {/* Műveletek jobb oldalon (Szerkesztés/Törlés gombok) */}
+          {/* Műveletek jobb oldalon */}
           <div className="flex flex-row gap-2">
             <Link
               href={`/admin-belepes/fiok/bejegyzesek/modositas/${post._id}`}
@@ -125,12 +122,8 @@ export default async function BlogPosts() {
             >
               Szerkesztés
             </Link>
-            <button
-              type="button"
-              className="text-xs font-semibold bg-red-50 text-red-600 hover:bg-red-100 px-3 py-2 rounded transition-colors"
-            >
-              Törlés
-            </button>
+
+            <DeletePostButton postId={post._id} />
           </div>
         </div>
       ))}
