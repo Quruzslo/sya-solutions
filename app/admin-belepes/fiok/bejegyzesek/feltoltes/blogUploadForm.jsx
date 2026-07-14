@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import TextEditor from "./textEditor";
 import Link from "next/link";
+import CategorySelector from "./categorySelector";
 
 export default function BlogUploadForm({ session }) {
   const [title, setTitle] = useState("");
@@ -10,17 +11,15 @@ export default function BlogUploadForm({ session }) {
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [content, setContent] = useState("");
-
-  // Az ideiglenes blob URL-ek és a hozzájuk tartozó fizikai File objektumok gyűjtőhelye az editorból
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [pendingImages, setPendingImages] = useState({});
-
   const [errors, setErrors] = useState({
     title: "",
     description: "",
     content: "",
+    category: "",
   });
 
-  // Ezt a függvényt hívja meg a TextEditor, amikor új képet szúrsz be
   const handleEditorImageAdd = (blobUrl, file) => {
     setPendingImages((prev) => ({
       ...prev,
@@ -30,7 +29,12 @@ export default function BlogUploadForm({ session }) {
 
   const validateForm = () => {
     let isValid = true;
-    const currentErrors = { title: "", description: "", content: "" };
+    const currentErrors = {
+      title: "",
+      description: "",
+      content: "",
+      category: "",
+    };
 
     if (!title.trim()) {
       currentErrors.title = "A bejegyzés címe kötelező!";
@@ -47,6 +51,12 @@ export default function BlogUploadForm({ session }) {
       isValid = false;
     }
 
+    // Kategória validáció
+    if (!selectedCategory) {
+      currentErrors.category = "A kategória kiválasztása kötelező!";
+      isValid = false;
+    }
+
     setErrors(currentErrors);
     return isValid;
   };
@@ -60,7 +70,6 @@ export default function BlogUploadForm({ session }) {
     const uploadedBlobs = [];
 
     try {
-      // 1. KIEMELT KÉP FELTÖLTÉSE
       let finalImageUrl = null;
 
       if (image) {
@@ -78,7 +87,6 @@ export default function BlogUploadForm({ session }) {
         finalImageUrl = uploadData.url;
       }
 
-      // 2. TEXT EDITORBAN LÉVŐ BLOB KÉPEK KISZŰRÉSE ÉS FELTÖLTÉSE
       let finalContent = content;
 
       if (content.includes("blob:")) {
@@ -86,10 +94,9 @@ export default function BlogUploadForm({ session }) {
         const doc = parser.parseFromString(content, "text/html");
         const embeddedImages = doc.querySelectorAll("img");
 
-        for (let img of embeddedImages) {
+        for (const img of embeddedImages) {
           const src = img.getAttribute("src");
 
-          // Csak azt a képet töltjük fel az R2-re, ami még mindig benne van a HTML-ben
           if (src && src.startsWith("blob:")) {
             const fileObj = pendingImages[src];
 
@@ -109,8 +116,6 @@ export default function BlogUploadForm({ session }) {
               }
 
               const inlineUploadData = await inlineUploadRes.json();
-
-              //  végleges URL-re
               img.setAttribute("src", inlineUploadData.url);
               uploadedBlobs.push(src);
             }
@@ -120,7 +125,6 @@ export default function BlogUploadForm({ session }) {
         finalContent = doc.body.innerHTML;
       }
 
-      // 3. BLOG ADATOK MENTÉSE A MONGODB-BE
       const user = session.user;
       const blogContent = {
         userId: user.id,
@@ -131,6 +135,7 @@ export default function BlogUploadForm({ session }) {
         blogImage: finalImageUrl,
         blogContent: finalContent,
         blogStatus: status,
+        categoryId: selectedCategory,
       };
 
       const response = await fetch("/api/admin/blog-upload", {
@@ -152,7 +157,6 @@ export default function BlogUploadForm({ session }) {
           : "Vázlat elmentve!",
       );
 
-      // Memóriatakarítás
       uploadedBlobs.forEach((blobUrl) => {
         try {
           URL.revokeObjectURL(blobUrl);
@@ -165,11 +169,11 @@ export default function BlogUploadForm({ session }) {
         }
       });
 
-      // Form és állapotok ürítése sikeres mentés után
-      setErrors({ title: "", description: "", content: "" });
+      setErrors({ title: "", description: "", content: "", category: "" });
       setTitle("");
       setDescription("");
       setContent("");
+      setSelectedCategory("");
       setPendingImages({});
       handleRemoveImage();
     } catch (err) {
@@ -207,7 +211,6 @@ export default function BlogUploadForm({ session }) {
 
   return (
     <div className="w-[90%] my-[150px] flex flex-col mx-auto p-[10px] text-slate-800">
-      {/* Fejléc címe */}
       <div className="mb-6 flex flex-col">
         <Link
           className="p-2 bg-stone-400 text-white w-fit rounded-sm mb-4"
@@ -215,7 +218,6 @@ export default function BlogUploadForm({ session }) {
         >
           Vissza
         </Link>
-
         <p className="text-[25px] font-bold tracking-tight">
           Új blogbejegyzés hozzáadása
         </p>
@@ -224,11 +226,9 @@ export default function BlogUploadForm({ session }) {
         </p>
       </div>
 
-      {/* Fő elrendezés */}
       <div className="flex flex-col xl:flex-row gap-6 items-start w-full">
-        {/* BAL OLDAL: A tartalom szerkesztő (Fő form) */}
         <div className="flex flex-col gap-6 w-full flex-1 min-w-0 bg-white p-6 rounded-xl shadow-sm">
-          {/* 1. CÍM INPUT */}
+          {/* Cím */}
           <div className="flex flex-col gap-2">
             <label className="text-sm font-semibold text-text-alap">
               Bejegyzés címe <span className="text-red-500">*</span>
@@ -249,7 +249,7 @@ export default function BlogUploadForm({ session }) {
             )}
           </div>
 
-          {/* 2. RÖVID LEÍRÁS */}
+          {/* Leírás */}
           <div className="flex flex-col gap-2">
             <label className="text-sm font-semibold text-text-alap">
               Rövid leírás <span className="text-red-500">*</span>
@@ -272,7 +272,7 @@ export default function BlogUploadForm({ session }) {
             )}
           </div>
 
-          {/* TipTap editor - onImageAdd átadva! */}
+          {/* Tartalom */}
           <div className="flex flex-col gap-2">
             <label className="text-sm font-semibold text-text-alap">
               Tartalom <span className="text-red-500">*</span>
@@ -289,12 +289,11 @@ export default function BlogUploadForm({ session }) {
             )}
           </div>
 
-          {/* 4. KIEMELT KÉP FELTÖLTÉS */}
+          {/* Képfeltöltés */}
           <div className="flex flex-col gap-2">
             <label className="text-sm font-semibold text-text-alap">
               Kiemelt kép (Opcionális)
             </label>
-
             <div className="group relative flex flex-col items-center justify-center w-full h-48 border-2 border-dashed border-slate-300 rounded-xl hover:border-emerald-500 transition-all overflow-hidden bg-slate-50/50">
               {imagePreview ? (
                 <>
@@ -313,7 +312,6 @@ export default function BlogUploadForm({ session }) {
                         className="hidden"
                       />
                     </label>
-
                     <button
                       type="button"
                       onClick={handleRemoveImage}
@@ -356,7 +354,7 @@ export default function BlogUploadForm({ session }) {
           </div>
         </div>
 
-        {/* JOBB OLDAL: Widget / Publish Box */}
+        {/* JOBB OLDAL */}
         <div className="w-full xl:w-[280px] flex flex-col gap-4 xl:sticky xl:top-6 shrink-0">
           <div className="bg-white rounded-xl p-4 shadow-sm flex flex-col gap-4">
             <h3 className="font-semibold border-b border-slate-100 pb-2 text-sm text-slate-500">
@@ -375,6 +373,15 @@ export default function BlogUploadForm({ session }) {
                 <span className="font-semibold">Nyilvános</span>
               </div>
             </div>
+
+            <hr className="border-slate-100" />
+
+            {/* ITT KAPOTT HELYET A KATEGÓRIA VÁLASZTÓ! */}
+            <CategorySelector
+              selectedCategory={selectedCategory}
+              setSelectedCategory={setSelectedCategory}
+              error={errors.category}
+            />
 
             <hr className="border-slate-100" />
 
@@ -406,8 +413,14 @@ export default function BlogUploadForm({ session }) {
                   setTitle("");
                   setDescription("");
                   setContent("");
+                  setSelectedCategory("");
                   setPendingImages({});
-                  setErrors({ title: "", description: "", content: "" });
+                  setErrors({
+                    title: "",
+                    description: "",
+                    content: "",
+                    category: "",
+                  });
                 }
               }}
               className="w-full py-2 text-red-500 hover:text-red-600 hover:bg-red-50 font-medium text-sm rounded-lg transition-colors"
