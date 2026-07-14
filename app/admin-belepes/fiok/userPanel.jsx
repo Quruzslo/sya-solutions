@@ -5,12 +5,10 @@ export default function UserPanel({ session }) {
 
   const { name, role, profilePicture, profilePic, image } = session.user;
 
-  // Összegyűjtjük, hol lehet a kép URL-je (biztos, ami biztos)
   const imgUrl = profilePicture || profilePic || image;
 
   return (
-    <div className="flex items-center gap-3 p-3 bg-white border border-slate-200 rounded-lg shadow-sm w-fit">
-      {/* Profilkép vagy Helykitöltő ikon */}
+    <div className="flex items-center gap-3 p-3  border border-slate-200 rounded-lg w-full mb-[25px]">
       {imgUrl ? (
         <div className="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0 border border-slate-200">
           <Image
@@ -22,13 +20,12 @@ export default function UserPanel({ session }) {
           />
         </div>
       ) : (
-        <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 border border-slate-200">
-          {/* Beépített SVG emberke ikon (nem kell külső csomag) */}
+        <div className="w-12 h-12 rounded-full bg-zold/10  flex items-center justify-center flex-shrink-0 border border-zold">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="currentColor"
-            className="w-6 h-6 text-slate-400"
+            className="w-6 h-6 text-feher"
           >
             <path
               fillRule="evenodd"

@@ -3,12 +3,14 @@ import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import navItem from "./adminNav";
 import { RxExit } from "react-icons/rx";
+import UserPanel from "./userPanel";
 
-export default function AdminNavComp() {
+export default function AdminNavComp({ session }) {
   const router = useRouter();
 
   return (
     <div className="flex flex-col gap-3 w-full h-full">
+      <UserPanel session={session}></UserPanel>
       {navItem.map((item, ind) => (
         <div
           key={ind}
