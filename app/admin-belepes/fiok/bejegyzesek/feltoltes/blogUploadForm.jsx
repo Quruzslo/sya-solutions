@@ -110,7 +110,7 @@ export default function BlogUploadForm({ session, postId = null }) {
     const uploadedBlobs = [];
 
     try {
-      // 2. Képkezelés logikája
+      // Képkezelés logikája
       let finalImageUrl = imagePreview;
 
       if (image) {

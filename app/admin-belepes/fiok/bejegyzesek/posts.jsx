@@ -1,7 +1,7 @@
 import { client } from "@/lib/mongodb.js";
 import Image from "next/image";
 import Link from "next/link";
-import DeletePostButton from "./DeletePostButton"; // <-- Importáld be a gombot (az útvonalat igazítsd a mappastruktúrádhoz)
+import DeletePostButton from "./DeletePostButton";
 
 export default async function BlogPosts() {
   let posts = [];
