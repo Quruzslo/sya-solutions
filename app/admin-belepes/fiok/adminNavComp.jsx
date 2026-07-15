@@ -24,14 +24,16 @@ export default function AdminNavComp() {
         >
           {item.icon && (
             <span
-              className="relative z-10 flex items-center justify-center
+              className="relative z-10 mr-auto flex items-center justify-center
                          w-8 h-8 rounded-full bg-zold text-white text-xl
-                         group-hover:text-white transition-colors duration-300"
+                         group-hover:text-feher transition-colors duration-300"
             >
               {item.icon}
             </span>
           )}
-          <p className="relative z-10 font-bold">{item.name}</p>
+          <p className="relative z-10 font-bold mx-auto group-hover:text-feher">
+            {item.name}
+          </p>
         </Link>
       ))}
 
