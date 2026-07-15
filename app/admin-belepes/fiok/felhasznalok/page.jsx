@@ -23,7 +23,7 @@ export default async function UsersPage() {
               {/* A gomb vagy címke, amire kattintva vált a checkbox */}
               <label
                 htmlFor="toggle-user-form"
-                className="inline-block bg-transparent text-white px-4 py-2 rounded cursor-pointer select-none hover:bg-blue-700 transition"
+                className="inline-block bg-transparent text-white px-4 py-2 rounded cursor-pointer select-none hover:bg-feher hover:text-zold transition"
               >
                 Felhasználó hozzáadása
               </label>
