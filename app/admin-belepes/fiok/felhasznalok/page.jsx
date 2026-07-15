@@ -17,7 +17,7 @@ export default async function UsersPage() {
 
         {/* Fő tartalom */}
         <div className="w-full flex flex-col p-[10px]">
-          <div className="flex flex-row items-center justify-center bg-zold/50 text-white gap-3 p-3 rounded-sm w-fit font-semibold hover:bg-zold/70 transition-colors">
+          <div className="flex flex-row items-center justify-center bg-zold/50 text-white gap-3 p-3 rounded-sm w-full md:w-fit font-semibold hover:bg-zold/70 transition-colors">
             <div className="w-full md:w-fit flex flex-col">
               <input
                 type="checkbox"
@@ -27,7 +27,7 @@ export default async function UsersPage() {
 
               <label
                 htmlFor="toggle-user-form"
-                className="inline-block bg-transparent text-white px-4 py-2 rounded cursor-pointer select-none hover:bg-feher hover:text-zold transition"
+                className="inline-block text-center bg-transparent text-white px-4 py-2 rounded cursor-pointer select-none hover:bg-feher hover:text-zold transition"
               >
                 Felhasználó hozzáadása
               </label>
