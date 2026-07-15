@@ -14,7 +14,7 @@ export default function AdminNavComp() {
           href={item.path}
           className="group relative flex flex-row gap-3 cursor-pointer items-center justify-center
                      w-full p-[5px] rounded-full overflow-hidden
-                     border border-feher bg-transparent
+                     border border-zold bg-transparent
                      text-slate-700 hover:text-slate-900
                      transition-colors duration-300
                      before:content-[''] before:absolute before:inset-0
@@ -25,7 +25,7 @@ export default function AdminNavComp() {
           {item.icon && (
             <span
               className="relative z-10 mr-auto flex items-center justify-center
-                         w-8 h-8 rounded-full bg-zold text-white text-xl
+                         w-8 h-8 rounded-full border border-feher bg-zold text-white text-xl
                          group-hover:text-feher transition-colors duration-300"
             >
               {item.icon}
