@@ -44,7 +44,7 @@ export default async function UsersPage() {
               <p className="text-[20px] font-bold text-slate-800">
                 Felhasználók listája
               </p>
-              <span className="font-mono text-xs text-slate-400">
+              <span className="font-mono text-xs text-feher bg-zold p-2 rounded-sm w-fit">
                 {users.length}{" "}
                 {users.length === 1 ? "felhasználó" : "felhasználó"}
               </span>
