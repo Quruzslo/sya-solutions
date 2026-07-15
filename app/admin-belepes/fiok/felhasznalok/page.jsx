@@ -1,4 +1,5 @@
 import AdminNavComp from "../adminNavComp";
+import AddUserForm from "./AddUserForm";
 
 export default async function UsersPage() {
   return (
