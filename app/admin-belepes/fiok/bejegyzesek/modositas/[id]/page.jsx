@@ -7,7 +7,10 @@ export default async function ModifyBlogPage({ params }) {
   const session = await auth();
   const { id } = await params;
 
-  if (!session || session.user?.role !== "admin") {
+  if (
+    !session ||
+    (session.user?.role !== "admin" && session.user?.role !== "editor")
+  ) {
     redirect("/admin-belepes");
   }
 
