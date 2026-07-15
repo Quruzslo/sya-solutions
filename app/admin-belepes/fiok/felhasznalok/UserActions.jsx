@@ -91,14 +91,14 @@ export default function UserActions({ user }) {
 
       {/* Szerkesztő Modal (Felugró ablak) */}
       {isEditModalOpen && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 bg-feher text-zold z-50 flex items-center justify-center p-4">
           <form
             onSubmit={handleEditSubmit}
             className="bg-slate-800 p-6 rounded-lg w-full max-w-md flex flex-col gap-4"
           >
-            <h2 className="text-white text-xl font-bold mb-2">
+            <p className="text-zold text-xl font-bold mb-2">
               Felhasználó szerkesztése
-            </h2>
+            </p>
 
             <input
               type="text"
