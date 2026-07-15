@@ -1,6 +1,8 @@
 import AdminNavComp from "../adminNavComp";
 import AddUserForm from "./AddUserForm";
 import { client } from "@/lib/mongodb";
+import { FaPen } from "react-icons/fa6";
+import { MdDelete } from "react-icons/md";
 
 export default async function UsersPage() {
   const db = client.db("main").collection("admin");
@@ -112,6 +114,10 @@ export default async function UsersPage() {
                         ? new Date(user.createdAt).toLocaleDateString("hu-HU")
                         : "—"}
                     </span>
+                    <div className="flex flex-row">
+                      <FaPen size={20} className="text-zold" />
+                      <MdDelete size={20} className="text-red-600" />
+                    </div>
                   </div>
                 );
               })}
