@@ -91,10 +91,10 @@ export default function UserActions({ user }) {
 
       {/* Szerkesztő Modal (Felugró ablak) */}
       {isEditModalOpen && (
-        <div className="fixed inset-0 bg-feher text-zold z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 bg-black/30 text-zold z-50 flex items-center justify-center p-4">
           <form
             onSubmit={handleEditSubmit}
-            className="bg-slate-800 p-6 rounded-lg w-full max-w-md flex flex-col gap-4"
+            className="bg-feher p-6 rounded-lg w-full max-w-md flex flex-col gap-4"
           >
             <p className="text-zold text-xl font-bold mb-2">
               Felhasználó szerkesztése
