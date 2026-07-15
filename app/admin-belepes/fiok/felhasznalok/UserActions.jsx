@@ -5,7 +5,12 @@ import { useRouter } from "next/navigation";
 import { FaPen } from "react-icons/fa6";
 import { MdDelete } from "react-icons/md";
 
+import { useSession } from "next-auth/react";
+
 export default function UserActions({ user }) {
+  const { data: session, status } = useSession();
+  if (!session || session.user?.role !== "admin") return;
+
   const router = useRouter();
   const [isDeleting, setIsDeleting] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
@@ -127,7 +132,7 @@ export default function UserActions({ user }) {
                 setFormData({ ...formData, password: e.target.value })
               }
               className="p-2 rounded-md"
-              placeholder="Új jelszó (hagyja üresen, ha nem változik)"
+              placeholder="Új jelszó (hagyd üresen, ha nem változik)"
             />
 
             <select
@@ -145,7 +150,7 @@ export default function UserActions({ user }) {
               <button
                 type="button"
                 onClick={() => setIsEditModalOpen(false)}
-                className="px-4 py-2 bg-slate-600 text-white rounded-md hover:bg-slate-700"
+                className="px-4 py-2 bg-slate-400 text-white rounded-md hover:bg-slate-700"
               >
                 Mégse
               </button>
