@@ -25,7 +25,7 @@ export default function AddUserForm() {
     setMessage({ text: "", type: "" });
 
     try {
-      const res = await fetch("/api/admin/insert-new-user", {
+      const res = await fetch("/api/admin/users/insert-new-user", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

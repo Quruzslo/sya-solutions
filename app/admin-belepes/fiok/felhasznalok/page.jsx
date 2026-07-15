@@ -1,5 +1,6 @@
 import AdminNavComp from "../adminNavComp";
 import AddUserForm from "./AddUserForm";
+import UserActions from "./UserActions";
 import { client } from "@/lib/mongodb";
 import { FaPen } from "react-icons/fa6";
 import { MdDelete } from "react-icons/md";
@@ -113,15 +114,13 @@ export default async function UsersPage() {
                         : "—"}
                     </span>
                     <div className="flex flex-row gap-4">
-                      <FaPen
-                        size={15}
-                        className="text-zold"
-                        title="Szerkesztés"
-                      />
-                      <MdDelete
-                        size={15}
-                        className="text-red-600"
-                        title="Törlés"
+                      <UserActions
+                        user={{
+                          id: user._id.toString(),
+                          name: user.name,
+                          email: user.email,
+                          role: user.role,
+                        }}
                       />
                     </div>
                   </div>
