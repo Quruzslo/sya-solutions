@@ -156,24 +156,37 @@ export default function Header() {
           >
             <nav className="w-full">
               <ul className="flex flex-col gap-5 md:gap-6 text-center">
-                {navItems.map((item, index) => (
-                  <li
-                    key={index}
-                    className={`
-                      ${isMenuOpen ? "menu-item-open" : "menu-item-close"} 
-                      menu-delay-${index + 1}
-                    `}
-                  >
-                    <Link
-                      href={item.path}
-                      onClick={toggleMenu}
-                      className="text-[20px] md:text-[30px] font-extrabold text-[#3f4603] hover:text-[#3f4603]/60 transition-colors"
-                    >
-                      {item.name}
-                    </Link>
-                  </li>
-                ))}
+                {navItems.map((item, index) => {
+                  const parentMenuTransitionDuration = 600;
+                  const staggerSpeed = 80; // Az elemek közötti késleltetés
 
+                  const delay = isMenuOpen
+                    ? parentMenuTransitionDuration + index * staggerSpeed
+                    : (navItems.length - 1 - index) * 40;
+
+                  return (
+                    <li
+                      key={index}
+                      className={`fm-item ${isMenuOpen ? "menu-item-open" : "menu-item-close"}`}
+                      style={{ animationDelay: `${delay}ms` }}
+                    >
+                      <Link
+                        href={item.path}
+                        onClick={toggleMenu}
+                        className="fm-link-wrap text-[20px] md:text-[30px] font-extrabold text-[#3f4603]"
+                      >
+                        <span className="fm-link-flip">
+                          {/* Előlap */}
+                          <span className="fm-face">{item.name}</span>
+                          {/* Hátlap */}
+                          <span className="fm-face-back hover:text-[#3f4603]/60 transition-colors">
+                            {item.name}
+                          </span>
+                        </span>
+                      </Link>
+                    </li>
+                  );
+                })}
                 <li
                   className={`${isMenuOpen ? "menu-item-open" : "menu-item-close"} menu-delay-6 mt-2`}
                 >

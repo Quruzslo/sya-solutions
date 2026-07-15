@@ -354,26 +354,10 @@ a,
 
 .menu-item-open {
   opacity: 0;
-  animation: menuStaggerIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation: menuStaggerIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 .menu-item-close {
-  animation: menuStaggerOut 0.1s ease-out forwards;
-}
-
-.menu-delay-1 {
-  animation-delay: 0.6s;
-}
-.menu-delay-2 {
-  animation-delay: 0.7s;
-}
-.menu-delay-3 {
-  animation-delay: 0.8s;
-}
-.menu-delay-4 {
-  animation-delay: 0.9s;
-}
-.menu-delay-5 {
-  animation-delay: 1s;
+  animation: menuStaggerOut 0.6s ease-out both;
 }
 
 /* FAQ --------------- */
@@ -415,11 +399,11 @@ a,
 /* ADmin blog feltöltés css-ek  */
 
 blockquote {
-  border-left: 4px solid #10b981; /* szép smaragdzöld csík a bal oldalon */
+  border-left: 4px solid #10b981;
   padding-left: 1rem;
   font-style: italic;
-  color: #4b5563; /* sötétszürke szövegszín */
-  background-color: #f9fafb; /* nagyon halvány szürke háttér */
+  color: #4b5563;
+  background-color: #f9fafb;
   margin: 1.5rem 0;
 }
 
@@ -458,4 +442,40 @@ blockquote {
 
 .kapcsolat-btn:hover .after-hover {
   transform: translateX(0) scale(1);
+}
+
+/* Menu item hover effekt  */
+.fm-item {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transform-origin: 50% 100%;
+}
+
+.fm-link-wrap {
+  perspective: 260px;
+  perspective-origin: 50% 0%;
+  overflow: hidden;
+  display: inline-block;
+}
+.fm-link-flip {
+  position: relative;
+  display: block;
+  transform-style: preserve-3d;
+  transform-origin: 50% 0%;
+  transition: transform 0.55s cubic-bezier(0.76, 0, 0.24, 1);
+}
+.fm-link-wrap:hover .fm-link-flip {
+  transform: rotateX(-90.1deg);
+}
+.fm-face {
+  display: block;
+  backface-visibility: hidden;
+}
+.fm-face-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transform-origin: 50% 0%;
+  transform: rotateX(90deg);
 }

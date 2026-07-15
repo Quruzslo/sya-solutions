@@ -11,7 +11,7 @@ export default function SectionTwo() {
     offset: ["start 85%", "center 40%"],
   });
 
-  // Eredeti animációs logikák (hozzányúlás nélkül)
+  // animációs logikák
   const scaleOszlop1 = useTransform(scrollYProgress, [0.3, 0.75], [0, 1]);
   const scaleOszlop2 = useTransform(scrollYProgress, [0.3, 0.75], [0, 1]);
   const scaleOszlop3 = useTransform(scrollYProgress, [0.45, 0.95], [0, 1]);
@@ -190,7 +190,7 @@ export default function SectionTwo() {
           </div>
         </div>
 
-        {/* JOBB OLDAL: ANIMÁLT DIV - SZÖVEGEK INTEGRÁLÁSÁVAL */}
+        {/* JOBB OLDAL*/}
         <div
           ref={sectionRef}
           className="w-full md:w-[50%] relative items-start flex flex-col"
