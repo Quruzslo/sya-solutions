@@ -40,39 +40,86 @@ export default async function UsersPage() {
           </div>
 
           {/* Listázás szekció */}
-          <div className="flex flex-col mt-6">
-            <p className="!text-[20px] font-bold text-slate-800 mb-4">
-              Felhasználók listája
-            </p>
-            <div className="flex flex-col gap-4">
-              {users.map((user) => (
-                <div
-                  key={user._id.toString()}
-                  className="flex flex-col bg-white p-4 rounded-md shadow-sm border border-slate-200"
-                >
-                  <p>
-                    <span className="font-semibold">Név:</span> {user.name}
-                  </p>
-                  <p>
-                    <span className="font-semibold">Email:</span> {user.email}
-                  </p>
+          <div className="flex flex-col mt-10">
+            <div className="flex items-baseline justify-between mb-5">
+              <p className="text-[20px] font-bold text-slate-800">
+                Felhasználók listája
+              </p>
+              <span className="font-mono text-xs text-slate-400">
+                {users.length}{" "}
+                {users.length === 1 ? "felhasználó" : "felhasználó"}
+              </span>
+            </div>
 
-                  <p>
-                    <span className="font-semibold">Létrehozva:</span>{" "}
-                    {user.createdAt
-                      ? new Date(user.createdAt).toLocaleDateString("hu-HU")
-                      : "Nincs adat"}
-                  </p>
+            <div className="flex flex-col divide-y divide-slate-200 border border-slate-200 rounded-lg bg-white overflow-hidden shadow-sm">
+              {users.map((user) => {
+                const initials = user.name
+                  ? user.name
+                      .trim()
+                      .split(" ")
+                      .map((n) => n[0])
+                      .slice(0, 2)
+                      .join("")
+                      .toUpperCase()
+                  : "?";
 
-                  <p>
-                    <span className="font-semibold">Jogosultság:</span>{" "}
-                    {user.role === "editor" ? "Szerkesztő" : "Admin"}
-                  </p>
-                </div>
-              ))}
+                return (
+                  <div
+                    key={user._id.toString()}
+                    className="flex items-center gap-4 p-4 hover:bg-zold/5 transition-colors duration-200"
+                  >
+                    {/* Avatar */}
+                    <div className="shrink-0">
+                      {user.image ? (
+                        <img
+                          src={user.image}
+                          alt={user.name}
+                          className="w-11 h-11 rounded-full object-cover border border-slate-200"
+                        />
+                      ) : (
+                        <div className="w-11 h-11 rounded-full bg-zold/10 border border-zold/30 flex items-center justify-center">
+                          <span className="font-mono text-sm font-semibold text-zold">
+                            {initials}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Név + email */}
+                    <div className="flex flex-col min-w-0 flex-1">
+                      <p className="font-semibold text-slate-800 truncate">
+                        {user.name}
+                      </p>
+                      <p className="text-sm text-slate-500 truncate">
+                        {user.email}
+                      </p>
+                    </div>
+
+                    {/* Jogosultság */}
+                    <span
+                      className={`shrink-0 font-mono text-[11px] tracking-wide uppercase px-2.5 py-1 rounded-full border ${
+                        user.role === "editor"
+                          ? "border-slate-300 text-slate-500"
+                          : "border-zold/40 bg-zold/10 text-zold"
+                      }`}
+                    >
+                      {user.role === "editor" ? "Szerkesztő" : "Admin"}
+                    </span>
+
+                    {/* Létrehozva */}
+                    <span className="hidden sm:block shrink-0 font-mono text-xs text-slate-400 w-24 text-right">
+                      {user.createdAt
+                        ? new Date(user.createdAt).toLocaleDateString("hu-HU")
+                        : "—"}
+                    </span>
+                  </div>
+                );
+              })}
 
               {users.length === 0 && (
-                <p className="text-slate-500">Még nincsenek felhasználók.</p>
+                <p className="text-slate-500 p-6 text-center text-sm">
+                  Még nincsenek felhasználók.
+                </p>
               )}
             </div>
           </div>
