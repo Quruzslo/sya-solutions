@@ -136,7 +136,10 @@ export async function DELETE(
     const { id } = await params;
 
     // 1. Jogosultság ellenőrzése
-    if (!session || session.user?.role !== "admin") {
+    if (
+      !session ||
+      (session.user?.role !== "admin" && session.user?.role !== "editor")
+    ) {
       return NextResponse.json(
         { message: "Nincs jogosultságod ehhez a művelethez!" },
         { status: 403 },

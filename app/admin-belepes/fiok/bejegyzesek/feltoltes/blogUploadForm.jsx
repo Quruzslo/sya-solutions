@@ -178,7 +178,7 @@ export default function BlogUploadForm({ session, postId = null }) {
         blogImage: finalImageUrl,
         blogContent: finalContent,
         blogStatus: status,
-        categoryId: selectedCategory,
+        blogCategory: selectedCategory,
       };
 
       // Dinamikus API URL és Metódus kiválasztása
@@ -249,7 +249,7 @@ export default function BlogUploadForm({ session, postId = null }) {
         return;
       }
 
-      // Csak akkor szabadítjuk fel a régit, ha az blob URL volt
+      // ha  blob URL volt , azt visszavonja a rambú !
       if (imagePreview && imagePreview.startsWith("blob:")) {
         URL.revokeObjectURL(imagePreview);
       }
