@@ -113,8 +113,16 @@ export default async function UsersPage() {
                         : "—"}
                     </span>
                     <div className="flex flex-row gap-4">
-                      <FaPen size={15} className="text-zold" />
-                      <MdDelete size={15} className="text-red-600" />
+                      <FaPen
+                        size={15}
+                        className="text-zold"
+                        title="Szerkesztés"
+                      />
+                      <MdDelete
+                        size={15}
+                        className="text-red-600"
+                        title="Törlés"
+                      />
                     </div>
                   </div>
                 );
