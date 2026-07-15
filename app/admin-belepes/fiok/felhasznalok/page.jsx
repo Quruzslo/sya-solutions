@@ -3,7 +3,6 @@ import AddUserForm from "./AddUserForm";
 import { client } from "@/lib/mongodb";
 
 export default async function UsersPage() {
-  // 1. JAVÍTÁS: Await a toArray() előtt
   const db = client.db("main").collection("admin");
   const users = await db.find({}).toArray();
 
@@ -108,6 +107,7 @@ export default async function UsersPage() {
 
                     {/* Létrehozva */}
                     <span className="hidden sm:block shrink-0 font-mono text-xs text-slate-400 w-24 text-right">
+                      Létrehozva:
                       {user.createdAt
                         ? new Date(user.createdAt).toLocaleDateString("hu-HU")
                         : "—"}

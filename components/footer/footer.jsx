@@ -63,7 +63,7 @@ export default function Footer() {
             >
               <li>
                 <Link
-                  href="/adatkezelesi-tajekoztato"
+                  href="/a"
                   className="hover:text-[#bfa06a] hover:pl-2 transition-all duration-300"
                 >
                   Adatkezelési Tájékoztató
@@ -71,7 +71,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/aszf"
+                  href="/"
                   className="hover:text-[#bfa06a] hover:pl-2 transition-all duration-300"
                 >
                   Általános Szerződési Feltételek
@@ -79,7 +79,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/cookie-szabalyzat"
+                  href="/"
                   className="hover:text-[#bfa06a] hover:pl-2 transition-all duration-300"
                 >
                   Süti (Cookie) Szabályzat
@@ -147,7 +147,7 @@ export default function Footer() {
             </ul>
 
             <Link
-              href="/kapcsolat"
+              href="/"
               className="mt-2 w-fit py-[10px] px-[24px] rounded-[5px] bg-[#3f4603] text-[#e7ebe3] font-semibold hover:bg-[#bfa06a] hover:text-[#1f241b] transition-all duration-300"
               style={{ fontFamily: "var(--font-inter), sans-serif" }}
             >
