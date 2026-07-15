@@ -12,11 +12,12 @@ interface CustomSession {
   };
 }
 
+interface RouteContext {
+  params: Promise<{ id: string }>;
+}
+
 // --- TÖRLÉS (DELETE) ---
-export async function DELETE(
-  req: NextRequest,
-  { params }: { params: { id: string } },
-) {
+export async function DELETE(req: NextRequest, context: RouteContext) {
   const session = (await auth()) as CustomSession | null;
   if (!session || session.user?.role !== "admin") {
     return NextResponse.json(
@@ -26,8 +27,11 @@ export async function DELETE(
   }
 
   try {
+    const resolvedParams = await context.params;
+    const { id } = resolvedParams;
+
     const db = client.db("main").collection("admin");
-    const result = await db.deleteOne({ _id: new ObjectId(params.id) });
+    const result = await db.deleteOne({ _id: new ObjectId(id) });
 
     if (result.deletedCount === 0) {
       return NextResponse.json(
@@ -49,10 +53,7 @@ export async function DELETE(
 }
 
 // --- MÓDOSÍTÁS (PATCH) ---
-export async function PATCH(
-  req: NextRequest,
-  { params }: { params: { id: string } },
-) {
+export async function PATCH(req: NextRequest, context: RouteContext) {
   const session = (await auth()) as CustomSession | null;
   if (!session || session.user?.role !== "admin") {
     return NextResponse.json(
@@ -62,15 +63,17 @@ export async function PATCH(
   }
 
   try {
+    const resolvedParams = await context.params;
+    const { id } = resolvedParams;
+
     const data = await req.json();
     const { name, email, role, password } = data;
     const db = client.db("main").collection("admin");
 
-    // Ha az emailt is módosítjuk, ellenőrizni kell, nem foglalt-e már
     const normalizedEmail = email.toLowerCase().trim();
     const existingUser = await db.findOne({
       email: normalizedEmail,
-      _id: { $ne: new ObjectId(params.id) },
+      _id: { $ne: new ObjectId(id) },
     });
 
     if (existingUser) {
@@ -80,19 +83,17 @@ export async function PATCH(
       );
     }
 
-    // Csak azokat a mezőket frissítjük, amik meg lettek adva
     const updateData: any = {
       name,
       email: normalizedEmail,
       role,
     };
 
-    // Ha a jelszó mező nem üres, akkor azt is hash-eljük és frissítjük
     if (password && password.trim() !== "") {
       updateData.password = await bcrypt.hash(password, 10);
     }
 
-    await db.updateOne({ _id: new ObjectId(params.id) }, { $set: updateData });
+    await db.updateOne({ _id: new ObjectId(id) }, { $set: updateData });
 
     return NextResponse.json(
       { message: "Felhasználó sikeresen módosítva!" },
