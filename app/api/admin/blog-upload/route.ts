@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { client } from "@/lib/mongodb";
+import { ObjectId } from "mongodb";
 
 export async function POST(request: NextRequest) {
   try {
@@ -24,7 +25,10 @@ export async function POST(request: NextRequest) {
       author: session.user.name,
       role: session.user.role,
       title: body.blogTitle,
-      category: body.blogCategory || "Általános",
+      category:
+        body.blogCategory && ObjectId.isValid(body.blogCategory)
+          ? new ObjectId(body.blogCategory)
+          : "Általános",
       description: body.blogDescription,
       content: body.blogContent,
       imageUrl: body.blogImage,
