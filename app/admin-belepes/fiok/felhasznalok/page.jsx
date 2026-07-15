@@ -95,7 +95,7 @@ export default async function UsersPage() {
                         {user.email}
                       </p>
                       <span
-                        className={`shrink-0 font-mono text-[11px] tracking-wide uppercase px-2.5 py-1 rounded-full border ${
+                        className={`w-fit font-mono text-[12px] tracking-wide uppercase px-2.5 py-1 rounded-full border ${
                           user.role === "editor"
                             ? "border-slate-300 text-slate-500"
                             : "border-zold/40 bg-zold/10 text-zold"
@@ -107,7 +107,7 @@ export default async function UsersPage() {
 
                     {/* Létrehozva */}
                     <span className="flex flex-col gap-2 shrink-0 font-mono text-xs text-slate-400 w-fit text-right">
-                      <span>Létrehozva:</span>
+                      <span>Létrehozva</span>
                       {user.createdAt
                         ? new Date(user.createdAt).toLocaleDateString("hu-HU")
                         : "—"}
