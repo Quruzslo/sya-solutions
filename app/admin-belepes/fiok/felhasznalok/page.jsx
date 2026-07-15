@@ -86,37 +86,35 @@ export default async function UsersPage() {
                       )}
                     </div>
 
-                    {/* Név + email */}
-                    <div className="flex flex-col min-w-0 flex-1">
+                    {/* Név + email+ jog */}
+                    <div className="flex flex-col min-w-0 flex-1 gap-3">
                       <p className="font-semibold text-slate-800 truncate">
                         {user.name}
                       </p>
                       <p className="text-sm text-slate-500 truncate">
                         {user.email}
                       </p>
+                      <span
+                        className={`shrink-0 font-mono text-[11px] tracking-wide uppercase px-2.5 py-1 rounded-full border ${
+                          user.role === "editor"
+                            ? "border-slate-300 text-slate-500"
+                            : "border-zold/40 bg-zold/10 text-zold"
+                        }`}
+                      >
+                        {user.role === "editor" ? "Szerkesztő" : "Admin"}
+                      </span>
                     </div>
 
-                    {/* Jogosultság */}
-                    <span
-                      className={`shrink-0 font-mono text-[11px] tracking-wide uppercase px-2.5 py-1 rounded-full border ${
-                        user.role === "editor"
-                          ? "border-slate-300 text-slate-500"
-                          : "border-zold/40 bg-zold/10 text-zold"
-                      }`}
-                    >
-                      {user.role === "editor" ? "Szerkesztő" : "Admin"}
-                    </span>
-
                     {/* Létrehozva */}
-                    <span className="hidden sm:block shrink-0 font-mono text-xs text-slate-400 w-24 text-right">
-                      Létrehozva:
+                    <span className="flex flex-col gap-2 shrink-0 font-mono text-xs text-slate-400 w-fit text-right">
+                      <span>Létrehozva:</span>
                       {user.createdAt
                         ? new Date(user.createdAt).toLocaleDateString("hu-HU")
                         : "—"}
                     </span>
-                    <div className="flex flex-row">
-                      <FaPen size={20} className="text-zold" />
-                      <MdDelete size={20} className="text-red-600" />
+                    <div className="flex flex-row gap-4">
+                      <FaPen size={15} className="text-zold" />
+                      <MdDelete size={15} className="text-red-600" />
                     </div>
                   </div>
                 );
