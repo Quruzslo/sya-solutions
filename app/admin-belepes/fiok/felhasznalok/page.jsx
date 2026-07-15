@@ -18,7 +18,7 @@ export default async function UsersPage() {
         {/* Fő tartalom */}
         <div className="w-full flex flex-col p-[10px]">
           <div className="flex flex-row items-center justify-center bg-zold/50 text-white gap-3 p-3 rounded-sm w-fit font-semibold hover:bg-zold/70 transition-colors">
-            <div>
+            <div className="w-full md:w-fit flex flex-col">
               <input
                 type="checkbox"
                 id="toggle-user-form"
