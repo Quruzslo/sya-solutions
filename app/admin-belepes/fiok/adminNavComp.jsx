@@ -14,13 +14,13 @@ export default function AdminNavComp() {
           href={item.path}
           className="group relative flex flex-row gap-3 cursor-pointer items-center justify-center
                      w-full p-[5px] rounded-full overflow-hidden
-                     border border-zold bg-transparent
+                     border border-feher bg-transparent
                      text-slate-700 hover:text-slate-900
                      transition-colors duration-300
                      before:content-[''] before:absolute before:inset-0
-                     before:bg-zold before:translate-y-full
+                     before:bg-zold before:translate-x-full
                      before:transition-transform before:duration-300 before:ease-out
-                     hover:before:translate-y-0"
+                     hover:before:translate-x-0"
         >
           {item.icon && (
             <span
