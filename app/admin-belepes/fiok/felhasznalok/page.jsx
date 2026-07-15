@@ -1,6 +1,6 @@
 import AdminNavComp from "../adminNavComp";
 import AddUserForm from "./AddUserForm";
-import client from "@/lib/mongodb";
+import { client } from "@/lib/mongodb";
 
 export default async function UsersPage() {
   // 1. JAVÍTÁS: Await a toArray() előtt
