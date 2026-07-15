@@ -1,8 +1,15 @@
 import AdminNavComp from "../adminNavComp";
 import Link from "next/link";
 import BlogPosts from "./posts";
+import { auth } from "@/auth";
 
 export default async function BlogPage() {
+  const session = await auth();
+
+  // Kinyerjük a szükséges adatokat
+  const userId = session?.user?.id;
+  const isAdmin = session?.user?.role === "admin";
+
   return (
     <section className="w-full min-h-screen flex flex-col pt-[120px]">
       <div className="w-full flex-1 flex flex-col md:flex-row">
@@ -28,7 +35,7 @@ export default async function BlogPage() {
               Eddigi bejegyzések
             </p>
 
-            <BlogPosts />
+            <BlogPosts userId={userId} isAdmin={isAdmin} />
           </div>
         </div>
       </div>

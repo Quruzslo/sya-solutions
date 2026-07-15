@@ -7,7 +7,10 @@ export async function POST(request: NextRequest) {
     const session = await auth();
 
     // 1. Ellenőrizzük a jogosultságot
-    if (!session || session.user?.role !== "admin") {
+    if (
+      !session ||
+      (session.user?.role !== "admin" && session.user?.role !== "editor")
+    ) {
       return NextResponse.json(
         { message: "Nincs jogosultságod ehhez a művelethez!" },
         { status: 403 },

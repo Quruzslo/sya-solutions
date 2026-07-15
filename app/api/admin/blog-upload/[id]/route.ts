@@ -15,7 +15,10 @@ export async function GET(
     const session = await auth();
     const { id } = await params;
 
-    if (!session || session.user?.role !== "admin") {
+    if (
+      !session ||
+      (session.user?.role !== "admin" && session.user?.role !== "editor")
+    ) {
       return NextResponse.json(
         { message: "Nincs jogosultságod ehhez a művelethez!" },
         { status: 403 },
@@ -60,7 +63,10 @@ export async function PUT(
     const session = await auth();
     const { id } = await params;
 
-    if (!session || session.user?.role !== "admin") {
+    if (
+      !session ||
+      (session.user?.role !== "admin" && session.user?.role !== "editor")
+    ) {
       return NextResponse.json(
         { message: "Nincs jogosultságod ehhez a művelethez!" },
         { status: 403 },

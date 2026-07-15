@@ -3,15 +3,18 @@ import Image from "next/image";
 import Link from "next/link";
 import DeletePostButton from "./DeletePostButton";
 
-export default async function BlogPosts() {
+export default async function BlogPosts({ userId, isAdmin }) {
   let posts = [];
 
   try {
     const db = client.db("main");
 
+    const matchQuery = isAdmin ? {} : { authorId: userId };
+
     const rawPosts = await db
       .collection("posts")
       .aggregate([
+        { $match: matchQuery },
         { $sort: { createdAt: -1 } },
         {
           $lookup: {
