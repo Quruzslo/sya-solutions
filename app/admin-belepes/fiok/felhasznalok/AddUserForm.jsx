@@ -58,7 +58,7 @@ export default function AddUserForm() {
     <form
       onSubmit={handleSubmit}
       onClick={(e) => e.stopPropagation()}
-      className="flex flex-col gap-4 p-4 mt-4 bg-white/10 rounded-md border border-white/20 w-full md:w-[400px] text-slate-800"
+      className="flex flex-col gap-4 p-4 mt-4 bg-white/10 rounded-md border border-white/20 w-full md:w-[400px] text-slate-800 w-full"
     >
       <div className="flex flex-col gap-1">
         <label className="text-sm font-semibold text-white" htmlFor="name">

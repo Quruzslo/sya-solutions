@@ -12,8 +12,7 @@ export default async function UsersPage() {
 
         {/* Fő tartalom */}
         <div className="w-full flex flex-col p-[10px]">
-          <div className="flex flex-row bg-zold/50 text-white gap-3 p-3 rounded-sm w-fit font-semibold hover:bg-zold/70 transition-colors">
-            Felhasználó hozzáadása
+          <div className="flex flex-row items-center justify-center bg-zold/50 text-white gap-3 p-3 rounded-sm w-fit font-semibold hover:bg-zold/70 transition-colors">
             <div>
               <input
                 type="checkbox"
@@ -24,7 +23,7 @@ export default async function UsersPage() {
               {/* A gomb vagy címke, amire kattintva vált a checkbox */}
               <label
                 htmlFor="toggle-user-form"
-                className="inline-block bg-blue-600 text-white px-4 py-2 rounded cursor-pointer select-none hover:bg-blue-700 transition"
+                className="inline-block bg-transparent text-white px-4 py-2 rounded cursor-pointer select-none hover:bg-blue-700 transition"
               >
                 Felhasználó hozzáadása
               </label>
