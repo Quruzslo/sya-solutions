@@ -5,7 +5,10 @@ import UserPanel from "./userPanel";
 
 export default async function FiokPage() {
   const session = await auth();
-  if (!session || session.user?.role !== "admin") {
+  if (
+    !session ||
+    (session.user?.role !== "admin" && session.user?.role !== "editor")
+  ) {
     redirect("/admin-belepes");
   }
 

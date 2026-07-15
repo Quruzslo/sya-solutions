@@ -12,7 +12,7 @@ export default auth((req) => {
       return NextResponse.redirect(new URL("/admin-belepes", req.url));
     }
 
-    if (userRole !== "admin") {
+    if (userRole !== "admin" && userRole !== "editor") {
       return NextResponse.redirect(new URL("/admin-belepes", req.url));
     }
   }
