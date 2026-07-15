@@ -5,24 +5,20 @@ import { useRouter } from "next/navigation";
 import { FaPen } from "react-icons/fa6";
 import { MdDelete } from "react-icons/md";
 
-import { useSession } from "next-auth/react";
-
-export default function UserActions({ user }) {
-  const { data: session, status } = useSession();
-  if (!session || session.user?.role !== "admin") return;
-
+export default function UserActions({ user, isAdmin }) {
   const router = useRouter();
   const [isDeleting, setIsDeleting] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  // Módosítás űrlap adatai (jelszó alapból üres)
   const [formData, setFormData] = useState({
     name: user.name,
     email: user.email,
     role: user.role,
     password: "",
   });
+
+  if (!isAdmin) return null;
 
   const handleDelete = async () => {
     if (
@@ -94,12 +90,11 @@ export default function UserActions({ user }) {
         </button>
       </div>
 
-      {/* Szerkesztő Modal (Felugró ablak) */}
       {isEditModalOpen && (
         <div className="fixed inset-0 bg-black/30 text-zold z-50 flex items-center justify-center p-4">
           <form
             onSubmit={handleEditSubmit}
-            className="bg-feher p-6 rounded-lg w-full max-w-md flex flex-col gap-4"
+            className="bg-feher p-6 rounded-lg w-full max-w-md flex flex-col gap-4 shadow-xl"
           >
             <p className="text-zold text-xl font-bold mb-2">
               Felhasználó szerkesztése
@@ -112,7 +107,7 @@ export default function UserActions({ user }) {
                 setFormData({ ...formData, name: e.target.value })
               }
               required
-              className="p-2 rounded-md"
+              className="p-2 rounded-md border border-slate-300"
               placeholder="Név"
             />
             <input
@@ -122,7 +117,7 @@ export default function UserActions({ user }) {
                 setFormData({ ...formData, email: e.target.value })
               }
               required
-              className="p-2 rounded-md"
+              className="p-2 rounded-md border border-slate-300"
               placeholder="Email"
             />
             <input
@@ -131,7 +126,7 @@ export default function UserActions({ user }) {
               onChange={(e) =>
                 setFormData({ ...formData, password: e.target.value })
               }
-              className="p-2 rounded-md"
+              className="p-2 rounded-md border border-slate-300"
               placeholder="Új jelszó (hagyd üresen, ha nem változik)"
             />
 
@@ -140,7 +135,7 @@ export default function UserActions({ user }) {
               onChange={(e) =>
                 setFormData({ ...formData, role: e.target.value })
               }
-              className="p-2 rounded-md"
+              className="p-2 rounded-md border border-slate-300"
             >
               <option value="editor">Szerkesztő</option>
               <option value="admin">Adminisztrátor</option>
@@ -150,14 +145,14 @@ export default function UserActions({ user }) {
               <button
                 type="button"
                 onClick={() => setIsEditModalOpen(false)}
-                className="px-4 py-2 bg-slate-400 text-white rounded-md hover:bg-slate-700"
+                className="px-4 py-2 bg-slate-400 text-white rounded-md hover:bg-slate-500 transition-colors"
               >
                 Mégse
               </button>
               <button
                 type="submit"
                 disabled={loading}
-                className="px-4 py-2 bg-zold text-white rounded-md hover:bg-zold/80"
+                className="px-4 py-2 bg-zold text-white rounded-md hover:bg-zold/80 transition-colors disabled:opacity-50"
               >
                 {loading ? "Mentés..." : "Mentés"}
               </button>

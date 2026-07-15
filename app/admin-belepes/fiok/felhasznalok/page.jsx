@@ -1,13 +1,15 @@
 import AdminNavComp from "../adminNavComp";
 import AddUserForm from "./AddUserForm";
-import UserActions from "./UserActions";
 import { client } from "@/lib/mongodb";
-import { FaPen } from "react-icons/fa6";
-import { MdDelete } from "react-icons/md";
+import { auth } from "@/auth";
+import UserActions from "./UserActions";
 
 export default async function UsersPage() {
   const db = client.db("main").collection("admin");
   const users = await db.find({}).toArray();
+
+  const session = await auth();
+  const isAdmin = session?.user?.role === "admin";
 
   return (
     <section className="w-full min-h-screen flex flex-col pt-[120px]">
@@ -18,28 +20,30 @@ export default async function UsersPage() {
 
         {/* Fő tartalom */}
         <div className="w-full flex flex-col p-[10px]">
-          <div className="flex flex-row items-center justify-center bg-zold/50 text-white gap-3 p-3 rounded-sm w-full md:w-fit font-semibold hover:bg-zold/70 transition-colors">
-            <div className="w-full md:w-fit flex flex-col">
-              <input
-                type="checkbox"
-                id="toggle-user-form"
-                className="peer hidden"
-              />
+          {isAdmin && (
+            <div className="flex flex-row items-center justify-center bg-zold/50 text-white gap-3 p-3 rounded-sm w-full md:w-fit font-semibold hover:bg-zold/70 transition-colors">
+              <div className="w-full md:w-fit flex flex-col">
+                <input
+                  type="checkbox"
+                  id="toggle-user-form"
+                  className="peer hidden"
+                />
 
-              <label
-                htmlFor="toggle-user-form"
-                className="inline-block text-center bg-transparent text-white px-4 py-2 rounded cursor-pointer select-none hover:bg-feher hover:text-zold transition"
-              >
-                Felhasználó hozzáadása
-              </label>
+                <label
+                  htmlFor="toggle-user-form"
+                  className="inline-block text-center bg-transparent text-white px-4 py-2 rounded cursor-pointer select-none hover:bg-feher hover:text-zold transition"
+                >
+                  Felhasználó hozzáadása
+                </label>
 
-              <div className="grid transition-all duration-300 ease-in-out w-full grid-rows-[0fr] opacity-0 peer-checked:grid-rows-[1fr] peer-checked:opacity-100">
-                <div className="overflow-hidden">
-                  <AddUserForm />
+                <div className="grid transition-all duration-300 ease-in-out w-full grid-rows-[0fr] opacity-0 peer-checked:grid-rows-[1fr] peer-checked:opacity-100">
+                  <div className="overflow-hidden">
+                    <AddUserForm />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          )}
 
           {/* Listázás szekció */}
           <div className="flex flex-col mt-10">
@@ -87,7 +91,7 @@ export default async function UsersPage() {
                       )}
                     </div>
 
-                    {/* Név + email+ jog */}
+                    {/* Név + email + jog */}
                     <div className="flex flex-col min-w-0 flex-1 gap-3">
                       <p className="font-semibold text-slate-800 truncate">
                         {user.name}
@@ -107,22 +111,23 @@ export default async function UsersPage() {
                     </div>
 
                     {/* Létrehozva */}
-                    <span className="flex flex-col gap-2 shrink-0 font-mono text-xs text-slate-400 w-fit text-right">
+                    <span className="flex flex-col gap-2 shrink-0 font-mono text-xs text-slate-400 w-fit text-right mr-4">
                       <span>Létrehozva</span>
                       {user.createdAt
                         ? new Date(user.createdAt).toLocaleDateString("hu-HU")
                         : "—"}
                     </span>
-                    <div className="flex flex-row gap-4">
-                      <UserActions
-                        user={{
-                          id: user._id.toString(),
-                          name: user.name,
-                          email: user.email,
-                          role: user.role,
-                        }}
-                      />
-                    </div>
+
+                    {/* A Kliens Komponensünk a szerkesztés/törlés gombokkal */}
+                    <UserActions
+                      user={{
+                        id: user._id.toString(),
+                        name: user.name,
+                        email: user.email,
+                        role: user.role,
+                      }}
+                      isAdmin={isAdmin}
+                    />
                   </div>
                 );
               })}
