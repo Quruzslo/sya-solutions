@@ -114,7 +114,6 @@ export default function BlogUploadForm({ session, postId = null }) {
       let finalImageUrl = imagePreview;
 
       if (image) {
-        // Ha van új fájl kiválasztva, feltöltjük azt
         const imageFormData = new FormData();
         imageFormData.append("file", image);
 
@@ -129,7 +128,7 @@ export default function BlogUploadForm({ session, postId = null }) {
         finalImageUrl = uploadData.url;
       }
 
-      // 3. Inline szerkesztő képek feltöltése
+      //Inline szerkesztő képek feltöltése
       let finalContent = content;
 
       if (content.includes("blob:")) {
@@ -168,7 +167,7 @@ export default function BlogUploadForm({ session, postId = null }) {
         finalContent = doc.body.innerHTML;
       }
 
-      // 4. Payload összeállítása
+      // payload
       const user = session.user;
       const blogContent = {
         userId: user.id,

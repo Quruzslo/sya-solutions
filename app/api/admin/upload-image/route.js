@@ -14,7 +14,10 @@ const r2Client = new S3Client({
 export async function POST(req) {
   try {
     const session = await auth();
-    if (!session || session.user?.role !== "admin") {
+    if (
+      !session ||
+      (session.user?.role !== "admin" && session.user?.role !== "editor")
+    ) {
       return NextResponse.json(
         { message: "Nincs jogosultságod!" },
         { status: 403 },
