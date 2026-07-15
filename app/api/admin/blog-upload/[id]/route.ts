@@ -85,6 +85,10 @@ export async function PUT(
 
     const updateData = {
       title: body.blogTitle,
+      category:
+        body.blogCategory && ObjectId.isValid(body.blogCategory)
+          ? new ObjectId(body.blogCategory)
+          : "Általános",
       description: body.blogDescription,
       content: body.blogContent,
       imageUrl: body.blogImage,
