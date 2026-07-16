@@ -63,7 +63,7 @@ export default function Footer() {
             >
               <li>
                 <Link
-                  href="/a"
+                  href="/"
                   className="hover:text-[#bfa06a] hover:pl-2 transition-all duration-300"
                 >
                   Adatkezelési Tájékoztató
