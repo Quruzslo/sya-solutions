@@ -189,7 +189,8 @@ export default function ContactPage() {
 
             <div className="w-full">
               <Link
-                href="tel:+36303694251"
+                target="blank"
+                href="https://maps.app.goo.gl/4am1hSoRMnsGfnNU6"
                 className="group relative flex flex-row items-center justify-between
              w-full p-[5px] rounded-full overflow-hidden
              border border-zold bg-transparent
@@ -207,8 +208,8 @@ export default function ContactPage() {
                 >
                   <FaMapLocationDot />
                 </span>
-                <p className="relative z-10 font-bold group-hover:text-feher px-2 text-center flex-1 min-w-0 truncate">
-                  Buda, Menő utca 12
+                <p className="relative z-10 font-bold group-hover:text-feher px-2 text-center flex-1 min-w-0 ">
+                  Budapest, Gombocz Zoltán u. 8b
                 </p>
 
                 <div className="w-8 h-8 shrink-0 relative z-10 pointer-events-none" />
@@ -243,6 +244,19 @@ export default function ContactPage() {
             <ContactForm></ContactForm>
           </div>
         </div>
+      </div>
+      {/* Térkép konti ----------------- */}
+
+      <div className="w-full mt-[50px] ">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2696.2613991511735!2d19.030972512400925!3d47.48482087105866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4741dc338432bfe7%3A0xacec37d0cfb14949!2sBudapest%2C%20Gombocz%20Zolt%C3%A1n%20u.%208b%2C%201118!5e0!3m2!1shu!2shu!4v1784216553786!5m2!1shu!2shu"
+          width="600"
+          height="450"
+          allowFullScreen=""
+          className="w-full rounded-xl"
+          loading="lazy"
+          referrerPolicy="strict-origin-when-cross-origin"
+        ></iframe>
       </div>
     </section>
   );

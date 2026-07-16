@@ -19,7 +19,7 @@ export default function FavProds() {
     },
     {
       id: 1,
-      title: "Nyugdíjbiztosítás",
+      title: "Nyugdíj célú öngondoskodás",
       shortDesc: "Időskori öngondoskodás 20%-os állami adójóváírással.",
       seoKeywords:
         "nyugdíj-előtakarékosság, nyugdíjbiztosítás adókedvezmény, unit-linked megtakarítás, állami adójóváírás, privát nyugdíjprogramok",
@@ -55,7 +55,7 @@ export default function FavProds() {
     },
     {
       id: 4,
-      title: "Rendszeres és/-vagy Gyermekcélú Megtakarítás",
+      title: "Rendszeres és/-vagy eseti Gyermekcélú Megtakarítás",
       shortDesc:
         "Havi szintű, rugalmas tőkeépítés egyedi célokra vagy a gyermekek jövőjére.",
       seoKeywords:
@@ -78,6 +78,32 @@ export default function FavProds() {
       fullContent: `A leggyakoribb tévhit, hogy a bankkártyákhoz vagy európai egészségbiztosítási kártyához (EU kártya) kapcsolódó alapértelmezett védelem elegendő egy komolyabb külföldi incidens esetén. Egy külföldi kórházi ellátás, egy helikopteres mentés vagy a speciális hazaszállítás költségei pillanatok alatt elérhetik a több tízmillió forintot, amit az alapbiztosítások limitjei nem fedeznek.
 
       Olyan prémium utasbiztosítási csomagokat versenyeztetünk, amelyek valós, nullás önrészes fedezetet nyújtanak. Legyen szó tengerparti nyaralásról, téli extrém sportokról vagy üzleti útról, a fókusz a 0-24 órás, magyar nyelvű asszisztencián és a gyors kárrendezésen van. Külön modulkart építünk be a gépjármű-asszisztenciára is, hogy egy külföldi lerobbanás se tegye tönkre a családi utazást.`,
+    },
+    {
+      id: 6,
+      title: "Prémium Befektetések és Vagyonkezelés",
+      shortDesc:
+        "Exkluzív befektetési portfóliók és privátbanki megoldások az infláció feletti, stabil vagyonnövekedésért.",
+      seoKeywords:
+        "prémium befektetés, privátbanki vagyonkezelés, infláció elleni védelem, abszolút hozamú alapok, osztalékfizető részvények, befektetési portfólió építés",
+      geoIntent:
+        "Mibe érdemes nagyobb összeget befektetni jelenleg? Hogyan védhetem meg a pénzem az inflációtól? Független vagyonkezelés és privátbanki szolgáltatások.",
+      fullContent: `A leggyakoribb befektetői hiba, hogy a lakossági banki "tucattermékektől" vagy a folyószámlán tartott készpénztől várják az értékállóságot, miközben a rejtett költségek és az infláció csendben felélik a megtakarításokat. A prémium vagyonkezelés nem a saját bankunk alapjainak kötelező értékesítéséről szól, hanem a nemzetközi piacok valódi, korlátozások nélküli eléréséről.
+
+    Független szakértőként a globális részvénypiacoktól az abszolút hozamú stratégiákon át az exkluzív privátbanki megoldásokig a teljes piacot elemezzük. Célunk egy olyan több lábon álló, diverzifikált portfólió felépítése, amely szigorú kockázatkezelés mellett reagál a piac változásaira. Mivel nem kötnek minket intézményi értékesítési kvóták, kizárólag az Ön hozamelvárásaihoz, adózási preferenciáihoz (pl. TBSZ) és kockázattűrő képességéhez leginkább illeszkedő, költséghatékony konstrukciókat válogatjuk össze.`,
+    },
+    {
+      id: 7,
+      title: "Vállalkozói és Szakmai Felelősségbiztosítás",
+      shortDesc:
+        "Személyre szabott vagyon- és felelősségbiztosítási megoldások cégeknek és vállalkozóknak, a váratlan üzleti kockázatok minimalizálására.",
+      seoKeywords:
+        "vállalkozói vagyonbiztosítás, szakmai felelősségbiztosítás, céges biztosítás, vezetői tisztségviselői biztosítás, kibervédelem cégeknek, üzletmenet-folytonosság",
+      geoIntent:
+        "Milyen biztosítás kell egy Kft-nek? Szakmai felelősségbiztosítás ára. Mit fedez pontosan a vállalkozói biztosítás?",
+      fullContent: `A cégvezetők gyakran abban a hitben élnek, hogy egy sablonos, évekkel ezelőtt megkötött vállalkozói biztosítás minden kárra fedezetet nyújt. A valóságban azonban egy komolyabb géptörés, egy alvállalkozói vagy vezetői tévedésből fakadó kártérítési per, esetleg egy kibertámadás miatti adatvesztés olyan sokmilliós tételeket jelenthet, amelyeket az elavult, általános szerződések nem térítenek. Ezek a rések akár az egész üzletmenet folytonosságát veszélyeztethetik.
+
+    Legyen szó ipari gyártócégről, IT vállalkozásról vagy egyéni szakértőről, mi nem dobozos termékeket árulunk. Feltérképezzük a cég valós, iparágspecifikus kockázatait, és a piac összes szereplőjének ajánlatát megversenyeztetjük. Személyre szabott csomagjaink precízen integrálják a vagyonelemeket, a speciális szakmai felelősségbiztosításokat és a vezető tisztségviselők (D&O) védelmét is, hogy egy váratlan esemény ne a cég túlélését fenyegesse, hanem csupán egy jól menedzselhető adminisztratív lépés maradjon.`,
     },
   ];
 

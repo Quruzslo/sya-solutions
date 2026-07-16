@@ -1,0 +1,80 @@
+/* A külső konténer, ami levágja a kilógó részeket */
+.carouselContainer {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: #ffffff00;
+  padding: 2.5rem 0;
+}
+
+/* Finom elhalványítás (fade) a bal és jobb szélen */
+.carouselContainer::before,
+.carouselContainer::after {
+  position: absolute;
+  top: 0;
+  width: 80px;
+  height: 100%;
+  z-index: 2;
+  content: "";
+  pointer-events: none;
+}
+
+.carouselContainer::before {
+  left: 0;
+  background: linear-gradient(to right, #f6f7f2, transparent);
+}
+
+.carouselContainer::after {
+  right: 0;
+  background: linear-gradient(to left, #f6f7f2, transparent);
+}
+
+.carouselTrack {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  gap: 4rem;
+  padding: 0 2rem;
+  animation: infinite-scroll 25s linear infinite;
+}
+
+.carouselTrack:hover {
+  animation-play-state: paused;
+}
+
+/* Logó doboza */
+.partnerLogoWrapper {
+  display: flex;
+  width: 140px;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Kép konténer a Next.js fill-hez és az effektekhez */
+.imageContainer {
+  position: relative;
+  height: 3rem;
+  width: 100%;
+  filter: grayscale(100%);
+  transition: all 0.5s ease-in-out;
+}
+
+/* Hover interakciók */
+.partnerLogoWrapper:hover .imageContainer {
+  filter: grayscale(0%);
+  transform: scale(1.1);
+}
+
+.partnerImage {
+  object-fit: contain;
+}
+
+@keyframes infinite-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}

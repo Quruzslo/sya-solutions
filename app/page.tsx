@@ -5,6 +5,7 @@ import SectionOne from "../components/section1/sectionOne";
 import SectionTwo from "../components/section2/sectionTwo";
 import SectionThree from "../components/section3/sectionThree";
 import FavProds from "../components/section4/favProducts";
+import PartnerCarousel from "../components/partners/page";
 
 import "./styles.css";
 
@@ -29,6 +30,7 @@ export default async function HomePage() {
         crumbs={null}
       ></Hero>
       <SectionOne></SectionOne>
+      <PartnerCarousel></PartnerCarousel>
       <SectionTwo></SectionTwo>
       <SectionThree></SectionThree>
       <FavProds></FavProds>
