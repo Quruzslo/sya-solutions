@@ -110,7 +110,7 @@ export default function ContactForm() {
       <form
         onSubmit={handleSubmit}
         noValidate
-        className="flex flex-col gap-2 w-full"
+        className="flex flex-col gap-[5px] w-full"
       >
         {errors.server && (
           <p className="text-red-800 text-sm font-medium text-center bg-red-50 p-2 rounded border border-red-200">
@@ -172,7 +172,7 @@ export default function ContactForm() {
         </div>
 
         {/* Adatkezelési Checkbox */}
-        <div className="flex items-start gap-3 mt-6 relative pb-4">
+        <div className="flex items-start gap-3 mt-6 relative">
           <input
             type="checkbox"
             id="adatkezeles"
@@ -218,7 +218,7 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={loading}
-          className="mt-8 px-6 py-3 bg-zold mx-auto text-white font-bold rounded-full shadow-md hover:opacity-70 transition-opacity w-fit cursor-pointer disabled:opacity-50"
+          className=" px-6 py-3 bg-zold mx-auto text-white font-bold rounded-full shadow-md hover:opacity-70 transition-opacity w-fit cursor-pointer disabled:opacity-50"
         >
           {loading ? "Ellenőrzés és küldés..." : "Üzenet küldése"}
         </button>
