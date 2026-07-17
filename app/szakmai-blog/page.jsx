@@ -91,7 +91,7 @@ export default async function BlogPage(props) {
   const searchParams = await props.searchParams;
   const oldal = Number(searchParams?.oldal) || 1;
   const currentCategory = searchParams?.kategoria
-    ? decodeURIComponent(searchParams.kategoria)
+    ? searchParams.kategoria
     : "all";
 
   let posts = [];
@@ -99,7 +99,7 @@ export default async function BlogPage(props) {
   let totalPages = 0;
 
   try {
-    // 3. A cache-elt függvények meghívása
+    //  cache-elt függvények meghívása
     categories = await getCachedCategories();
     const data = await getCachedPosts(currentCategory, oldal, categories);
 
@@ -117,28 +117,39 @@ export default async function BlogPage(props) {
   return (
     <main className="w-[90%] max-w-[2560px] mx-auto my-[150px]">
       <div className="mb-10 text-center">
-        <h1 className="text-4xl font-bold text-slate-900 mb-4">Szakmai Blog</h1>
+        <h1
+          style={{ fontFamily: "var(--font-inter)" }}
+          className="text-4xl font-bold text-slate-900 mb-4"
+        >
+          Szakmai Blog
+        </h1>
         <p className="text-slate-600">
           Olvasd el legújabb bejegyzéseinket és híreinket.
         </p>
       </div>
 
-      <CategoryFilter
-        categories={categories}
-        currentCategory={currentCategory}
-      />
-
-      {posts.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
-          {posts.map((post) => (
-            <BlogCard key={post._id} post={post} />
-          ))}
+      <div className="flex flex-col md:flex-row gap-3 ">
+        <div className="flex flex-col w-full md:w-[250px]">
+          <CategoryFilter
+            categories={categories}
+            currentCategory={currentCategory}
+          />
         </div>
-      ) : (
-        <p className="text-center text-slate-500 mt-10">
-          Ebben a kategóriában még nincsenek bejegyzések.
-        </p>
-      )}
+
+        <div className="flex flex-col flex-1">
+          {posts.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8  w-full">
+              {posts.map((post) => (
+                <BlogCard key={post._id} post={post} />
+              ))}
+            </div>
+          ) : (
+            <p className="text-center text-slate-500 mt-10">
+              Ebben a kategóriában még nincsenek bejegyzések.
+            </p>
+          )}
+        </div>
+      </div>
 
       {totalPages > 1 && (
         <div className="mt-12 flex justify-center">
