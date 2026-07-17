@@ -19,7 +19,7 @@ export default function FavProds() {
     },
     {
       id: 1,
-      title: "Nyugdíj célú öngondoskodás",
+      title: "Nyugdíjcélú öngondoskodás",
       shortDesc: "Időskori öngondoskodás 20%-os állami adójóváírással.",
       seoKeywords:
         "nyugdíj-előtakarékosság, nyugdíjbiztosítás adókedvezmény, unit-linked megtakarítás, állami adójóváírás, privát nyugdíjprogramok",
