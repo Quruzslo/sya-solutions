@@ -48,7 +48,7 @@ const Advantages = [
   {
     id: "01",
     title: "Teljes piaci rálátás",
-    subtitle: '(Nincs „csőlátás")',
+    subtitle: '(nincs „csőlátás")',
   },
   {
     id: "02",
@@ -63,7 +63,7 @@ const Advantages = [
   {
     id: "04",
     title: "Átlátható tervezés",
-    subtitle: "(Nincs rejtett költség)",
+    subtitle: "(rejtett költségek nélkül)",
   },
 ];
 
@@ -80,7 +80,7 @@ export default function ContactPage() {
           <h1 className="mt-[-27px] xl:mt-[-40px] !text-[15px] xl:!text-[30px] text-zold font-bold font-mono bg-feher w-fit p-[5px]">
             Független pénzügyi szakértelem
           </h1>
-          <div className="mx-auto w-full p-4 sm:p-6">
+          <div className="mx-auto w-full ">
             <div className="divide-y divide-stone-200">
               <div className="flex flex-col gap-4">
                 {Advantages.map((item, idx) => (
@@ -247,7 +247,7 @@ export default function ContactPage() {
       </div>
       {/* Térkép konti ----------------- */}
 
-      <div className="w-full mt-[50px] ">
+      <div className="w-full mt-[50px] rounded-xl shadow-xl">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2696.2613991511735!2d19.030972512400925!3d47.48482087105866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4741dc338432bfe7%3A0xacec37d0cfb14949!2sBudapest%2C%20Gombocz%20Zolt%C3%A1n%20u.%208b%2C%201118!5e0!3m2!1shu!2shu!4v1784216553786!5m2!1shu!2shu"
           width="600"

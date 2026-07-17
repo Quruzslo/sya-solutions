@@ -18,7 +18,7 @@ const PartnerCarousel = () => {
             <div className={styles.imageContainer}>
               <Image
                 src={partner.img}
-                alt={partner.name}
+                alt={`${partner.name} biztosító`}
                 fill
                 className={styles.partnerImage}
                 sizes="140px"
