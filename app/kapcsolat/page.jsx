@@ -145,7 +145,7 @@ export default function ContactPage() {
                   {/* 1. Kép konténer */}
                   <div
                     onClick={() => handleToggle(idx)}
-                    className="peer relative z-10 h-[80px] w-[80px] xl:h-[120px] xl:w-[120px] cursor-pointer overflow-hidden rounded-full border-[3px] border-zold shadow-sm transition-transform duration-300 hover:scale-105"
+                    className="peer relative  h-[80px] w-[80px] xl:h-[120px] xl:w-[120px] cursor-pointer overflow-hidden rounded-full border-[3px] border-zold shadow-sm transition-transform duration-300 hover:scale-105"
                   >
                     <Image
                       src={member.photo}
@@ -159,7 +159,7 @@ export default function ContactPage() {
                   <div
                     className={`pointer-events-none absolute top-[92px] xl:top-[132px]  md:left-1/2 z-20 w-[190px] -translate-x-[25%] md:-translate-x-1/2 -translate-y-1 rounded-md border border-zold/15 bg-white p-4 opacity-0 shadow-[0_8px_24px_-4px_rgba(0,0,0,0.12)] transition-all duration-300 ease-out
           peer-hover:translate-y-0 peer-hover:opacity-100
-          ${isActive ? "translate-y-0 opacity-100" : ""}`}
+          ${isActive ? "translate-y-0 opacity-100 pointer-events-auto" : ""}`}
                   >
                     {/* kis nyíl az avatar felé */}
                     <span className="absolute -top-1.5 left-3/4 md:left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 border-l border-t border-zold/15 bg-white" />
@@ -173,10 +173,13 @@ export default function ContactPage() {
                         <LuBriefcase size={13} className="shrink-0 text-zold" />
                         <span>{member.title}</span>
                       </div>
-                      <div className="flex items-center gap-2 text-xs text-zinc-500">
+                      <Link
+                        href={`tel:${member.tel}`}
+                        className="flex items-center gap-2 text-xs text-zinc-500"
+                      >
                         <LuPhone size={13} className="shrink-0 text-zold" />
                         <span className="font-mono">{member.tel}</span>
-                      </div>
+                      </Link>
                     </div>
                   </div>
                 </div>
