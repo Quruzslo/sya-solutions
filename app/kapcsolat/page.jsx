@@ -1,3 +1,6 @@
+"use client";
+import { useState, useEffect, useRef } from "react";
+
 import ContactForm from "../../components/contactForm/contactForm";
 import Link from "next/link";
 import Image from "next/image";
@@ -10,6 +13,7 @@ import { FaFacebookF } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { CiGlobe } from "react-icons/ci";
 import { FaMapLocationDot } from "react-icons/fa6";
+import { LuBriefcase, LuPhone } from "react-icons/lu";
 
 // Képek ----------------------
 import Vió from "../../public/images/Viola.jpg";
@@ -68,6 +72,32 @@ const Advantages = [
 ];
 
 export default function ContactPage() {
+  const [activeMemberIdx, setActiveMemberIdx] = useState(null);
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target)
+      ) {
+        setActiveMemberIdx(null);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
+  }, []);
+
+  const handleToggle = (idx) => {
+    setActiveMemberIdx(activeMemberIdx === idx ? null : idx);
+  };
+
   return (
     <section className="w-[90%] max-w-[2560px] mx-auto flex flex-col min-h-[100vh] py-[120px]">
       <SectionTitles
@@ -107,26 +137,51 @@ export default function ContactPage() {
 
           {/* Tagok képei --------------------- */}
           <div className="absolute right-[-40px] xl:right-[-60px] top-0 flex h-full w-fit flex-col justify-between py-[10px]">
-            {Members.map((member, idx) => (
-              <div key={idx} className="relative flex flex-col items-center">
-                {/* 1. Kép konténer  */}
-                <div className="peer relative z-10 h-[80px] w-[80px] xl:h-[120px] xl:w-[120px] cursor-pointer overflow-hidden rounded-full border-4 border-zold">
-                  <Image
-                    src={member.photo}
-                    alt={member.name || "Profilkép"}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
+            {Members.map((member, idx) => {
+              const isActive = activeMemberIdx === idx;
 
-                {/* 2. Dropdown / Tooltip konténer */}
-                <div className="pointer-events-none absolute top-[80px] xl:top-[120px] right-0 xl:right-[0px] z-20 w-[150px] -translate-y-2 rounded-sm bg-zold p-[10px] text-white opacity-0 transition-all duration-300 ease-out peer-hover:translate-y-0 peer-hover:opacity-100">
-                  <p className="font-bold">{member.name}</p>
-                  <p className="text-sm">{member.title}</p>
-                  <p className="text-sm">{member.tel}</p>
+              return (
+                <div key={idx} className="relative flex flex-col items-center">
+                  {/* 1. Kép konténer */}
+                  <div
+                    onClick={() => handleToggle(idx)}
+                    className="peer relative z-10 h-[80px] w-[80px] xl:h-[120px] xl:w-[120px] cursor-pointer overflow-hidden rounded-full border-[3px] border-zold shadow-sm transition-transform duration-300 hover:scale-105"
+                  >
+                    <Image
+                      src={member.photo}
+                      alt={member.name || "Profilkép"}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+
+                  {/* 2. Dropdown / Tooltip konténer */}
+                  <div
+                    className={`pointer-events-none absolute top-[92px] xl:top-[132px]  md:left-1/2 z-20 w-[190px] -translate-x-[25%] md:-translate-x-1/2 -translate-y-1 rounded-md border border-zold/15 bg-white p-4 opacity-0 shadow-[0_8px_24px_-4px_rgba(0,0,0,0.12)] transition-all duration-300 ease-out
+          peer-hover:translate-y-0 peer-hover:opacity-100
+          ${isActive ? "translate-y-0 opacity-100" : ""}`}
+                  >
+                    {/* kis nyíl az avatar felé */}
+                    <span className="absolute -top-1.5 left-3/4 md:left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 border-l border-t border-zold/15 bg-white" />
+
+                    <p className="font-semibold tracking-tight text-zinc-900">
+                      {member.name}
+                    </p>
+
+                    <div className="mt-2 space-y-1.5 border-t border-zinc-100 pt-2">
+                      <div className="flex items-center gap-2 text-xs text-zinc-500">
+                        <LuBriefcase size={13} className="shrink-0 text-zold" />
+                        <span>{member.title}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-xs text-zinc-500">
+                        <LuPhone size={13} className="shrink-0 text-zold" />
+                        <span className="font-mono">{member.tel}</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* Alsó szekció balon ----------- */}
