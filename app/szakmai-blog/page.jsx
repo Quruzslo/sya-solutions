@@ -84,7 +84,7 @@ const getCachedPosts = unstable_cache(
     return { posts, totalPages };
   },
   ["blog-posts-list"],
-  { revalidate: 60, tags: ["posts"] },
+  { revalidate: 3600, tags: ["posts"] },
 );
 
 export default async function BlogPage(props) {
