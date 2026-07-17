@@ -1,9 +1,15 @@
+"use client";
 import Link from "next/link";
 import SyaLogo from "../header/syaLogo";
 import navItems from "@/lib/navItems";
+import { useState, useEffect } from "react";
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
+  const [year, setYear] = useState(2026);
+
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
 
   return (
     <footer className="w-full bg-[#1f241b] flex flex-col justify-center items-center pt-16 pb-6 text-[#e7ebe3] border-t border-[#3f4603]/30 ">
@@ -161,7 +167,7 @@ export default function Footer() {
           className="w-full pt-6 border-t border-[#3f4603]/50 flex flex-col md:flex-row justify-between items-center gap-4 text-xs opacity-60 font-light"
           style={{ fontFamily: "var(--font-inter), sans-serif" }}
         >
-          <p>© {currentYear} S.Y.A Solutions. Minden jog fenntartva.</p>
+          <p>© {year} S.Y.A Solutions. Minden jog fenntartva.</p>
           <p>
             Fejlesztő:{" "}
             <span className="font-semibold text-[#bfa06a]">Prefer Site</span>
