@@ -1,6 +1,5 @@
 export const Partners = [
   { name: "Signal", img: "/logos/signal.jpg" },
-  { name: "Uniqa", img: "/logos/uniqa.png" },
   { name: "Generali", img: "/logos/generali.png" },
   { name: "Union", img: "/logos/union.png" },
   { name: "Allianz", img: "/logos/allianz.png" },
@@ -21,4 +20,5 @@ export const Partners = [
   { name: "Generali pénztárak", img: "/logos/generali-p.png" },
   { name: "OTP Lakástakarék", img: "/logos/otp-lt.png" },
   { name: "Erste Lakástakarék", img: "/logos/erste-lt.png" },
+  { name: "Uniqa", img: "/logos/uniqa.png" },
 ];
