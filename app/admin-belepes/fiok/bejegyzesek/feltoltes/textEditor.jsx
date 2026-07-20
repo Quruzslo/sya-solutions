@@ -41,7 +41,7 @@ export default function TextEditor({ value, onChange, onImageAdd }) {
     },
   });
 
-  // FIGYELEM: Ez a useEffect szinkronizálja az aszinkron betöltődő adatokat!
+  // aszinkron betöltődő adatokat!
   useEffect(() => {
     if (editor && value !== editor.getHTML()) {
       editor.commands.setContent(value || "");

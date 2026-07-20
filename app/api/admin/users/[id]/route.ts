@@ -8,6 +8,7 @@ interface CustomSession {
   user?: {
     name?: string | null;
     email?: string | null;
+    tel?: any | null;
     role?: string | null;
   };
 }
@@ -67,7 +68,7 @@ export async function PATCH(req: NextRequest, context: RouteContext) {
     const { id } = resolvedParams;
 
     const data = await req.json();
-    const { name, email, role, password } = data;
+    const { name, email, tel, role, password } = data;
     const db = client.db("main").collection("admin");
 
     const normalizedEmail = email.toLowerCase().trim();
@@ -86,6 +87,7 @@ export async function PATCH(req: NextRequest, context: RouteContext) {
     const updateData: any = {
       name,
       email: normalizedEmail,
+      tel,
       role,
     };
 

@@ -14,6 +14,7 @@ export default function UserActions({ user, isAdmin }) {
   const [formData, setFormData] = useState({
     name: user.name,
     email: user.email,
+    tel: user.tel || "",
     role: user.role,
     password: "",
   });
@@ -120,6 +121,18 @@ export default function UserActions({ user, isAdmin }) {
               className="p-2 rounded-md border border-slate-300"
               placeholder="Email"
             />
+
+            <input
+              type="tel"
+              value={formData.tel}
+              onChange={(e) =>
+                setFormData({ ...formData, tel: e.target.value })
+              }
+              required
+              className="p-2 rounded-md border border-slate-300"
+              placeholder="Telefon"
+            />
+
             <input
               type="password"
               value={formData.password}

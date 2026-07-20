@@ -12,6 +12,7 @@ export default function AddUserForm() {
     name: "",
     email: "",
     password: "",
+    tel: "",
     role: "editor",
   });
 
@@ -38,7 +39,13 @@ export default function AddUserForm() {
       if (res.ok) {
         setMessage({ text: data.message, type: "success" });
 
-        setFormData({ name: "", email: "", password: "", role: "editor" });
+        setFormData({
+          name: "",
+          email: "",
+          tel: "",
+          password: "",
+          role: "editor",
+        });
         router.refresh();
       } else {
         setMessage({
@@ -89,6 +96,22 @@ export default function AddUserForm() {
           required
           className="p-2 rounded-md bg-white border-none outline-none focus:ring-2 focus:ring-zold"
           placeholder="janos@email.com"
+        />
+      </div>
+
+      <div className="flex flex-col gap-1">
+        <label className="text-sm font-semibold text-white" htmlFor="email">
+          Telefonszám
+        </label>
+        <input
+          type="tel"
+          id="tel"
+          name="tel"
+          value={formData.tel}
+          onChange={handleChange}
+          required
+          className="p-2 rounded-md bg-white border-none outline-none focus:ring-2 focus:ring-zold"
+          placeholder="+36201233223"
         />
       </div>
 

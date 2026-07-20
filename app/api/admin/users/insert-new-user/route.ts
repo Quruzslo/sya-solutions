@@ -6,6 +6,7 @@ import { auth } from "@/auth";
 interface UserData {
   name: string;
   email: string;
+  tel: any;
   password: string;
   role: "admin" | "editor";
 }
@@ -14,6 +15,7 @@ interface CustomSession {
   user?: {
     name?: string | null;
     email?: string | null;
+    tel?: any | null;
     role?: string | null;
   };
 }
@@ -30,7 +32,7 @@ export async function POST(req: NextRequest) {
 
   try {
     const data: UserData = await req.json();
-    const { name, email, password, role } = data;
+    const { name, email, password, role, tel } = data;
     if (!name || !email || !password || !role) {
       return NextResponse.json(
         { message: "Minden mező kitöltése kötelező!" },
@@ -62,6 +64,7 @@ export async function POST(req: NextRequest) {
     await db.insertOne({
       name: name,
       email: normalizedEmail,
+      tel: tel,
       password: hasheltJelszo,
       role: role,
       createdAt: new Date(),
