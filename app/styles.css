@@ -51,6 +51,15 @@ h2 {
   -webkit-hyphens: auto;
 }
 
+h3,
+h4 {
+  font-family: var(--font-inter), serif;
+  font-size: 25px;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
 p,
 li,
 a,

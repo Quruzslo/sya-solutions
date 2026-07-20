@@ -54,8 +54,8 @@ export default function ContactSection() {
 
           {/* Jobb oldal - konzultációs szelvény */}
           <div className="relative w-full xl:w-[42%] h-fit shrink-0">
-            <div className="relative rounded-xl bg-zold p-8 md:p-10">
-              <div className="grid grid-cols-3 place-items-center absolute top-0 right-0 p-3 gap-3">
+            <div className="relative rounded-xl bg-zold p-[15px] md:p-[35px]">
+              <div className="grid grid-cols-3 place-items-center absolute w-[100px] h-[100px] top-0 right-0 p-3 gap-3">
                 {Array.from({ length: 9 }).map((_, index) => {
                   const randomSize = Math.floor(Math.random() * 11) + 10;
                   return (
@@ -73,7 +73,7 @@ export default function ContactSection() {
               <p className=" text-xs tracking-[0.2em] text-[#e7ebe3]/60 mb-4">
                 DÍJMENTES ELEMZÉS
               </p>
-              <h3 className="text-[20px] md:text-[24px] font-bold leading-snug text-[#e7ebe3] max-w-md mb-8">
+              <h3 className="text-[15px] md:text-[20px] font-bold text-feher mt-[65px]">
                 További részletekért kérj díjmentes elemzést,
                 kötelezettségvállalás nélkül!
               </h3>
