@@ -13,8 +13,8 @@ export default function SectionOne() {
   const [activeMember, setActiveMember] = useState({
     image: Zso,
     title: "Tanácsadó",
-    name: "Szőgyényi Zsófia Zsó Cunn",
-    desc: "Ide jön a bla bla , meow és cunn",
+    name: "Szőgyényi Zsófia",
+    desc: "Ide jön rövid bemutatkozás/szlogen",
     isActive: 2,
   });
 
@@ -45,7 +45,7 @@ export default function SectionOne() {
                 image={Viola}
                 title={"Fiókvezető"}
                 name={"Vincze Viola"}
-                desc={"Ide jön a bla bla"}
+                desc={"Ide jön rövid bemutatkozás/szlogen"}
                 num={1}
                 isActive={activeMember.isActive}
                 setActiveMember={setActiveMember}
@@ -54,7 +54,7 @@ export default function SectionOne() {
                 image={Zso}
                 title={"Tanácsadó Leader"}
                 name={"Szőgyényi Zsófia "}
-                desc={"Ide jön a bla bla"}
+                desc={"Ide jön rövid bemutatkozás/szlogen"}
                 num={2}
                 isActive={activeMember.isActive}
                 setActiveMember={setActiveMember}
@@ -63,7 +63,7 @@ export default function SectionOne() {
                 image={Dani}
                 title={"Tanácsadó"}
                 name={"Kis Dániel"}
-                desc={"Ide jön a bla bla "}
+                desc={"Ide jön rövid bemutatkozás/szlogen"}
                 num={3}
                 isActive={activeMember.isActive}
                 setActiveMember={setActiveMember}
@@ -72,7 +72,7 @@ export default function SectionOne() {
                 image={Zsani}
                 title={"Tanácsadó"}
                 name={"Szabó Zsanett"}
-                desc={"Ide jön a bla bla "}
+                desc={"IIde jön rövid bemutatkozás/szlogen"}
                 num={4}
                 isActive={activeMember.isActive}
                 setActiveMember={setActiveMember}

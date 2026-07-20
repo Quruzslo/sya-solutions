@@ -90,9 +90,9 @@ export default async function SingleBlogPage(props) {
       {/* Vissza gomb */}
       <Link
         href="/szakmai-blog"
-        className="inline-flex items-center gap-2 text-slate-500 hover:text-zold transition-colors mb-8 font-medium"
+        className="inline-flex items-center gap-2 text-slate-green hover:text-feher hover:bg-zold transition-colors mb-8 font-medium p-2 rounded-md"
       >
-        <span>←</span> Vissza a bloghoz
+        <span>←</span> Vissza
       </Link>
 
       <article className="flex flex-col gap-6">

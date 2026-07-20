@@ -11,11 +11,14 @@ export default function BlogCard({ post }) {
   return (
     <Link
       href={postUrl}
-      className="group relative flex flex-col bg-white border border-slate-200 transition-colors duration-300 hover:border-zold/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zold/40 focus-visible:ring-offset-2"
+      className="group overflow-hidden relative flex flex-col bg-white border border-slate-200 transition-colors duration-300 hover:border-zold/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zold/40 focus-visible:ring-offset-2 rounded-md"
     >
       {/* felső accent  */}
       <div className="relative h-[3px] w-full bg-slate-100 overflow-hidden">
-        <div className="absolute inset-0 origin-left scale-x-0 bg-zold transition-transform duration-500 ease-out motion-reduce:transition-none group-hover:scale-x-100" />
+        <div
+          className="absolute rounded-md
+         inset-0 origin-left scale-x-0 bg-zold transition-transform duration-500 ease-out motion-reduce:transition-none group-hover:scale-x-100"
+        />
       </div>
 
       <div className="relative w-full aspect-[4/3] bg-slate-100 overflow-hidden">
