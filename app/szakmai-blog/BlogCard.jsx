@@ -14,7 +14,7 @@ export default function BlogCard({ post }) {
       className="group overflow-hidden relative flex flex-col bg-white border border-slate-200 transition-colors duration-300 hover:border-zold/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zold/40 focus-visible:ring-offset-2 rounded-md"
     >
       {/* felső accent  */}
-      <div className="relative h-[3px] w-full bg-slate-100 overflow-hidden">
+      <div className="relative h-[5px] w-full bg-transparent overflow-hidden">
         <div
           className="absolute rounded-md
          inset-0 origin-left scale-x-0 bg-zold transition-transform duration-500 ease-out motion-reduce:transition-none group-hover:scale-x-100"
