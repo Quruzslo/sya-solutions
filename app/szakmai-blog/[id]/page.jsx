@@ -116,7 +116,7 @@ export default async function SingleBlogPage(props) {
 
             <h1
               style={{ fontFamily: "var(--font-inter)" }}
-              className=" !text-[30px]  font-bold text-slate-900 leading-tight"
+              className=" !text-[30px]  font-bold text-zold leading-tight"
             >
               {post.title}
             </h1>
@@ -143,7 +143,7 @@ export default async function SingleBlogPage(props) {
 
         {/* Bevezető / Leírás */}
         {post.description && (
-          <p className="text-lg text-slate-600 font-medium italic border-l-4 border-zold pl-4 py-2">
+          <p className="text-lg text-zold font-medium italic border-l-4 border-zold pl-4 py-2">
             {post.description}
           </p>
         )}

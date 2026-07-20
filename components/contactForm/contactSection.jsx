@@ -1,116 +1,98 @@
-import ContactForm from "./contactForm";
 import Link from "next/link";
+
 export default function ContactSection() {
   return (
-    <section
-      className="w-[100%] py-[35px] mx-auto mt-[100px] md:mt-[150px] bg-transparent  text-zold bg-no-repeat bg-cover bg-center"
-      style={{
-        backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="2560" height="560" preserveAspectRatio="none" viewBox="0 0 2560 560"><g mask="url(%23SvgjsMask1028)" fill="none"><path d="M0 80.46L10 74.38L20 144.08L30 184.42L40 161.08L50 146.86L60 215.36L70 146.29L80 117.99L90 104.99L100 67.49L110 134.06L120 180.26L130 182.35L140 152.92L150 112.19L160 100.09L170 99.65L180 54.45L190 53.85L200 19.29L210 57.54L220 24.59L230 72.73L240 108.41L250 91.75L260 70.88L270 39.76L280 74.44L290 10.18L300 33.48L310 69.22L320 39.94L330 54.61L340 18.32L350 1.24L360 58.47L370 58.49L380 89.03L390 89.67L400 86.04L410 96.13L420 98.72L430 156.77L440 142.46L450 107.7L460 60.67L470 84.99L480 91.3L490 68.18L500 88.93L510 153.85L520 138.25L530 162L540 176.32L550 120.91L560 86.41L570 113.74L580 147.78L590 191.33L600 124.1L610 180.06L620 153.61L630 137.55L640 193.15L650 200.07L660 262.56L670 268.94L680 274.61L690 250.78L700 221.18L710 208.26L720 146.43L730 115.68L740 157.42L750 127.43L760 126.57L770 155.74L780 223.32L790 274.19L800 291.31L810 249.77L820 240.55L830 267.38L840 237.76L850 224.66L860 204.76L870 222.48L880 220.09L890 232.17L900 200.99L910 230.8L920 298.58L930 340.34L940 389.81L950 372.68L960 345L970 309.7L980 335.15L990 268.25L1000 245.07L1010 301.91L1020 289.78L1030 353.2L1040 287.07L1050 255.15L1060 301.23L1070 302.87L1080 319.04L1090 262.18L1100 244.27L1110 253.97L1120 282.46L1130 328.93L1140 305.8L1150 334.58L1160 312.78L1170 262.98L1180 209.27L1190 266.96L1200 269.6L1210 333.97L1220 323.91L1230 342.47L1240 343.23L1250 381.74L1260 407.32L1270 340.58L1280 324.99L1290 318.8L1300 359.6L1310 326.31L1320 370.37L1330 387.65L1340 341.27L1350 282.63L1360 276.39L1370 231.03L1380 276.87L1390 227.23L1400 178.2L1410 210.27L1420 222.11L1430 270.27L1440 336.96L1450 390.5L1460 453.35L1470 388.13L1480 367.11L1490 403.45L1500 351.72L1510 411.89L1520 342.31L1530 296.28L1540 268.89L1550 210.7L1560 148.69L1570 118.5L1580 94.15L1590 133.09L1600 93.11L1610 129.54L1620 113.11L1630 155.66L1640 172.06L1650 111.58L1660 87.4L1670 31.34L1680 74.78L1690 5.17L1700 59.8L1710 55.21L1720 92.61L1730 28.98L1740 47.86L1750 83.14L1760 131.38L1770 181.02L1780 126.69L1790 175.59L1800 135.6L1810 192.13L1820 226.24L1830 211.56L1840 260.3L1850 226.31L1860 159.15L1870 216.61L1880 271.55L1890 323.35L1900 287.55L1910 323.85L1920 272.42L1930 207.35L1940 158.31L1950 158.39L1960 150.32L1970 219.51L1980 164.45L1990 169.16L2000 121.69L2010 188.53L2020 146.34L2030 183.91L2040 185.92L2050 172L2060 193.42L2070 188.11L2080 122.84L2090 123.73L2100 82.21L2110 14.41L2120 75.31L2130 45.81L2140 97.03L2150 125.27L2160 120.96L2170 51.89L2180 88.76L2190 50.6L2200 20.87L2210 31.15L2220 10.87L2230 38.96L2240 94.02L2250 38.93L2260 5.19L2270 17.32L2280 5.99L2290 11.16L2300 8.93L2310 63.64L2320 34.02L2330 52.63L2340 115.09L2350 113.58L2360 65.55L2370 73.91L2380 55.03L2390 26.7L2400 47.53L2410 97.43L2420 46.8L2430 42.28L2440 95.46L2450 107.51L2460 78.32L2470 104.65L2480 133.84L2490 66.19L2500 46.08L2510 29.44L2520 70.51L2530 41.9L2540 16.44L2550 36.79L2560 51.12" stroke="rgba(255, 255, 255, 0.11)" stroke-width="2"/><path d="M0 80.46L10 74.38L20 144.08L30 184.42L40 161.08L50 146.86L60 215.36L70 146.29L80 117.99L90 104.99L100 67.49L110 134.06L120 180.26L130 182.35L140 152.92L150 112.19L160 100.09L170 99.65L180 54.45L190 53.85L200 19.29L210 57.54L220 24.59L230 72.73L240 108.41L250 91.75L260 70.88L270 39.76L280 74.44L290 10.18L300 33.48L310 69.22L320 39.94L330 54.61L340 18.32L350 1.24L360 58.47L370 58.49L380 89.03L390 89.67L400 86.04L410 96.13L420 98.72L430 156.77L440 142.46L450 107.7L460 60.67L470 84.99L480 91.3L490 68.18L500 88.93L510 153.85L520 138.25L530 162L540 176.32L550 120.91L560 86.41L570 113.74L580 147.78L590 191.33L600 124.1L610 180.06L620 153.61L630 137.55L640 193.15L650 200.07L660 262.56L670 268.94L680 274.61L690 250.78L700 221.18L710 208.26L720 146.43L730 115.68L740 157.42L750 127.43L760 126.57L770 155.74L780 223.32L790 274.19L800 291.31L810 249.77L820 240.55L830 267.38L840 237.76L850 224.66L860 204.76L870 222.48L880 220.09L890 232.17L900 200.99L910 230.8L920 298.58L930 340.34L940 389.81L950 372.68L960 345L970 309.7L980 335.15L990 268.25L1000 245.07L1010 301.91L1020 289.78L1030 353.2L1040 287.07L1050 255.15L1060 301.23L1070 302.87L1080 319.04L1090 262.18L1100 244.27L1110 253.97L1120 282.46L1130 328.93L1140 305.8L1150 334.58L1160 312.78L1170 262.98L1180 209.27L1190 266.96L1200 269.6L1210 333.97L1220 323.91L1230 342.47L1240 343.23L1250 381.74L1260 407.32L1270 340.58L1280 324.99L1290 318.8L1300 359.6L1310 326.31L1320 370.37L1330 387.65L1340 341.27L1350 282.63L1360 276.39L1370 231.03L1380 276.87L1390 227.23L1400 178.2L1410 210.27L1420 222.11L1430 270.27L1440 336.96L1450 390.5L1460 453.35L1470 388.13L1480 367.11L1490 403.45L1500 351.72L1510 411.89L1520 342.31L1530 296.28L1540 268.89L1550 210.7L1560 148.69L1570 118.5L1580 94.15L1590 133.09L1600 93.11L1610 129.54L1620 113.11L1630 155.66L1640 172.06L1650 111.58L1660 87.4L1670 31.34L1680 74.78L1690 5.17L1700 59.8L1710 55.21L1720 92.61L1730 28.98L1740 47.86L1750 83.14L1760 131.38L1770 181.02L1780 126.69L1790 175.59L1800 135.6L1810 192.13L1820 226.24L1830 211.56L1840 260.3L1850 226.31L1860 159.15L1870 216.61L1880 271.55L1890 323.35L1900 287.55L1910 323.85L1920 272.42L1930 207.35L1940 158.31L1950 158.39L1960 150.32L1970 219.51L1980 164.45L1990 169.16L2000 121.69L2010 188.53L2020 146.34L2030 183.91L2040 185.92L2050 172L2060 193.42L2070 188.11L2080 122.84L2090 123.73L2100 82.21L2110 14.41L2120 75.31L2130 45.81L2140 97.03L2150 125.27L2160 120.96L2170 51.89L2180 88.76L2190 50.6L2200 20.87L2210 31.15L2220 10.87L2230 38.96L2240 94.02L2250 38.93L2260 5.19L2270 17.32L2280 5.99L2290 11.16L2300 8.93L2310 63.64L2320 34.02L2330 52.63L2340 115.09L2350 113.58L2360 65.55L2370 73.91L2380 55.03L2390 26.7L2400 47.53L2410 97.43L2420 46.8L2430 42.28L2440 95.46L2450 107.51L2460 78.32L2470 104.65L2480 133.84L2490 66.19L2500 46.08L2510 29.44L2520 70.51L2530 41.9L2540 16.44L2550 36.79L2560 51.12L2560 560L0 560z" fill="url(%23SvgjsLinearGradient1029)"/></g><defs><mask id="SvgjsMask1028"><rect width="2560" height="560" fill="%23ffffff"/></mask><linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="SvgjsLinearGradient1029"><stop stop-opacity="0.65" stop-color="rgba(63, 70, 3, 0.51)" offset="0"/><stop stop-opacity="0" stop-color="rgba(118, 132, 6, 0.51)" offset="0.8"/></linearGradient></defs></svg>')`,
-      }}
-    >
-      <div className=" w-[90%] mx-auto">
-        <div className="flex flex-col xl:flex-row gap-[50px] justify-between w-full">
-          <div className="flex flex-col gap-8 md:gap-10 w-[100%] xl:w-[50%]">
-            <h3 className="!text-[22px] md:!text-[25px] font-black tracking-tight  mb-10 border-b border-white pb-10">
+    <section className="w-[100%] py-[35px] mx-auto mt-[100px] md:mt-[150px] bg-transparent text-zold">
+      <div className="w-[90%] mx-auto border-t border-zold/15 pt-14 md:pt-20">
+        <div className="flex flex-col xl:flex-row gap-16 xl:gap-12 justify-between w-full">
+          {/* Bal oldal */}
+          <div className="flex flex-col w-full xl:w-[52%]">
+            <p className=" text-xs tracking-[0.2em] text-zold/50 mb-4">
+              FÜGGETLEN PÉNZÜGYI TANÁCSADÁS
+            </p>
+            <h3 className="text-[22px] md:text-[28px] font-black tracking-tight leading-tight mb-10 max-w-lg">
               Miért a független tanácsadás a legjobb választás a családjának?
             </h3>
-            <div className="flex flex-col md:flex-row gap-4 md:gap-8">
-              <span className="text-xl font-bold text-zold/40 shrink-0">
-                01 /
-              </span>
-              <div>
-                <h4 className="text-xl font-bold mb-2 text-zold">
-                  Nincs elköteleződés egyetlen márka felé sem
-                </h4>
-                <p className="text-zold leading-relaxed">
-                  Nem egyetlen pénzintézet vagy ügynökség zárt, korlátozott
-                  termékeit erőltetjük Önre. A teljes szabad piacot
-                  monitorozzuk, így kizárólag az Ön egyéni igényei és a család
-                  biztonsága diktál.
-                </p>
-              </div>
-            </div>
 
-            <div className="flex flex-col md:flex-row gap-4 md:gap-8 border-t border-white/5 pt-8">
-              <span className="text-xl font-bold text-zold/40 shrink-0">
-                02 /
-              </span>
-              <div>
-                <h4 className="text-xl font-bold mb-2 text-zold">
-                  Személyre szabott, torzításmentes analízis
-                </h4>
-                <p className="text-zold leading-relaxed">
-                  Nem hiszünk az előre csomagolt, sablonos megoldásokban. Minden
-                  család élethelyzete, teherbíró képessége és jövőbeli
-                  célrendszere teljesen egyedi – a javasolt konstrukcióink is
-                  ehhez igazodnak.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex flex-col md:flex-row gap-4 md:gap-8 border-t border-white/5 pt-8">
-              <span className="text-xl font-bold text-zold/40 shrink-0">
-                03 /
-              </span>
-              <div>
-                <h4 className="text-xl font-bold mb-2 text-zold">
-                  Hosszú távú, aktív partnerség
-                </h4>
-                <p className="text-zold leading-relaxed">
-                  Nem tűnünk el a szerződések aláírását követően. Évente
-                  felülvizsgáljuk a meglévő csomagokat, hogy azok mindig a
-                  legfrissebb piaci trendeknek, adókedvezményeknek és a család
-                  aktuális élethelyzetének megfelelően fussanak.
-                </p>
-              </div>
+            <div className="flex flex-col">
+              {[
+                {
+                  tag: "FÜGGETLEN",
+                  title: "Nincs elköteleződés egyetlen márka felé sem",
+                  text: "Nem egyetlen pénzintézet vagy ügynökség zárt, korlátozott termékeit erőltetjük Önre. A teljes szabad piacot monitorozzuk, így kizárólag az Ön egyéni igényei és a család biztonsága diktál.",
+                },
+                {
+                  tag: "EGYEDI",
+                  title: "Személyre szabott, torzításmentes analízis",
+                  text: "Nem hiszünk az előre csomagolt, sablonos megoldásokban. Minden család élethelyzete, teherbíró képessége és jövőbeli célrendszere teljesen egyedi – a javasolt konstrukcióink is ehhez igazodnak.",
+                },
+                {
+                  tag: "TARTÓS",
+                  title: "Hosszú távú, aktív partnerség",
+                  text: "Nem tűnünk el a szerződések aláírását követően. Évente felülvizsgáljuk a meglévő csomagokat, hogy azok mindig a legfrissebb piaci trendeknek, adókedvezményeknek és a család aktuális élethelyzetének megfelelően fussanak.",
+                },
+              ].map((item, i) => (
+                <div
+                  key={item.tag}
+                  className={`flex flex-col md:flex-row gap-3 md:gap-8 py-8 ${
+                    i === 0 ? "" : "border-t border-zold/10"
+                  }`}
+                >
+                  <span className="tracking-wider font-black text-zold/50 shrink-0 md:w-[120px] pt-1">
+                    {item.tag} -
+                  </span>
+                  <div>
+                    <h4 className="text-lg font-bold mb-2 text-zold">
+                      {item.title}
+                    </h4>
+                    <p className="text-zold/80 leading-relaxed">{item.text}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Jobb oldal----------------- */}
-          <div className="relative flex w-[100%] h-fit flex-col items-start gap-6 overflow-hidden rounded-2xl bg-zold p-8 xl:w-[50%] items-center xl:gap-10 xl:p-10">
-            {/* ambient glow */}
-            <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-white/10 blur-3xl" />
-            {/* Díszítő pötyikék---------- */}
-
-            <div className="grid h-fit w-fit grid-cols-3 place-items-center absolute top-0 right-0 p-[10px] gap-3">
-              {Array.from({ length: 9 }).map((_, index) => {
-                // Generálunk egy random számot 10 és 20 között
-                const randomSize = Math.floor(Math.random() * 11) + 10;
-
-                return (
-                  <div
-                    key={index}
-                    className="rounded-full bg-white shadow-sm"
-                    style={{
-                      width: `${randomSize}px`,
-                      height: `${randomSize}px`,
-                    }}
-                  ></div>
-                );
-              })}
-            </div>
-            <div className="relative">
-              <p className="mb-3 font-mono text-xs tracking-[0.2em] text-[#e7ebe3]/60">
-                // DÍJMENTES ELEMZÉS
+          {/* Jobb oldal - konzultációs szelvény */}
+          <div className="relative w-full xl:w-[42%] h-fit shrink-0">
+            <div className="relative rounded-xl bg-zold p-8 md:p-10">
+              <div className="grid grid-cols-3 place-items-center absolute top-0 right-0 p-3 gap-3">
+                {Array.from({ length: 9 }).map((_, index) => {
+                  const randomSize = Math.floor(Math.random() * 11) + 10;
+                  return (
+                    <div
+                      key={index}
+                      className="rounded-full bg-white/90 shadow-sm"
+                      style={{
+                        width: `${randomSize}px`,
+                        height: `${randomSize}px`,
+                      }}
+                    />
+                  );
+                })}
+              </div>
+              <p className=" text-xs tracking-[0.2em] text-[#e7ebe3]/60 mb-4">
+                DÍJMENTES ELEMZÉS
               </p>
-              <h3 className="max-w-md text-[20px] font-bold leading-snug text-[#e7ebe3] md:text-[25px] mt-[45px]">
+              <h3 className="text-[20px] md:text-[24px] font-bold leading-snug text-[#e7ebe3] max-w-md mb-8">
                 További részletekért kérj díjmentes elemzést,
                 kötelezettségvállalás nélkül!
               </h3>
-            </div>
 
-            <Link
-              href="/kapcsolat"
-              className="group relative inline-flex shrink-0 items-center gap-2 rounded-full bg-[#e7ebe3] px-6 py-3.5 text-sm font-semibold text-zold transition-all duration-300 hover:gap-3 hover:bg-white motion-reduce:transition-none"
-            >
-              Konzultációt szeretnék
-              <span
-                aria-hidden
-                className="transition-transform duration-300 group-hover:translate-x-2 motion-reduce:transition-none"
-              >
-                →
-              </span>
-            </Link>
+              <div className="border-t border-dashed border-[#e7ebe3]/25 pt-6">
+                <Link
+                  href="/kapcsolat"
+                  className="group rounded-xl inline-flex w-full sm:w-auto items-center justify-between sm:justify-start gap-6 border border-[#e7ebe3] px-6 py-3.5 text-sm font-semibold text-[#e7ebe3] transition-colors duration-300 hover:bg-[#e7ebe3] hover:text-zold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#e7ebe3]"
+                >
+                  Konzultációt szeretnék
+                  <span
+                    aria-hidden
+                    className="transition-transform duration-300 group-hover:translate-x-1.5 motion-reduce:transition-none"
+                  >
+                    →
+                  </span>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>

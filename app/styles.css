@@ -480,4 +480,39 @@ blockquote {
   transform: rotateX(90deg);
 }
 
-/* partnerek carousel ------------------- */
+/* Blogoldal formázások -------------------- */
+
+.prose ul {
+  padding: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  width: 50%;
+  display: block;
+  border-radius: 0px;
+  border-left: 3px solid var(--color-zold);
+
+  @media (max-width: 769px) {
+    width: 100%;
+  }
+}
+
+.prose ul > li {
+  background: var(--color-feher);
+  display: flex;
+  margin-bottom: 8px;
+
+  border-radius: 4px;
+
+  &::before {
+    content: "•";
+    color: var(--color-zold);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-right: 8px;
+  }
+}
+
+.prose ul > li:last-child {
+  margin-bottom: 0;
+}
