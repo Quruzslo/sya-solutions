@@ -87,19 +87,18 @@ export default async function SingleBlogPage(props) {
 
   return (
     <main className="w-[90%] max-w-[2560px] mx-auto my-[150px]">
-      {/* Vissza gomb */}
-      <Link
-        href="/szakmai-blog"
-        className="inline-flex items-center gap-2 text-slate-green hover:text-feher hover:bg-zold transition-colors mb-8 font-medium p-2 rounded-md"
-      >
-        <span>←</span> Vissza
-      </Link>
-
       <article className="flex flex-col gap-6">
         {/* Kategória és Dátum / Szerző */}
         <div className="flex flex-col md:flex-row gap-[20px]">
           {/* Bal oldal----------- */}
           <div className="flex flex-col gap-[15px] items-start justify-center w-full md:w-1/2">
+            {/* Vissza gomb */}
+            <Link
+              href="/szakmai-blog"
+              className="inline-flex items-center gap-2 text-slate-green hover:text-feher hover:bg-zold transition-colors mb-8 font-medium p-2 rounded-md"
+            >
+              <span>←</span> Vissza
+            </Link>
             <div className="flex items-center gap-4 text-sm text-slate-500">
               {post.category?.name && (
                 <span className="bg-zold/10 text-zold px-3 py-1 rounded-full font-semibold">
