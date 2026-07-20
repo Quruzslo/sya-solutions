@@ -19,7 +19,7 @@ export default function CategoryFilter({ categories, currentCategory }) {
       aria-label="Kategória szűrő"
       className="flex flex-col items-start gap-2 border-2 border-zold rounded-[10px] relative p-[5px] pb-[20px]"
     >
-      <div className="border-2 border-zold rounded-full p-[5px] mx-auto translate-y-[calc(-65%)] bg-feher">
+      <div className="rounded-full p-[5px] mx-auto translate-y-[calc(-65%)] bg-feher">
         <h3>Kategória szűrő</h3>
       </div>
       {items.map((item) => {
