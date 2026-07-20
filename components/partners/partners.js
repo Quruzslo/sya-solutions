@@ -1,6 +1,6 @@
 export const Partners = [
   { name: "Signal", img: "/logos/signal.jpg" },
-  { name: "Uniqa", img: "/logos/uniqa.png " },
+  { name: "Uniqa", img: "/logos/uniqa.png" },
   { name: "Generali", img: "/logos/generali.png" },
   { name: "Union", img: "/logos/union.png" },
   { name: "Allianz", img: "/logos/allianz.png" },
