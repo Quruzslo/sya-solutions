@@ -11,7 +11,7 @@ export default function ContactSection() {
               FÜGGETLEN PÉNZÜGYI TANÁCSADÁS
             </p>
             <h3 className="text-[22px] md:text-[28px] font-black tracking-tight leading-tight mb-10 max-w-lg">
-              Miért a független tanácsadás a legjobb választás a családjának?
+              Miért a független tanácsadás a legjobb választás?
             </h3>
 
             <div className="flex flex-col">
@@ -52,7 +52,7 @@ export default function ContactSection() {
             </div>
           </div>
 
-          {/* Jobb oldal - konzultációs szelvény */}
+          {/* Jobb oldal  */}
           <div className="relative w-full xl:w-[42%] h-fit shrink-0">
             <div className="relative rounded-xl bg-zold p-[15px] md:p-[35px]">
               <div className="grid grid-cols-3 place-items-center absolute w-[100px] h-[100px] top-0 right-0 p-3 gap-3">

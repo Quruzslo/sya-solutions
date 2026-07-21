@@ -31,8 +31,8 @@ export default function SectionTwo() {
         {/* BAL OLDAL  */}
         <div className="w-full md:w-[50%] flex flex-col justify-between py-[5vh] pr-0 md:pr-10">
           <div className="flex flex-col justify-center">
-            <h3 className="text-2xl font-bold mb-4 text-[#3f4603]">
-              A S.Y.A. Solutions filozófiája
+            <h3 className=" font-bold mb-4 text-feher bg-zold p-2 rounded-md w-fit">
+              Filozófiánk
             </h3>
             <p className="text-lg leading-relaxed text-pretty mb-2">
               Hivatásunk és nevünk a pénzpiac három legfontosabb alappillérére
@@ -56,7 +56,7 @@ export default function SectionTwo() {
                     />
                   </svg>
                 </span>
-                <span className="text-lg text-gray-700 leading-relaxed">
+                <span className="text-lg text-text-alap leading-relaxed">
                   <strong className="text-[#3f4603] font-semibold border-b-2 border-[#3f4603]/20 pb-0.5 mr-1">
                     Safety (Biztonság):
                   </strong>{" "}
@@ -80,7 +80,7 @@ export default function SectionTwo() {
                     />
                   </svg>
                 </span>
-                <span className="text-lg text-gray-700 leading-relaxed">
+                <span className="text-lg text-text-alap leading-relaxed">
                   <strong className="text-[#3f4603] font-semibold border-b-2 border-[#3f4603]/20 pb-0.5 mr-1">
                     Yield (Hozam):
                   </strong>{" "}
@@ -104,7 +104,7 @@ export default function SectionTwo() {
                     />
                   </svg>
                 </span>
-                <span className="text-lg text-gray-700 leading-relaxed">
+                <span className="text-lg text-text-alap leading-relaxed">
                   <strong className="text-[#3f4603] font-semibold border-b-2 border-[#3f4603]/20 pb-0.5 mr-1">
                     Accessibility (Hozzáférhetőség):
                   </strong>{" "}
@@ -113,7 +113,7 @@ export default function SectionTwo() {
               </li>
             </ul>
 
-            <p className="text-lg leading-relaxed text-pretty text-gray-700 bg-gray-50 p-4 rounded-xl  border-[#3f4603] shadow-2xl">
+            <p className="text-lg leading-relaxed text-pretty text-text-alap bg-zold/5 p-4 rounded-xl  ">
               Célunk, hogy a lehető legmagasabb szinten biztosítsuk számodra
               ezeket az értékeket. Legyél alkalmazott, egyéni vállalkozó vagy
               cégtulajdonos, a küldetésünk közös:{" "}
@@ -125,7 +125,7 @@ export default function SectionTwo() {
           </div>
 
           <div className="flex flex-col justify-center md:mt-6">
-            <h3 className="text-2xl font-bold my-6 text-[#3f4603] tracking-wide">
+            <h3 className="font-bold my-6 tracking-wide bg-zold text-feher p-2 rounded-md w-fit">
               Átlátható pénzügyi tanácsadás – Lépésről lépésre
             </h3>
             <p className="text-lg leading-relaxed text-pretty mb-6 text-gray-700">
