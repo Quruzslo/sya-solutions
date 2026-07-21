@@ -49,7 +49,11 @@ export default async function UserPanel() {
           {name || "Ismeretlen Felhasználó"}
         </span>
         <span className="text-xs font-medium text-emerald-600 capitalize">
-          {role || "felhasználó"}
+          {role === "admin"
+            ? "Admin"
+            : role === "editor"
+              ? "Szerkesztő"
+              : "Felhasználó"}
         </span>
         <div className="mt-[15px] w-fit mr-auto">
           <UserActions
