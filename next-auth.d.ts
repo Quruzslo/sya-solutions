@@ -15,6 +15,8 @@ declare module "next-auth" {
     user: {
       id?: string;
       role?: string;
+      tel?: string;
+      photo?: string;
     } & DefaultSession["user"];
   }
 }

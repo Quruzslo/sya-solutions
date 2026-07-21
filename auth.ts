@@ -72,6 +72,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             id: user._id.toString(),
             name: user.name,
             email: user.email,
+            tel: user.tel || "",
+            photo: user.photo || "",
             role: user.role || "user",
           };
         } catch (error) {
@@ -88,6 +90,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       if (account?.provider === "credentials" && user) {
         token.userId = user.id ?? null;
         token.role = user.role ?? "user";
+        token.tel = (user as any).tel ?? "";
+        token.photo = (user as any).photo ?? "";
       }
       return token;
     },
@@ -96,11 +100,12 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       if (session.user) {
         session.user.id = token.userId as string;
         session.user.role = token.role as string;
+        session.user.tel = token.tel as string;
+        session.user.photo = token.photo as string;
       }
       return session;
     },
   },
-
   pages: {
     signIn: "/admin-belepes",
   },
