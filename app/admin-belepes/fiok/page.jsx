@@ -21,17 +21,6 @@ export default async function FiokPage() {
       <div className="w-full flex-1 flex flex-col md:flex-row">
         <div className="w-full flex flex-col md:w-[300px] p-[10px] items-center">
           <AdminNavComp />
-
-          <UserActions
-            user={{
-              id: currentUser.id || currentUser._id?.toString(),
-              name: currentUser.name,
-              email: currentUser.email,
-              role: currentUser.role,
-              tel: currentUser.tel || "",
-            }}
-            isAdmin={isAdmin}
-          />
         </div>
         <div className="w-full flex flex-col md:w-[100%] p-[10px]">
           Grafikonok és minden más

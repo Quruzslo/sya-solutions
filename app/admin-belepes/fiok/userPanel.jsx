@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { FaUserEdit } from "react-icons/fa";
+import UserActions from "./felhasznalok/UserActions";
 import { auth } from "@/auth";
 
 export default async function UserPanel() {
@@ -9,6 +10,9 @@ export default async function UserPanel() {
 
   const { name, role, profilePicture, profilePic, image } = session.user;
   const imgUrl = profilePicture || profilePic || image;
+
+  const currentUser = session.user;
+  const isAdmin = currentUser.role === "admin";
 
   return (
     <div className="flex items-center gap-3 p-3 border border-slate-300 rounded-lg w-full mb-[25px]">
@@ -47,7 +51,18 @@ export default async function UserPanel() {
         <span className="text-xs font-medium text-emerald-600 capitalize">
           {role || "felhasználó"}
         </span>
-        <FaUserEdit size={15} className="text-zold" />
+        <div>
+          <UserActions
+            user={{
+              id: currentUser.id || currentUser._id?.toString(),
+              name: currentUser.name,
+              email: currentUser.email,
+              role: currentUser.role,
+              tel: currentUser.tel || "",
+            }}
+            isAdmin={isAdmin}
+          />
+        </div>
       </div>
     </div>
   );
