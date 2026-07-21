@@ -118,7 +118,7 @@ export default async function UsersPage() {
                         : "—"}
                     </span>
 
-                    {/* A Kliens Komponensünk a szerkesztés/törlés gombokkal */}
+                    {/* szerkesztés */}
                     <UserActions
                       user={{
                         id: user._id.toString(),

@@ -142,17 +142,18 @@ export default function UserActions({ user, isAdmin }) {
               className="p-2 rounded-md border border-slate-300"
               placeholder="Új jelszó (hagyd üresen, ha nem változik)"
             />
-
-            <select
-              value={formData.role}
-              onChange={(e) =>
-                setFormData({ ...formData, role: e.target.value })
-              }
-              className="p-2 rounded-md border border-slate-300"
-            >
-              <option value="editor">Szerkesztő</option>
-              <option value="admin">Adminisztrátor</option>
-            </select>
+            {isAdmin ? (
+              <select
+                value={formData.role}
+                onChange={(e) =>
+                  setFormData({ ...formData, role: e.target.value })
+                }
+                className="p-2 rounded-md border border-slate-300"
+              >
+                <option value="editor">Szerkesztő</option>
+                <option value="admin">Adminisztrátor</option>
+              </select>
+            ) : null}
 
             <div className="flex gap-2 justify-end mt-4">
               <button
