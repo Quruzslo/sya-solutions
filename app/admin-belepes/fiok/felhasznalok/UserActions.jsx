@@ -19,7 +19,7 @@ export default function UserActions({ user, isAdmin }) {
     password: "",
   });
 
-  if (!isAdmin) return null;
+  // if (!isAdmin) return null;
 
   const handleDelete = async () => {
     if (
@@ -82,13 +82,15 @@ export default function UserActions({ user, isAdmin }) {
             title="Szerkesztés"
           />
         </button>
-        <button onClick={handleDelete} disabled={isDeleting}>
-          <MdDelete
-            size={15}
-            className={`text-red-600 cursor-pointer hover:scale-110 transition ${isDeleting ? "opacity-50" : ""}`}
-            title="Törlés"
-          />
-        </button>
+        {isAdmin ? (
+          <button onClick={handleDelete} disabled={isDeleting}>
+            <MdDelete
+              size={15}
+              className={`text-red-600 cursor-pointer hover:scale-110 transition ${isDeleting ? "opacity-50" : ""}`}
+              title="Törlés"
+            />
+          </button>
+        ) : null}
       </div>
 
       {isEditModalOpen && (

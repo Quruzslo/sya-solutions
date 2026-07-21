@@ -119,15 +119,17 @@ export default async function UsersPage() {
                     </span>
 
                     {/* szerkesztés */}
-                    <UserActions
-                      user={{
-                        id: user._id.toString(),
-                        name: user.name,
-                        email: user.email,
-                        role: user.role,
-                      }}
-                      isAdmin={isAdmin}
-                    />
+                    {isAdmin ? (
+                      <UserActions
+                        user={{
+                          id: user._id.toString(),
+                          name: user.name,
+                          email: user.email,
+                          role: user.role,
+                        }}
+                        isAdmin={isAdmin}
+                      />
+                    ) : null}
                   </div>
                 );
               })}
