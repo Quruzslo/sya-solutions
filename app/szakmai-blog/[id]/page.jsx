@@ -5,6 +5,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { unstable_cache } from "next/cache";
 import AuthorBlock from "./authorBlock";
+import RelatedPosts from "./relatedPosts";
 
 // Adatlekérő függvény cache-eléssel
 const getCachedPost = unstable_cache(
@@ -151,6 +152,10 @@ export default async function SingleBlogPage(props) {
         <aside className="w-full md:w-1/3 lg:w-1/4">
           <div className="sticky top-[120px] flex flex-col gap-[15px]">
             <AuthorBlock author={author} post={post} />
+            <RelatedPosts
+              categoryId={post.category?._id}
+              currentPostId={post._id}
+            />
           </div>
         </aside>
       </div>
