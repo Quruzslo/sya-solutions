@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { unstable_cache } from "next/cache";
+import AuthorBlock from "./authorBlock";
 
 // Adatlekérő függvény cache-eléssel
 const getCachedPost = unstable_cache(
@@ -76,10 +77,24 @@ export async function generateMetadata(props) {
   };
 }
 
+export async function getAuthorData(authorName) {
+  if (!authorName) return null;
+
+  const db = client.db("main");
+  const authorData = await db.collection("admin").findOne({ name: authorName });
+
+  if (!authorData) return null;
+  return {
+    name: authorData.name,
+    photo: authorData.photo || null,
+  };
+}
+
 // Maga az oldal komponens
 export default async function SingleBlogPage(props) {
   const params = await props.params;
   const post = await getCachedPost(params.id);
+  const author = await getAuthorData(post.author);
 
   if (!post) {
     notFound();
@@ -87,43 +102,12 @@ export default async function SingleBlogPage(props) {
 
   return (
     <main className="w-[90%] max-w-[2560px] mx-auto my-[150px]">
-      <article className="flex flex-col gap-6">
-        {/* Kategória és Dátum / Szerző */}
-        <div className="flex flex-col md:flex-row gap-[20px]">
-          {/* Bal oldal----------- */}
-          <div className="flex flex-col gap-[15px] items-start justify-center w-full md:w-1/2">
-            {/* Vissza gomb */}
-            <Link
-              href="/szakmai-blog"
-              className="inline-flex items-center gap-2 text-slate-green hover:text-feher hover:bg-zold transition-colors mb-8 font-medium p-2 rounded-md"
-            >
-              <span>←</span> Vissza
-            </Link>
-            <div className="flex items-center gap-4 text-sm text-slate-500">
-              {post.category?.name && (
-                <span className="bg-zold/10 text-zold px-3 py-1 rounded-full font-semibold">
-                  {post.category.name}
-                </span>
-              )}
-              <span>{post.author}</span>
-              <span>•</span>
-              <time dateTime={post.createdAt}>
-                {post.createdAt
-                  ? new Date(post.createdAt).toLocaleDateString("hu-HU")
-                  : ""}
-              </time>
-            </div>
+      <div className="flex flex-col md:flex-row gap-12 relative">
+        {/* ======================= BAL OLDAL (Tartalom) ======================= */}
 
-            <h1
-              style={{ fontFamily: "var(--font-inter)" }}
-              className=" !text-[30px]  font-bold text-zold leading-tight"
-            >
-              {post.title}
-            </h1>
-          </div>
-
-          {/*Jobb oldal , képpel*/}
-          <div className="relative flex w-full md:w-1/2 aspect-video bg-slate-100 rounded-2xl overflow-hidden my-6 border border-slate-100 shadow-sm">
+        <article className="flex flex-col gap-6 w-full md:w-2/3 lg:w-3/4">
+          {/* Kiemelt kép */}
+          <div className="relative flex flex-col w-full aspect-video bg-slate-100 rounded-2xl overflow-hidden border border-slate-100 shadow-sm">
             {post.imageUrl ? (
               <Image
                 src={post.imageUrl}
@@ -139,22 +123,37 @@ export default async function SingleBlogPage(props) {
               </div>
             )}
           </div>
-        </div>
 
-        {/* Bevezető / Leírás */}
-        {post.description && (
-          <p className="text-lg text-zold font-medium italic border-l-4 border-zold pl-4 py-2">
-            {post.description}
-          </p>
-        )}
+          {/* Cím */}
+          <h1
+            style={{ fontFamily: "var(--font-inter)" }}
+            className="!text-[30px] font-bold text-zold leading-tight mt-4"
+          >
+            {post.title}
+          </h1>
 
-        {/* Cikk törzse */}
+          {/* Leírás */}
+          {post.description && (
+            <p className="text-lg text-zold font-medium italic border-l-4 border-zold pl-4 py-2">
+              {post.description}
+            </p>
+          )}
 
-        <div
-          className="prose prose-slate prose-lg max-w-none mt-4 prose-a:text-zold hover:prose-a:text-zold/80"
-          dangerouslySetInnerHTML={{ __html: post.content }}
-        />
-      </article>
+          {/* Cikk törzse */}
+          <div
+            className="prose prose-slate prose-lg max-w-none mt-4 prose-a:text-zold hover:prose-a:text-zold/80"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
+        </article>
+
+        {/* ======================= JOBB OLDAL ( ======================= */}
+
+        <aside className="w-full md:w-1/3 lg:w-1/4">
+          <div className="sticky top-[120px] flex flex-col gap-[15px]">
+            <AuthorBlock author={author} post={post} />
+          </div>
+        </aside>
+      </div>
     </main>
   );
 }
