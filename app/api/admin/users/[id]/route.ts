@@ -86,7 +86,7 @@ export async function PATCH(req: NextRequest, context: RouteContext) {
     }
 
     const data = await req.json();
-    const { name, email, tel, role, password } = data;
+    const { name, email, tel, role, password, photo } = data;
     const db = client.db("main").collection("admin");
 
     const normalizedEmail = email.toLowerCase().trim();
@@ -107,6 +107,7 @@ export async function PATCH(req: NextRequest, context: RouteContext) {
       name,
       email: normalizedEmail,
       tel,
+      photo: photo || "",
     };
 
     if (isAdmin && role) {
