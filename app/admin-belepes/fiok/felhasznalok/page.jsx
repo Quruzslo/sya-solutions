@@ -126,7 +126,7 @@ export default async function UsersPage() {
                           name: user.name,
                           email: user.email,
                           role: user.role,
-                          tel: tel,
+                          tel: user.tel,
                         }}
                         isAdmin={isAdmin}
                       />
