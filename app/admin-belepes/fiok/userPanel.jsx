@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { FaUserEdit } from "react-icons/fa";
 import { auth } from "@/auth";
 
 export default async function UserPanel() {
@@ -46,6 +47,7 @@ export default async function UserPanel() {
         <span className="text-xs font-medium text-emerald-600 capitalize">
           {role || "felhasználó"}
         </span>
+        <FaUserEdit size={15} className="text-zold" />
       </div>
     </div>
   );
