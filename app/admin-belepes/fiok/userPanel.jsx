@@ -8,8 +8,8 @@ export default async function UserPanel() {
 
   if (!session || !session.user) return null;
 
-  const { name, role, profilePicture, profilePic, image } = session.user;
-  const imgUrl = profilePicture || profilePic || image;
+  const { name, role, profilePicture, profilePic, photo } = session.user;
+  const imgUrl = photo;
 
   const currentUser = session.user;
   const isAdmin = currentUser.role === "admin";
@@ -63,6 +63,7 @@ export default async function UserPanel() {
               email: currentUser.email,
               role: currentUser.role,
               tel: currentUser.tel || "",
+              photo: currentUser.photo || null,
             }}
             isAdmin={isAdmin}
           />
