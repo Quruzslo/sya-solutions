@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { FaPen } from "react-icons/fa6";
 import { MdDelete } from "react-icons/md";
@@ -10,6 +10,8 @@ export default function UserActions({ user, isAdmin }) {
   const [isDeleting, setIsDeleting] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [previewUrl, setPreviewUrl] = useState(user.photo || "");
 
   const [formData, setFormData] = useState({
     name: user.name,
@@ -17,9 +19,24 @@ export default function UserActions({ user, isAdmin }) {
     tel: user.tel || "",
     role: user.role,
     password: "",
+    photo: user.photo || "",
   });
 
-  // if (!isAdmin) return null;
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setSelectedFile(file);
+      setPreviewUrl(URL.createObjectURL(file));
+    }
+  };
+
+  useEffect(() => {
+    return () => {
+      if (previewUrl && previewUrl.startsWith("blob:")) {
+        URL.revokeObjectURL(previewUrl);
+      }
+    };
+  }, [previewUrl]);
 
   const handleDelete = async () => {
     if (
@@ -51,14 +68,37 @@ export default function UserActions({ user, isAdmin }) {
     setLoading(true);
 
     try {
+      let finalPhotoUrl = formData.photo;
+
+      if (selectedFile) {
+        const imageFormData = new FormData();
+        imageFormData.append("photo", selectedFile);
+
+        const uploadRes = await fetch("/api/admin/upload-image", {
+          method: "POST",
+          body: imageFormData,
+        });
+
+        if (uploadRes.ok) {
+          const uploadData = await uploadRes.json();
+          finalPhotoUrl = uploadData.url;
+        } else {
+          alert("Hiba történt a kép feltöltése során!");
+          setLoading(false);
+          return;
+        }
+      }
+
       const res = await fetch(`/api/admin/users/${user.id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, photo: finalPhotoUrl }),
       });
 
       if (res.ok) {
         setIsEditModalOpen(false);
+
+        setSelectedFile(null);
         router.refresh();
       } else {
         const data = await res.json();
@@ -70,6 +110,12 @@ export default function UserActions({ user, isAdmin }) {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleCloseModal = () => {
+    setIsEditModalOpen(false);
+    setSelectedFile(null);
+    setPreviewUrl(user.photo || "");
   };
 
   return (
@@ -86,7 +132,9 @@ export default function UserActions({ user, isAdmin }) {
           <button onClick={handleDelete} disabled={isDeleting}>
             <MdDelete
               size={15}
-              className={`text-red-600 cursor-pointer hover:scale-110 transition ${isDeleting ? "opacity-50" : ""}`}
+              className={`text-red-600 cursor-pointer hover:scale-110 transition ${
+                isDeleting ? "opacity-50" : ""
+              }`}
               title="Törlés"
             />
           </button>
@@ -102,6 +150,27 @@ export default function UserActions({ user, isAdmin }) {
             <p className="text-zold text-xl font-bold mb-2">
               Felhasználó szerkesztése
             </p>
+
+            {/* KÉP ELŐNÉZET ÉS FELTÖLTŐ */}
+            <div className="flex flex-col items-center gap-2 mb-2">
+              {previewUrl ? (
+                <img
+                  src={previewUrl}
+                  alt="Profilkép"
+                  className="w-24 h-24 rounded-full object-cover border-2 border-slate-300 shadow-sm"
+                />
+              ) : (
+                <div className="w-24 h-24 rounded-full bg-slate-200 border-2 border-slate-300 shadow-sm flex items-center justify-center text-slate-400 text-sm">
+                  Nincs kép
+                </div>
+              )}
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleFileChange}
+                className="text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-zold file:text-white hover:file:bg-zold/80 cursor-pointer mt-2 w-full"
+              />
+            </div>
 
             <input
               type="text"
@@ -160,7 +229,7 @@ export default function UserActions({ user, isAdmin }) {
             <div className="flex gap-2 justify-end mt-4">
               <button
                 type="button"
-                onClick={() => setIsEditModalOpen(false)}
+                onClick={handleCloseModal}
                 className="px-4 py-2 bg-slate-400 text-white rounded-md hover:bg-slate-500 transition-colors"
               >
                 Mégse

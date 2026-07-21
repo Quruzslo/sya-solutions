@@ -26,7 +26,7 @@ export default function BlogUploadForm({ session, postId = null }) {
 
   const isEditMode = !!postId;
 
-  // 1. Adatok betöltése Módosítás módban
+  // Adatok betöltése Módosítás módban
   useEffect(() => {
     if (!postId) return;
 
@@ -209,7 +209,7 @@ export default function BlogUploadForm({ session, postId = null }) {
             : "Vázlat elmentve!",
       );
 
-      // Blob URL-ek felszabadítása
+      // Blobok törlése a ramból
       uploadedBlobs.forEach((blobUrl) => {
         try {
           URL.revokeObjectURL(blobUrl);

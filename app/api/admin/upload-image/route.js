@@ -25,7 +25,7 @@ export async function POST(req) {
     }
 
     const formData = await req.formData();
-    const file = formData.get("file");
+    const file = formData.get("photo") || formData.get("file");
 
     if (!file) {
       return NextResponse.json({ message: "Nincs fájl!" }, { status: 400 });
