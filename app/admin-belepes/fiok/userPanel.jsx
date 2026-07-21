@@ -51,7 +51,7 @@ export default async function UserPanel() {
         <span className="text-xs font-medium text-emerald-600 capitalize">
           {role || "felhasználó"}
         </span>
-        <div>
+        <div className="mt-[15px] w-fit ml-auto">
           <UserActions
             user={{
               id: currentUser.id || currentUser._id?.toString(),
