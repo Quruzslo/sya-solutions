@@ -2,7 +2,7 @@ import { client } from "@/lib/mongodb";
 import { ObjectId } from "mongodb";
 import Link from "next/link";
 
-// 1. Az adatlekérő függvény
+//adatlekérő függvény
 export async function getRelatedPosts(categoryId, currentPostId) {
   if (!categoryId) return [];
 
@@ -34,32 +34,35 @@ export default async function RelatedPosts({ categoryId, currentPostId }) {
   if (!relatedPosts || relatedPosts.length === 0) {
     return (
       <div className="flex flex-col mt-8 pt-8 border-t border-zold">
-        <p>Ehhez még nincs kapcsolódó bejegyzés...</p>
+        <p>Nincs kapcsolódó bejegyzés...</p>
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col mt-8 pt-8 border-t border-slate-200">
-      <h3 className="text-lg font-bold text-zold mb-4">Hasonló bejegyzések</h3>
+    <div className="flex flex-col mt-8 p-[5px] border-t border-zold">
+      <h3 className="mx-auto font-bold text-zold mb-4">Kapcsolódó tartalmak</h3>
 
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-[15px]">
         {relatedPosts.map((post) => (
           <Link
             href={`/szakmai-blog/${post.slug || post._id}`}
             key={post._id}
             className="group"
           >
-            <div className="flex flex-col gap-1">
-              <h4 className="font-semibold text-slate-700 group-hover:text-zold transition-colors leading-tight">
+            <div className="related-post flex flex-col gap-1 p-[10px]">
+              <h4 className="font-semibold !text-[20px] text-text-alap group-hover:text-feher transition-colors leading-tight z-10">
                 {post.title}
               </h4>
 
               {post.createdAt && (
-                <span className="text-xs text-slate-500">
+                <span className="text-xs text-slate-500 group-hover:text-slate-100 z-10">
                   {new Date(post.createdAt).toLocaleDateString("hu-HU")}
                 </span>
               )}
+              <p className="text-xs text-text-alap group-hover:text-feher z-10">
+                {post.author}
+              </p>
             </div>
           </Link>
         ))}
