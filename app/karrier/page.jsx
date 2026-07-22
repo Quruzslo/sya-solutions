@@ -4,6 +4,7 @@ import Csoport from "@/public/images/Csoport.jpg";
 import { GoDotFill } from "react-icons/go";
 import { SiMinutemailer } from "react-icons/si";
 import { ImWink } from "react-icons/im";
+import Faq from "../../components/faq/faq";
 
 const carrierData = [
   {
@@ -94,14 +95,17 @@ export default function CarrierPage() {
   return (
     <section className="w-full">
       <div className="w-[90%] max-w-[2560px] flex flex-col mx-auto mt-[150px]">
-        <div className="flex flex-col gap-[15px] items-center">
+        <div className="flex flex-col gap-[15px] items-center bg-zold/50 text-feher rounded-xl px-[10px] py-[25px]">
           <h1
-            className="font-black tracking-wider !text-[45px]"
+            className="font-black tracking-wider !text-[20px] md:!text-[45px]"
             style={{ fontFamily: "var(--font-inter)" }}
           >
             ÁLLÁSLEHETŐSÉG
           </h1>
-          <div className="bg-transparent text-zold p-2 rounded-full border-2 border-zold flex flex-row gap-4 shadow-md">
+          <div className="flex flex-row gap-3">
+            <p>Budapest - Kaposvár</p>
+          </div>
+          <div className="bg-transparent text-feher p-2 rounded-full border-2 border-feher flex flex-row gap-4 shadow-md">
             {" "}
             <ImWink size={25} /> Jelenleg van nyitott pozíciónk !
           </div>
@@ -222,6 +226,8 @@ export default function CarrierPage() {
           ))}
         </div>
       </div>
+
+      <Faq slug={"karrier"}></Faq>
     </section>
   );
 }

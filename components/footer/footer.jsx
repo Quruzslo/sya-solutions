@@ -153,11 +153,11 @@ export default function Footer() {
             </ul>
 
             <Link
-              href="/"
-              className="mt-2 w-fit py-[10px] px-[24px] rounded-[5px] bg-[#3f4603] text-[#e7ebe3] font-semibold hover:bg-[#bfa06a] hover:text-[#1f241b] transition-all duration-300"
+              href="/kapcsolat"
+              className="mt-2 w-fit py-[10px] px-[24px] rounded-[5px] bg-zold text-[#e7ebe3] font-semibold hover:bg-[#bfa06a] hover:text-[#1f241b] transition-all duration-300"
               style={{ fontFamily: "var(--font-inter), sans-serif" }}
             >
-              Konzultáció kérése
+              Konzultáció
             </Link>
           </div>
         </div>

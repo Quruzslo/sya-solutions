@@ -178,6 +178,47 @@ const faqData = [
     description:
       "Egy hibás szakmai döntés, egy nem szándékos mulasztás vagy egy teljesítési hiba olyan mértékű kártérítési kötelezettséget vonhat maga után, ami egy stabil KKV-t is azonnal csődbe vihet. A szakmai és vezető tisztségviselői felelősségbiztosítások (D&O) felfogják ezeket a pénzügyi ütéseket: fedezik a perköltségeket, a jogi védelmet és a megítélt kártérítési összegeket, megóvva a cég és a menedzsment privát vagyonát.",
   },
+  //================================================
+  // KARRIER FAQ RÉSZ --------------------------
+  //================================================
+
+  {
+    title: "Nálad is szitokszó az MLM rendszer?",
+    category: "karrier",
+    description:
+      "Teljesen megértjük, ha óvatos vagy! Nálunk nincs kötelező termékvásárlás, és senki nem liheg a nyakadban. A hálózati modellnek kizárólag az előnyeit élvezed: nincs indulótőke vagy kötelező havidíj, cserébe teljes elismerést, szabad időbeosztást és folyamatos karrierlehetőséget kapsz.",
+  },
+  {
+    title:
+      "Utálom a hideghívásokat. Nekem is ismeretleneket kell majd hívogatnom?",
+    category: "karrier",
+    description:
+      "Egyáltalán nem! A hideghívást mi is a rettegett kategóriába soroljuk. Kizárólag elégedett ügyfelek ajánlásai alapján dolgozunk, így minden megkeresés egy előre felépített, bizalmi alapú beszélgetés. Sokkal emberibb, gördülékenyebb és eredményesebb így a munka.",
+  },
+  {
+    title: "Rá kell majd erőszakolnom a termékeket az emberekre?",
+    category: "karrier",
+    description:
+      "Távol áll tőlünk a tukmálás. Mivel független közvetítőként dolgozunk, nincsenek 'saját' termékeink. A teljes piacot feltérképezve a legkedvezőbb, személyre szabott ajánlatot adjuk az ügyfél kezébe ('nagyker' áron). A számminták és az összehasonlítások magukért beszélnek, így a jó ajánlat szinte eladja önmagát.",
+  },
+  {
+    title: "Mennyibe kerül az indulás? Vannak rejtett havidíjak?",
+    category: "karrier",
+    description:
+      "Kerek 0 Ft-ba. Nálunk nincs belépési díj, nincsenek kötelező csomagok vagy havidíjak. Te az idődet, az energiádat és a nyitottságodat teszed bele, mi pedig adjuk hozzá az évtizedes, stabil nemzetközi hátteret, az eszközöket és a teljes oktatási rendszert.",
+  },
+  {
+    title: "Nincs pénzügyi tapasztalatom. Így is van esélyem?",
+    category: "karrier",
+    description:
+      "De még mekkora! Nem a szakmai múltat vagy a diplomát keressük, hanem a szoft skilleket: a jó kommunikációt, az elszántságot és az emberséget. A szakmai tudást a legelejétől, lépésről lépésre tanítjuk meg neked, miközben egy tapasztalt mentor kísér végig az úton.",
+  },
+  {
+    title: "Mennyire kiszámítható ez a lehetőség hosszú távon?",
+    category: "karrier",
+    description:
+      "Pénzügyi tudatosságra és jó döntésekre mindig szükség lesz – függetlenül attól, hogy épp merre tart a gazdaság. Egy évtizedek óta bizonyított, sziklaszilárd hátat nyújtó cég égisze alatt építhetsz saját, értékteremtő karriert, ahol a határ valóban a csillagos ég.",
+  },
 ];
 
 export default faqData;
