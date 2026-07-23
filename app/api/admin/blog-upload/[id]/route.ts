@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { client } from "@/lib/mongodb";
 import { ObjectId } from "mongodb";
+import { revalidateTag } from "next/cache";
 
 function isValidObjectId(id: string) {
   return ObjectId.isValid(id) && new ObjectId(id).toString() === id;
@@ -111,7 +112,8 @@ export async function PUT(
         { status: 404 },
       );
     }
-
+    revalidateTag("posts", "max");
+    revalidateTag("categories", "max");
     return NextResponse.json(
       { message: "Bejegyzés sikeresen frissítve!" },
       { status: 200 },
@@ -167,7 +169,8 @@ export async function DELETE(
         { status: 404 },
       );
     }
-
+    revalidateTag("posts", "max");
+    revalidateTag("categories", "max");
     return NextResponse.json(
       { message: "Bejegyzés sikeresen törölve!" },
       { status: 200 },

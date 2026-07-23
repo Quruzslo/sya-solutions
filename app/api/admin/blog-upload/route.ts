@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { client } from "@/lib/mongodb";
 import { ObjectId } from "mongodb";
+import { revalidateTag } from "next/cache";
 
 export async function POST(request: NextRequest) {
   try {
@@ -35,6 +36,9 @@ export async function POST(request: NextRequest) {
       createdAt: new Date(),
       status: body.blogStatus,
     });
+
+    revalidateTag("posts", "max");
+    revalidateTag("categories", "max");
 
     return NextResponse.json({ message: "Sikeres művelet!" }, { status: 200 });
   } catch (err) {

@@ -2,6 +2,7 @@ import { client } from "@/lib/mongodb";
 import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import slugify from "@/lib/slugify";
+import { revalidateTag } from "next/cache";
 
 // ==========================================
 // 1. ÖSSZES LEKÉRÉSE (GET) - /api/admin/categories
@@ -33,7 +34,7 @@ export async function GET() {
 }
 
 // ==========================================
-// 2. ÚJ LÉTREHOZÁSA (POST) - /api/admin/categories
+// 2. ÚJ LÉTREHOZÁSA - /api/admin/categories
 // ==========================================
 export async function POST(request: Request) {
   try {
@@ -63,12 +64,12 @@ export async function POST(request: Request) {
     const db = client.db("main").collection("posts-category");
 
     // Duplikáció ellenőrzése
-    const existingCategory = await db.findOne({
-      $or: [
-        { name: { $regex: new RegExp(`^${trimmedName}$`, "i") } },
-        { slug: slug },
-      ],
-    });
+    const existingCategory = await db.findOne(
+      {
+        $or: [{ name: trimmedName }, { slug: slug }],
+      },
+      { collation: { locale: "hu", strength: 2 } }, // strength: 2 = kis/nagybetű független!
+    );
 
     if (existingCategory) {
       return NextResponse.json(
@@ -85,7 +86,8 @@ export async function POST(request: Request) {
     };
 
     const result = await db.insertOne(newCategory);
-
+    revalidateTag("posts", "max");
+    revalidateTag("categories", "max");
     return NextResponse.json(
       {
         message: "Kategória sikeresen létrehozva!",
