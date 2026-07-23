@@ -119,6 +119,7 @@ export default function CarrierPage() {
             alt="Homeoffice álláslehetőség Budapesten"
             className="rounded-xl"
             src={Csoport}
+            priority
           />
           <div>
             <h3 className="font-black font-mono underline-offset-4 underline mb-[15px]">
