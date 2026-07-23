@@ -11,6 +11,7 @@ export default function BlogUploadForm({ session, postId = null }) {
   const [loading, setLoading] = useState(!!postId);
 
   const [title, setTitle] = useState("");
+  const [isUploading, setIsUploading] = useState(false);
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
@@ -110,6 +111,7 @@ export default function BlogUploadForm({ session, postId = null }) {
     const uploadedBlobs = [];
 
     try {
+      setIsUploading(true);
       // Képkezelés logikája
       let finalImageUrl = imagePreview;
 
@@ -233,6 +235,8 @@ export default function BlogUploadForm({ session, postId = null }) {
         setPendingImages({});
         handleRemoveImage();
       }
+
+      setIsUploading(false);
     } catch (err) {
       console.error("Hiba történt a küldés során:", err);
       alert("Hiba történt a mentés során. Próbáld újra!");
@@ -427,7 +431,7 @@ export default function BlogUploadForm({ session, postId = null }) {
         </div>
 
         {/* JOBB OLDAL (Beállítások) */}
-        <div className="w-full xl:w-[280px] flex flex-col gap-4 xl:sticky xl:top-6 shrink-0">
+        <div className="w-full xl:w-[280px] flex flex-col gap-4 xl:sticky xl:top-[130px] shrink-0">
           <div className="bg-white rounded-xl p-4 shadow-sm flex flex-col gap-4">
             <h3 className="font-semibold border-b border-slate-100 pb-2 text-sm text-slate-500">
               Közzététel beállításai
@@ -455,24 +459,32 @@ export default function BlogUploadForm({ session, postId = null }) {
             />
 
             <hr className="border-slate-100" />
+            {isUploading ? (
+              <div className="flex items-center justify-center gap-2 py-4">
+                <div className="w-5 h-5 border-2 border-slate-300 border-t-zold rounded-full animate-spin" />
+                <span className="text-sm text-slate-600 font-medium">
+                  Mentés és feltöltés...
+                </span>
+              </div>
+            ) : (
+              <div className="flex flex-col gap-2">
+                <button
+                  type="button"
+                  onClick={() => sendingBlogPost("draft")}
+                  className="cursor-pointer w-full py-2 border border-slate-200 hover:bg-slate-100 font-medium text-sm rounded-lg transition-colors"
+                >
+                  Mentés vázlatként
+                </button>
 
-            <div className="flex flex-col gap-2">
-              <button
-                type="button"
-                onClick={() => sendingBlogPost("draft")}
-                className="w-full py-2 border border-slate-200 hover:bg-slate-100 font-medium text-sm rounded-lg transition-colors"
-              >
-                Mentés vázlatként
-              </button>
-
-              <button
-                type="button"
-                onClick={() => sendingBlogPost("published")}
-                className="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm rounded-lg shadow-sm transition-all"
-              >
-                {isEditMode ? "Módosítások mentése" : "Közzététel most"}
-              </button>
-            </div>
+                <button
+                  type="button"
+                  onClick={() => sendingBlogPost("published")}
+                  className="cursor-pointer w-full py-2.5 bg-zold/50 hover:bg-zold text-white font-semibold text-sm rounded-lg shadow-sm transition-all"
+                >
+                  {isEditMode ? "Módosítások mentése" : "Közzététel most"}
+                </button>
+              </div>
+            )}
           </div>
 
           <div>
