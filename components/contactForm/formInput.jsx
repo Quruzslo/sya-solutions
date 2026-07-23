@@ -26,7 +26,7 @@ export default function FormInput({
 
       <label
         className={`absolute left-[10px] top-[50%] -translate-y-[50%] text-base transition-all duration-300 pointer-events-none
-        peer-focus:top-[0px] peer-focus:text-xs peer-focus:bg-[#e7ebe3] peer-[:not(:placeholder-shown)]:bg-[#e7ebe3] peer-focus:p-[5px] peer-focus:rounded-sm 
+        peer-focus:top-[0px] peer-focus:text-xs peer-focus:bg-feher peer-[:not(:placeholder-shown)]:bg-feher peer-focus:p-[5px] peer-focus:rounded-sm 
         peer-[:not(:placeholder-shown)]:p-[5px] peer-[:not(:placeholder-shown)]:top-[0px] peer-[:not(:placeholder-shown)]:text-xs
         ${error ? "text-red-800 peer-focus:text-red-800" : "text-text-alap peer-focus:text-text-alap"}`}
       >
