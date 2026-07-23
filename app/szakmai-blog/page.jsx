@@ -11,14 +11,47 @@ const ITEMS_PER_PAGE = 12;
 const getCachedCategories = unstable_cache(
   async () => {
     const db = client.db("main");
+
     const rawCategories = await db
-      .collection("posts-category")
-      .find({})
+      .collection("posts")
+      .aggregate([
+        { $match: { category: { $ne: null } } },
+
+        {
+          $group: {
+            _id: "$category",
+            count: { $sum: 1 },
+          },
+        },
+
+        {
+          $lookup: {
+            from: "posts-category",
+            localField: "_id",
+            foreignField: "_id",
+            as: "categoryData",
+          },
+        },
+
+        { $unwind: "$categoryData" },
+
+        {
+          $project: {
+            _id: { $toString: "$_id" },
+            name: "$categoryData.name",
+            slug: "$categoryData.slug",
+            count: 1,
+          },
+        },
+        { $sort: { name: 1 } },
+      ])
       .toArray();
+
     return rawCategories.map((c) => ({
-      _id: c._id.toString(),
+      _id: c._id,
       name: c.name,
       slug: c.slug || slugify(c.name),
+      count: c.count,
     }));
   },
   ["blog-categories"],
@@ -40,7 +73,9 @@ const getCachedPosts = unstable_cache(
     const skip = (oldal - 1) * ITEMS_PER_PAGE;
 
     const [totalPosts, rawPosts] = await Promise.all([
+      // totalPosts - minden poszt, ami a matchquerybe van
       db.collection("posts").countDocuments(matchQuery),
+      // rawPosts -
       db
         .collection("posts")
         .aggregate([
@@ -81,7 +116,7 @@ const getCachedPosts = unstable_cache(
         : null,
     }));
 
-    return { posts, totalPages };
+    return { posts, totalPages, totalPosts };
   },
   ["blog-posts-list"],
   { revalidate: 3600, tags: ["posts"] },
@@ -97,11 +132,14 @@ export default async function BlogPage(props) {
   let posts = [];
   let categories = [];
   let totalPages = 0;
+  let allPostsCount = 0;
 
   try {
     //  cache-elt függvények meghívása
     categories = await getCachedCategories();
     const data = await getCachedPosts(currentCategory, oldal, categories);
+
+    allPostsCount = categories.reduce((sum, cat) => sum + (cat.count || 0), 0);
 
     posts = data.posts;
     totalPages = data.totalPages;
@@ -131,6 +169,7 @@ export default async function BlogPage(props) {
       <div className="flex flex-col md:flex-row gap-3 ">
         <div className="flex flex-col w-full md:w-[250px]">
           <CategoryFilter
+            totalPosts={allPostsCount}
             categories={categories}
             currentCategory={currentCategory}
           />

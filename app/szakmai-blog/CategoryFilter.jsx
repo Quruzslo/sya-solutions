@@ -1,23 +1,29 @@
 import Link from "next/link";
 
-export default function CategoryFilter({ categories, currentCategory }) {
+export default function CategoryFilter({
+  categories,
+  currentCategory,
+  totalPosts,
+}) {
   const items = [
     {
       key: "all",
       href: "/szakmai-blog?kategoria=all&oldal=1",
       label: "Összes",
+      count: totalPosts,
     },
     ...categories.map((cat) => ({
       key: cat.slug,
       href: `/szakmai-blog?kategoria=${cat.slug}&oldal=1`,
       label: cat.name,
+      count: cat.count,
     })),
   ];
 
   return (
     <nav
       aria-label="Kategória szűrő"
-      className="flex flex-col items-start gap-2 border-2 border-zold rounded-[10px] relative p-[5px] pb-[20px]"
+      className="flex flex-col items-start gap-2 border-2 border-zold rounded-[10px] relative p-[5px] pb-[20px] "
     >
       <div className="rounded-full p-[5px] mx-auto translate-y-[calc(-65%)] bg-feher">
         <h3>Kategória szűrő</h3>
@@ -37,6 +43,11 @@ export default function CategoryFilter({ categories, currentCategory }) {
             }`}
           >
             <span className="whitespace-nowrap">{item.label}</span>
+            {!isActive && (
+              <span className="bg-zold text-white w-[20px] h-[20px] rounded-full flex justify-center items-center mx-[10px] transition-all duration-200 group-hover:w-0 group-hover:h-0 group-hover:opacity-0 group-hover:mx-0 overflow-hidden">
+                {item.count}
+              </span>
+            )}
 
             <span
               aria-hidden="true"
