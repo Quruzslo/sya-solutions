@@ -3,13 +3,14 @@
 
 import { useRouter } from "next/navigation";
 
-export default function GoogleMaps({ isCookieAccepted }) {
+export default function GoogleMaps({ isCookieAccepted, onAccept }) {
   const router = useRouter();
 
   const handleAcceptCookies = () => {
     // Beállítjuk a sütit 180 napra
     const MAX_AGE = 60 * 60 * 24 * 180;
     document.cookie = `cookie_consent=accepted; max-age=${MAX_AGE}; path=/; SameSite=Lax; Secure`;
+    if (onAccept) onAccept();
     router.refresh();
   };
 

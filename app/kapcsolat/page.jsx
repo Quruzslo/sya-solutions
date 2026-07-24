@@ -317,7 +317,10 @@ export default function ContactPage() {
       </div>
       {/* Térkép konti ----------------- */}
 
-      <GoogleMaps isCookieAccepted={isCookieAccepted}></GoogleMaps>
+      <GoogleMaps
+        isCookieAccepted={isCookieAccepted}
+        onAccept={() => setIsCookieAccepted(true)}
+      />
     </section>
   );
 }
