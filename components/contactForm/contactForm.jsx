@@ -218,7 +218,7 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={loading}
-          className=" px-6 py-3 bg-zold mx-auto text-white font-bold rounded-full shadow-md hover:opacity-70 transition-opacity w-fit cursor-pointer disabled:opacity-50"
+          className=" px-6 py-3 mt-[25px] !text-[15px] bg-zold mx-auto text-white font-bold rounded-full shadow-md hover:opacity-70 transition-opacity w-fit cursor-pointer disabled:opacity-50"
         >
           {loading ? "Ellenőrzés és küldés..." : "Üzenet küldése"}
         </button>
