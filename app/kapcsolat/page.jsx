@@ -5,6 +5,7 @@ import ContactForm from "../../components/contactForm/contactForm";
 import Link from "next/link";
 import Image from "next/image";
 import SectionTitles from "../../components/sectionTitles";
+import GoogleMaps from "./GoogleMaps.jsx";
 
 // Ikonok---------------
 import { IoMailUnreadOutline } from "react-icons/io5";
@@ -75,7 +76,17 @@ export default function ContactPage() {
   const [activeMemberIdx, setActiveMemberIdx] = useState(null);
   const containerRef = useRef(null);
 
+  const [isCookieAccepted, setIsCookieAccepted] = useState(false);
+
   useEffect(() => {
+    const cookies = document.cookie.split("; ");
+    const consentCookie = cookies.find((row) =>
+      row.startsWith("cookie_consent="),
+    );
+    if (consentCookie && consentCookie.split("=")[1] === "accepted") {
+      setIsCookieAccepted(true);
+    }
+
     const handleClickOutside = (event) => {
       if (
         containerRef.current &&
@@ -306,17 +317,7 @@ export default function ContactPage() {
       </div>
       {/* Térkép konti ----------------- */}
 
-      <div className="w-full mt-[50px] rounded-xl shadow-xl">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2696.2613991511735!2d19.030972512400925!3d47.48482087105866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4741dc338432bfe7%3A0xacec37d0cfb14949!2sBudapest%2C%20Gombocz%20Zolt%C3%A1n%20u.%208b%2C%201118!5e0!3m2!1shu!2shu!4v1784216553786!5m2!1shu!2shu"
-          width="600"
-          height="450"
-          allowFullScreen=""
-          className="w-full rounded-xl"
-          loading="lazy"
-          referrerPolicy="strict-origin-when-cross-origin"
-        ></iframe>
-      </div>
+      <GoogleMaps isCookieAccepted={isCookieAccepted}></GoogleMaps>
     </section>
   );
 }

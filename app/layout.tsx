@@ -4,6 +4,7 @@ import { Playfair_Display, Inter } from "next/font/google";
 import Header from "../components/header/header";
 import Footer from "../components/footer/footer";
 import ScrollToTop from "../components/srolltoTop";
+import CookieBanner from "../components/cookieBanner/CookieBanner";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const playfair = Playfair_Display({
@@ -36,6 +37,7 @@ export default async function RootLayout({
         <ScrollToTop />
         <Footer></Footer>
         <SpeedInsights />
+        <CookieBanner />
       </body>
     </html>
   );
