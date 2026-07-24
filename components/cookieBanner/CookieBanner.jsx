@@ -49,7 +49,7 @@ export default function CookieBanner() {
       ) : (
         // 2. NAGY BANNER (Ha a showBanner true)
         <div className="fixed bottom-[10px] left-[10px] right-[10px] md:right-[100%] w-[95%] mx-auto md:max-w-md p-5 bg-zinc-900 text-white rounded-xl shadow-2xl  z-50 animate-in fade-in slide-in-from-bottom-5">
-          <h3 className="font-semibold text-lg mb-2">
+          <h3 className="font-semibold !text-[20px] mb-2">
             Süti (Cookie) beállítások 🍪
           </h3>
           <p className="text-sm text-zinc-400 mb-4">
@@ -59,13 +59,13 @@ export default function CookieBanner() {
           <div className="flex gap-2 justify-end">
             <button
               onClick={() => handleConsent("rejected")}
-              className="px-4 py-2 text-sm text-zinc-300 hover:bg-zinc-800 rounded-lg transition"
+              className="px-4 py-2 !text-[12px] text-zinc-300 hover:bg-zinc-800 rounded-lg transition"
             >
               Csak a szükségesek
             </button>
             <button
               onClick={() => handleConsent("accepted")}
-              className="px-4 py-2 text-sm bg-zold hover:bg-feher text-white hover:text-text-alap font-medium rounded-lg transition"
+              className="px-4 py-2 !text-[12px] bg-zold hover:bg-feher text-white hover:text-text-alap font-medium rounded-lg transition"
             >
               Összes elfogadása
             </button>
