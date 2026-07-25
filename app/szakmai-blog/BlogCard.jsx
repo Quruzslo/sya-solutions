@@ -27,7 +27,7 @@ export default function BlogCard({ post }) {
             src={post.imageUrl}
             alt={post.title}
             fill
-            className="object-cover grayscale-[45%] scale-100 transition-all duration-500 ease-out motion-reduce:transition-none group-hover:grayscale-0 group-hover:scale-[1.03]"
+            className="object-cover  scale-100 transition-all duration-500 ease-out motion-reduce:transition-none  group-hover:scale-[1.05]"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         ) : (
