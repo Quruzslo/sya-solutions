@@ -11,7 +11,7 @@ export default function BlogCard({ post }) {
   return (
     <Link
       href={postUrl}
-      className="group overflow-hidden relative flex flex-col bg-white border border-transparent transition-colors duration-300 hover:border-zold/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zold/40 focus-visible:ring-offset-2 rounded-md"
+      className="group overflow-hidden relative flex flex-col bg-white   duration-300 scale-100 hover:scale-95 transition-all duration-300 ease-out"
     >
       {/* felső accent  */}
       <div className="relative h-[5px] w-full bg-transparent overflow-hidden">

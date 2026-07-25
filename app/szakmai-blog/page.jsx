@@ -153,15 +153,15 @@ export default async function BlogPage(props) {
   }
 
   return (
-    <main className="w-[90%] max-w-[2560px] mx-auto my-[150px]">
-      <div className="mb-10 text-center">
+    <main className="w-[90%] max-w-[2560px] mx-auto my-[120px]">
+      <div className="mb-10 text-center w-full px-[10px] py-[35px] bg-zold/50 rounded-xl">
         <h1
           style={{ fontFamily: "var(--font-inter)" }}
-          className="text-4xl font-bold text-slate-900 mb-4"
+          className="text-4xl font-bold text-feher mb-4"
         >
           Szakmai Blog
         </h1>
-        <p className="text-slate-600">
+        <p className="text-slate-200">
           Olvasd el legújabb bejegyzéseinket és híreinket.
         </p>
       </div>
@@ -177,7 +177,7 @@ export default async function BlogPage(props) {
 
         <div className="flex flex-col flex-1">
           {posts.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8  w-full">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0  w-full">
               {posts.map((post) => (
                 <BlogCard key={post._id} post={post} />
               ))}
