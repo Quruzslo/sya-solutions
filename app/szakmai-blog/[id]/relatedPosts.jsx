@@ -32,11 +32,7 @@ export default async function RelatedPosts({ categoryId, currentPostId }) {
   const relatedPosts = await getRelatedPosts(categoryId, currentPostId);
 
   if (!relatedPosts || relatedPosts.length === 0) {
-    return (
-      <div className="flex flex-col mt-8 pt-8 border-t border-zold">
-        <p>Nincs kapcsolódó bejegyzés...</p>
-      </div>
-    );
+    return null;
   }
 
   return (
