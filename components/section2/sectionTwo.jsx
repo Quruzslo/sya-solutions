@@ -39,7 +39,7 @@ export default function SectionTwo() {
               épül:
             </p>
             <ul className="space-y-4 mb-6">
-              <li className="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+              <li className="flex items-start gap-3 p-3 rounded-lg  transition-colors duration-200">
                 <span className="mt-1 flex-shrink-0 w-5 h-5 flex items-center justify-center rounded-full bg-[#3f4603]/10 text-[#3f4603]">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -63,7 +63,7 @@ export default function SectionTwo() {
                   Kiszámítható, stabil alapok megteremtése a pénzügyeidben.
                 </span>
               </li>
-              <li className="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+              <li className="flex items-start gap-3 p-3 rounded-lg 0 transition-colors duration-200">
                 <span className="mt-1 flex-shrink-0 w-5 h-5 flex items-center justify-center rounded-full bg-[#3f4603]/10 text-[#3f4603]">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -87,7 +87,7 @@ export default function SectionTwo() {
                   A megtakarításaid értékének és gyarapodásának maximalizálása.
                 </span>
               </li>
-              <li className="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+              <li className="flex items-start gap-3 p-3 rounded-lg  transition-colors duration-200">
                 <span className="mt-1 flex-shrink-0 w-5 h-5 flex items-center justify-center rounded-full bg-[#3f4603]/10 text-[#3f4603]">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -136,7 +136,7 @@ export default function SectionTwo() {
 
             {/* Rendezett lista  */}
             <ol className="space-y-4">
-              <li className="flex items-start gap-4 p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+              <li className="flex items-start gap-4 p-3 rounded-lg  transition-colors duration-200">
                 <span className="flex-shrink-0 w-7 h-7 flex items-center justify-center rounded-full bg-[#3f4603] text-white font-bold text-sm shadow-md shadow-[#3f4603]/20">
                   1
                 </span>
@@ -148,7 +148,7 @@ export default function SectionTwo() {
                   és megismerjük a rövid, illetve hosszú távú céljaidat.
                 </span>
               </li>
-              <li className="flex items-start gap-4 p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+              <li className="flex items-start gap-4 p-3 rounded-lg  transition-colors duration-200">
                 <span className="flex-shrink-0 w-7 h-7 flex items-center justify-center rounded-full bg-[#3f4603] text-white font-bold text-sm shadow-md shadow-[#3f4603]/20">
                   2
                 </span>
@@ -160,7 +160,7 @@ export default function SectionTwo() {
                   legmegfelelőbb pénzügyi megoldásokat dolgozzuk ki.
                 </span>
               </li>
-              <li className="flex items-start gap-4 p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+              <li className="flex items-start gap-4 p-3 rounded-lg  transition-colors duration-200">
                 <span className="flex-shrink-0 w-7 h-7 flex items-center justify-center rounded-full bg-[#3f4603] text-white font-bold text-sm shadow-md shadow-[#3f4603]/20">
                   3
                 </span>
@@ -172,7 +172,7 @@ export default function SectionTwo() {
                   hogy tudd, pontosan mibe fekteted a bizalmadat és a pénzedet.
                 </span>
               </li>
-              <li className="flex items-start gap-4 p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+              <li className="flex items-start gap-4 p-3 rounded-lg  transition-colors duration-200">
                 <span className="flex-shrink-0 w-7 h-7 flex items-center justify-center rounded-full bg-[#3f4603] text-white font-bold text-sm shadow-md shadow-[#3f4603]/20">
                   4
                 </span>
