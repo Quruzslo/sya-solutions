@@ -46,7 +46,7 @@ export default function SectionOne() {
                 title={"Fiókvezető"}
                 name={"Vincze Viola"}
                 desc={
-                  "Tapasztalt értékesítő, aki átfogó piaci szemléletével és maximális precizitásával vezeti a csapatot."
+                  "Átfogó piaci ismereteivel és precizitásával azon dolgozik, hogy csapatunk a legmegbízhatóbb pénzügyi megoldásokat és maximális biztonságot nyújtsa ügyfeleink számára."
                 }
                 num={1}
                 isActive={activeMember.isActive}
@@ -57,7 +57,7 @@ export default function SectionOne() {
                 title={"Tanácsadó Leader"}
                 name={"Szőgyényi Zsófia "}
                 desc={
-                  "Higgadt, emberközpontú és hihetetlenül motivált. Számára az a legnagyobb sikerélmény, ha a tudásával másoknak segíthet."
+                  "Higgadt és emberközpontú szakember. Legfontosabb célja, hogy naprakész tudásával érthetővé tegye a pénzügyeket, és stabil hátteret építsen ügyfelei számára."
                 }
                 num={2}
                 isActive={activeMember.isActive}
@@ -68,7 +68,7 @@ export default function SectionOne() {
                 title={"Tanácsadó"}
                 name={"Kis Dániel"}
                 desc={
-                  "Fiatalos, ugyanakkor rendkívül megfontolt és szakmai. Számára a pénzügyek világa nem pusztán munka, hanem az egyik hobbija is."
+                  "Lendületes, mégis rendkívül megfontolt szakember. A pénzügyek világa számára hivatás és szenvedély, így folyamatosan a legelőnyösebb, személyre szabott megoldásokat kutatja."
                 }
                 num={3}
                 isActive={activeMember.isActive}
@@ -79,7 +79,7 @@ export default function SectionOne() {
                 title={"Tanácsadó"}
                 name={"Szabó Zsanett"}
                 desc={
-                  "Igazi energiabomba, akinek a vérében van az értékesítés. Akkor érzi magát elemében, ha pörögnek az események és lendületével másoknak is segíthet."
+                  "Proaktív tanácsadó, aki szívvel-lélekkel képviseli a hozzá fordulók érdekeit. Kimeríthetetlen energiájával és lendületével azon dolgozik, hogy ügyfelei pénzügyi céljaiból valóság legyen."
                 }
                 num={4}
                 isActive={activeMember.isActive}
