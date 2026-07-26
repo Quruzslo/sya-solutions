@@ -79,12 +79,20 @@ export default function Hero({
         {needBtns && (
           <div className="flex flex-col md:flex-row wrap gap-3  xl:mt-[0]">
             <HeroButton
+              title="Jövőmnek"
+              link={"szemelyes-jovotervezes"}
+              icon={<TiArrowRightOutline />}
+              setImage={handleImageChange}
+              image={Future}
+              indx={1}
+            />
+            <HeroButton
               title="Családomnak"
               link={"csalad-tamogatas"}
               icon={<TiArrowRightOutline />}
               setImage={handleImageChange}
               image={Family}
-              indx={1}
+              indx={2}
             />
             <HeroButton
               title="Vállalkozásomnak"
@@ -92,14 +100,6 @@ export default function Hero({
               icon={<TiArrowRightOutline />}
               setImage={handleImageChange}
               image={Engineer}
-              indx={2}
-            />
-            <HeroButton
-              title="Jövőmnek"
-              link={"szemelyes-jovotervezes"}
-              icon={<TiArrowRightOutline />}
-              setImage={handleImageChange}
-              image={Future}
               indx={3}
             />
           </div>
