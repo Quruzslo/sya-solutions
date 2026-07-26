@@ -46,7 +46,7 @@ export default function SectionOne() {
                 title={"Fiókvezető"}
                 name={"Vincze Viola"}
                 desc={
-                  "Tapasztalt értékesítő, aki átfogó piaci szemléletével és maximális precizitásával vezeti a fiókot."
+                  "Tapasztalt értékesítő, aki átfogó piaci szemléletével és maximális precizitásával vezeti a csapatot."
                 }
                 num={1}
                 isActive={activeMember.isActive}
@@ -68,7 +68,7 @@ export default function SectionOne() {
                 title={"Tanácsadó"}
                 name={"Kis Dániel"}
                 desc={
-                  "Fiatalos, ugyanakkor rendkívül megfontolt és szakmai. Számára a pénzügyek világa nem pusztán munka, hanem a legnagyobb hobbija is."
+                  "Fiatalos, ugyanakkor rendkívül megfontolt és szakmai. Számára a pénzügyek világa nem pusztán munka, hanem az egyik hobbija is."
                 }
                 num={3}
                 isActive={activeMember.isActive}
