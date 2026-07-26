@@ -16,7 +16,7 @@ export default function Hero({
   justOnePicture,
   crumbs,
 }) {
-  const [heroImage, setHeroImage] = useState(justOnePicture || Family);
+  const [heroImage, setHeroImage] = useState(justOnePicture || Future);
   const [prevImage, setPrevImage] = useState(null);
   const [currentKey, setCurrentKey] = useState(1);
   const [animationClass, setAnimationClass] = useState("animate-slide-in-left");

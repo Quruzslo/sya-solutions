@@ -45,7 +45,9 @@ export default function SectionOne() {
                 image={Viola}
                 title={"Fiókvezető"}
                 name={"Vincze Viola"}
-                desc={"Ide jön rövid bemutatkozás/szlogen"}
+                desc={
+                  "Tapasztalt értékesítő, aki átfogó piaci szemléletével és maximális precizitásával vezeti a fiókot."
+                }
                 num={1}
                 isActive={activeMember.isActive}
                 setActiveMember={setActiveMember}
@@ -54,7 +56,9 @@ export default function SectionOne() {
                 image={Zso}
                 title={"Tanácsadó Leader"}
                 name={"Szőgyényi Zsófia "}
-                desc={"Ide jön rövid bemutatkozás/szlogen"}
+                desc={
+                  "Higgadt, emberközpontú és hihetetlenül motivált. Számára az a legnagyobb sikerélmény, ha a tudásával másoknak segíthet."
+                }
                 num={2}
                 isActive={activeMember.isActive}
                 setActiveMember={setActiveMember}
@@ -63,7 +67,9 @@ export default function SectionOne() {
                 image={Dani}
                 title={"Tanácsadó"}
                 name={"Kis Dániel"}
-                desc={"Ide jön rövid bemutatkozás/szlogen"}
+                desc={
+                  "Fiatalos, ugyanakkor rendkívül megfontolt és szakmai. Számára a pénzügyek világa nem pusztán munka, hanem a legnagyobb hobbija is."
+                }
                 num={3}
                 isActive={activeMember.isActive}
                 setActiveMember={setActiveMember}
@@ -72,7 +78,9 @@ export default function SectionOne() {
                 image={Zsani}
                 title={"Tanácsadó"}
                 name={"Szabó Zsanett"}
-                desc={"IIde jön rövid bemutatkozás/szlogen"}
+                desc={
+                  "Igazi energiabomba, akinek a vérében van az értékesítés. Akkor érzi magát elemében, ha pörögnek az események és lendületével másoknak is segíthet."
+                }
                 num={4}
                 isActive={activeMember.isActive}
                 setActiveMember={setActiveMember}
