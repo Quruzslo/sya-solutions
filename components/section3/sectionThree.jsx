@@ -14,7 +14,7 @@ export default function SectionOne() {
     image: Zso,
     title: "Tanácsadó",
     name: "Szőgyényi Zsófia",
-    desc: "Ide jön rövid bemutatkozás/szlogen",
+    desc: "Higgadt, emberközpontú és hihetetlenül motivált. Számára az a legnagyobb sikerélmény, ha a tudásával másoknak segíthet.",
     isActive: 2,
   });
 
