@@ -44,7 +44,7 @@ body {
 
 h1,
 h2 {
-  font-family: var(--font-playfair), serif;
+  font-family: var(--font-inter), serif;
   font-size: 60px;
   overflow-wrap: break-word;
   hyphens: auto;

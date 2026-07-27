@@ -205,7 +205,7 @@ export default function FavProds() {
             return (
               <div
                 key={prod.id}
-                className={`bg-slate-50/70 border border-slate-100 p-6 xl:p-8 rounded-2xl flex flex-col gap-5 transition-all ${containerClass}`}
+                className={`bg-white p-6 xl:p-8 rounded-2xl flex flex-col gap-5 transition-all ${containerClass}`}
               >
                 {/* Címsor  */}
                 <div className="stagger-item delay-1">
