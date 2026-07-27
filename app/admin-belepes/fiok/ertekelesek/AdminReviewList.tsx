@@ -56,7 +56,7 @@ export default function AdminReviewList({
     }
 
     setIsPending(false);
-    setEditingReview(null); // Modal bezárása
+    setEditingReview(null);
   };
 
   return (
@@ -109,7 +109,7 @@ export default function AdminReviewList({
         ))}
       </div>
 
-      {/* 2. DYNAMIC MODAL (SZERKESZTÉSHEZ ÉS LÉTREHOZÁSHOZ IS) */}
+      {/*  DYNAMIC MODAL (SZERKESZTÉSHEZ ÉS LÉTREHOZÁSHOZ IS) */}
       {editingReview && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-2xl p-6 w-full max-w-md shadow-2xl flex flex-col gap-4">

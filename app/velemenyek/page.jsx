@@ -7,7 +7,11 @@ const getCachedReviews = unstable_cache(
     const db = client.db("main").collection("reviews");
     const reviews = await db.find({}).sort({ date: -1 }).toArray();
 
-    return reviews;
+    return reviews.map((rev) => ({
+      ...rev,
+      _id: rev._id.toString(),
+      date: rev.date ? rev.date.toString() : null,
+    }));
   },
   ["reviews"],
   {
@@ -16,13 +20,18 @@ const getCachedReviews = unstable_cache(
   },
 );
 
-export default function Reviews() {
+export default async function Reviews() {
+  const reviews = await getCachedReviews();
+
   return (
     <section className="w-[90%] max-w-[2560px] mx-auto my-[120px]">
-      <h1>Minden véleményért hálásak vagyunk!</h1>
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
-        {reviews.map((rev, idx) => (
-          <ReviewCard revData={rev}></ReviewCard>
+      <h1 className="text-3xl font-bold mb-8">
+        Minden véleményért hálásak vagyunk!
+      </h1>
+
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
+        {reviews.map((rev) => (
+          <ReviewCard key={rev._id} revData={rev} />
         ))}
       </div>
     </section>
