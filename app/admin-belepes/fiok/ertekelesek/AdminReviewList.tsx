@@ -63,8 +63,8 @@ export default function AdminReviewList({
     <>
       {/* FEJLÉC ÉS ÚJ ÉRTÉKELÉS GOMB */}
       <div className="flex justify-between flex-col md:flex-row items-center mb-6">
-        <h2 className=" font-semibold text-text-alap">
-          Összesen: {initialReviews.length} értékelés
+        <h2 className=" !text-[20px] font-semibold text-text-alap bg-zold/50 text-feher">
+          {initialReviews.length} értékelés van jelenleg
         </h2>
         <button
           onClick={handleOpenCreateModal}
