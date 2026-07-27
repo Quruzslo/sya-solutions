@@ -43,6 +43,10 @@ body {
   background-color: var(--color-feher);
 }
 
+button {
+  cursor: pointer;
+}
+
 h1,
 h2 {
   font-family: var(--font-inter), serif;

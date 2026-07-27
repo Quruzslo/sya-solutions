@@ -62,13 +62,13 @@ export default function AdminReviewList({
   return (
     <>
       {/* FEJLÉC ÉS ÚJ ÉRTÉKELÉS GOMB */}
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="text-xl font-semibold text-gray-700">
+      <div className="flex justify-between flex-col md:flex-row items-center mb-6">
+        <h2 className=" font-semibold text-text-alap">
           Összesen: {initialReviews.length} értékelés
         </h2>
         <button
           onClick={handleOpenCreateModal}
-          className="px-5 py-2.5 bg-green-600 text-white font-medium rounded-xl hover:bg-green-700 transition shadow-sm"
+          className="px-5 py-2.5 bg-zold text-white font-medium rounded-xl hover:bg-green-700 transition shadow-sm"
         >
           + Új értékelés hozzáadása
         </button>
@@ -93,7 +93,7 @@ export default function AdminReviewList({
             <div className="flex gap-2 pt-3 border-t">
               <button
                 onClick={() => setEditingReview(rev)}
-                className="flex-1 px-3 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition"
+                className="flex-1 px-3 py-2 bg-zold/50 text-white text-sm rounded-lg hover:bg-zold transition"
               >
                 Szerkesztés
               </button>
@@ -113,7 +113,7 @@ export default function AdminReviewList({
       {editingReview && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-2xl p-6 w-full max-w-md shadow-2xl flex flex-col gap-4">
-            <h2 className="text-xl font-bold">
+            <h2 className="!text-[20px] font-bold">
               {editingReview._id
                 ? "Vélemény szerkesztése"
                 : "Új értékelés hozzáadása"}
@@ -191,7 +191,7 @@ export default function AdminReviewList({
                 <button
                   type="submit"
                   disabled={isPending}
-                  className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition disabled:opacity-50"
+                  className="px-4 py-2 bg-zold/50 text-white rounded-lg hover:bg-zold transition disabled:opacity-50"
                 >
                   {isPending ? "Mentés..." : "Mentés"}
                 </button>
