@@ -1,6 +1,6 @@
 import { VscListFilter } from "react-icons/vsc";
 import { FaRegNewspaper } from "react-icons/fa";
-import { FaUsersGear } from "react-icons/fa6";
+import { FaUsersGear, FaRegStar } from "react-icons/fa6";
 
 const navItem = [
   {
@@ -17,6 +17,11 @@ const navItem = [
     name: "Felhasználók",
     path: "/admin-belepes/fiok/felhasznalok",
     icon: <FaUsersGear />,
+  },
+  {
+    name: "Értékelések",
+    path: "/admin-belepes/fiok/ertekelesek",
+    icon: <FaRegStar />,
   },
 ];
 
