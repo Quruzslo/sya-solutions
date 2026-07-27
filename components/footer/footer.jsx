@@ -32,12 +32,7 @@ export default function Footer() {
 
           {/* 2. Oszlop: Navigáció */}
           <div className="flex flex-col gap-4">
-            <h4
-              className="!text-[25px] text-[#bfa06a] mb-2"
-              style={{ fontFamily: "var(--font-playfair), serif" }}
-            >
-              Navigáció
-            </h4>
+            <h4 className="!text-[25px] text-[#bfa06a] mb-2">Navigáció</h4>
             <ul
               className="flex flex-col gap-3 text-sm font-light"
               style={{ fontFamily: "var(--font-inter), sans-serif" }}
@@ -57,16 +52,8 @@ export default function Footer() {
 
           {/* 3. Oszlop: Jogi információk */}
           <div className="flex flex-col gap-4">
-            <h4
-              className="!text-[25px] text-[#bfa06a] mb-2"
-              style={{ fontFamily: "var(--font-playfair), serif" }}
-            >
-              Információk
-            </h4>
-            <ul
-              className="flex flex-col gap-3 text-sm font-light"
-              style={{ fontFamily: "var(--font-inter), sans-serif" }}
-            >
+            <h4 className="!text-[25px] text-[#bfa06a] mb-2">Információk</h4>
+            <ul className="flex flex-col gap-3 text-sm font-light">
               <li>
                 <Link
                   href="/"
@@ -96,16 +83,8 @@ export default function Footer() {
 
           {/*  Kapcsolat */}
           <div className="flex flex-col gap-4">
-            <h4
-              className="!text-[25px] text-[#bfa06a] mb-2"
-              style={{ fontFamily: "var(--font-playfair), serif" }}
-            >
-              Kapcsolat
-            </h4>
-            <ul
-              className="flex flex-col gap-3 text-sm font-light"
-              style={{ fontFamily: "var(--font-inter), sans-serif" }}
-            >
+            <h4 className="!text-[25px] text-[#bfa06a] mb-2">Kapcsolat</h4>
+            <ul className="flex flex-col gap-3 text-sm font-light">
               <li className="flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -163,10 +142,7 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div
-          className="w-full pt-6 border-t border-[#3f4603]/50 flex flex-col md:flex-row justify-between items-center gap-4 text-xs opacity-60 font-light"
-          style={{ fontFamily: "var(--font-inter), sans-serif" }}
-        >
+        <div className="w-full pt-6 border-t border-[#3f4603]/50 flex flex-col md:flex-row justify-between items-center gap-4 text-xs opacity-60 font-light">
           <p>© {year} S.Y.A Solutions. Minden jog fenntartva.</p>
           <p>
             Fejlesztő:{" "}

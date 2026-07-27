@@ -141,7 +141,7 @@ export default function FavProds() {
                   }
                 }}
                 type="button"
-                className={`w-full text-left p-5 rounded-xl border transition-all duration-300 cursor-pointer flex items-center justify-between group
+                className={`w-full text-left p-5 rounded-md md:rounded-full border transition-all duration-300 cursor-pointer flex items-center justify-between group
                   ${
                     isActive
                       ? "bg-zold border-arany shadow-lg translate-x-1"
@@ -205,7 +205,7 @@ export default function FavProds() {
             return (
               <div
                 key={prod.id}
-                className={`bg-white p-6 xl:p-8 rounded-2xl flex flex-col gap-5 transition-all ${containerClass}`}
+                className={`bg-transparent p-6 xl:p-8 rounded-2xl flex flex-col gap-5 transition-all ${containerClass}`}
               >
                 {/* Címsor  */}
                 <div className="stagger-item delay-1">
