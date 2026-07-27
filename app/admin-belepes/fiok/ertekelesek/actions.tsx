@@ -3,21 +3,41 @@
 import { client } from "@/lib/mongodb";
 import { revalidateTag } from "next/cache";
 import { ObjectId } from "mongodb";
+import { auth } from "@/auth";
+
+//  auth segédfüggvény
+async function requireAuth() {
+  const session: any = await auth();
+
+  if (!session || !session.user) {
+    throw new Error("Nincs bejelentkezve!");
+  }
+
+  const role = session.user.role;
+  if (role !== "admin" && role !== "editor") {
+    throw new Error("Nincs jogosultságod ehhez a művelethez!");
+  }
+
+  return true;
+}
 
 // TÖRLÉS
 export async function deleteReviewAction(id: string) {
+  await requireAuth();
+
   const db = client.db("main").collection("reviews");
   await db.deleteOne({ _id: new ObjectId(id) });
   revalidateTag("reviews", "max");
 }
 
-//  SZERKESZTÉS / MÓDOSÍTÁS
+// SZERKESZTÉS / MÓDOSÍTÁS
 export async function updateReviewAction(
   id: string,
   updatedData: { name: string; content: string; stars: number },
 ) {
-  const db = client.db("main").collection("reviews");
+  await requireAuth();
 
+  const db = client.db("main").collection("reviews");
   await db.updateOne(
     { _id: new ObjectId(id) },
     {
@@ -38,8 +58,9 @@ export async function createReviewAction(newData: {
   content: string;
   stars: number;
 }) {
-  const db = client.db("main").collection("reviews");
+  await requireAuth();
 
+  const db = client.db("main").collection("reviews");
   await db.insertOne({
     name: newData.name,
     content: newData.content,
