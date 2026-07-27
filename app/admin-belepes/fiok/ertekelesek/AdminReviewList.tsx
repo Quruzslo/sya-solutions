@@ -79,7 +79,7 @@ export default function AdminReviewList({
         {initialReviews.map((rev) => (
           <div
             key={rev._id}
-            className="p-5 border rounded-xl bg-white shadow-sm flex flex-col justify-between gap-4"
+            className="p-5  rounded-xl bg-white shadow-sm flex flex-col justify-between gap-4"
           >
             <div>
               <div className="flex justify-between items-center mb-2">
