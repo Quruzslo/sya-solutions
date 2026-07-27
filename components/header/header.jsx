@@ -50,18 +50,6 @@ export default function Header() {
     };
   }, [isMenuOpen]);
 
-  // const navItems = [
-  //   { name: "Csapatunk", path: "/#csapat" },
-
-  //   { name: "Esettanulmányok", path: "/" },
-
-  //   { name: "Népszerű termékek", path: "/#termekek" },
-
-  //   { name: "Konzultáció", path: "/" },
-
-  //   { name: "GY.I.K", path: "/#gyik" },
-  // ];
-
   return (
     <>
       <section className="w-full fixed top-0 left-0 flex flex-col justify-center items-center z-[999]">

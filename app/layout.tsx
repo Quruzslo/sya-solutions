@@ -31,7 +31,7 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="hu" className={`${playfair.variable} ${inter.variable}`}>
-      <body className="flex flex-col min-h-screen bg-[var(--color-feher)]">
+      <body data-theme="light" className="flex flex-col min-h-screen ">
         <Header></Header>
         <main className="flex-1 flex flex-col w-full ">{children}</main>
         <ScrollToTop />

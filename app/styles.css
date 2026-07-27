@@ -40,6 +40,7 @@ body {
   overflow-x: clip;
   margin: 0;
   padding: 0;
+  background-color: var(--color-feher);
 }
 
 h1,
