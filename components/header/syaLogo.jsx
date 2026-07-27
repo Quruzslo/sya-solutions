@@ -3,9 +3,10 @@ export default function SyaLogo({ activeHeader }) {
   const strokeColor = activeHeader ? "#c2ca7f" : "#e7ebe3";
 
   const transitionStyle = {
-    transition: "all 500ms ease-in-out",
-
-    transitionDelay: activeHeader ? "0ms" : "600ms",
+    transitionProperty: "fill, stroke, opacity",
+    transitionDuration: "500ms",
+    transitionTimingFunction: "ease-in-out",
+    transitionDelay: activeHeader ? "0ms" : "100ms",
   };
 
   return (
@@ -48,8 +49,8 @@ export default function SyaLogo({ activeHeader }) {
           style={transitionStyle}
         />
 
-        {/* 'S' trendvonalak */}
-        <path
+        {/* 'S' vonal */}
+        {/* <path
           d="M -5 60 C 15 60, 20 15, 60 15"
           fill="none"
           stroke={strokeColor}
@@ -65,7 +66,7 @@ export default function SyaLogo({ activeHeader }) {
           strokeLinecap="round"
           strokeLinejoin="round"
           style={transitionStyle}
-        />
+        /> */}
       </g>
 
       {/* Tipográfia szövegek */}
