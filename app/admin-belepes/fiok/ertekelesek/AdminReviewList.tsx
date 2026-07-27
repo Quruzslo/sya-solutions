@@ -12,17 +12,14 @@ export default function AdminReviewList({
 }: {
   initialReviews: any[];
 }) {
-  // Ha null: a modal zárva van.
-  // Ha van benne objektum: a modal nyitva van (szerkesztés vagy új felvétel).
   const [editingReview, setEditingReview] = useState<any | null>(null);
   const [isPending, setIsPending] = useState(false);
 
-  // Új üres értékelés megnyitása
   const handleOpenCreateModal = () => {
     setEditingReview({
       name: "",
       content: "",
-      stars: 5, // alapértelmezett 5 csillag
+      stars: 5,
     });
   };
 
@@ -35,7 +32,7 @@ export default function AdminReviewList({
     }
   };
 
-  // Mentés kezelése (Okos mentés: Eldönti, hogy Létrehozás vagy Módosítás)
+  // Mentés kezelése
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!editingReview) return;

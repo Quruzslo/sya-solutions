@@ -1,6 +1,6 @@
 import { client } from "@/lib/mongodb";
 import { unstable_cache } from "next/cache";
-import AdminReviewList from "@/components/AdminReviewList";
+import AdminReviewList from "./AdminReviewList";
 
 const getCachedReviews = unstable_cache(
   async () => {
