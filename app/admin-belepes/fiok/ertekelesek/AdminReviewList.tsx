@@ -40,7 +40,7 @@ export default function AdminReviewList({
     setIsPending(true);
 
     if (editingReview._id) {
-      // ✏️ Ha van _id -> Szerkesztés
+      //  Ha van _id -> Szerkesztés
       await updateReviewAction(editingReview._id, {
         name: editingReview.name,
         content: editingReview.content,
