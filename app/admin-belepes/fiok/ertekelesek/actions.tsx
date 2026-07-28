@@ -4,6 +4,7 @@ import { client } from "@/lib/mongodb";
 import { revalidateTag } from "next/cache";
 import { ObjectId } from "mongodb";
 import { auth } from "@/auth";
+import { redirect } from "next/navigation";
 
 //  auth segédfüggvény
 async function requireAuth() {
@@ -31,6 +32,7 @@ export async function deleteReviewAction(id: string) {
   const db = client.db("main").collection("reviews");
   await db.deleteOne({ _id: new ObjectId(id) });
   revalidateTag("reviews", "max");
+  redirect("/admin-belepes/fiok/ertekelesek");
 }
 
 // SZERKESZTÉS / MÓDOSÍTÁS
@@ -53,6 +55,7 @@ export async function updateReviewAction(
   );
 
   revalidateTag("reviews", "max");
+  redirect("/admin-belepes/fiok/ertekelesek");
 }
 
 // ÚJ ÉRTÉKELÉS LÉTREHOZÁSA
@@ -73,4 +76,5 @@ export async function createReviewAction(newData: {
   });
 
   revalidateTag("reviews", "max");
+  redirect("/admin-belepes/fiok/ertekelesek");
 }
