@@ -47,7 +47,7 @@ export default function AdminReviewList({
         stars: editingReview.stars,
       });
     } else {
-      // ➕ Ha nincs _id -> Új létrehozása
+      //  Ha nincs _id -> Új létrehozása
       await createReviewAction({
         name: editingReview.name,
         content: editingReview.content,

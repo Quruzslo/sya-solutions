@@ -12,13 +12,16 @@ async function requireAuth() {
   if (!session || !session.user) {
     throw new Error("Nincs bejelentkezve!");
   }
-
+  const userId = session.user.id;
   const role = session.user.role;
   if (role !== "admin" && role !== "editor") {
     throw new Error("Nincs jogosultságod ehhez a művelethez!");
   }
 
-  return true;
+  return {
+    userId,
+    role,
+  };
 }
 
 // TÖRLÉS
@@ -58,13 +61,14 @@ export async function createReviewAction(newData: {
   content: string;
   stars: number;
 }) {
-  await requireAuth();
+  const { userId } = await requireAuth();
 
   const db = client.db("main").collection("reviews");
   await db.insertOne({
     name: newData.name,
     content: newData.content,
     stars: Number(newData.stars),
+    addedBy: userId,
     date: new Date(),
   });
 
