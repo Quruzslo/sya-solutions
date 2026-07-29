@@ -1,5 +1,5 @@
 export default function sitemap() {
-  const baseUrl = "https://awww.sya-solutions.hu";
+  const baseUrl = "https://www.sya-solutions.hu";
 
   const routes = [
     "",
