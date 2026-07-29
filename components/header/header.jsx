@@ -50,6 +50,13 @@ export default function Header() {
     };
   }, [isMenuOpen]);
 
+  const [openDropdownIndex, setOpenDropdownIndex] = useState(null);
+
+  const toggleDropdown = (index, e) => {
+    e.preventDefault(); // Megakadályozzuk, hogy a "#" URL-re ugorjon
+    setOpenDropdownIndex(openDropdownIndex === index ? null : index);
+  };
+
   return (
     <>
       <section className="w-full fixed top-0 left-0 flex flex-col justify-center items-center z-[999]">
@@ -106,7 +113,7 @@ export default function Header() {
         </header>
       </section>
 
-      {/* OVERLAY (A KÜLSŐ KONTÉNER - h-[100dvh] a mobil miatt!) */}
+      {/* OVERLAY  */}
       <div
         className={`fixed inset-0 w-full h-[100dvh] z-[998]
           ${!hasRendered ? "hidden" : ""} 
@@ -146,7 +153,7 @@ export default function Header() {
               <ul className="flex flex-col gap-5 md:gap-6 text-center">
                 {navItems.map((item, index) => {
                   const parentMenuTransitionDuration = 600;
-                  const staggerSpeed = 80; // Az elemek közötti késleltetés
+                  const staggerSpeed = 80; //  késleltetés
 
                   const delay = isMenuOpen
                     ? parentMenuTransitionDuration + index * staggerSpeed
@@ -158,23 +165,66 @@ export default function Header() {
                       className={`fm-item ${isMenuOpen ? "menu-item-open" : "menu-item-close"}`}
                       style={{ animationDelay: `${delay}ms` }}
                     >
-                      <Link
-                        href={item.path}
-                        onClick={toggleMenu}
-                        className="fm-link-wrap text-[20px] md:text-[30px] font-extrabold text-[#3f4603]"
-                      >
-                        <span className="fm-link-flip">
-                          {/* Előlap */}
-                          <span className="fm-face">{item.name}</span>
-                          {/* Hátlap */}
-                          <span className="fm-face-back hover:text-[#3f4603]/60 transition-colors">
-                            {item.name}
+                      {item.children ? (
+                        /* ---HA DROPDOWN MENÜ --- */
+                        <div className="flex flex-col items-center">
+                          <Link
+                            href={item.path}
+                            onClick={(e) => toggleDropdown(index, e)}
+                            className="fm-link-wrap text-[20px] md:text-[30px] font-extrabold text-[#3f4603] flex items-center justify-center gap-2"
+                          >
+                            <span className="fm-link-flip">
+                              <span className="fm-face">{item.name} ▾</span>
+                              <span className="fm-face-back hover:text-[#3f4603]/60 transition-colors">
+                                {item.name} ▾
+                              </span>
+                            </span>
+                          </Link>
+
+                          <div
+                            className={`grid transition-all duration-300 ease-in-out ${
+                              openDropdownIndex === index
+                                ? "grid-rows-[1fr] opacity-100 mt-4 mb-2"
+                                : "grid-rows-[0fr] opacity-0 mt-0 mb-0"
+                            }`}
+                          >
+                            <ul className="flex flex-col gap-3 overflow-hidden">
+                              {item.children.map((child, childIndex) => (
+                                <li key={childIndex}>
+                                  <Link
+                                    href={child.path}
+                                    onClick={toggleMenu}
+                                    className="text-[16px] md:text-[20px] font-bold text-[#3f4603]/80 hover:text-[#3f4603] transition-colors block py-1"
+                                  >
+                                    {child.name}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      ) : (
+                        /* --- SIMA MENÜPONT  --- */
+                        <Link
+                          href={item.path}
+                          onClick={toggleMenu}
+                          className="fm-link-wrap text-[20px] md:text-[30px] font-extrabold text-[#3f4603]"
+                        >
+                          <span className="fm-link-flip">
+                            {/* Előlap */}
+                            <span className="fm-face">{item.name}</span>
+                            {/* Hátlap */}
+                            <span className="fm-face-back hover:text-[#3f4603]/60 transition-colors">
+                              {item.name}
+                            </span>
                           </span>
-                        </span>
-                      </Link>
+                        </Link>
+                      )}
                     </li>
                   );
                 })}
+
+                {/* KAPCSOLAT GOMB (EREDETI KÓD) */}
                 <li
                   className={`${isMenuOpen ? "menu-item-open" : "menu-item-close"} menu-delay-6 mt-2`}
                 >
