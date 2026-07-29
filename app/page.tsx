@@ -30,10 +30,10 @@ export default async function HomePage() {
         crumbs={null}
       ></Hero>
       <SectionOne></SectionOne>
-      <PartnerCarousel></PartnerCarousel>
       <SectionTwo></SectionTwo>
       <SectionThree></SectionThree>
       <FavProds></FavProds>
+      <PartnerCarousel></PartnerCarousel>
     </section>
   );
 }
