@@ -60,7 +60,7 @@ export default function BlogCard({ post }) {
           )}
         </div>
 
-        <p className="text-sm text-slate-600 line-clamp-3 mt-1">
+        <p className="text-sm text-text-alap line-clamp-3 mt-1">
           {post.description}
         </p>
 
