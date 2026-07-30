@@ -81,4 +81,54 @@ export const carrierData = [
       "Nem hoz zavarba a telefonálás",
     ],
   },
+  {
+    id: 3,
+    title: "Pénzügyi Munkatárs",
+    icon: (
+      <svg
+        fill="#3f4603"
+        width="25px"
+        height="25px"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6h-6z"></path>
+      </svg>
+    ),
+    description:
+      "Bővülő csapatunkba keresünk új kollégákat! Ha fontos számodra a rugalmas időbeosztás, a teljesítményarányos bérezés és szeretnél segíteni másoknak az álmaik megvalósításában, köztünk a helyed.",
+    elvarasok: [
+      "Felsőfokú tanulmányok (folyamatban lévő vagy befejezett) vagy MNB Biztosításközvetítői végzettség",
+      "Heti legalább 15-20 óra munkára fordítható szabadidő",
+      "Haladó szintű számítógépes ismeretek",
+      "Aktív angol nyelvtudás",
+      "Általános érdeklődés a pénzügyek iránt",
+      "Proaktív, önálló munkavégzés és megbízhatóság",
+      "Határidők pontos betartása és diszkréció",
+      "Stílusos megjelenés és igényesség",
+    ],
+    elonyok: [
+      "Többre hivatottság érzése és a tanulás szeretete",
+      "Segítőkész, ügyfélközpontú hozzáállás",
+      "Nyitottság a teljesítményalapú bérezésre",
+    ],
+  },
+  {
+    id: 4,
+    title: "Értékesítési Asszisztens",
+    description:
+      "Pénzügyi és biztosítási területen működő cégünk értékesítési asszisztens munkatársat keres ügyfélgondozásra, telefonos kapcsolattartásra és adminisztrációs feladatok ellátására.",
+    elvarasok: [
+      "Magabiztos, udvarias kommunikáció telefonon",
+      "Precizitás, pontosság és megbízhatóság",
+      "Jó szervezőkészség",
+      "Telefonos kapcsolattartás és időpont-egyeztetés meglévő ügyfelekkel",
+      "Adminisztrációs támogatás az értékesítési folyamatokban",
+    ],
+    elonyok: [
+      "Biztosítási és pénzügyi szektorban szerzett tapasztalat",
+      "Ügyfélközpontú gondolkodásmód",
+      "Rugalmas munkavégzésre való nyitottság (Budapest / Home Office)",
+    ],
+  },
 ];

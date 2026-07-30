@@ -69,11 +69,11 @@ export default function CarrierPage() {
         </div>
 
         {/* JOBB OLDAL */}
-        <div className="flex flex-col md:flex-row  w-full xl:w-[66%] gap-[20px]">
+        <div className="grid grid-cols-2 md:flex-row  w-full xl:w-[66%] gap-[10px]">
           {carrierData.map((job) => (
             <div
               key={job.id}
-              className="flex flex-col w-full xl:w-1/2 bg-text-alap rounded-xl p-[10px]"
+              className="flex flex-col w-full  bg-text-alap rounded-xl p-[10px]"
             >
               {/* IKON */}
               <div className="w-[40px] h-[40px] rounded-full bg-[#E5FFCC] flex flex-row items-center justify-center">
