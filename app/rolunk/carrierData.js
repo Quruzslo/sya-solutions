@@ -1,7 +1,7 @@
 export const carrierData = [
   {
     id: 1,
-    title: "Asszisztens állás",
+    title: "Asszisztens",
     description:
       "Ha szeretsz rendszerezni, szereted a fiatalos lendületet és fontos a work-life balance, akkor köztünk a helyed!",
     icon: (
