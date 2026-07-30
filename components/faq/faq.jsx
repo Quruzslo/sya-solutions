@@ -29,7 +29,7 @@ export default function Faq({ slug }) {
               <button
                 onClick={() => toggleFaq(index)}
                 aria-expanded={isOpen}
-                className="flex justify-between items-center p-5 text-left w-full cursor-pointer hover:bg-gray-50 transition-colors gap-[5px]"
+                className="flex justify-between items-center p-5 text-left w-full cursor-pointer transition-colors gap-[5px]"
               >
                 <h3
                   className={`!text-[20px]  relative z-1 faq-title p-3 font-bold m-0 ${isOpen ? "active !text-feher" : "text-zold"}`}
