@@ -38,6 +38,8 @@
 
 html,
 body {
+  /* Fallback Safari 15.4-nek, mivel az nem ismeri a clip-et, így nem esik szét */
+
   overflow-x: clip;
   margin: 0;
   padding: 0;
@@ -199,7 +201,7 @@ a,
 
 /* Termékek tab css------------- */
 
-/* Konténer áttűnés (hogy a szürke háttér finoman váltson) */
+/* Konténer áttűnés */
 @keyframes fadeContainer {
   from {
     opacity: 0;
@@ -249,7 +251,7 @@ a,
 
 /* Alapállapot beállítása */
 .tab-entering .stagger-item {
-  opacity: 0; /* Kezdeti rejtés, amíg a delay le nem jár */
+  opacity: 0;
   animation: slideDownIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
@@ -257,7 +259,7 @@ a,
   animation: slideUpOut 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-/* Késleltetések (Stagger) - Belépés (fentről lefelé épül fel) */
+/* Késleltetések (Stagger) */
 .tab-entering .delay-1 {
   animation-delay: 0.1s;
 }
@@ -271,7 +273,6 @@ a,
   animation-delay: 0.4s;
 }
 
-/* Kilépés - Gyorsabban pörög le */
 .tab-exiting .delay-1 {
   animation-delay: 0s;
 }
@@ -308,7 +309,6 @@ a,
   }
 }
 
-/* Jobb panel (Világos): Fentről csúszik LE, felfelé csúszik KI */
 @keyframes slideDownInMenu {
   from {
     opacity: 0;
@@ -330,7 +330,6 @@ a,
   }
 }
 
-/* Osztályok a panelek vezérléséhez */
 .panel-left-open {
   animation: slideUpInMenu 0.8s cubic-bezier(0.77, 0, 0.175, 1) forwards;
 }
@@ -457,12 +456,15 @@ blockquote {
 
 /* Menu item hover effekt  */
 .fm-item {
+  -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   transform-origin: 50% 100%;
 }
 
 .fm-link-wrap {
+  -webkit-perspective: 260px;
   perspective: 260px;
   perspective-origin: 50% 0%;
   overflow: hidden;
@@ -471,6 +473,7 @@ blockquote {
 .fm-link-flip {
   position: relative;
   display: block;
+  -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   transform-origin: 50% 0%;
   transition: transform 0.55s cubic-bezier(0.76, 0, 0.24, 1);
@@ -480,6 +483,7 @@ blockquote {
 }
 .fm-face {
   display: block;
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 .fm-face-back {
@@ -492,6 +496,7 @@ blockquote {
 }
 
 /* Blogoldal formázások -------------------- */
+/* Natív Nesting (beágyazás) megszüntetve a Safari 15.4 támogatásért */
 
 .prose ul {
   padding: 10px;
@@ -501,8 +506,10 @@ blockquote {
   display: block;
   border-radius: 0px;
   border-left: 3px solid var(--color-zold);
+}
 
-  @media (max-width: 769px) {
+@media (max-width: 769px) {
+  .prose ul {
     width: 100%;
   }
 }
@@ -511,17 +518,16 @@ blockquote {
   background: var(--color-feher);
   display: flex;
   margin-bottom: 8px;
-
   border-radius: 4px;
+}
 
-  &::before {
-    content: "•";
-    color: var(--color-zold);
-    font-weight: bold;
-    display: inline-block;
-    width: 1em;
-    margin-right: 8px;
-  }
+.prose ul > li::before {
+  content: "•";
+  color: var(--color-zold);
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-right: 8px;
 }
 
 .prose ul > li:last-child {
@@ -530,20 +536,22 @@ blockquote {
 
 .related-post {
   position: relative;
-  &::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 3px;
-    border-radius: 50px;
-    background: var(--color-zold);
-    transition: all ease-out 0.3s;
-    z-index: 0;
-  }
-  &:hover::before {
-    width: 100%;
-    border-radius: 10px;
-  }
+}
+
+.related-post::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  border-radius: 50px;
+  background: var(--color-zold);
+  transition: all ease-out 0.3s;
+  z-index: 0;
+}
+
+.related-post:hover::before {
+  width: 100%;
+  border-radius: 10px;
 }
