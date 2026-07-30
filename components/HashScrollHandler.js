@@ -25,7 +25,7 @@ export default function HashScrollHandler() {
       const timeout = setTimeout(scrollToTarget, 150);
       return () => clearTimeout(timeout);
     }
-  }, [pathname]); // Minden útvonalváltáskor automatikusan lefut!
+  }, [pathname]);
 
   return null;
 }
