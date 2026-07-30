@@ -31,7 +31,7 @@ export default function CarrierPage() {
       </div>
 
       <div
-        id="#karrier"
+        id="karrier"
         className="w-[90%] max-w-[2560px] flex flex-col xl:flex-row mx-auto my-[50px] gap-[20px]"
       >
         {/* BAL OLDAL */}
