@@ -10,10 +10,8 @@ export default function HashScrollHandler() {
     const hash = window.location.hash;
     if (!hash) return;
 
-    const id = hash.replace("#", "");
-
     const scrollToTarget = () => {
-      const element = document.getElementById(id);
+      const element = document.getElementById(hash.substring(1));
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
         return true;
