@@ -69,7 +69,7 @@ export default function CarrierPage() {
         </div>
 
         {/* JOBB OLDAL */}
-        <div className="grid grid-cols-2 md:flex-row  w-full xl:w-[66%] gap-[10px]">
+        <div className="grid grid-cols-1 md:grid-cols-2  w-full xl:w-[66%] gap-[10px]">
           {carrierData.map((job) => (
             <div
               key={job.id}
