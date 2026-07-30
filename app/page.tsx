@@ -31,7 +31,7 @@ export default async function HomePage() {
       ></Hero>
       <SectionOne></SectionOne>
       <SectionTwo></SectionTwo>
-      <SectionThree></SectionThree>
+
       <FavProds></FavProds>
       <PartnerCarousel></PartnerCarousel>
     </section>

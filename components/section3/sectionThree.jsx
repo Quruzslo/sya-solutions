@@ -9,7 +9,7 @@ import Dani from "../../public/images/danikep.jpg";
 import Zsani from "../../public/images/Zsanipic.jpg";
 import Viola from "../../public/images/Viola.jpg";
 
-export default function SectionOne() {
+export default function SectionThree() {
   const [activeMember, setActiveMember] = useState({
     image: Zso,
     title: "Tanácsadó",
