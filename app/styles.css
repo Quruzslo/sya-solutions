@@ -38,8 +38,6 @@
 
 html,
 body {
-  /* Fallback Safari 15.4-nek, mivel az nem ismeri a clip-et, így nem esik szét */
-
   overflow-x: clip;
   margin: 0;
   padding: 0;
