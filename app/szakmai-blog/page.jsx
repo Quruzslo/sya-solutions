@@ -154,7 +154,7 @@ export default async function BlogPage(props) {
 
   return (
     <main className="w-[90%] max-w-[2560px] mx-auto my-[120px]">
-      <div className="mb-10 text-center w-full px-[10px] py-[35px] bg-zold/50 rounded-xl">
+      <div className="mb-10 text-center w-full px-[10px] py-[35px] bg-zold rounded-xl">
         <h1
           style={{ fontFamily: "var(--font-inter)" }}
           className="text-4xl font-bold text-feher mb-4"
