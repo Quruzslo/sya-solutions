@@ -13,8 +13,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/kapcsolat",
   ];
 
-  // A MetadataRoute.Sitemap típus kényszeríti, hogy a TypeScript ne
-  // sima "string"-ként, hanem "weekly" | "monthly" literálként kezelje az értékeket.
   const staticRoutes: MetadataRoute.Sitemap = routes.map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
