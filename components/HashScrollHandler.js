@@ -10,7 +10,7 @@ export default function HashScrollHandler() {
     const hash = window.location.hash;
     if (!hash) return;
 
-    const id = hash.replace("#", "");
+    const id = hash.split("#").filter(Boolean)[0];
 
     const scrollToTarget = () => {
       const element = document.getElementById(id);
