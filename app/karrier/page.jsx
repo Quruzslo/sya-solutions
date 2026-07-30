@@ -12,6 +12,7 @@ export default function CarrierPage() {
   return (
     <section className="w-full">
       <div className="w-[90%] max-w-[2560px] flex flex-col mx-auto mt-[150px]">
+        <SectionThree></SectionThree>
         <div className="flex flex-col gap-[15px] items-center bg-zold/50 text-feher rounded-xl px-[10px] py-[25px]">
           <h1
             className="font-black tracking-wider !text-[20px] md:!text-[45px]"
@@ -28,7 +29,7 @@ export default function CarrierPage() {
           </div>
         </div>
       </div>
-      <SectionThree></SectionThree>
+
       <div
         id="#karrier"
         className="w-[90%] max-w-[2560px] flex flex-col xl:flex-row mx-auto my-[50px] gap-[20px]"
