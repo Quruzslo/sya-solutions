@@ -41,6 +41,7 @@ export default function Footer() {
                 <li key={idx}>
                   <Link
                     href={item.path}
+                    aria-label={item.name}
                     className="hover:text-[#bfa06a] hover:pl-2 transition-all duration-300"
                   >
                     {item.name}
@@ -57,6 +58,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/"
+                  aria-label="Adatkezelési tájékoztató"
                   className="hover:text-[#bfa06a] hover:pl-2 transition-all duration-300"
                 >
                   Adatkezelési Tájékoztató
@@ -65,6 +67,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/"
+                  aria-label="Általános Szerződési Feltételek"
                   className="hover:text-[#bfa06a] hover:pl-2 transition-all duration-300"
                 >
                   Általános Szerződési Feltételek
@@ -73,6 +76,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/"
+                  aria-label="Süti (Cookie) Szabályzat"
                   className="hover:text-[#bfa06a] hover:pl-2 transition-all duration-300"
                 >
                   Süti (Cookie) Szabályzat
@@ -133,6 +137,7 @@ export default function Footer() {
 
             <Link
               href="/kapcsolat"
+              aria-label="Kapcsolat"
               className="mt-2 w-fit py-[10px] px-[24px] rounded-[5px] bg-zold text-[#e7ebe3] font-semibold hover:bg-[#bfa06a] hover:text-[#1f241b] transition-all duration-300"
               style={{ fontFamily: "var(--font-inter), sans-serif" }}
             >
@@ -142,11 +147,11 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="w-full pt-6 border-t border-[#3f4603]/50 flex flex-col md:flex-row justify-between items-center gap-4 text-xs opacity-60 font-light">
+        <div className="w-full pt-6 border-t border-[#3f4603]/50 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-light text-feher">
           <p>© {year} S.Y.A Solutions. Minden jog fenntartva.</p>
           <p>
             Fejlesztő:{" "}
-            <span className="font-semibold text-[#bfa06a]">Prefer Site</span>
+            <span className="font-semibold text-feher">Prefer Site</span>
           </p>
         </div>
       </div>
