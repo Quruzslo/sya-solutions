@@ -26,7 +26,7 @@ export default function CategoryFilter({
       className="flex flex-col items-start gap-2 border-2 border-zold rounded-[10px] relative p-[5px] pb-[20px] "
     >
       <div className="rounded-full p-[5px] mx-auto translate-y-[calc(-65%)] bg-feher">
-        <h3>Kategória szűrő</h3>
+        <h2 className="!text-[20px]">Kategória szűrő</h2>
       </div>
       {items.map((item) => {
         const isActive = currentCategory === item.key;
@@ -36,6 +36,7 @@ export default function CategoryFilter({
             key={item.key}
             href={item.href}
             aria-current={isActive ? "page" : undefined}
+            aria-label={item.label}
             className={`group flex items-center rounded-full border px-5 py-2.5 text-sm font-medium transition-colors duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zold/40 focus-visible:ring-offset-2 ${
               isActive
                 ? "border-zold bg-zold text-white"
