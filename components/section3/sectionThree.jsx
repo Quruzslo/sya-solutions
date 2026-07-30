@@ -19,10 +19,7 @@ export default function SectionThree() {
   });
 
   return (
-    <div
-      id="csapat"
-      className=" w-[90%] max-w-[2560px] rounded-[20px] flex flex-col mx-auto py-[50px]"
-    >
+    <div id="csapat" className=" w-full flex flex-col mx-auto">
       <SectionTitles
         title={"Csapatunk"}
         bgText={"Akik segítenek az utadon"}
