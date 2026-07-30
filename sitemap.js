@@ -6,7 +6,7 @@ export default function sitemap() {
     "/szemelyes-jovotervezes",
     "/csalad-tamogatas",
     "/vallalkozas-tamogatas",
-    "/karrier",
+    "/rolunk",
     "/szakmai-blog",
     "/kapcsolat",
   ];

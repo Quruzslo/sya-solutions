@@ -10,7 +10,7 @@ Itt található a SYA Solutions szolgáltatásainak, szakmai területeinek és l
 - [Szolgáltatások](https://sya-solutions.hu/csalad-tamogatas): Részletes áttekintés a nyugdíj-, biztosítási-, hitel- és befektetési megoldásainkról.
 - [Vállalkozás védelem] (https://sya-solutions.hu/vallalkozas-tamogatas): Egyéni vállalkozók és cégtulajdonosok részére átfogó védelem, hitelek és vállalkozás biztosítás, hogy nyugodtan alhass!
 - [Nyugdíj Megtakarítás](https://sya-solutions.hu/szemelyes-jovotervezes): Az államilag támogatott nyugdíjprogramok (Nyugdíjbiztosítás, NYESZ, ÖNYP) független összehasonlítása.
-- [Rólunk](https://sya-solutions.hu/#csapat): A SYA Solutions szakértői csapata és független tanácsadói filozófiánk.
+- [Rólunk](https://sya-solutions.hu/rolunk): A SYA Solutions szakértői csapata és független tanácsadói filozófiánk.Home Office munkalehetőség, főállás, diákmunka és mellékállás egyaránt.
 - [Kapcsolat & Konzultáció](https://sya-solutions.hu/kapcsolat): Ingyenes személyes vagy online pénzügyi tanácsadás kérése, kötelezettségvállalás nélkül.
 
 ## Fő Szolgáltatási Területeink
