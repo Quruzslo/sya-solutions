@@ -6,6 +6,7 @@ import Footer from "../components/footer/footer";
 import ScrollToTop from "../components/srolltoTop";
 import CookieBanner from "../components/cookieBanner/CookieBanner";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import HashScrollHandler from "@/components/HashScrollHandler";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -34,6 +35,7 @@ export default async function RootLayout({
       <body data-theme="light" className="flex flex-col min-h-screen ">
         <Header></Header>
         <main className="flex-1 flex flex-col w-full ">{children}</main>
+        <HashScrollHandler />
         <ScrollToTop />
         <Footer></Footer>
         <SpeedInsights />
