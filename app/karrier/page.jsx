@@ -15,6 +15,7 @@ export default function CarrierPage() {
         <SectionThree></SectionThree>
         <div className="flex flex-col gap-[15px] items-center bg-zold/50 text-feher rounded-xl px-[10px] py-[25px]">
           <h1
+            id="karrier"
             className="font-black tracking-wider !text-[20px] md:!text-[45px]"
             style={{ fontFamily: "var(--font-inter)" }}
           >
@@ -30,10 +31,7 @@ export default function CarrierPage() {
         </div>
       </div>
 
-      <div
-        id="karrier"
-        className="w-[90%] max-w-[2560px] flex flex-col xl:flex-row mx-auto my-[50px] gap-[20px]"
-      >
+      <div className="w-[90%] max-w-[2560px] flex flex-col xl:flex-row mx-auto my-[50px] gap-[20px]">
         {/* BAL OLDAL */}
         <div className="flex flex-col w-full xl:w-[33%]">
           <Image
