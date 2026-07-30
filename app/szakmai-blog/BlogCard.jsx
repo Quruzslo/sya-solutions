@@ -12,6 +12,7 @@ export default function BlogCard({ post }) {
     <Link
       href={postUrl}
       className="group overflow-hidden relative flex flex-col bg-white   duration-300 scale-100 hover:scale-95 transition-all duration-300 ease-out"
+      aria-label={post.title}
     >
       {/* felső accent  */}
       <div className="relative h-[5px] w-full bg-transparent overflow-hidden">
@@ -49,11 +50,11 @@ export default function BlogCard({ post }) {
           {post.title}
         </h3>
 
-        <div className="flex items-center gap-2 text-xs text-slate-400">
+        <div className="flex items-center gap-2 text-xs text-zold">
           <span>{post.author}</span>
           {formattedDate && (
             <>
-              <span className="text-slate-300">/</span>
+              <span className="text-zold">/</span>
               <time dateTime={post.createdAt}>{formattedDate}</time>
             </>
           )}

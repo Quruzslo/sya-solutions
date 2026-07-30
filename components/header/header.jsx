@@ -74,7 +74,11 @@ export default function Header() {
           {/* Logo Container */}
 
           <div className="w-fit h-fit min-w-[75px] max-h-[75px] xl:max-h-[100px] relative z-50">
-            <Link href="/" className="z-50">
+            <Link
+              href="/"
+              className="z-50"
+              aria-label="Független pénzügyi tanácsadás, hogy a teljes piac legjobb ajánlatait adhassuk ügyfeleinknek!"
+            >
               <SyaLogo activeHeader={activeHeader || isMenuOpen} />
             </Link>
           </div>
@@ -172,6 +176,7 @@ export default function Header() {
                             href={item.path}
                             onClick={(e) => toggleDropdown(index, e)}
                             className="fm-link-wrap text-[20px] md:text-[30px] font-extrabold text-[#3f4603] flex items-center justify-center gap-2"
+                            aria-label={item}
                           >
                             <span className="fm-link-flip">
                               <span className="fm-face">{item.name} ▾</span>
@@ -194,6 +199,7 @@ export default function Header() {
                                   <Link
                                     href={child.path}
                                     onClick={toggleMenu}
+                                    aria-label={child.name}
                                     className="text-[16px] md:text-[20px] font-bold text-[#3f4603]/80 hover:text-[#3f4603] transition-colors block py-1"
                                   >
                                     {child.name}
@@ -208,6 +214,7 @@ export default function Header() {
                         <Link
                           href={item.path}
                           onClick={toggleMenu}
+                          aria-label={item.name}
                           className="fm-link-wrap text-[20px] md:text-[30px] font-extrabold text-[#3f4603]"
                         >
                           <span className="fm-link-flip">
@@ -231,6 +238,7 @@ export default function Header() {
                   <Link
                     href="/kapcsolat"
                     onClick={toggleMenu}
+                    aria-label="Lépjen kapcsolatba velünk, hogy felmérhessük pénzügyeit egy független elemzés alkalmával. Kapcsolat gomb"
                     className="w-fit mx-auto kapcsolat-btn flex flex-row items-center gap-3 p-[10px] px-8 rounded-full border-2 border-[#3f4603] text-[#3f4603] text-[20px] font-bold hover:bg-[#3f4603] hover:text-[#e7ebe3] transition-all"
                   >
                     <span className="icon-slot">
