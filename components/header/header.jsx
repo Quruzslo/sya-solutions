@@ -53,7 +53,7 @@ export default function Header() {
   const [openDropdownIndex, setOpenDropdownIndex] = useState(null);
 
   const toggleDropdown = (index, e) => {
-    e.preventDefault(); // Megakadályozzuk, hogy a "#" URL-re ugorjon
+    e.preventDefault();
     setOpenDropdownIndex(openDropdownIndex === index ? null : index);
   };
 
