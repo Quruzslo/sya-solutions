@@ -1,4 +1,4 @@
-"use client"; // (Csak ha Next.js App Routert használsz, amúgy töröld)
+"use client";
 
 import { useState } from "react";
 import SectionTitles from "../sectionTitles";
@@ -28,6 +28,7 @@ export default function Faq({ slug }) {
             >
               <button
                 onClick={() => toggleFaq(index)}
+                aria-expanded={isOpen}
                 className="flex justify-between items-center p-5 text-left w-full cursor-pointer hover:bg-gray-50 transition-colors gap-[5px]"
               >
                 <h3
