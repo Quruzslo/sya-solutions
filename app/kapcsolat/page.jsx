@@ -186,6 +186,7 @@ export default function ContactPage() {
                         <span>{member.title}</span>
                       </div>
                       <Link
+                        aria-label="Telefonszám"
                         href={`tel:${member.tel}`}
                         className="flex items-center gap-2 text-xs text-zinc-500"
                       >
@@ -203,7 +204,8 @@ export default function ContactPage() {
           <div className="flex flex-col w-full xl:w-1/2 items-center justify-center gap-4 mt-auto">
             <div className="w-full">
               <Link
-                href="mailto:buliii1010@gmail.com"
+                aria-label="Pénzügyi tanácsadó e-mail címe"
+                href="mailto:szogyenyizsofia10@gmail.com"
                 className="group relative flex flex-row items-center justify-between
              w-full p-[5px] rounded-full overflow-hidden
              border border-zold bg-transparent
@@ -222,7 +224,7 @@ export default function ContactPage() {
                   <IoMailUnreadOutline />
                 </span>
                 <p className="relative z-10 font-bold group-hover:text-feher px-2 text-center flex-1 min-w-0 truncate">
-                  buliii1010@gmail.com
+                  szogyenyizsofia10@gmail.com
                 </p>
 
                 <div className="w-8 h-8 shrink-0 relative z-10 pointer-events-none" />
@@ -231,6 +233,7 @@ export default function ContactPage() {
 
             <div className="w-full">
               <Link
+                aria-label="Pénzügyi tanácsadó telefonszáma"
                 href="tel:+36303694251"
                 className="group relative flex flex-row items-center justify-between
              w-full p-[5px] rounded-full overflow-hidden
@@ -259,6 +262,7 @@ export default function ContactPage() {
 
             <div className="w-full">
               <Link
+                aria-label="Irodánk elhelyezkedése"
                 target="blank"
                 href="https://maps.app.goo.gl/4am1hSoRMnsGfnNU6"
                 className="group relative flex flex-row items-center justify-between
@@ -286,19 +290,28 @@ export default function ContactPage() {
               </Link>
             </div>
             <div className="flex flex-row gap-3 w-full">
-              <Link href="https://www.facebook.com/zsofia.szogyenyi">
+              <Link
+                aria-label="Facebook oldalunk"
+                href="https://www.facebook.com/zsofia.szogyenyi"
+              >
                 <FaFacebookF
                   size={30}
                   className="text-feher bg-zold p-[5px] rounded-full"
                 />
               </Link>
-              <Link href="https://www.facebook.com/zsofia.szogyenyi">
+              <Link
+                aria-label="Instagram oldalunk"
+                href="https://www.facebook.com/zsofia.szogyenyi"
+              >
                 <FaInstagram
                   size={30}
                   className="text-feher bg-zold p-[5px] rounded-full"
                 />
               </Link>
-              <Link href="https://sya-solutions.vercel.app/">
+              <Link
+                aria-label="Weboldalunk címe, itt vagy most is"
+                href="https://sya-solutions.vercel.app/"
+              >
                 <CiGlobe
                   size={30}
                   className="text-feher bg-zold p-[5px] rounded-full"
