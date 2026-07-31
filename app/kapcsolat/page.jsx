@@ -163,7 +163,7 @@ export default function ContactPage() {
                       alt={member.name || "Profilkép"}
                       fill
                       className="object-cover"
-                      priority
+                      // priority
                     />
                   </div>
 
