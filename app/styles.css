@@ -51,7 +51,7 @@ button {
 h1,
 h2 {
   font-family: var(--font-inter), serif;
-  font-size: 60px;
+  font-size: 35px;
   overflow-wrap: break-word;
   hyphens: auto;
   -webkit-hyphens: auto;

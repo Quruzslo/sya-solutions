@@ -57,29 +57,11 @@ export default function Footer() {
             <ul className="flex flex-col gap-3 text-sm font-light">
               <li>
                 <Link
-                  href="/"
+                  href="/adatvedelem"
                   aria-label="Adatkezelési tájékoztató"
                   className="hover:text-[#bfa06a] hover:pl-2 transition-all duration-300"
                 >
                   Adatkezelési Tájékoztató
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/"
-                  aria-label="Általános Szerződési Feltételek"
-                  className="hover:text-[#bfa06a] hover:pl-2 transition-all duration-300"
-                >
-                  Általános Szerződési Feltételek
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/"
-                  aria-label="Süti (Cookie) Szabályzat"
-                  className="hover:text-[#bfa06a] hover:pl-2 transition-all duration-300"
-                >
-                  Süti (Cookie) Szabályzat
                 </Link>
               </li>
             </ul>
