@@ -194,7 +194,7 @@ export default function ContactForm() {
           >
             Elfogadom az{" "}
             <a
-              href="/adatkezelesi-nyilatkozat"
+              href="/adatvedelem"
               target="_blank"
               className="text-arany underline hover:opacity-90"
             >
