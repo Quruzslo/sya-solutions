@@ -105,10 +105,10 @@ export default function Footer() {
                   />
                 </svg>
                 <a
-                  href="mailto:hello@sya-solutions.hu"
+                  href="mailto:szogyenyizsofia10@gmail.com"
                   className="hover:text-[#bfa06a] transition-colors"
                 >
-                  hello@sya-solutions.hu
+                  szogyenyizsofia10@gmail.com
                 </a>
               </li>
               <li className="flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity">
@@ -127,10 +127,10 @@ export default function Footer() {
                   />
                 </svg>
                 <a
-                  href="tel:+36301234567"
+                  href="tel:+36303694251"
                   className="hover:text-[#bfa06a] transition-colors"
                 >
-                  +36 30 123 4567
+                  +36 30 369 4251
                 </a>
               </li>
             </ul>
@@ -149,10 +149,10 @@ export default function Footer() {
         {/* Copyright */}
         <div className="w-full pt-6 border-t border-[#3f4603]/50 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-light text-feher">
           <p>© {year} S.Y.A Solutions. Minden jog fenntartva.</p>
-          <p>
+          <a href="prefersite.hu" traget="_blank">
             Fejlesztő:{" "}
             <span className="font-semibold text-feher">Prefer Site</span>
-          </p>
+          </a>
         </div>
       </div>
     </footer>
