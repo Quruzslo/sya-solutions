@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
     const recaptchaRes = await fetch(verificationUrl, { method: "POST" });
     const recaptchaData = await recaptchaRes.json();
 
-    if (!recaptchaData.success || recaptchaData.score < 0.8) {
+    if (!recaptchaData.success || recaptchaData.score < 0.3) {
       return NextResponse.json(
         {
           success: false,
@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
     // RESEND KÜLDÉS ---
     const resend = new Resend(process.env.RESEND_API_KEY);
 
-    await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: "hello@sya-solutions.hu",
       to: "sziligalaron@gmail.com",
       subject: `Weboldal Kapcsolat: ${subject || "Nincs tárgy megadva"}`,
@@ -45,9 +45,19 @@ export async function POST(req: NextRequest) {
         <p><strong>E-mail:</strong> ${email}</p>
         <p><strong>Telefon:</strong> ${tel || "Nem adta meg"}</p>
         <p><strong>Üzenet:</strong></p>
-        <p style="white-space: pre-wrap; background: #f4f4f4; padding: 10px; rounded: 5px;">${message}</p>
+        <p style="white-space: pre-wrap; background: #f4f4f4; padding: 10px; border-radius: 5px;">${message}</p>
       `,
     });
+
+    if (error) {
+      console.error("🚨 Resend API Hiba:", error);
+      return NextResponse.json(
+        { success: false, message: "Hiba az e-mail küldésekor." },
+        { status: 400 },
+      );
+    }
+
+    console.log("✅ Resend sikeresen átvette:", data);
 
     return NextResponse.json(
       { success: true, message: "Üzenet sikeresen elküldve!" },

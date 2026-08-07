@@ -83,8 +83,8 @@ export default function ContactForm() {
 
   if (isSuccess) {
     return (
-      <div className="text-center p-8 bg-green-50 rounded-xl border border-green-200 my-4">
-        <h3 className="text-xl font-bold text-green-800 mb-2">
+      <div className="text-center p-8 bg-green-50 rounded-xl border border-zold/50 my-4">
+        <h3 className="text-xl font-bold text-white mb-2">
           Köszönjük megkeresését!
         </h3>
         <p className="text-green-700">
