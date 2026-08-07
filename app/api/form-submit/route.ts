@@ -36,8 +36,8 @@ export async function POST(req: NextRequest) {
     const resend = new Resend(process.env.RESEND_API_KEY);
 
     await resend.emails.send({
-      from: "onboarding@resend.dev",
-      to: "buliii1010@gmail.com",
+      from: "hello@sya-solutions.hu",
+      to: "sziligalaron@gmail.com",
       subject: `Weboldal Kapcsolat: ${subject || "Nincs tárgy megadva"}`,
       html: `
         <h3>Új üzenet érkezett a weboldalról!</h3>
