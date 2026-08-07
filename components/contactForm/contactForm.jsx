@@ -87,12 +87,12 @@ export default function ContactForm() {
         <h3 className="text-xl font-bold text-white mb-2">
           Köszönjük megkeresését!
         </h3>
-        <p className="text-green-700">
+        <p className="text-green-300">
           Az üzenetet sikeresen kézbesítettük. Hamarosan válaszolunk.
         </p>
         <button
           onClick={() => setIsSuccess(false)}
-          className="mt-4 text-sm white underline hover:opacity-80"
+          className="mt-4 text-sm text-white underline hover:opacity-80"
         >
           Új üzenet küldése
         </button>
