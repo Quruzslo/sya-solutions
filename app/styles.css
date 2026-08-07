@@ -553,3 +553,7 @@ blockquote {
   width: 100%;
   border-radius: 10px;
 }
+
+.tiptap ul li {
+  color: black;
+}

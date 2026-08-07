@@ -53,6 +53,10 @@ export async function POST(req: NextRequest) {
           <td style="padding: 6px 0; color: #6b7280; width: 90px; font-weight: 500;">Név:</td>
           <td style="padding: 6px 0; color: #111827; font-weight: 600;">${name}</td>
         </tr>
+         <tr>
+          <td style="padding: 6px 0; color: #6b7280; width: 90px; font-weight: 500;">Téma:</td>
+          <td style="padding: 6px 0; color: #111827; font-weight: 600;">${subject}</td>
+        </tr>
         <tr>
           <td style="padding: 6px 0; color: #6b7280; font-weight: 500;">E-mail:</td>
           <td style="padding: 6px 0;"><a href="mailto:${email}" style="color: #2563eb; text-decoration: none; font-weight: 500;">${email}</a></td>
