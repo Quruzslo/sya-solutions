@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
     const recaptchaRes = await fetch(verificationUrl, { method: "POST" });
     const recaptchaData = await recaptchaRes.json();
 
-    if (!recaptchaData.success || recaptchaData.score < 0.7) {
+    if (!recaptchaData.success || recaptchaData.score < 0.8) {
       return NextResponse.json(
         {
           success: false,
