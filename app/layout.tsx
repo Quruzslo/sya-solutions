@@ -1,6 +1,7 @@
 import React from "react";
 import "./styles.css";
 import { Playfair_Display, Inter } from "next/font/google";
+import { Metadata } from "next";
 import Header from "../components/header/header";
 import Footer from "../components/footer/footer";
 import ScrollToTop from "../components/srolltoTop";
@@ -19,12 +20,30 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   metadataBase: new URL("https://www.sya-solutions.hu"),
+  title: {
+    default:
+      "SYA Solutions – Független pénzügyi tanácsadás családoknak és vállalkozóknak",
+    template: "%s | SYA Solutions",
+  },
   description:
     "Személyre szabott pénzügyi segítség az egész családnak, vállalkozóknak és magánszemélyeknek.",
   alternates: {
-    canonical: "/",
+    canonical: "./",
+  },
+  openGraph: {
+    title: "SYA Solutions – Pénzügyi segítség",
+    description:
+      "Személyre szabott pénzügyi segítség az egész családnak, vállalkozóknak és magánszemélyeknek.",
+    url: "https://www.sya-solutions.hu",
+    siteName: "SYA Solutions",
+    locale: "hu_HU",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
