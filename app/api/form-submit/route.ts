@@ -36,28 +36,49 @@ export async function POST(req: NextRequest) {
     const resend = new Resend(process.env.RESEND_API_KEY);
 
     const { data, error } = await resend.emails.send({
-      from: "hello@sya-solutions.hu",
+      // Név beállítása a feladóhoz
+      from: "SYA Solutions Weboldal <hello@sya-solutions.hu>",
+      replyTo: email,
       to: "sziligalaron@gmail.com",
       subject: `Weboldal Kapcsolat: ${subject || "Nincs tárgy megadva"}`,
       html: `
-        <h3>Új üzenet érkezett a weboldalról!</h3>
-        <p><strong>Név:</strong> ${name}</p>
-        <p><strong>E-mail:</strong> ${email}</p>
-        <p><strong>Telefon:</strong> ${tel || "Nem adta meg"}</p>
-        <p><strong>Üzenet:</strong></p>
-        <p style="white-space: pre-wrap; background: #f4f4f4; padding: 10px; border-radius: 5px;">${message}</p>
-      `,
+    <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 580px; margin: 0 auto; color: #1f2937; line-height: 1.5; border: 1px solid #e5e7eb; border-radius: 8px; padding: 24px; background-color: #ffffff;">
+      
+      <h2 style="margin: 0 0 16px 0; color: #111827; font-size: 18px; font-weight: 600; border-bottom: 2px solid #f3f4f6; padding-bottom: 12px;">
+        Új megkeresés érkezett a weboldalról
+      </h2>
+
+      <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 14px;">
+        <tr>
+          <td style="padding: 6px 0; color: #6b7280; width: 90px; font-weight: 500;">Név:</td>
+          <td style="padding: 6px 0; color: #111827; font-weight: 600;">${name}</td>
+        </tr>
+        <tr>
+          <td style="padding: 6px 0; color: #6b7280; font-weight: 500;">E-mail:</td>
+          <td style="padding: 6px 0;"><a href="mailto:${email}" style="color: #2563eb; text-decoration: none; font-weight: 500;">${email}</a></td>
+        </tr>
+        <tr>
+          <td style="padding: 6px 0; color: #6b7280; font-weight: 500;">Telefon:</td>
+          <td style="padding: 6px 0; color: #111827;">${tel || "Nem adta meg"}</td>
+        </tr>
+      </table>
+
+      <div style="margin-top: 16px;">
+        <span style="display: block; color: #6b7280; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">Üzenet</span>
+        <div style="background-color: #f9fafb; border: 1px solid #e5e7eb; border-radius: 6px; padding: 14px; color: #1f2937; white-space: pre-wrap; font-size: 14px; line-height: 1.6;">${message}</div>
+      </div>
+
+    </div>
+  `,
     });
 
     if (error) {
-      console.error("🚨 Resend API Hiba:", error);
+      console.error("API Hiba:", error);
       return NextResponse.json(
         { success: false, message: "Hiba az e-mail küldésekor." },
         { status: 400 },
       );
     }
-
-    console.log("✅ Resend sikeresen átvette:", data);
 
     return NextResponse.json(
       { success: true, message: "Üzenet sikeresen elküldve!" },

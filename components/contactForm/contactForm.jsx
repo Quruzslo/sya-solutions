@@ -63,7 +63,7 @@ export default function ContactForm() {
               setFormData({});
               setIsSuccess(true);
             } catch (error) {
-              console.error("Küldési hiba az API végponton:", error);
+              console.error("Küldési hiba ");
               setErrors((prev) => ({
                 ...prev,
                 server:
