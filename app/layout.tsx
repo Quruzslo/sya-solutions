@@ -20,9 +20,12 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "S.Y.A Solutions",
+  metadataBase: new URL("https://www.sya-solutions.hu"),
   description:
     "Személyre szabott pénzügyi segítség az egész családnak, vállalkozóknak és magánszemélyeknek.",
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default async function RootLayout({
