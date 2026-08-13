@@ -37,9 +37,9 @@ export async function POST(req: NextRequest) {
 
     const { data, error } = await resend.emails.send({
       // Név beállítása a feladóhoz
-      from: "SYA Solutions Weboldal <hello@sya-solutions.hu>",
+      from: "SYA Solutions Weboldal <kapcsolat@sya-solutions.hu>",
       replyTo: email,
-      to: "sziligalaron@gmail.com",
+      to: "kapcsolat@sya-solutions.hu",
       subject: `Weboldal Kapcsolat: ${subject || "Nincs tárgy megadva"}`,
       html: `
     <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 580px; margin: 0 auto; color: #1f2937; line-height: 1.5; border: 1px solid #e5e7eb; border-radius: 8px; padding: 24px; background-color: #ffffff;">

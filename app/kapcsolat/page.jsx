@@ -167,13 +167,12 @@ export default function ContactPage() {
                     />
                   </div>
 
-                  {/* 2. Dropdown / Tooltip konténer */}
+                  {/* Dropdown konti */}
                   <div
                     className={`pointer-events-none absolute top-[92px] xl:top-[132px]  md:left-1/2 z-20 w-[190px] -translate-x-[25%] md:-translate-x-1/2 -translate-y-1 rounded-md border border-zold/15 bg-white p-4 opacity-0 shadow-[0_8px_24px_-4px_rgba(0,0,0,0.12)] transition-all duration-300 ease-out
           peer-hover:translate-y-0 peer-hover:opacity-100
           ${isActive ? "translate-y-0 opacity-100 pointer-events-auto" : ""}`}
                   >
-                    {/* kis nyíl az avatar felé */}
                     <span className="absolute -top-1.5 left-3/4 md:left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 border-l border-t border-zold/15 bg-white" />
 
                     <p className="font-semibold tracking-tight text-zinc-900">
@@ -224,7 +223,7 @@ export default function ContactPage() {
                   <IoMailUnreadOutline />
                 </span>
                 <p className="relative z-10 font-bold group-hover:text-feher px-2 text-center flex-1 min-w-0 truncate">
-                  szogyenyizsofia10@gmail.com
+                  kapcsolat@sya-solutions.hu
                 </p>
 
                 <div className="w-8 h-8 shrink-0 relative z-10 pointer-events-none" />
@@ -310,7 +309,7 @@ export default function ContactPage() {
               </Link>
               <Link
                 aria-label="Weboldalunk címe, itt vagy most is"
-                href="https://sya-solutions.vercel.app/"
+                href="https://www.sya-solutions.hu/"
               >
                 <CiGlobe
                   size={30}

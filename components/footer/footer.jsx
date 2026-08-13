@@ -87,10 +87,10 @@ export default function Footer() {
                   />
                 </svg>
                 <a
-                  href="mailto:szogyenyizsofia10@gmail.com"
+                  href="mailto:kapcsolat@sya-solutions.hu"
                   className="hover:text-[#bfa06a] transition-colors"
                 >
-                  szogyenyizsofia10@gmail.com
+                  kapcsolat@sya-solutions.hu
                 </a>
               </li>
               <li className="flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity">
