@@ -204,7 +204,7 @@ export default function ContactPage() {
             <div className="w-full">
               <Link
                 aria-label="Pénzügyi tanácsadó e-mail címe"
-                href="mailto:szogyenyizsofia10@gmail.com"
+                href="mailto:kapcsolat@sya-solutions.hu"
                 className="group relative flex flex-row items-center justify-between
              w-full p-[5px] rounded-full overflow-hidden
              border border-zold bg-transparent
