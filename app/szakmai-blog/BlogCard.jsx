@@ -11,24 +11,24 @@ export default function BlogCard({ post }) {
   return (
     <Link
       href={postUrl}
-      className="group overflow-hidden relative flex flex-col bg-white   duration-300 scale-100 hover:scale-95 transition-all duration-300 ease-out"
+      className="group overflow-hidden relative flex flex-col bg-feher duration-300 scale-100 hover:scale-100 transition-all duration-300 ease-out"
       aria-label={post.title}
     >
       {/* felső accent  */}
-      <div className="relative h-[5px] w-full bg-transparent overflow-hidden">
+      {/* <div className="relative h-[5px] w-full bg-transparent overflow-hidden">
         <div
           className="absolute rounded-md
          inset-0 origin-left scale-x-0 bg-zold transition-transform duration-500 ease-out motion-reduce:transition-none group-hover:scale-x-100"
         />
-      </div>
+      </div> */}
 
-      <div className="relative w-full aspect-[4/3]  overflow-hidden">
+      <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden shadow-md">
         {post.imageUrl ? (
           <Image
             src={post.imageUrl}
             alt={post.title}
             fill
-            className="object-cover  scale-100 transition-all duration-500 ease-out motion-reduce:transition-none  group-hover:scale-[1.05]"
+            className="object-cover scale-100 transition-all duration-500 ease-out motion-reduce:transition-none  group-hover:scale-[1.15] "
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         ) : (

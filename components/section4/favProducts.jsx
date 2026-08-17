@@ -124,7 +124,7 @@ export default function FavProds() {
 
       {/* Interaktív szekció */}
       <div className="flex flex-col xl:flex-row gap-6 my-[35px]">
-        {/*Bal: Fülek / Gombok listája */}
+        {/* Fülek */}
         <div className="fulek w-100% xl:w-[45%] flex flex-col gap-3.5">
           {products.map((prod) => {
             const isActive = activeTab === prod.id;
@@ -141,7 +141,7 @@ export default function FavProds() {
                   }
                 }}
                 type="button"
-                className={`w-full text-left p-5 rounded-md md:rounded-full border transition-all duration-300 cursor-pointer flex items-center justify-between group
+                className={`w-full text-left p-5 rounded-md  transition-all duration-300 cursor-pointer flex items-center justify-between group
                   ${
                     isActive
                       ? "bg-zold border-arany shadow-lg translate-x-1"
@@ -150,20 +150,20 @@ export default function FavProds() {
               >
                 <div className="pr-4">
                   <h3
-                    className={`font-semibold fav-prod !text-[20px] transition-colors ${isActive ? "text-white" : "text-zold"} group-hover:text-feher`}
+                    className={`font-bold fav-prod !text-[20px] transition-colors ${isActive ? "text-white" : "text-zold"} group-hover:text-feher`}
                   >
                     {prod.title}
                   </h3>
                   <p
-                    className={`text-sm mt-1 line-clamp-1 ${isActive ? "text-feher/80" : "text-arany"} group-hover:text-feher`}
+                    className={`text-sm mt-1 line-clamp-1 ${isActive ? "text-feher/80" : "text-black/50"} group-hover:text-feher`}
                   >
                     {prod.shortDesc}
                   </p>
                 </div>
 
-                {/* Kis nyíl animáció */}
+                {/* nyíl  */}
                 <div
-                  className={`transform transition-transform duration-300 ${isActive ? "translate-x-1 text-white" : "text-feher group-hover:translate-x-1"}`}
+                  className={`transform text-feher/0 transition-transform duration-300 ${isActive ? "translate-x-1 text-white" : "group-hover:text-feher group-hover:translate-x-1"}`}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

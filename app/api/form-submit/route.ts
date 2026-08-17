@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // 2. ReCAPTCHA ellenőrzés
+    //  ReCAPTCHA ellenőrzés
     const secretKey = process.env.RECAPTCHA_SECRET_KEY;
     const verificationUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${recaptchaToken}`;
 
@@ -36,8 +36,7 @@ export async function POST(req: NextRequest) {
     const resend = new Resend(process.env.RESEND_API_KEY);
 
     const { data, error } = await resend.emails.send({
-      // Név beállítása a feladóhoz
-      from: "SYA Solutions Weboldal <kapcsolat@sya-solutions.hu>",
+      from: "SYA Solutions <kapcsolat@sya-solutions.hu>",
       replyTo: email,
       to: "kapcsolat@sya-solutions.hu",
       subject: `Weboldal Kapcsolat: ${subject || "Nincs tárgy megadva"}`,

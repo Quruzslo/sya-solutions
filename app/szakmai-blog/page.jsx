@@ -177,7 +177,7 @@ export default async function BlogPage(props) {
 
         <div className="flex flex-col flex-1">
           {posts.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0  w-full">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[15px]  w-full">
               {posts.map((post) => (
                 <BlogCard key={post._id} post={post} />
               ))}

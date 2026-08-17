@@ -1,4 +1,4 @@
-/* A külső konténer, ami levágja a kilógó részeket */
+/* A külső konti */
 .carouselContainer {
   position: relative;
   width: 100%;
@@ -7,14 +7,14 @@
   padding: 2.5rem 0;
 }
 
-/* Finom elhalványítás (fade) a bal és jobb szélen */
+/*  fade a bal és jobb szélen */
 .carouselContainer::before,
 .carouselContainer::after {
   position: absolute;
   top: 0;
   width: 80px;
   height: 100%;
-  z-index: 2;
+  z-index: 3;
   content: "";
   pointer-events: none;
 }
@@ -31,6 +31,7 @@
 
 .carouselTrack {
   display: flex;
+  position: relative;
   width: max-content;
   align-items: center;
   gap: 4rem;
@@ -51,7 +52,7 @@
   align-items: center;
 }
 
-/* Kép konténer a Next.js fill-hez és az effektekhez */
+/* Kép konténer a fill-hez és az effektekhez */
 .imageContainer {
   position: relative;
   height: 3rem;
