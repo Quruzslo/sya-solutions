@@ -11,7 +11,7 @@ export default function BlogCard({ post }) {
   return (
     <Link
       href={postUrl}
-      className="group overflow-hidden relative flex flex-col p-[10px] duration-300 scale-100 hover:scale-100 transition-all duration-300 ease-out hover:shadow-[5px_5px_10px_0px_rgba(0,0,0,0.6)] rounded-xl"
+      className="blog-card group overflow-hidden relative flex flex-col p-[10px] duration-300 scale-100 hover:scale-100 transition-all duration-300 ease-out hover:shadow-[5px_5px_10px_0px_rgba(0,0,0,0.6)] rounded-xl"
       aria-label={post.title}
     >
       <div className=" inset-0 absolute bg-black/20 rounded-xl z-2"></div>
