@@ -66,7 +66,7 @@ export default function BlogCard({ post }) {
           </span>
         )}
 
-        <h3 className="!text-[20px] font-bold leading-snug text-white line-clamp-2">
+        <h3 className="!text-[20px] font-bold leading-snug text-white line-clamp-2 truncate">
           {post.title}
         </h3>
 

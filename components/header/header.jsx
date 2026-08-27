@@ -153,11 +153,11 @@ export default function Header() {
             className={`w-full md:w-1/2 flex-1 md:flex-none min-h-[420px] bg-[#e7ebe3] flex flex-col justify-center items-center relative !py-[100px] md:py-0 shrink-0
               ${isMenuOpen ? "panel-right-open" : "panel-right-close"}`}
           >
-            <nav className="w-full">
-              <ul className="flex flex-col gap-5 md:gap-6 text-center">
+            <nav className="w-fit">
+              <ul className="flex flex-col gap-5 md:gap-6 text-start">
                 {navItems.map((item, index) => {
                   const parentMenuTransitionDuration = 600;
-                  const staggerSpeed = 80; //  késleltetés
+                  const staggerSpeed = 80;
 
                   const delay = isMenuOpen
                     ? parentMenuTransitionDuration + index * staggerSpeed
@@ -171,7 +171,7 @@ export default function Header() {
                     >
                       {item.children ? (
                         /* ---HA DROPDOWN MENÜ --- */
-                        <div className="flex flex-col items-center">
+                        <div className="flex flex-col items-start">
                           <Link
                             href={item.path}
                             onClick={(e) => toggleDropdown(index, e)}
@@ -231,7 +231,7 @@ export default function Header() {
                   );
                 })}
 
-                {/* KAPCSOLAT GOMB (EREDETI KÓD) */}
+                {/* Kapcsi gomb*/}
                 <li
                   className={`${isMenuOpen ? "menu-item-open" : "menu-item-close"} menu-delay-6 mt-2`}
                 >
@@ -239,7 +239,7 @@ export default function Header() {
                     href="/kapcsolat"
                     onClick={toggleMenu}
                     aria-label="Lépjen kapcsolatba velünk, hogy felmérhessük pénzügyeit egy független elemzés alkalmával. Kapcsolat gomb"
-                    className="w-fit mx-auto kapcsolat-btn flex flex-row items-center gap-3 p-[10px] px-8 rounded-full border-2 border-[#3f4603] text-[#3f4603] text-[20px] font-bold hover:bg-[#3f4603] hover:text-[#e7ebe3] transition-all"
+                    className="w-fit mx-auto kapcsolat-btn flex flex-row items-center gap-3 p-[10px] px-8 rounded-full border-2 border-[#3f4603] text-[#3f4603] text-[20px] font-bold hover:bg-[#3f4603] hover:text-[#e7ebe3] transition-all hover:shadow-[0px_5px_10px_0px_rgba(0,0,0,0.4)]"
                   >
                     <span className="icon-slot">
                       <span className="before-hover bg-transparent ">
