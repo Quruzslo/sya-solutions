@@ -75,7 +75,6 @@ const getCachedPosts = unstable_cache(
     const [totalPosts, rawPosts] = await Promise.all([
       // totalPosts - minden poszt, ami a matchquerybe van
       db.collection("posts").countDocuments(matchQuery),
-      // rawPosts -
       db
         .collection("posts")
         .aggregate([
@@ -83,6 +82,7 @@ const getCachedPosts = unstable_cache(
           { $sort: { createdAt: -1 } },
           { $skip: skip },
           { $limit: ITEMS_PER_PAGE },
+
           {
             $lookup: {
               from: "posts-category",
@@ -97,8 +97,40 @@ const getCachedPosts = unstable_cache(
               preserveNullAndEmptyArrays: true,
             },
           },
-          { $addFields: { category: "$categoryData" } },
-          { $project: { categoryData: 0 } },
+
+          {
+            $addFields: {
+              authorObjectId: { $toObjectId: "$authorId" },
+            },
+          },
+          {
+            $lookup: {
+              from: "admin",
+              localField: "authorObjectId",
+              foreignField: "_id",
+              as: "authorData",
+            },
+          },
+          {
+            $unwind: {
+              path: "$authorData",
+              preserveNullAndEmptyArrays: true,
+            },
+          },
+
+          {
+            $addFields: {
+              category: "$categoryData",
+              authorPhoto: "$authorData.photo",
+            },
+          },
+          {
+            $project: {
+              categoryData: 0,
+              authorData: 0,
+              authorObjectId: 0,
+            },
+          },
         ])
         .toArray(),
     ]);
@@ -177,7 +209,7 @@ export default async function BlogPage(props) {
 
         <div className="flex flex-col flex-1">
           {posts.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[15px]  w-full">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[15px]  w-full">
               {posts.map((post) => (
                 <BlogCard key={post._id} post={post} />
               ))}

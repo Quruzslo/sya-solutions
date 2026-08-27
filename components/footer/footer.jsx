@@ -131,7 +131,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="w-full pt-6 border-t border-[#3f4603]/50 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-light text-feher">
           <p>© {year} S.Y.A Solutions. Minden jog fenntartva.</p>
-          <a href="prefersite.hu" traget="_blank">
+          <a href="https://prefersite.hu" traget="_blank">
             Fejlesztő:{" "}
             <span className="font-semibold text-feher">Prefer Site</span>
           </a>
