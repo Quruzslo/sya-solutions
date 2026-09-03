@@ -16,10 +16,7 @@ export default async function HomePage() {
     <section className="w-full flex flex-col  ">
       <Hero
         mainTitle={
-          <>
-            Független pénzügyi tanácsadás{" "}
-            <span className=" text-white">személyre szabott</span> stratégiával
-          </>
+          <>Független pénzügyi tanácsadás, személyre szabott stratégiával. </>
         }
         needBtns={true}
         needStat={true}
