@@ -58,7 +58,32 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FinancialService",
+  name: "SYA Solutions",
+  url: "https://www.sya-solutions.hu",
+  logo: "https://www.sya-solutions.hu/og-image.jpg",
+  description:
+    "Független pénzügyi tanácsadás magánszemélyeknek, családoknak és vállalkozásoknak. Személyre szabott stratégiák, hitel- és vagyonépítési megoldások.",
+  areaServed: "HU",
+  serviceType: [
+    "Független pénzügyi tanácsadás",
+    "Pénzügyi tervezés",
+    "Vagyonépítés",
+    "Hitelügyintézés",
+    "Vállalati pénzügyi tanácsadás",
+  ],
 };
 
 export default async function RootLayout({
@@ -68,12 +93,18 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="hu" className={`${playfair.variable} ${inter.variable}`}>
-      <body data-theme="light" className="flex flex-col min-h-screen ">
-        <Header></Header>
-        <main className="flex-1 flex flex-col w-full ">{children}</main>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
+      <body data-theme="light" className="flex flex-col min-h-screen">
+        <Header />
+        <main className="flex-1 flex flex-col w-full">{children}</main>
         <HashScrollHandler />
         <ScrollToTop />
-        <Footer></Footer>
+        <Footer />
         <SpeedInsights />
         <CookieBanner />
       </body>
