@@ -141,9 +141,9 @@ export default function Header() {
                 Solutions
               </h2>
               <p className="text-[#e7ebe3]/70 text-base md:text-xl text-start max-w-sm">
-                Prémium pénzügyi pajzs és stratégiai vagyonépítés. Biztosítsd be
-                vállalkozásod és saját anyagi háttered. Az öngondoskodás már nem
-                luxus.
+                Megbízható szakmai háttérrel segítünk kiválasztani a piacon
+                elérhető legkedvezőbb pénzügyi megoldásokat. Építs stabil anyagi
+                jövőt magánszemélyként vagy vállalkozóként!
               </p>
             </div>
           </div>

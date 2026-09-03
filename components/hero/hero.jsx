@@ -68,8 +68,8 @@ export default function Hero({
         <div className="hero-logo min-h-[50px] relative text-zold text-[20px] md:text-[40px] ml-[-10px] mt-[-60px] bg-feher w-fit px-[15px] rounded-br-[20px] font-bold z-30">
           <p>S.Y.A Solutions</p>
         </div>
-        <div className="flex flex-col my-auto py-[25px] self-center justify-center">
-          <h1 className="!text-[25px]  md:!text-[40px] font-bold ">
+        <div className="flex flex-col my-auto py-[25px] self-center justify-center items-center">
+          <h1 className="!text-[25px]  md:!text-[40px] font-bold text-center ">
             {mainTitle}
           </h1>
         </div>
@@ -109,13 +109,13 @@ export default function Hero({
         <div className="hero-jobb self-end mt-auto xl:mt-0 w-[100%] xl:w-[50%] flex flex-col 2xl:flex-row gap-[15px] p-[10px] relative z-20 items-end justify-center">
           <div className="text-[20px] flex flex-row gap-[5px] items-end">
             <span className="text-transparent font-bold text-[25px] md:text-5xl [-webkit-text-stroke:1px_#ffffff]">
-              100+
+              130+
             </span>
             <p>elégedett ügyfél</p>
           </div>
           <div className="text-[20px] flex flex-row gap-[5px] items-end">
             <span className="text-transparent font-bold text-[25px] md:text-5xl [-webkit-text-stroke:1px_#ffffff]">
-              250+
+              350+
             </span>
             <p>megkötött szerződés</p>
           </div>

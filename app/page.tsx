@@ -17,11 +17,8 @@ export default async function HomePage() {
       <Hero
         mainTitle={
           <>
-            Megbízható pénzügyi döntések{" "}
-            <span className=" text-gradient-to-r from-white via-vilagos to-white/70">
-              személyes
-            </span>{" "}
-            igényekre szabva
+            Független pénzügyi tanácsadás{" "}
+            <span className=" text-white">személyre szabott</span> stratégiával
           </>
         }
         needBtns={true}
