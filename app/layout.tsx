@@ -23,23 +23,37 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.sya-solutions.hu"),
   title: {
-    default:
-      "SYA Solutions – Független pénzügyi tanácsadás családoknak és vállalkozóknak",
+    default: "Független Pénzügyi Tanácsadás | SYA Solutions",
     template: "%s | SYA Solutions",
   },
   description:
-    "Személyre szabott pénzügyi segítség az egész családnak, vállalkozóknak és magánszemélyeknek.",
+    "Független pénzügyi tanácsadás magánszemélyeknek, családoknak és vállalkozásoknak. Személyre szabott stratégiák, hitel- és vagyonépítési megoldások.",
   alternates: {
     canonical: "./",
   },
   openGraph: {
-    title: "SYA Solutions – Pénzügyi segítség",
+    title: "SYA Solutions – Független Pénzügyi Tanácsadás",
     description:
-      "Személyre szabott pénzügyi segítség az egész családnak, vállalkozóknak és magánszemélyeknek.",
+      "Független pénzügyi tanácsadás magánszemélyeknek, családoknak és vállalkozásoknak. Személyre szabott stratégiák és megbízható szakmai háttér.",
     url: "https://www.sya-solutions.hu",
     siteName: "SYA Solutions",
     locale: "hu_HU",
     type: "website",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "SYA Solutions – Független Pénzügyi Tanácsadás",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SYA Solutions – Független Pénzügyi Tanácsadás",
+    description:
+      "Független pénzügyi tanácsadás magánszemélyeknek, családoknak és vállalkozásoknak.",
+    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,
