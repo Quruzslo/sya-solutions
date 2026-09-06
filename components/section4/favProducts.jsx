@@ -135,10 +135,11 @@ export default function FavProds() {
                   if (prod.id !== activeTab) {
                     setPrevTab(activeTab);
                     setActiveTab(prod.id);
-                    tabRef.current.scrollIntoView({
-                      behavior: "smooth",
-                    });
                   }
+
+                  tabRef.current?.scrollIntoView({
+                    behavior: "smooth",
+                  });
                 }}
                 type="button"
                 className={`w-full text-left p-5 rounded-md  transition-all duration-300 cursor-pointer flex items-center justify-between group
