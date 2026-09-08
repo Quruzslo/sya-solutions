@@ -27,7 +27,7 @@ const dotVariants = {
 export default function SectionTitles({ title, bgText }) {
   return (
     <div className="flex flex-row relative w-full z-0 my-[50px] xl:my-[50px] items-center">
-      <motion.div
+      {/* <motion.div
         variants={containerVariants}
         initial="hidden"
         whileInView="show"
@@ -46,7 +46,7 @@ export default function SectionTitles({ title, bgText }) {
           variants={dotVariants}
           className="!w-[10px] !h-[10px] rounded-full bg-zold"
         />
-      </motion.div>
+      </motion.div> */}
 
       <h2 className="!text-[20px] !md:text-[30px] text-sotet font-black">
         {title}

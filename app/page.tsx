@@ -27,7 +27,7 @@ export default async function HomePage() {
       <SectionTwo></SectionTwo>
 
       <FavProds></FavProds>
-      <PartnerCarousel></PartnerCarousel>
+      {/* <PartnerCarousel></PartnerCarousel> */}
     </section>
   );
 }

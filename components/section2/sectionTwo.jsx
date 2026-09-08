@@ -141,7 +141,7 @@ export default function SectionTwo() {
               {PROCESS_STEPS.map((step) => (
                 <li
                   key={step.id}
-                  className="flex flex-col items-start gap-4 p-3 rounded-lg transition-colors duration-200"
+                  className="flex flex-col items-start gap-4 rounded-lg transition-colors duration-200"
                 >
                   <div className="flex flex-row gap-[10px] bg-zold/20 p-[10px] rounded-full items-center justify-center">
                     <span className="flex-shrink-0 w-7 h-7 flex items-center justify-center rounded-full bg-white text-zold font-bold text-sm ">

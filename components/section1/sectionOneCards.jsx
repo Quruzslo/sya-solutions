@@ -49,9 +49,9 @@ export default function SectionOneCard({ title, desc, number }) {
     >
       <h3 className="!text-[20px] font-black">{title}</h3>
       <p className="!text-[15px] text-bold">{desc}</p>
-      <span className="absolute flex items-center justify-center top-[-5px] right-[-5px] text-transparent font-bold text-[20px] [-webkit-text-stroke:1px_var(--color-zold)] bg-feher p-[10px] rounded-full w-[35px] h-[35px]">
+      {/* <span className="absolute flex items-center justify-center top-[-5px] right-[-5px] text-transparent font-bold text-[20px] [-webkit-text-stroke:1px_var(--color-zold)] bg-feher p-[10px] rounded-full w-[35px] h-[35px]">
         #{number}
-      </span>
+      </span> */}
     </motion.div>
   );
 }
