@@ -601,7 +601,7 @@ blockquote {
   z-index: 10;
   background: radial-gradient(
     circle 20px at top left,
-    #ffffff 98%,
+    #ffffff00 98%,
     var(--color-feher)
   );
   width: 20px;
@@ -617,7 +617,7 @@ blockquote {
   z-index: 10;
   background: radial-gradient(
     circle 20px at top left,
-    #ffffff 98%,
+    #ffffff00 98%,
     var(--color-feher)
   );
   width: 20px;
