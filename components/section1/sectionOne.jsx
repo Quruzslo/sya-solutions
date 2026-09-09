@@ -52,7 +52,7 @@ export default function SectionOne() {
         title={"Miben támogatunk téged?"}
         bgText={"Pénzügyi döntések"}
       />
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-[20px]">
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-[20px] ">
         {data.map((item) => (
           <SectionOneCard
             key={item.id}

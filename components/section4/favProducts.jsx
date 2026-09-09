@@ -115,7 +115,7 @@ export default function FavProds() {
   return (
     <div
       id="termekek"
-      className="w-[90%] max-w-[2560px] rounded-[20px] flex flex-col mx-auto  font-sans antialiased "
+      className="w-[90%] max-w-[2560px] rounded-[20px] flex flex-col mx-auto  font-sans antialiased py-[50px] "
     >
       <SectionTitles
         title={"Legkeresettebb termékek"}
@@ -123,7 +123,7 @@ export default function FavProds() {
       />
 
       {/* Interaktív szekció */}
-      <div className="flex flex-col xl:flex-row gap-6 my-[35px]">
+      <div className="flex flex-col xl:flex-row gap-6 ">
         {/* Fülek */}
         <div className="fulek w-100% xl:w-[45%] flex flex-col gap-3.5">
           {products.map((prod) => {
@@ -206,7 +206,7 @@ export default function FavProds() {
             return (
               <div
                 key={prod.id}
-                className={`bg-transparent p-6 xl:p-8 rounded-2xl flex flex-col gap-5 transition-all ${containerClass}`}
+                className={`bg-transparent  xl:p-8 rounded-2xl flex flex-col gap-5 transition-all ${containerClass}`}
               >
                 {/* Címsor  */}
                 <div className="stagger-item delay-1">

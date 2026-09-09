@@ -70,7 +70,7 @@ export default function SectionTwo() {
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start 85%", "center 40%"],
+    offset: ["start 85%", "center 0%"],
   });
 
   // animációs logikák
@@ -119,16 +119,16 @@ export default function SectionTwo() {
   ];
 
   return (
-    <div className="w-[90%] max-w-[2560px] flex flex-col mx-auto relative">
+    <div className="w-[90%] max-w-[2560px] flex flex-col mx-auto relative py-[50px] ">
       <SectionTitles
         title={"Hogyan dolgozunk érted?"}
         bgText={"Ismerd meg a folyamatot"}
       />
 
-      <div className="w-full flex flex-col md:flex-row gap-[20px] h-full">
+      <div className="w-full flex flex-col md:flex-row gap-[20px] h-full ">
         {/* BAL OLDAL */}
-        <div className="w-full md:w-[50%] flex flex-col justify-between py-[5vh] pr-0 md:pr-10">
-          <div className="flex flex-col justify-center md:my-6">
+        <div className="w-full md:w-[50%] flex flex-col justify-between  pr-0 md:pr-10">
+          <div className="flex flex-col justify-center ">
             <h3 className="font-bold my-6 tracking-wide bg-zold text-feher p-2 rounded-md w-fit shadow-[10px_10px_10px_0px_rgba(0,0,0,0.4)]">
               {SECTION_TEXTS.processTitle}
             </h3>
@@ -159,7 +159,7 @@ export default function SectionTwo() {
           </div>
 
           <div className="flex flex-col justify-center">
-            <h3 className="font-bold mb-4 text-feher bg-zold p-2 rounded-md w-fit shadow-[10px_10px_10px_0px_rgba(0,0,0,0.4)]">
+            <h3 className="font-bold my-6 text-feher bg-zold p-2 rounded-md w-fit shadow-[10px_10px_10px_0px_rgba(0,0,0,0.4)]">
               {SECTION_TEXTS.philosophyTitle}
             </h3>
             <p className="text-lg leading-relaxed text-pretty mb-2">
@@ -246,7 +246,7 @@ export default function SectionTwo() {
                   </g>
                 ))}
 
-                {/* Az 'S' alakú trendvonal */}
+                {/* Az 'S' alak */}
                 <motion.path
                   d="M -10 75 C 12 75, 18 15, 60 15"
                   fill="none"

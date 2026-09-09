@@ -56,7 +56,7 @@ export default function SectionOneCard({
       }}
       className="section-one-wrapper w-full h-full flex flex-col gap-3 relative rounded-xl p-[15px] bg-white"
     >
-      <h3 className="!text-[20px] font-bold text-neutral-800">{title}</h3>
+      <h3 className="!text-[20px] font-bold text-neutral-600">{title}</h3>
       <p className="!text-[15px] text-bold mt-auto">{desc}</p>
 
       <div className=" text-3xl flex flex-row justify-between z-10">
