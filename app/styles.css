@@ -594,3 +594,35 @@ blockquote {
   height: 100%;
   width: 100%;
 }
+
+.section-one-link:before {
+  content: "";
+  aspect-ratio: 1;
+  z-index: 10;
+  background: radial-gradient(
+    circle 20px at top left,
+    #ffffff 98%,
+    var(--color-feher)
+  );
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: -20px !important;
+  right: 0px;
+}
+
+.section-one-link:after {
+  content: "";
+  aspect-ratio: 1;
+  z-index: 10;
+  background: radial-gradient(
+    circle 20px at top left,
+    #ffffff 98%,
+    var(--color-feher)
+  );
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  bottom: 0px !important;
+  left: -20px;
+}
