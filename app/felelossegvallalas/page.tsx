@@ -1,6 +1,7 @@
 "use client";
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const gridVariants = {
   hidden: { opacity: 0 },
@@ -50,11 +51,34 @@ const ribbonPathVariants = {
 };
 
 export default function Felelossegvallalas() {
+  const [selectedImage, setSelectedImage] = useState<{
+    src: string;
+    alt: string;
+  } | null>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSelectedImage(null);
+    };
+
+    if (selectedImage) {
+      document.body.style.overflow = "hidden";
+      window.addEventListener("keydown", handleKeyDown);
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [selectedImage]);
+
   return (
-    <section className="w-[90%] max-w-[2560px] mx-auto flex flex-col min-h-[100vh] py-[100px] md:py-[120px] gap-[25px]">
+    <section className="w-[90%] max-w-[2560px] mx-auto flex flex-col min-h-[100vh] py-[100px] md:py-[120px] gap-[50px]">
       {/* Hero rész */}
-      <div className="mb-10 text-center w-full px-[10px] py-[35px] bg-zold/70 rounded-xl flex flex-col md:flex-row items-center justify-center shadow-[0px_0px_10px_2px_rgba(0,0,0,0.6)]">
-        <div className="w-full md:w-1/2 p-[10px]">
+      <div className="mb-10 text-center w-full  md:mt-[50px] bg-zold/70 rounded-xl flex flex-col md:flex-row items-center justify-center shadow-[0px_0px_10px_2px_rgba(0,0,0,0.6)]">
+        <div className="w-full md:w-1/2 p-[15px]">
           <p className="text-feher text-[15px] font-bold">Diákoktatás</p>
           <div className="w-[40px] h-[4px] mx-auto bg-feher rounded-full my-[15px]" />
           <h1
@@ -64,12 +88,13 @@ export default function Felelossegvallalas() {
             Tudást adunk, amely értéket teremt a jövőben.
           </h1>
           <div className="flex flex-row gap-[15px] mx-auto items-center justify-center">
-            <div className="felelosseg-wrapper relative flex flex-col">
+            <div className="felelosseg-wrapper relative flex flex-col border-2 border-feher rounded-full p-[5px]">
               <Image
                 width={45}
                 height={45}
                 alt="Iskolai pénzügyi oktatás"
                 src="/icons/schoolkid.svg"
+                className=""
               />
               <div className="felelosseg-leiras w-fit md:w-[300px] shadow-[5px_5px_10px_0px_rgba(0,0,0,0.6)] flex flex-col absolute top-[calc(100%+15px)] bg-white z-[2] p-[10px] rounded-[10px]">
                 <div className="w-[30px] h-[30px] bg-white rounded-md mx-auto rotate-[45deg] mt-[-15px]" />
@@ -80,12 +105,13 @@ export default function Felelossegvallalas() {
             </div>
 
             <div className="w-[35px] h-[6px] rounded-full bg-feher/50 my-auto" />
-            <div className="felelosseg-wrapper relative flex flex-col">
+            <div className="felelosseg-wrapper relative flex flex-col border-2 border-feher rounded-full p-[5px]">
               <Image
                 width={45}
                 height={45}
                 alt="Iskolai pénzügyi oktatás"
                 src="/icons/university.svg"
+                className=" md:w-[60px] md:h-[60px]"
               />
               <div className="felelosseg-leiras w-fit md:w-[300px] shadow-[5px_5px_10px_0px_rgba(0,0,0,0.6)] flex flex-col absolute top-[calc(100%+15px)] bg-white z-[2] p-[10px] rounded-[10px]">
                 <div className="w-[30px] h-[30px] bg-white rounded-md mx-auto rotate-[45deg] mt-[-15px]" />
@@ -95,13 +121,13 @@ export default function Felelossegvallalas() {
               </div>
             </div>
             <div className="w-[35px] h-[6px] rounded-full bg-feher/50 my-auto" />
-            <div className="felelosseg-wrapper relative flex flex-col">
+            <div className="felelosseg-wrapper relative flex flex-col border-2 border-feher rounded-full p-[10px]">
               <Image
                 width={45}
                 height={45}
                 alt="Iskolai pénzügyi oktatás"
                 src="/icons/family.svg"
-                className="mx-auto"
+                className=" md:w-[75px] md:h-[75px]"
               />
               <div className="felelosseg-leiras w-fit md:w-[300px] shadow-[5px_5px_10px_0px_rgba(0,0,0,0.6)] flex flex-col absolute top-[calc(100%+15px)] bg-white z-[2] p-[10px] rounded-[10px]">
                 <div className="w-[30px] h-[30px] bg-white rounded-md mx-auto rotate-[45deg] mt-[-15px]" />
@@ -112,24 +138,24 @@ export default function Felelossegvallalas() {
             </div>
           </div>
         </div>
-        <div className="w-full md:w-1/2 flex flex-col relative overflow-hidden p-[20px]">
+        <div className="w-full md:w-1/2 flex flex-col relative  ">
           <motion.div
             initial={{ scaleX: 0, opacity: 1 }}
             whileInView={{ scaleX: 1, opacity: 1 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             viewport={{ once: true, amount: 0.3 }}
-            className="origin-right relative w-full md:w-fit rounded-[10px] mx-auto felelosseg-herokep"
+            className="origin-right relative w-full md:w-fit rounded-[10px]  felelosseg-herokep md:ml-auto"
           >
-            <div className="absolute w-full h-full border-3 border-feher top-[15px] left-[15px] rounded-[10px]" />
+            {/* <div className="absolute w-full h-full border-3 border-feher top-[0px] left-[0px] rounded-[10px]" /> */}
             <Image
               width={300}
               height={300}
               alt="Pénzügyi szemléletmód oktatás oskolásoknak. Pénzügyi tanácsadás felnőtteknek"
-              src="/images/portrek_csapat1.jpg"
-              className="relative h-fit w-full md:h-[350px] object-cover rounded-[10px] mx-auto"
+              src="/images/diakok.png"
+              className="relative h-fit w-full md:h-[450px] object-contain rounded-[10px] mx-auto drop-shadow-[0_10px_15px_rgba(0,0,0,0.8)] xl:mt-[-100px]"
             />
 
-            <div className="absolute bottom-0 left-0 w-full z-1 text-feher bg-gradient-to-t from-black to-transparent pt-[35px] rounded-[10px]">
+            <div className="absolute bottom-0 left-0 w-full z-1 text-feher pt-[35px] bg-gradient-to-t from-black to-transparent  rounded-[10px]">
               <h2 className="!text-[20px] font-bold">
                 - Iskolai pénzügyi oktatás -
               </h2>
@@ -143,7 +169,7 @@ export default function Felelossegvallalas() {
           </motion.div>
         </div>
       </div>
-      <div>
+      <div className="mb-10">
         <h2 className="!text-[20px] font-bold">
           Számunkra a pénzügyi tanácsadás többet jelent, mint számok,
           megtakarítások és pénzügyi döntések. Hiszünk abban, hogy a valódi
@@ -152,7 +178,7 @@ export default function Felelossegvallalas() {
           lehetőségeihez.
         </h2>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-[25px]">
+      <div className=" mb-10 grid grid-cols-1 md:grid-cols-3 gap-[25px]">
         <div className="flex flex-col relative bg-zold/70 text-white p-[10px] rounded-[10px] shadow-[5px_5px_10px_0px_rgba(0,0,0,0.3)]">
           <p>
             Kiemelten fontosnak tartjuk a fiatal generáció pénzügyi edukációját.
@@ -188,7 +214,6 @@ export default function Felelossegvallalas() {
             ennek aktív részesei lenni.
           </h2>
 
-          {/* ANIMÁLT SVG PÁNT + MEDÁL KAPSZULA */}
           <div className="relative flex flex-col items-center justify-center w-full py-6">
             <div className="relative z-10 flex flex-col gap-[15px] text-[18px] md:text-[20px] font-bold bg-arany text-feher p-[15px] px-[25px] rounded-full items-center justify-center shadow-lg">
               <p className="text-center">
@@ -221,7 +246,6 @@ export default function Felelossegvallalas() {
                 />
               </svg>
 
-              {/* Medál ikon (Középen, a pánt felett) - Eredeti kód, változatlanul */}
               <div className="relative z-10 flex-shrink-0 flex items-center justify-center w-[50px] h-[50px] rounded-full bg-arany mt-[25px]">
                 <Image
                   alt="Pénzügyi tudatosság medál"
@@ -245,7 +269,13 @@ export default function Felelossegvallalas() {
         >
           <motion.div
             variants={imageVariants}
-            className="sm:row-span-2 relative overflow-hidden rounded-[10px] shadow-lg group h-[280px] sm:h-full min-h-[300px]"
+            onClick={() =>
+              setSelectedImage({
+                src: "/images/suli-oktatas1.jpg",
+                alt: "Pénzügyi tudatosság oktatás az iskolákban",
+              })
+            }
+            className="sm:row-span-2 relative overflow-hidden rounded-[10px] shadow-lg group h-[280px] sm:h-full min-h-[300px] cursor-pointer"
           >
             <Image
               alt="Pénzügyi tudatosság oktatás az iskolákban"
@@ -259,7 +289,13 @@ export default function Felelossegvallalas() {
 
           <motion.div
             variants={imageVariants}
-            className="relative overflow-hidden rounded-[10px] shadow-lg group h-[180px] sm:h-[145px]"
+            onClick={() =>
+              setSelectedImage({
+                src: "/images/suli-oktatas-2.jpg",
+                alt: "Pénzügyi tudatosság oktatás az iskolákban",
+              })
+            }
+            className="relative overflow-hidden rounded-[10px] shadow-lg group h-[180px] sm:h-[145px] cursor-pointer"
           >
             <Image
               alt="Pénzügyi tudatosság oktatás az iskolákban"
@@ -273,7 +309,13 @@ export default function Felelossegvallalas() {
 
           <motion.div
             variants={imageVariants}
-            className="relative overflow-hidden rounded-[10px] shadow-lg group h-[180px] sm:h-[145px]"
+            onClick={() =>
+              setSelectedImage({
+                src: "/images/suli-oktatas-3.jpg",
+                alt: "Pénzügyi tudatosság oktatás az iskolákban",
+              })
+            }
+            className="relative overflow-hidden rounded-[10px] shadow-lg group h-[180px] sm:h-[145px] cursor-pointer"
           >
             <Image
               alt="Pénzügyi tudatosság oktatás az iskolákban"
@@ -286,6 +328,57 @@ export default function Felelossegvallalas() {
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedImage(null)}
+            className="fixed inset-0 pt-[120px] z-50 flex items-center justify-center bg-black/85 backdrop-blur-md p-4 sm:p-8 cursor-zoom-out"
+          >
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-[120px] right-5 text-white/80 hover:text-white bg-white/10 hover:bg-white/20 p-2.5 rounded-full transition-all duration-200 z-10 cursor-pointer"
+              aria-label="Bezárás"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-w-[90vw] max-h-[calc(100vh-160px)] mt-auto w-full h-full flex items-center justify-center cursor-default"
+            >
+              <Image
+                src={selectedImage.src}
+                alt={selectedImage.alt}
+                fill
+                className="object-contain rounded-lg drop-shadow-2xl"
+                sizes="100vw"
+                priority
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
