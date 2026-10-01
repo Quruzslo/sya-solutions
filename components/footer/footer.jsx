@@ -14,9 +14,7 @@ export default function Footer() {
   return (
     <footer className="w-full bg-[#1f241b] flex flex-col justify-center items-center pt-16 pb-6 text-[#e7ebe3] border-t border-[#3f4603]/30 ">
       <div className="max-w-[2560px] w-[90%] flex flex-col gap-12">
-        {/* Felső rész: Oszlopok */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
-          {/* 1. Oszlop: Logó és Rólunk */}
           <div className="flex flex-col gap-6">
             <div className="w-fit h-[60px]">
               <SyaLogo activeHeader={true} />
@@ -25,12 +23,11 @@ export default function Footer() {
               className="text-sm leading-relaxed opacity-80"
               style={{ fontFamily: "var(--font-inter), sans-serif" }}
             >
-              Innovatív megoldások és prémium tanácsadás a jövő kihívásaira.
-              Építsük együtt a sikert, stabil alapokon.
+              Innovatív pénzügyi megoldások és prémium tanácsadás a jövő
+              kihívásaira. Építsük együtt a sikert, stabil alapokon.
             </p>
           </div>
 
-          {/* 2. Oszlop: Navigáció */}
           <div className="flex flex-col gap-4">
             <h2 className="!text-[25px] text-[#bfa06a] mb-2">Navigáció</h2>
             <ul
@@ -51,7 +48,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* 3. Oszlop: Jogi információk */}
           <div className="flex flex-col gap-4">
             <h2 className="!text-[25px] text-[#bfa06a] mb-2">Információk</h2>
             <ul className="flex flex-col gap-3 text-sm font-light">
@@ -67,7 +63,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/*  Kapcsolat */}
           <div className="flex flex-col gap-4">
             <h2 className="!text-[25px] text-[#bfa06a] mb-2">Kapcsolat</h2>
             <ul className="flex flex-col gap-3 text-sm font-light">
@@ -131,8 +126,8 @@ export default function Footer() {
         {/* Copyright */}
         <div className="w-full pt-6 border-t border-[#3f4603]/50 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-light text-feher">
           <p>© {year} S.Y.A Solutions. Minden jog fenntartva.</p>
-          <a href="https://prefersite.hu" traget="_blank">
-            Fejlesztő:{" "}
+          <a href="https://www.prefersite.hu" traget="_blank">
+            Webfejlesztő:{" "}
             <span className="font-semibold text-feher">Prefer Site</span>
           </a>
         </div>

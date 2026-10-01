@@ -105,6 +105,20 @@ export default function FavProds() {
 
     Legyen szó ipari gyártócégről, IT vállalkozásról vagy egyéni szakértőről, mi nem dobozos termékeket árulunk. Feltérképezzük a cég valós, iparágspecifikus kockázatait, és a piac összes szereplőjének ajánlatát megversenyeztetjük. Személyre szabott csomagjaink precízen integrálják a vagyonelemeket, a speciális szakmai felelősségbiztosításokat és a vezető tisztségviselők (D&O) védelmét is, hogy egy váratlan esemény ne a cég túlélését fenyegesse, hanem csupán egy jól menedzselhető adminisztratív lépés maradjon.`,
     },
+
+    {
+      id: 8,
+      title: "Vállalkozói és Szakmai Felelősségbiztosítás",
+      shortDesc:
+        "Személyre szabott vagyon- és felelősségbiztosítási megoldások cégeknek és vállalkozóknak, a váratlan üzleti kockázatok minimalizálására.",
+      seoKeywords:
+        "vállalkozói vagyonbiztosítás, szakmai felelősségbiztosítás, céges biztosítás, vezetői tisztségviselői biztosítás, kibervédelem cégeknek, üzletmenet-folytonosság",
+      geoIntent:
+        "Milyen biztosítás kell egy Kft-nek? Szakmai felelősségbiztosítás ára. Mit fedez pontosan a vállalkozói biztosítás?",
+      fullContent: `A cégvezetők gyakran abban a hitben élnek, hogy egy sablonos, évekkel ezelőtt megkötött vállalkozói biztosítás minden kárra fedezetet nyújt. A valóságban azonban egy komolyabb géptörés, egy alvállalkozói vagy vezetői tévedésből fakadó kártérítési per, esetleg egy kibertámadás miatti adatvesztés olyan sokmilliós tételeket jelenthet, amelyeket az elavult, általános szerződések nem térítenek. Ezek a rések akár az egész üzletmenet folytonosságát veszélyeztethetik.
+
+    Legyen szó ipari gyártócégről, IT vállalkozásról vagy egyéni szakértőről, mi nem dobozos termékeket árulunk. Feltérképezzük a cég valós, iparágspecifikus kockázatait, és a piac összes szereplőjének ajánlatát megversenyeztetjük. Személyre szabott csomagjaink precízen integrálják a vagyonelemeket, a speciális szakmai felelősségbiztosításokat és a vezető tisztségviselők (D&O) védelmét is, hogy egy váratlan esemény ne a cég túlélését fenyegesse, hanem csupán egy jól menedzselhető adminisztratív lépés maradjon.`,
+    },
   ];
 
   // 1. A komponens elején lévő state-ek:

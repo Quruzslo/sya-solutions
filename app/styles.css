@@ -626,3 +626,17 @@ blockquote {
   bottom: 0px !important;
   left: -20px;
 }
+
+.felelosseg-leiras {
+  transform: translateY(50px) translateX(-50%);
+  opacity: 0;
+  left: 50%;
+  pointer-events: none;
+  transition: all ease 0.4s;
+}
+
+.felelosseg-wrapper:hover .felelosseg-leiras {
+  opacity: 1;
+  transform: translateY(0px) translateX(-50%);
+  pointer-events: auto;
+}

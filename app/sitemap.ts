@@ -22,7 +22,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: route === "" ? 1.0 : 0.8,
   }));
 
-  //  Dinamikus blogbejegyzések lekérése ID alapján
   let blogRoutes: MetadataRoute.Sitemap = [];
 
   try {
