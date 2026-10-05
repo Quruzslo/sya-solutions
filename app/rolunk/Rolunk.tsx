@@ -197,29 +197,13 @@ export default function Rolunk() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: 0.3 }}
             className="fixed inset-0 pt-[100px] md:pt-[130px] pb-10 z-50 flex items-start justify-center bg-black/60 overflow-y-auto backdrop-blur-sm p-4"
             onClick={handleCloseModal}
           >
             <motion.div
               layoutId={selectedState.layoutId}
-              initial={{
-                clipPath:
-                  "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
-              }}
-              animate={{
-                clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-              }}
-              exit={{
-                clipPath:
-                  "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
-              }}
-              transition={{
-                type: "spring",
-                stiffness: 250,
-                damping: 25,
-              }}
-              className="relative w-full md:w-[650px] min-h-[500px] h-full max-h-[1200px] bg-neutral-900 rounded-[10px] flex flex-col justify-end items-center text-center my-auto overflow-hidden shadow-2xl "
+              className="relative w-full  md:w-[650px] min-h-[500px] h-full max-h-[1200px] bg-neutral-900 rounded-[10px] flex flex-col justify-end items-center text-center my-auto overflow-hidden shadow-2xl "
               onClick={(e) => e.stopPropagation()}
             >
               <button
