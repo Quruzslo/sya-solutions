@@ -34,9 +34,7 @@ export default function SectionThree() {
           ></TeamBigPic>
         </div>
         <div className="flex w-full xl:w-1/2 min-h-[350px] items-center justify-center p-4">
-          {/* Külső wrapper: Ez felel a négyzet alakért (aspect-square), a méretért és az árnyékért */}
           <div className="w-full max-w-[450px] aspect-square mx-auto drop-shadow-[10px_10px_15px_rgba(0,0,0,0.6)]">
-            {/* Belső wrapper: Ez maga a kör, benne a grid-del */}
             <div className="grid grid-cols-2 grid-rows-2 w-full h-full [clip-path:circle(50%_at_50%_50%)] overflow-hidden bg-gray-100">
               <TeamCard
                 image={Viola}

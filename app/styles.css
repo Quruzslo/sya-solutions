@@ -44,15 +44,15 @@ body {
   background-color: var(--color-feher);
 }
 
-html::-webkit-scrollbar {
+*::-webkit-scrollbar {
   width: 16px;
 }
 
-html::-webkit-scrollbar-track {
+*::-webkit-scrollbar-track {
   background-color: var(--color-sotet);
 }
 
-html::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
   background-color: #acaf91;
   border-radius: 100px;
 

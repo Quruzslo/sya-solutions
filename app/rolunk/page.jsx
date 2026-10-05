@@ -5,14 +5,14 @@ import { GoDotFill } from "react-icons/go";
 import { SiMinutemailer } from "react-icons/si";
 import { ImWink } from "react-icons/im";
 import Faq from "../../components/faq/faq";
-import SectionThree from "../../components/section3/sectionThree";
+import Rolunk from "./Rolunk";
 import { carrierData } from "./carrierData";
 
 export default function CarrierPage() {
   return (
     <section className="w-full">
       <div className="w-[90%] max-w-[2560px] flex flex-col mx-auto mt-[150px]">
-        <SectionThree></SectionThree>
+        <Rolunk></Rolunk>
         <div className="flex flex-col gap-[15px] items-center bg-zold/50 text-feher rounded-xl px-[10px] py-[25px]">
           <h1
             id="karrier"
