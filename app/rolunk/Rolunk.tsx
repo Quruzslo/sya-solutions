@@ -91,7 +91,7 @@ export default function Rolunk() {
   };
 
   return (
-    <section className="w-full flex flex-col mb-[50px] overflow-x-hidden">
+    <section className="w-full flex flex-col mb-[50px] ">
       <SectionTitles title={"Csapatunk"} bgText={"Akik segítenek az utadon"} />
 
       {/* MOBIL KAPTÁR */}
