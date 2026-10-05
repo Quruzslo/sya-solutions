@@ -8,7 +8,10 @@ import { motion, AnimatePresence } from "framer-motion";
 type MemberType = (typeof rolunkData)[0];
 
 export default function Rolunk() {
-  const [selectedMember, setSelectedMember] = useState<MemberType | null>(null);
+  const [selectedState, setSelectedState] = useState<{
+    member: MemberType;
+    layoutId: string;
+  } | null>(null);
 
   // Desktop layout (8-7-8-7 elem)
   const desktopHiveLayout: Array<{
@@ -18,37 +21,34 @@ export default function Rolunk() {
     // 1. sor (8 elem)
     { isDecorative: true },
     { isDecorative: true },
-    { memberId: 0 }, // Viola
+    { memberId: 0 },
     { isDecorative: true },
     { isDecorative: true },
-    { memberId: 1 }, // Zsófi
+    { memberId: 1 },
     { isDecorative: true },
     { isDecorative: true },
-
     // 2. sor (7 elem)
     { isDecorative: true },
     { isDecorative: true },
     { isDecorative: true },
-    { memberId: 2 }, // Dani
+    { memberId: 2 },
     { isDecorative: true },
     { isDecorative: true },
     { isDecorative: true },
-
     // 3. sor (8 elem)
     { isDecorative: true },
     { isDecorative: true },
-    { memberId: 4 }, // Inez
+    { memberId: 4 },
     { isDecorative: true },
     { isDecorative: true },
-    { memberId: 3 }, // Zsani
+    { memberId: 3 },
     { isDecorative: true },
     { isDecorative: true },
-
     // 4. sor (7 elem)
     { isDecorative: true },
     { isDecorative: true },
     { isDecorative: true },
-    { memberId: 5 }, // Levi
+    { memberId: 5 },
     { isDecorative: true },
     { isDecorative: true },
     { isDecorative: true },
@@ -58,40 +58,35 @@ export default function Rolunk() {
   const mobileHiveLayout: Array<{ memberId?: number; isDecorative?: boolean }> =
     [
       // 1. sor (4 elem)
-      { memberId: 0 }, // Viola
+      { memberId: 0 },
       { isDecorative: true },
       { isDecorative: true },
-      { memberId: 1 }, // Zsófi
-
+      { memberId: 1 },
       // 2. sor (3 elem)
       { isDecorative: true },
-      { memberId: 2 }, // Dani
+      { memberId: 2 },
       { isDecorative: true },
-
       // 3. sor (4 elem)
-      { memberId: 4 }, // Inez
+      { memberId: 4 },
       { isDecorative: true },
       { isDecorative: true },
-      { memberId: 3 }, // Zsani
-
+      { memberId: 3 },
       // 4. sor (3 elem)
       { isDecorative: true },
-      { memberId: 5 }, // Levi
+      { memberId: 5 },
       { isDecorative: true },
     ];
 
   const getMember = (id?: number) =>
     rolunkData.find((member) => member.id === id);
 
-  const handleSelectMember = (member?: MemberType) => {
-    if (member) {
-      setSelectedMember(member);
-      document.documentElement.style.overflow = "hidden";
-    }
+  const handleSelectMember = (member: MemberType, layoutId: string) => {
+    setSelectedState({ member, layoutId });
+    document.documentElement.style.overflow = "hidden";
   };
 
   const handleCloseModal = () => {
-    setSelectedMember(null);
+    setSelectedState(null);
     document.documentElement.style.overflow = "unset";
   };
 
@@ -101,7 +96,6 @@ export default function Rolunk() {
 
       {/* MOBIL KAPTÁR */}
       <div className="flex flex-col items-center py-6 lg:hidden w-full max-w-[480px] mx-auto px-2">
-        {/* 1. Sor */}
         <div className="flex justify-center w-full">
           {mobileHiveLayout.slice(0, 4).map((cell, i) => (
             <HiveCell
@@ -109,11 +103,10 @@ export default function Rolunk() {
               cell={cell}
               getMember={getMember}
               onSelect={handleSelectMember}
+              viewType="mobile"
             />
           ))}
         </div>
-
-        {/* 2. Sor */}
         <div className="flex justify-center w-full -mt-[6.8%]">
           {mobileHiveLayout.slice(4, 7).map((cell, i) => (
             <HiveCell
@@ -121,11 +114,10 @@ export default function Rolunk() {
               cell={cell}
               getMember={getMember}
               onSelect={handleSelectMember}
+              viewType="mobile"
             />
           ))}
         </div>
-
-        {/* 3. Sor */}
         <div className="flex justify-center w-full -mt-[6.8%]">
           {mobileHiveLayout.slice(7, 11).map((cell, i) => (
             <HiveCell
@@ -133,11 +125,10 @@ export default function Rolunk() {
               cell={cell}
               getMember={getMember}
               onSelect={handleSelectMember}
+              viewType="mobile"
             />
           ))}
         </div>
-
-        {/* 4. Sor */}
         <div className="flex justify-center w-full -mt-[6.8%]">
           {mobileHiveLayout.slice(11, 14).map((cell, i) => (
             <HiveCell
@@ -145,6 +136,7 @@ export default function Rolunk() {
               cell={cell}
               getMember={getMember}
               onSelect={handleSelectMember}
+              viewType="mobile"
             />
           ))}
         </div>
@@ -152,7 +144,6 @@ export default function Rolunk() {
 
       {/* DESKTOP KAPTÁR */}
       <div className="hidden lg:flex flex-col items-center py-6 w-full max-w-[1100px] mx-auto px-4">
-        {/* 1. Sor */}
         <div className="flex justify-center w-full">
           {desktopHiveLayout.slice(0, 8).map((cell, i) => (
             <HiveCell
@@ -160,11 +151,10 @@ export default function Rolunk() {
               cell={cell}
               getMember={getMember}
               onSelect={handleSelectMember}
+              viewType="desktop"
             />
           ))}
         </div>
-
-        {/* 2. Sor */}
         <div className="flex justify-center w-full -mt-[3.6%]">
           {desktopHiveLayout.slice(8, 15).map((cell, i) => (
             <HiveCell
@@ -172,11 +162,10 @@ export default function Rolunk() {
               cell={cell}
               getMember={getMember}
               onSelect={handleSelectMember}
+              viewType="desktop"
             />
           ))}
         </div>
-
-        {/* 3. Sor */}
         <div className="flex justify-center w-full -mt-[3.6%]">
           {desktopHiveLayout.slice(15, 23).map((cell, i) => (
             <HiveCell
@@ -184,11 +173,10 @@ export default function Rolunk() {
               cell={cell}
               getMember={getMember}
               onSelect={handleSelectMember}
+              viewType="desktop"
             />
           ))}
         </div>
-
-        {/* 4. Sor */}
         <div className="flex justify-center w-full -mt-[3.6%]">
           {desktopHiveLayout.slice(23, 30).map((cell, i) => (
             <HiveCell
@@ -196,6 +184,7 @@ export default function Rolunk() {
               cell={cell}
               getMember={getMember}
               onSelect={handleSelectMember}
+              viewType="desktop"
             />
           ))}
         </div>
@@ -203,7 +192,7 @@ export default function Rolunk() {
 
       {/* POPUP MODAL */}
       <AnimatePresence>
-        {selectedMember && (
+        {selectedState && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -213,7 +202,7 @@ export default function Rolunk() {
             onClick={handleCloseModal}
           >
             <motion.div
-              layoutId={`hive-member-${selectedMember.id}`}
+              layoutId={selectedState.layoutId}
               initial={{
                 clipPath:
                   "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
@@ -255,8 +244,8 @@ export default function Rolunk() {
 
               <div className="w-full h-full absolute inset-0 mx-auto z-0">
                 <Image
-                  src={selectedMember.img}
-                  alt={selectedMember.name}
+                  src={selectedState.member.img}
+                  alt={selectedState.member.name}
                   fill
                   className="object-cover object-top rounded-[10px]"
                   sizes="(max-width: 768px) 100vw, 650px"
@@ -266,17 +255,17 @@ export default function Rolunk() {
 
               <div className="flex flex-col absolute top-[5px] left-[5px] bg-gradient-to-r from-zold to-transparent p-4 rounded-l-md pr-12 z-10">
                 <h3 className="text-2xl font-bold text-neutral-800 dark:text-neutral-100 mb-1">
-                  {selectedMember.name}
+                  {selectedState.member.name}
                 </h3>
 
                 <p className="text-sm font-semibold text-feher/80 mb-3">
-                  {(selectedMember as any).role}
+                  {(selectedState.member as any).role}
                 </p>
               </div>
 
               <div className="z-10 w-full p-[10px] rounded-b-[10px] bg-gradient-to-t from-black to-transparent pt-[100px]">
                 <p className="text-neutral-100 text-start text-[15px] overflow-y-auto max-h-[150px]">
-                  {(selectedMember as any).description}
+                  {(selectedState.member as any).description}
                 </p>
               </div>
             </motion.div>
@@ -291,22 +280,30 @@ function HiveCell({
   cell,
   getMember,
   onSelect,
+  viewType,
 }: {
   cell: { memberId?: number; isDecorative?: boolean };
   getMember: (id?: number) => MemberType | undefined;
-  onSelect: (member?: MemberType) => void;
+  onSelect: (member: MemberType, layoutId: string) => void;
+  viewType: "mobile" | "desktop";
 }) {
   const member = getMember(cell.memberId);
 
+  const currentLayoutId = member
+    ? `hive-member-${viewType}-${member.id}`
+    : undefined;
+
   return (
     <div
-      onClick={() => member && onSelect(member)}
+      onClick={() =>
+        member && currentLayoutId && onSelect(member, currentLayoutId)
+      }
       className={`relative w-[23%] lg:w-[12%] aspect-[1/1.15] shrink-0 transition-transform duration-300 ${
-        member ? "cursor-pointer hover:scale-105 hover:z-10" : ""
+        member ? "cursor-pointer hover:z-10 active:z-10" : ""
       }`}
     >
       <motion.div
-        layoutId={member ? `hive-member-${member.id}` : undefined}
+        layoutId={currentLayoutId}
         className="w-full h-full filter drop-shadow-[0_5px_5px_rgba(0,0,0,0.3)]"
       >
         <div className="w-full h-full [mask-image:url(/masks/hexagon.svg)] [-webkit-mask-image:url(/masks/hexagon.svg)] [mask-size:contain] [-webkit-mask-size:contain] [mask-repeat:no-repeat] [-webkit-mask-repeat:no-repeat] [mask-position:center] [-webkit-mask-position:center]">
