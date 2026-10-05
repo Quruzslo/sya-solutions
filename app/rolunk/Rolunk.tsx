@@ -237,12 +237,12 @@ export default function Rolunk() {
                 />
               </div>
 
-              <div className="flex flex-col absolute top-[5px] left-[5px] bg-gradient-to-r from-zold to-transparent p-4 rounded-l-md pr-12 z-10">
-                <h3 className="text-2xl font-bold text-neutral-800 dark:text-neutral-100 mb-1">
+              <div className="flex flex-col absolute top-[5px] gap-[5px] left-[5px] bg-gradient-to-r from-zold to-transparent p-[5px] rounded-l-md pr-12 z-10">
+                <h3 className="text-2xl font-bold text-neutral-800 dark:text-neutral-100 ">
                   {selectedState.member.name}
                 </h3>
 
-                <p className="text-sm font-semibold text-feher/80 mb-3">
+                <p className="text-sm font-semibold text-feher/80 ">
                   {(selectedState.member as any).role}
                 </p>
               </div>
