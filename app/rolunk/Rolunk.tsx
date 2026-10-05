@@ -9,7 +9,7 @@ type MemberType = (typeof rolunkData)[0];
 export default function Rolunk() {
   const [selectedMember, setSelectedMember] = useState<MemberType | null>(null);
 
-  // Desktop layout
+  // Desktop layout (8-7-8-7 elem)
   const desktopHiveLayout: Array<{
     memberId?: number;
     isDecorative?: boolean;
@@ -53,13 +53,12 @@ export default function Rolunk() {
     { isDecorative: true },
   ];
 
-  // Mobile layout
+  // Mobile layout (4-3-4-3 elem)
   const mobileHiveLayout: Array<{ memberId?: number; isDecorative?: boolean }> =
     [
       // 1. sor (4 elem)
       { memberId: 0 }, // Viola
       { isDecorative: true },
-
       { isDecorative: true },
       { memberId: 1 }, // Zsófi
 
@@ -69,9 +68,8 @@ export default function Rolunk() {
       { isDecorative: true },
 
       // 3. sor (4 elem)
-
-      { memberId: 4 },
-      { isDecorative: true }, // Inez
+      { memberId: 4 }, // Inez
+      { isDecorative: true },
       { isDecorative: true },
       { memberId: 3 }, // Zsani
 
@@ -91,12 +89,13 @@ export default function Rolunk() {
   };
 
   return (
-    <section className="w-full flex flex-col mb-[50px] overflow-x-auto">
+    <section className="w-full flex flex-col mb-[50px] overflow-x-hidden">
       <SectionTitles title={"Csapatunk"} bgText={"Akik segítenek az utadon"} />
 
-      {/* MOBIL KAPTÁR */}
-      <div className="flex flex-col items-center py-6 lg:hidden">
-        <div className="flex">
+      {/* MOBIL KAPTÁR (4 oszlopos szélességre méretezve) */}
+      <div className="flex flex-col items-center py-6 lg:hidden w-full max-w-[480px] mx-auto px-2">
+        {/* 1. Sor (4 elem) */}
+        <div className="flex justify-center w-full">
           {mobileHiveLayout.slice(0, 4).map((cell, i) => (
             <HiveCell
               key={`m-row1-${i}`}
@@ -107,7 +106,8 @@ export default function Rolunk() {
           ))}
         </div>
 
-        <div className="flex sm:-mt-[15px]">
+        {/* 2. Sor (3 elem, átfedéssel a hegyes csúcsok miatt) */}
+        <div className="flex justify-center w-full -mt-[6.8%]">
           {mobileHiveLayout.slice(4, 7).map((cell, i) => (
             <HiveCell
               key={`m-row2-${i}`}
@@ -118,7 +118,8 @@ export default function Rolunk() {
           ))}
         </div>
 
-        <div className="flex sm:-mt-[15px]">
+        {/* 3. Sor (4 elem) */}
+        <div className="flex justify-center w-full -mt-[6.8%]">
           {mobileHiveLayout.slice(7, 11).map((cell, i) => (
             <HiveCell
               key={`m-row3-${i}`}
@@ -129,7 +130,8 @@ export default function Rolunk() {
           ))}
         </div>
 
-        <div className="flex sm:-mt-[15px]">
+        {/* 4. Sor (3 elem) */}
+        <div className="flex justify-center w-full -mt-[6.8%]">
           {mobileHiveLayout.slice(11, 14).map((cell, i) => (
             <HiveCell
               key={`m-row4-${i}`}
@@ -141,9 +143,10 @@ export default function Rolunk() {
         </div>
       </div>
 
-      {/* DESKTOP KAPTÁR */}
-      <div className="hidden lg:flex flex-col items-center py-6">
-        <div className="flex">
+      {/* DESKTOP KAPTÁR (8 oszlopos szélességre méretezve) */}
+      <div className="hidden lg:flex flex-col items-center py-6 w-full max-w-[1100px] mx-auto px-4">
+        {/* 1. Sor (8 elem) */}
+        <div className="flex justify-center w-full">
           {desktopHiveLayout.slice(0, 8).map((cell, i) => (
             <HiveCell
               key={`d-row1-${i}`}
@@ -154,7 +157,8 @@ export default function Rolunk() {
           ))}
         </div>
 
-        <div className="flex lg:-mt-[20px]">
+        {/* 2. Sor (7 elem) */}
+        <div className="flex justify-center w-full -mt-[3.6%]">
           {desktopHiveLayout.slice(8, 15).map((cell, i) => (
             <HiveCell
               key={`d-row2-${i}`}
@@ -165,7 +169,8 @@ export default function Rolunk() {
           ))}
         </div>
 
-        <div className="flex lg:-mt-[20px]">
+        {/* 3. Sor (8 elem) */}
+        <div className="flex justify-center w-full -mt-[3.6%]">
           {desktopHiveLayout.slice(15, 23).map((cell, i) => (
             <HiveCell
               key={`d-row3-${i}`}
@@ -176,7 +181,8 @@ export default function Rolunk() {
           ))}
         </div>
 
-        <div className="flex lg:-mt-[20px]">
+        {/* 4. Sor (7 elem) */}
+        <div className="flex justify-center w-full -mt-[3.6%]">
           {desktopHiveLayout.slice(23, 30).map((cell, i) => (
             <HiveCell
               key={`d-row4-${i}`}
@@ -188,7 +194,7 @@ export default function Rolunk() {
         </div>
       </div>
 
-      {/* popup */}
+      {/* POPUP MODAL */}
       {selectedMember && (
         <div
           className="fixed inset-0 pt-[100px] md:pt-[130px] pb-10 z-50 flex items-start justify-center bg-black/60 overflow-y-auto backdrop-blur-sm p-4 animate-fade-in"
@@ -200,7 +206,7 @@ export default function Rolunk() {
           >
             <button
               onClick={() => setSelectedMember(null)}
-              className="absolute top-4 right-4 text-feher transition duration-300 p-1 z-[20] border-2 border-transparent hover:border-2 hover:border-red-300 rounded-full"
+              className="absolute top-4 right-4 text-feher transition duration-300 p-1 z-[20] border-2 border-transparent hover:border-red-300 rounded-full"
               aria-label="Bezárás"
             >
               <svg
@@ -218,14 +224,13 @@ export default function Rolunk() {
               </svg>
             </button>
 
-            {/* Nagyobb kép */}
-            <div className="w-full h-full absolute inset-0  mx-auto z-0">
+            <div className="w-full h-full absolute inset-0 mx-auto z-0">
               <Image
                 src={selectedMember.img}
                 alt={selectedMember.name}
                 fill
                 className="object-cover object-top rounded-[10px]"
-                sizes=""
+                sizes="(max-width: 768px) 100vw, 650px"
               />
             </div>
 
@@ -239,7 +244,6 @@ export default function Rolunk() {
               </p>
             </div>
 
-            {/* Név és leírás */}
             <div className="z-10 w-full p-[10px] rounded-b-[10px] bg-gradient-to-t from-black to-transparent pt-[100px]">
               <p className="text-neutral-100 text-start text-[15px] overflow-y-auto max-h-[150px]">
                 {(selectedMember as any).description}
@@ -266,7 +270,7 @@ function HiveCell({
   return (
     <div
       onClick={() => member && onSelect(member)}
-      className={`relative w-[50px] h-[50px] sm:w-[75px] sm:h-[75px] lg:w-[100px] lg:h-[100px] transition-all ${
+      className={`relative w-[23%] lg:w-[12%] aspect-[1/1.15] shrink-0 transition-all ${
         member ? "cursor-pointer hover:scale-105 hover:z-10" : ""
       }`}
     >
@@ -277,7 +281,7 @@ function HiveCell({
             fill
             src={member.img}
             className="object-cover object-top"
-            sizes="(max-width: 1024px) 75px, 150px"
+            sizes="(max-width: 1024px) 25vw, 150px"
           />
         ) : (
           <div className="w-full h-full bg-zold/20" />
