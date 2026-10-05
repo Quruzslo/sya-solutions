@@ -3,6 +3,7 @@ import { useState } from "react";
 import rolunkData from "./rolunkData";
 import Image from "next/image";
 import SectionTitles from "@/components/sectionTitles";
+import { motion, AnimatePresence } from "framer-motion";
 
 type MemberType = (typeof rolunkData)[0];
 
@@ -85,16 +86,22 @@ export default function Rolunk() {
   const handleSelectMember = (member?: MemberType) => {
     if (member) {
       setSelectedMember(member);
+      document.documentElement.style.overflow = "hidden";
     }
+  };
+
+  const handleCloseModal = () => {
+    setSelectedMember(null);
+    document.documentElement.style.overflow = "unset";
   };
 
   return (
     <section className="w-full flex flex-col mb-[50px] overflow-x-hidden">
       <SectionTitles title={"Csapatunk"} bgText={"Akik segítenek az utadon"} />
 
-      {/* MOBIL KAPTÁR (4 oszlopos szélességre méretezve) */}
+      {/* MOBIL KAPTÁR */}
       <div className="flex flex-col items-center py-6 lg:hidden w-full max-w-[480px] mx-auto px-2">
-        {/* 1. Sor (4 elem) */}
+        {/* 1. Sor */}
         <div className="flex justify-center w-full">
           {mobileHiveLayout.slice(0, 4).map((cell, i) => (
             <HiveCell
@@ -106,7 +113,7 @@ export default function Rolunk() {
           ))}
         </div>
 
-        {/* 2. Sor (3 elem, átfedéssel a hegyes csúcsok miatt) */}
+        {/* 2. Sor */}
         <div className="flex justify-center w-full -mt-[6.8%]">
           {mobileHiveLayout.slice(4, 7).map((cell, i) => (
             <HiveCell
@@ -118,7 +125,7 @@ export default function Rolunk() {
           ))}
         </div>
 
-        {/* 3. Sor (4 elem) */}
+        {/* 3. Sor */}
         <div className="flex justify-center w-full -mt-[6.8%]">
           {mobileHiveLayout.slice(7, 11).map((cell, i) => (
             <HiveCell
@@ -130,7 +137,7 @@ export default function Rolunk() {
           ))}
         </div>
 
-        {/* 4. Sor (3 elem) */}
+        {/* 4. Sor */}
         <div className="flex justify-center w-full -mt-[6.8%]">
           {mobileHiveLayout.slice(11, 14).map((cell, i) => (
             <HiveCell
@@ -143,9 +150,9 @@ export default function Rolunk() {
         </div>
       </div>
 
-      {/* DESKTOP KAPTÁR (8 oszlopos szélességre méretezve) */}
+      {/* DESKTOP KAPTÁR */}
       <div className="hidden lg:flex flex-col items-center py-6 w-full max-w-[1100px] mx-auto px-4">
-        {/* 1. Sor (8 elem) */}
+        {/* 1. Sor */}
         <div className="flex justify-center w-full">
           {desktopHiveLayout.slice(0, 8).map((cell, i) => (
             <HiveCell
@@ -157,7 +164,7 @@ export default function Rolunk() {
           ))}
         </div>
 
-        {/* 2. Sor (7 elem) */}
+        {/* 2. Sor */}
         <div className="flex justify-center w-full -mt-[3.6%]">
           {desktopHiveLayout.slice(8, 15).map((cell, i) => (
             <HiveCell
@@ -169,7 +176,7 @@ export default function Rolunk() {
           ))}
         </div>
 
-        {/* 3. Sor (8 elem) */}
+        {/* 3. Sor */}
         <div className="flex justify-center w-full -mt-[3.6%]">
           {desktopHiveLayout.slice(15, 23).map((cell, i) => (
             <HiveCell
@@ -181,7 +188,7 @@ export default function Rolunk() {
           ))}
         </div>
 
-        {/* 4. Sor (7 elem) */}
+        {/* 4. Sor */}
         <div className="flex justify-center w-full -mt-[3.6%]">
           {desktopHiveLayout.slice(23, 30).map((cell, i) => (
             <HiveCell
@@ -195,63 +202,87 @@ export default function Rolunk() {
       </div>
 
       {/* POPUP MODAL */}
-      {selectedMember && (
-        <div
-          className="fixed inset-0 pt-[100px] md:pt-[130px] pb-10 z-50 flex items-start justify-center bg-black/60 overflow-y-auto backdrop-blur-sm p-4 animate-fade-in"
-          onClick={() => setSelectedMember(null)}
-        >
-          <div
-            className="relative w-full md:w-[650px] min-h-[500px] h-full max-h-[1200px] bg-transparent rounded-[10px] flex flex-col justify-end items-center text-center my-auto"
-            onClick={(e) => e.stopPropagation()}
+      <AnimatePresence>
+        {selectedMember && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 pt-[100px] md:pt-[130px] pb-10 z-50 flex items-start justify-center bg-black/60 overflow-y-auto backdrop-blur-sm p-4"
+            onClick={handleCloseModal}
           >
-            <button
-              onClick={() => setSelectedMember(null)}
-              className="absolute top-4 right-4 text-feher transition duration-300 p-1 z-[20] border-2 border-transparent hover:border-red-300 rounded-full"
-              aria-label="Bezárás"
+            <motion.div
+              layoutId={`hive-member-${selectedMember.id}`}
+              initial={{
+                clipPath:
+                  "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
+              }}
+              animate={{
+                clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+              }}
+              exit={{
+                clipPath:
+                  "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
+              }}
+              transition={{
+                type: "spring",
+                stiffness: 250,
+                damping: 25,
+              }}
+              className="relative w-full md:w-[650px] min-h-[500px] h-full max-h-[1200px] bg-neutral-900 rounded-[10px] flex flex-col justify-end items-center text-center my-auto overflow-hidden shadow-2xl "
+              onClick={(e) => e.stopPropagation()}
             >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+              <button
+                onClick={handleCloseModal}
+                className="absolute top-4 right-4 text-feher transition duration-300 p-1 z-[20] border-2 border-transparent hover:border-red-300 rounded-full bg-black/30"
+                aria-label="Bezárás"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M6 18L18 6M6 6l12 12"
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+
+              <div className="w-full h-full absolute inset-0 mx-auto z-0">
+                <Image
+                  src={selectedMember.img}
+                  alt={selectedMember.name}
+                  fill
+                  className="object-cover object-top rounded-[10px]"
+                  sizes="(max-width: 768px) 100vw, 650px"
+                  priority
                 />
-              </svg>
-            </button>
+              </div>
 
-            <div className="w-full h-full absolute inset-0 mx-auto z-0">
-              <Image
-                src={selectedMember.img}
-                alt={selectedMember.name}
-                fill
-                className="object-cover object-top rounded-[10px]"
-                sizes="(max-width: 768px) 100vw, 650px"
-              />
-            </div>
+              <div className="flex flex-col absolute top-[5px] left-[5px] bg-gradient-to-r from-zold to-transparent p-4 rounded-l-md pr-12 z-10">
+                <h3 className="text-2xl font-bold text-neutral-800 dark:text-neutral-100 mb-1">
+                  {selectedMember.name}
+                </h3>
 
-            <div className="flex flex-col absolute top-[5px] left-[5px] bg-gradient-to-r from-zold to-transparent p-4 rounded-l-md pr-12 z-10">
-              <h3 className="text-2xl font-bold text-neutral-800 dark:text-neutral-100 mb-1">
-                {selectedMember.name}
-              </h3>
+                <p className="text-sm font-semibold text-feher/80 mb-3">
+                  {(selectedMember as any).role}
+                </p>
+              </div>
 
-              <p className="text-sm font-semibold text-feher/80 mb-3">
-                {(selectedMember as any).role}
-              </p>
-            </div>
-
-            <div className="z-10 w-full p-[10px] rounded-b-[10px] bg-gradient-to-t from-black to-transparent pt-[100px]">
-              <p className="text-neutral-100 text-start text-[15px] overflow-y-auto max-h-[150px]">
-                {(selectedMember as any).description}
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
+              <div className="z-10 w-full p-[10px] rounded-b-[10px] bg-gradient-to-t from-black to-transparent pt-[100px]">
+                <p className="text-neutral-100 text-start text-[15px] overflow-y-auto max-h-[150px]">
+                  {(selectedMember as any).description}
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
@@ -270,23 +301,28 @@ function HiveCell({
   return (
     <div
       onClick={() => member && onSelect(member)}
-      className={`relative w-[23%] lg:w-[12%] aspect-[1/1.15] shrink-0 transition-all ${
+      className={`relative w-[23%] lg:w-[12%] aspect-[1/1.15] shrink-0 transition-transform duration-300 ${
         member ? "cursor-pointer hover:scale-105 hover:z-10" : ""
       }`}
     >
-      <div className="w-full h-full [mask-image:url(/masks/hexagon.svg)] [-webkit-mask-image:url(/masks/hexagon.svg)] [mask-size:contain] [-webkit-mask-size:contain] [mask-repeat:no-repeat] [-webkit-mask-repeat:no-repeat] [mask-position:center] [-webkit-mask-position:center]">
-        {member ? (
-          <Image
-            alt={member.name}
-            fill
-            src={member.img}
-            className="object-cover object-top"
-            sizes="(max-width: 1024px) 25vw, 150px"
-          />
-        ) : (
-          <div className="w-full h-full bg-zold/20" />
-        )}
-      </div>
+      <motion.div
+        layoutId={member ? `hive-member-${member.id}` : undefined}
+        className="w-full h-full filter drop-shadow-[0_5px_5px_rgba(0,0,0,0.3)]"
+      >
+        <div className="w-full h-full [mask-image:url(/masks/hexagon.svg)] [-webkit-mask-image:url(/masks/hexagon.svg)] [mask-size:contain] [-webkit-mask-size:contain] [mask-repeat:no-repeat] [-webkit-mask-repeat:no-repeat] [mask-position:center] [-webkit-mask-position:center]">
+          {member ? (
+            <Image
+              alt={member.name}
+              fill
+              src={member.img}
+              className="object-cover object-top origin-top translate-y-[5%]"
+              sizes="(max-width: 1024px) 25vw, 150px"
+            />
+          ) : (
+            <div className="w-full h-full bg-zold/20" />
+          )}
+        </div>
+      </motion.div>
     </div>
   );
 }
