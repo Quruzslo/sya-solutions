@@ -148,8 +148,8 @@ export default function Felelossegvallalas() {
           >
             {/* <div className="absolute w-full h-full border-3 border-feher top-[0px] left-[0px] rounded-[10px]" /> */}
             <Image
-              width={300}
-              height={300}
+              width={1300}
+              height={1300}
               alt="Pénzügyi szemléletmód oktatás oskolásoknak. Pénzügyi tanácsadás felnőtteknek"
               src="/images/diakok.png"
               className="relative h-fit w-full md:h-[450px] object-contain rounded-[10px] mx-auto drop-shadow-[0_10px_15px_rgba(0,0,0,0.8)] xl:mt-[-100px]"
