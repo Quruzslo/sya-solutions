@@ -33,7 +33,7 @@ export const rolunkData = [
   },
   {
     id: 4,
-    name: "Inez",
+    name: "Fodor Inez",
     role: "Pénzügyi tanácsadó",
     img: "/images/portrek_inez_01.jpg",
     description:
@@ -41,7 +41,7 @@ export const rolunkData = [
   },
   {
     id: 5,
-    name: "Levi",
+    name: "Szűcs Levente",
     role: "Pénzügyi tanácsadó",
     img: "/images/portrek_levi_01.jpg",
     description:
