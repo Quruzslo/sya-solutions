@@ -17,10 +17,10 @@ import { FaMapLocationDot } from "react-icons/fa6";
 import { LuBriefcase, LuPhone } from "react-icons/lu";
 
 // Képek ----------------------
-import Vió from "../../public/images/Viola.jpg";
-import Zsó from "../../public/images/zso.jpg";
-import Zsani from "../../public/images/Zsanipic.jpg";
-import Dani from "../../public/images/danikep.jpg";
+import Vió from "../../public/images/portrek_vincze_viola-01.jpg";
+import Zsó from "../../public/images/portrek_szogyenyi_zsofi_01.jpg";
+import Zsani from "../../public/images/portrek_szabo_zsani_01.jpg";
+import Dani from "../../public/images/portrek_kiss_dani_01.jpg";
 
 const Members = [
   {
@@ -162,8 +162,7 @@ export default function ContactPage() {
                       src={member.photo}
                       alt={member.name || "Profilkép"}
                       fill
-                      className="object-cover"
-                      // priority
+                      className="object-cover object-top "
                     />
                   </div>
 
@@ -262,9 +261,10 @@ export default function ContactPage() {
             <div className="w-full">
               <Link
                 aria-label="Irodánk elhelyezkedése"
+                title="Budapest, Gombocz Zoltán u. 8b"
                 target="blank"
                 href="https://maps.app.goo.gl/4am1hSoRMnsGfnNU6"
-                className="group relative flex flex-row items-center justify-between
+                className="group relative flex flex-row items-center  justify-between
              w-full p-[5px] rounded-full overflow-hidden
              border border-zold bg-transparent
              text-slate-700 hover:text-slate-900
@@ -281,7 +281,7 @@ export default function ContactPage() {
                 >
                   <FaMapLocationDot />
                 </span>
-                <p className="relative z-10 font-bold group-hover:text-feher px-2 text-center flex-1 min-w-0 ">
+                <p className="relative z-10 font-bold group-hover:text-feher px-2 text-center flex-1 min-w-0 truncate">
                   Budapest, Gombocz Zoltán u. 8b
                 </p>
 
