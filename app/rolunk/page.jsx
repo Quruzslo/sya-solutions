@@ -8,6 +8,8 @@ import Faq from "../../components/faq/faq";
 import Rolunk from "./Rolunk";
 import { carrierData } from "./carrierData";
 
+export const revalidate = 3600;
+
 export default function CarrierPage() {
   return (
     <section className="w-full">
