@@ -27,25 +27,21 @@ const Members = [
     name: "Vincze Viola",
     photo: Vió,
     title: "Fiókvezető",
-    tel: "+36201234567",
   },
   {
     name: "Szőgyényi Zsófia",
     photo: Zsó,
     title: "Vezető tanácsadó",
-    tel: "+36303694251",
   },
   {
     name: "Szabó Zsanett",
     photo: Zsani,
     title: "Tanácsadó",
-    tel: "+36201234567",
   },
   {
     name: "Kiss Dániel",
     photo: Dani,
     title: "Tancsadó",
-    tel: "+36201234567",
   },
 ];
 
@@ -183,14 +179,14 @@ export default function ContactPage() {
                         <LuBriefcase size={13} className="shrink-0 text-zold" />
                         <span>{member.title}</span>
                       </div>
-                      <Link
+                      {/* <Link
                         aria-label="Telefonszám"
                         href={`tel:${member.tel}`}
                         className="flex items-center gap-2 text-xs text-zinc-500"
                       >
                         <LuPhone size={13} className="shrink-0 text-zold" />
                         <span className="font-mono">{member.tel}</span>
-                      </Link>
+                      </Link> */}
                     </div>
                   </div>
                 </div>
