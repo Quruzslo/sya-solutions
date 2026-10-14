@@ -39,7 +39,7 @@ const Members = [
     title: "Tanácsadó",
   },
   {
-    name: "Kiss Dániel",
+    name: "Kis Dániel",
     photo: Dani,
     title: "Tancsadó",
   },

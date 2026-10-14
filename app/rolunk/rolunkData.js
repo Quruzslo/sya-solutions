@@ -17,7 +17,7 @@ export const rolunkData = [
   },
   {
     id: 2,
-    name: "Kiss Dániel",
+    name: "Kis Dániel",
     role: "Pénzügyi tanácsadó",
     img: "/images/portrek_kiss_dani_01.jpg",
     description:
