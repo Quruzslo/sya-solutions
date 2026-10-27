@@ -47,6 +47,14 @@ export const rolunkData = [
     description:
       "Az emberek többsége évente több órát tölt azzal, hogy a legjobb telefont vagy autót válassza ki. A pénzügyi döntéseire viszont sokszor ennek a töredékét sem szánja, pedig ezek a döntések évekre, akár évtizedekre is meghatározhatják a jövőt. Éppen ezért gondolom úgy, hogy a pénzügyi döntéseknek nem bonyolultnak kell lenniük, hanem átláthatóak és jól átgondoltak. Azért dolgozom, hogy ügyfeleim magabiztosan hozhassák meg ezeket a döntéseket – legyen szó családjuk anyagi biztonságáról, vállalkozásuk pénzügyeiről vagy hosszú távú céljaikról. Számomra a pénzügyi tanácsadás nem a termékekről szól, hanem az emberekről. Minden konzultációt azzal kezdek, hogy megismerhessem az ügyfelek céljait, mert hiszem, hogy nincs két egyforma élethelyzet, így nincs két egyforma megoldás sem. Nem egy egyszeri találkozóban gondolkodom. A célom, hogy olyan szakmai kapcsolatot építsek, amelyben ügyfeleim hosszú távon is bizalommal fordulhassanak hozzám.",
   },
+  {
+    id: 6,
+    name: "Gátas Benedek",
+    role: "Hitelspecialista",
+    img: "/images/beni.jpg",
+    description:
+      "A számomra legértékesebb része a munkámnak, hogy hitelspecialistaként a projekt megtervezésétől a megvalósulásig tudom kísérni az ügyfeleket. Sokunknak egyik legnagyobb pénzügyi döntése az életben, hogy pontosan milyen hitelt, hol vegyünk fel és milyen járulékos költségekre kell számítsunk. Ha az ember nem szeretné az összes szabadságát azzal töltöteni, hogy bankba rohangál és részinformációkból tájékozódik, akkor célszerű profik segítségét kérni. Emiatt kérdezz minket bátran! ",
+  },
 ];
 
 export default rolunkData;

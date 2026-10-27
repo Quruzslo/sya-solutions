@@ -47,9 +47,9 @@ export default function Rolunk() {
     // 4. sor (7 elem)
     { isDecorative: true },
     { isDecorative: true },
-    { isDecorative: true },
     { memberId: 5 },
     { isDecorative: true },
+    { memberId: 6 },
     { isDecorative: true },
     { isDecorative: true },
   ];

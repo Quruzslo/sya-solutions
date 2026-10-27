@@ -3,9 +3,8 @@ import { headers as getHeaders } from "next/headers.js";
 import Hero from "../components/hero/hero";
 import SectionOne from "../components/section1/sectionOne";
 import SectionTwo from "../components/section2/sectionTwo";
-import SectionThree from "../components/section3/sectionThree";
 import FavProds from "../components/section4/favProducts";
-import PartnerCarousel from "../components/partners/page";
+import ResultsComp from "../components/results/Results";
 
 import "./styles.css";
 
@@ -27,7 +26,7 @@ export default async function HomePage() {
       <SectionTwo></SectionTwo>
 
       <FavProds></FavProds>
-      {/* <PartnerCarousel></PartnerCarousel> */}
+      <ResultsComp></ResultsComp>
     </section>
   );
 }
