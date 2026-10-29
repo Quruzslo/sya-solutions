@@ -72,9 +72,9 @@ export default function Rolunk() {
       { isDecorative: true },
       { memberId: 3 },
       // 4. sor (3 elem)
-      { isDecorative: true },
       { memberId: 5 },
       { isDecorative: true },
+      { memberId: 6 },
     ];
 
   const getMember = (id?: number) =>
