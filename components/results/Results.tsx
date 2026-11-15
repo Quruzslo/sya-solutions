@@ -160,7 +160,7 @@ export default function ResultsComp() {
               slideToClickedSlide={true}
               grabCursor={true}
               spaceBetween={16}
-              slidesPerView={1.25}
+              slidesPerView={1}
               breakpoints={{
                 640: { slidesPerView: 2 },
                 1024: { slidesPerView: 2.5 },
@@ -172,7 +172,7 @@ export default function ResultsComp() {
                 <SwiperSlide key={item.id} className="!h-auto">
                   {({ isActive }) => (
                     <div
-                      className="h-full max-w-80 !h-[300px] text-white rounded-[10px] flex flex-col justify-between select-none relative"
+                      className="h-full max-w-full !h-[300px] text-white rounded-[10px] flex flex-col justify-between select-none relative"
                       style={{
                         transform: `scale(calc(1 - 0.18 * var(--slide-progress, ${isActive ? 0 : 1}))) 
                                     translateY(calc(-6px * (1 - var(--slide-progress, ${isActive ? 0 : 1}))))`,
