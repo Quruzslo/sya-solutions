@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "name": "SYA Solutions – Független Pénzügyi Tanácsadás",
+  "description": "Bankfüggetlen pénzügyi tanácsadás, nyugdíjmegtakarítások, lakáshitelek és állami családtámogatások (CSOK Plusz, Falusi CSOK, Babaváró) teljes körű versenyeztetése és díjmentes ügyintézése.",
+  "url": "https://sya-solutions.hu",
+  "contact": {
+    "email": "info@syasolutions.hu",
+    "url": "https://sya-solutions.hu/kapcsolat"
+  },
+  "resources": [
+    {
+      "id": "home",
+      "name": "Főoldal – Független Pénzügyi Tanácsadás",
+      "description": "A teljes hazai banki és biztosítói piac versenyeztetése, díjmentes pénzügyi elemzés és személyre szabott tervezés.",
+      "url": "https://sya-solutions.hu/",
+      "type": "webpage"
+    },
+    {
+      "id": "family-support-and-loans",
+      "name": "Családtámogatások és Hitelek",
+      "description": "CSOK Plusz, Falusi CSOK, Babaváró kölcsön és piaci lakáshitelek kombinálása, jogosultság-ellenőrzés, hitelképességi előszűrés és teljes körű banki ügyintézés.",
+      "url": "https://sya-solutions.hu/csalad-tamogatas",
+      "type": "webpage"
+    },
+    {
+      "id": "pension-savings",
+      "name": "Nyugdíjmegtakarítás és Jövőtervezés",
+      "description": "Nyugdíjbiztosítás, NYESZ és Önkéntes Nyugdíjpénztár (ÖNYP) konstrukciók független összehasonlítása és az állami adójóváírás kihasználása.",
+      "url": "https://sya-solutions.hu/szemelyes-jovotervezes",
+      "type": "webpage"
+    },
+    {
+      "id": "business-support",
+      "name": "Vállalkozás támogatás",
+      "description": "Vállalkozói hitelek, céges vagyon- és felelősségbiztosítások, valamint cégvezetők pénzügyi védelme.",
+      "url": "https://sya-solutions.hu/vallalkozas-tamogatas",
+      "type": "webpage"
+    },
+    {
+      "id": "about",
+      "name": "Rólunk és Karrier",
+      "description": "A SYA Solutions bankfüggetlen modellje, szakértői csapatunk és tanácsadói karrierlehetőségek.",
+      "url": "https://sya-solutions.hu/rolunk",
+      "type": "webpage"
+    },
+    {
+      "id": "contact",
+      "name": "Díjmentes Konzultáció és Kapcsolat",
+      "description": "Időpontfoglalás díjmentes, független pénzügyi elemzésre online vagy személyesen.",
+      "url": "https://sya-solutions.hu/kapcsolat",
+      "type": "webpage"
+    }
+  ]
+}
