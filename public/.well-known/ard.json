@@ -9,11 +9,11 @@
   },
   "entries": [
     {
-      "identifier": "home",
+      "identifier": "urn:air:sya-solutions.hu:web:home",
       "displayName": "Főoldal – Független Pénzügyi Tanácsadás",
       "description": "A teljes hazai banki és biztosítói piac versenyeztetése, díjmentes pénzügyi elemzés és személyre szabott tervezés.",
       "url": "https://www.sya-solutions.hu/",
-      "mediaType": "text/html",
+      "type": "text/html",
       "representativeQueries": [
         "független pénzügyi tanácsadó",
         "díjmentes pénzügyi elemzés és tervezés",
@@ -21,11 +21,11 @@
       ]
     },
     {
-      "identifier": "family-support-and-loans",
+      "identifier": "urn:air:sya-solutions.hu:web:family-support-and-loans",
       "displayName": "Családtámogatások és Hitelek",
       "description": "CSOK Plusz, Falusi CSOK, Babaváró kölcsön és piaci lakáshitelek kombinálása, jogosultság-ellenőrzés, hitelképességi előszűrés és teljes körű banki ügyintézés.",
       "url": "https://www.sya-solutions.hu/csalad-tamogatas",
-      "mediaType": "text/html",
+      "type": "text/html",
       "representativeQueries": [
         "CSOK Plusz és lakáshitel kombinálása",
         "Babaváró kölcsön és Falusi CSOK feltételek",
@@ -33,11 +33,11 @@
       ]
     },
     {
-      "identifier": "pension-savings",
+      "identifier": "urn:air:sya-solutions.hu:web:pension-savings",
       "displayName": "Nyugdíjmegtakarítás és Jövőtervezés",
       "description": "Nyugdíjbiztosítás, NYESZ és Önkéntes Nyugdíjpénztár (ÖNYP) konstrukciók független összehasonlítása és az állami adójóváírás kihasználása.",
       "url": "https://www.sya-solutions.hu/szemelyes-jovotervezes",
-      "mediaType": "text/html",
+      "type": "text/html",
       "representativeQueries": [
         "nyugdíjmegtakarítás összehasonlítás NYESZ ÖNYP nyugdíjbiztosítás",
         "állami adójóváírás nyugdíj előtakarékosságra",
@@ -45,33 +45,33 @@
       ]
     },
     {
-      "identifier": "business-support",
+      "identifier": "urn:air:sya-solutions.hu:web:business-support",
       "displayName": "Vállalkozás támogatás",
       "description": "Vállalkozói hitelek, céges vagyon- és felelősségbiztosítások, valamint cégvezetők pénzügyi védelme.",
       "url": "https://www.sya-solutions.hu/vallalkozas-tamogatas",
-      "mediaType": "text/html",
+      "type": "text/html",
       "representativeQueries": [
         "vállalkozói hitel és lízing tanácsadás",
         "cégbiztosítás és vagyonvédelem vállalkozóknak"
       ]
     },
     {
-      "identifier": "about",
+      "identifier": "urn:air:sya-solutions.hu:web:about",
       "displayName": "Rólunk és Karrier",
       "description": "A SYA Solutions bankfüggetlen modellje, szakértői csapatunk és tanácsadói karrierlehetőségek.",
       "url": "https://www.sya-solutions.hu/rolunk",
-      "mediaType": "text/html",
+      "type": "text/html",
       "representativeQueries": [
         "SYA Solutions pénzügyi tanácsadó csapat",
         "pénzügyi tanácsadó állás home office"
       ]
     },
     {
-      "identifier": "contact",
+      "identifier": "urn:air:sya-solutions.hu:web:contact",
       "displayName": "Díjmentes Konzultáció és Kapcsolat",
       "description": "Időpontfoglalás díjmentes, független pénzügyi elemzésre online vagy személyesen.",
       "url": "https://www.sya-solutions.hu/kapcsolat",
-      "mediaType": "text/html",
+      "type": "text/html",
       "representativeQueries": [
         "ingyenes pénzügyi konzultáció időpontfoglalás",
         "SYA Solutions kapcsolat és elérhetőség"
