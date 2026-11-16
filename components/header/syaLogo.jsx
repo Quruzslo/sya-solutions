@@ -14,6 +14,7 @@ export default function SyaLogo({ activeHeader }) {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 400 120"
       className="w-full max-w-md h-full"
+      aria-hidden="true"
     >
       <rect width="400" height="120" rx="12" fill="transparent" />
 

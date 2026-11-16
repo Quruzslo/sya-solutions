@@ -39,7 +39,11 @@ export default function CookieBanner() {
         >
           {/*  A süti ikon */}
           <div className="w-[45px] h-[45px] flex items-center justify-center shrink-0">
-            <TbCookieManFilled size={45} className="text-zold/50" />
+            <TbCookieManFilled
+              aria-hidden="true"
+              size={45}
+              className="text-zold/50"
+            />
           </div>
 
           <div className="overflow-hidden">

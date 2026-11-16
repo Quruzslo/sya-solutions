@@ -218,9 +218,8 @@ export default function Header() {
                           className="fm-link-wrap text-[20px] md:text-[30px] font-extrabold text-[#3f4603]"
                         >
                           <span className="fm-link-flip">
-                            {/* Előlap */}
                             <span className="fm-face">{item.name}</span>
-                            {/* Hátlap */}
+
                             <span className="fm-face-back hover:text-[#3f4603]/60 transition-colors">
                               {item.name}
                             </span>
@@ -243,10 +242,18 @@ export default function Header() {
                   >
                     <span className="icon-slot">
                       <span className="before-hover bg-transparent ">
-                        <SiMinutemailer size={50} className="text-zold" />
+                        <SiMinutemailer
+                          aria-hidden="true"
+                          size={50}
+                          className="text-zold"
+                        />
                       </span>
                       <span className="after-hover bg-transparent">
-                        <SiMinutemailer size={50} className="text-feher" />
+                        <SiMinutemailer
+                          aria-hidden="true"
+                          size={50}
+                          className="text-feher"
+                        />
                       </span>
                     </span>
 

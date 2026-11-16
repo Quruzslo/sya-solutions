@@ -44,10 +44,18 @@ export default function ResultsComp() {
           >
             <span className="icon-slot">
               <span className="before-hover bg-transparent ">
-                <SiMinutemailer size={50} className="text-zold" />
+                <SiMinutemailer
+                  aria-hidden="true"
+                  size={50}
+                  className="text-zold"
+                />
               </span>
               <span className="after-hover bg-transparent">
-                <SiMinutemailer size={50} className="text-feher" />
+                <SiMinutemailer
+                  aria-hidden="true"
+                  size={50}
+                  className="text-feher"
+                />
               </span>
             </span>
 
@@ -106,7 +114,7 @@ export default function ResultsComp() {
                 aria-label="Előző eredmény"
                 className="w-10 h-10 rounded-full bg-neutral-100 flex items-center justify-center hover:bg-zold hover:text-white transition-colors cursor-pointer"
               >
-                <FiArrowLeft size={18} />
+                <FiArrowLeft aria-hidden="true" size={18} />
               </button>
               <button
                 onClick={() => {
@@ -116,7 +124,7 @@ export default function ResultsComp() {
                 aria-label="Következő eredmény"
                 className="w-10 h-10 rounded-full bg-neutral-100 flex items-center justify-center hover:bg-zold hover:text-white transition-colors cursor-pointer"
               >
-                <FiArrowRight size={18} />
+                <FiArrowRight aria-hidden="true" size={18} />
               </button>
             </div>
           </div>
