@@ -5,6 +5,7 @@ import SectionOne from "../components/section1/sectionOne";
 import SectionTwo from "../components/section2/sectionTwo";
 import FavProds from "../components/section4/favProducts";
 import ResultsComp from "../components/results/Results";
+import CalculatorSection from "../components/calculator/CalculatorSection";
 
 import "./styles.css";
 
@@ -24,9 +25,9 @@ export default async function HomePage() {
       ></Hero>
       <SectionOne></SectionOne>
       <SectionTwo></SectionTwo>
-
       <FavProds></FavProds>
       <ResultsComp></ResultsComp>
+      <CalculatorSection></CalculatorSection>
     </section>
   );
 }
