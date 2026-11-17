@@ -21,7 +21,7 @@ export default function CalculatorSection() {
           <p className="text-[15px]">
             {" "}
             A kalkuláció nem teljes értékű kiértékelés. A személyreszabott,
-            ingyenes segítségért kérj konzultációt valamelyik munkatársuktól a{" "}
+            ingyenes segítségért kérj konzultációt a{" "}
             <a
               href="/kapcsolat"
               className="bg-zold text-white py-[5px] px-[10px] shadow-md rounded-full mr-[5px]"
