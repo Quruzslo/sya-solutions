@@ -3,14 +3,6 @@ import StepByStepCalculator from "../StepByStepCalculator";
 import { pensionQuestions, evaluatePension } from "./pension-config";
 import Hero from "@/components/hero/hero";
 
-import Pension from "../../public/images/nyugdijkalkulacio.jpg";
-
-// export const metadata = {
-//   title: "Személyes Jövőtervezés és Pénzügyi Biztonság | S.Y.A Solutions",
-//   description:
-//     "Személyre szabott öngondoskodási stratégiák, privát megtakarítások és jövedelemvédelem fiataloknak, pároknak és életkezdőknek. Alapozza meg a jövőjét függetlenül!",
-// };
-
 const breadcrumbItems = [
   { label: "Nyugdíj kalkulátor", url: "/kalkulator/nyugdij" },
 ];
@@ -19,12 +11,13 @@ export default function PensionCalculatorPage() {
   return (
     <>
       <Hero
-        mainTitle={<>Tervezd meg előre a biztonságos és boldog nyugdíjaskort</>}
+        mainTitle={<>Nyugdíj megtakarítás kalkulátor</>}
         justOnePicture={"/images/nyugdíjkalkuláció.jpg"}
         crumbs={breadcrumbItems}
         needBtns={false}
         needStat={false}
       ></Hero>
+
       <StepByStepCalculator
         title="Nyugdíjkiegészítési kockázati térkép"
         description="5 perc alatt kiderül, milyen zónában vagy és mennyire vagy felkészülve a nyugdíjas éveidre."
