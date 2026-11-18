@@ -63,10 +63,11 @@ export default function StepByStepCalculator({
   }
 
   const currentScore = Object.values(answers).reduce((a, b) => a + b, 0);
+  const remainingScore = maxScore - currentScore;
   const evaluation = onEvaluate(answers, currentScore);
   const currentColor = zoneColors[evaluation.zone];
   const scorePercent =
-    maxScore > 0 ? Math.min(100, (currentScore / maxScore) * 100) : 0;
+    maxScore > 0 ? Math.max(0, (remainingScore / maxScore) * 100) : 0;
 
   const hasSelection = !isComplete && selected[activeQuestion.id] !== undefined;
   const isLast = currentStep === questions.length - 1;
@@ -228,7 +229,7 @@ export default function StepByStepCalculator({
                 <Gauge
                   percent={scorePercent}
                   color={currentColor}
-                  score={currentScore}
+                  score={remainingScore}
                   maxScore={maxScore}
                 />
               </div>
@@ -295,7 +296,7 @@ export default function StepByStepCalculator({
             className="shrink-0 text-sm font-semibold tabular-nums"
             style={{ color: currentColor }}
           >
-            {currentScore} / {maxScore}
+            {remainingScore} / {maxScore}
           </span>
         </a>
       )}
