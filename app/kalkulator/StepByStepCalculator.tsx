@@ -286,7 +286,7 @@ export default function StepByStepCalculator({
       {!isComplete && (
         <a
           href="#eredmeny"
-          className="fixed inset-x-3 bottom-3 z-40 flex items-center justify-between gap-3 rounded-xl border border-zinc-200 bg-white/95 px-4 py-3 shadow-lg backdrop-blur md:hidden"
+          className="fixed inset-x-3 bottom-[60px] z-40 flex items-center justify-between gap-3 rounded-full  bg-white/95 px-4 py-3 shadow-lg backdrop-blur md:hidden"
         >
           <span className="flex min-w-0 items-center gap-2 text-sm font-medium text-zinc-900">
             <span
