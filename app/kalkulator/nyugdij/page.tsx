@@ -2,6 +2,7 @@
 import StepByStepCalculator from "../StepByStepCalculator";
 import { pensionQuestions, evaluatePension } from "./pension-config";
 import Hero from "@/components/hero/hero";
+import Faq from "../../../components/faq/faq";
 
 const breadcrumbItems = [
   { label: "Nyugdíj kalkulátor", url: "/kalkulator/nyugdij" },
@@ -26,6 +27,7 @@ export default function PensionCalculatorPage() {
         onEvaluate={evaluatePension}
         ctaText="Személyre szabott nyugdíjtervet kérek"
       />
+      <Faq slug={"szemelyes-jovotervezes"}></Faq>
     </>
   );
 }

@@ -79,7 +79,7 @@ export default function StepByStepCalculator({
   };
 
   return (
-    <section className="w-full pt-[120px] md:pt-[150px] pb-28 md:pb-20 min-h-screen font-sans">
+    <section className="w-full pt-[120px] md:pt-[150px] min-h-screen font-sans">
       <div className="w-[90%] max-w-[2560px] mx-auto">
         <div className="mb-10 md:mb-14 max-w-2xl">
           <SectionTitles
