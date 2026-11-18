@@ -86,7 +86,7 @@ export default function StepByStepCalculator({
             title={"Készülj fel tudatosan az időskorra"}
             bgText={"Nyugdíj"}
           />
-          <p className="mt-3 text-lg leading-relaxed text-zinc-600">
+          <p className="mt-3 text-[15px] font-bold text-zinc-800">
             {description}
           </p>
         </div>

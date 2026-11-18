@@ -12,7 +12,7 @@ export default function PensionCalculatorPage() {
   return (
     <>
       <Hero
-        mainTitle={<>Nyugdíj megtakarítás kalkulátor</>}
+        mainTitle={<>Nyugdíjteszt: mennyire vagy felkészülve a nyugdíjra?</>}
         justOnePicture={"/images/nyugdíjkalkuláció.jpg"}
         crumbs={breadcrumbItems}
         needBtns={false}
@@ -21,7 +21,7 @@ export default function PensionCalculatorPage() {
 
       <StepByStepCalculator
         title="Nyugdíjkiegészítési kockázati térkép"
-        description="5 perc alatt kiderül, milyen zónában vagy és mennyire vagy felkészülve a nyugdíjas éveidre."
+        description="12 rövid kérdés, nagyjából 2 perc. A végén megtudod, mekkora a nyugdíjkockázatod, és mi az első lépés, amivel a megtakarításaidat a céljaidhoz igazíthatod."
         questions={pensionQuestions}
         maxScore={36}
         onEvaluate={evaluatePension}
