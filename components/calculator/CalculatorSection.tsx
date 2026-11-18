@@ -116,10 +116,10 @@ export default function CalculatorSection() {
               </p>
 
               <Link
-                href="/"
+                href="/kalkulator/egeszseg"
                 className="mt-2 flex w-fit flex-row items-center justify-center gap-2.5 rounded-full backdrop-blur-sm px-6 py-3 text-[17px] font-bold text-arany hover:shadow-md transition-all duration-300 hover:bg-arany hover:text-white"
               >
-                <span title="Hamarosan...">Kalkulálok</span>
+                <span>Kalkulálok</span>
                 <AiFillCalculator size={20} />
               </Link>
             </div>

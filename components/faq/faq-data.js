@@ -219,6 +219,72 @@ const faqData = [
     description:
       "Pénzügyi tudatosságra és jó döntésekre mindig szükség lesz – függetlenül attól, hogy épp merre tart a gazdaság. Egy évtizedek óta bizonyított, sziklaszilárd hátat nyújtó cég égisze alatt építhetsz saját, értékteremtő karriert, ahol a határ valóban a csillagos ég.",
   },
+
+  // EGÉSZSÉGBIZTOSÍTÁS ----------------------------------
+  {
+    title:
+      "Mit mutat meg az egészség- és balesetvédelmi kalkulátor, és mire nem alkalmas?",
+    category: "egeszseg-es-balesetbiztositas",
+    description:
+      "A teszt azt méri fel, hogy egy váratlan haláleset, súlyos betegség, baleset vagy hosszabb munkaképtelenség milyen pénzügyi terhet róna rád és a családodra. Figyelembe veszi az eltartottakat, a hiteleket, a tartalékot és a meglévő biztosításokat. Ez nem biztosítási ajánlat, nem orvosi diagnózis és nem személyre szabott tanács, hanem egy gyors előszűrés. Arra jó, hogy lásd, érdemes-e mélyebben foglalkoznod a témával.",
+  },
+  {
+    title: "Miért kerültem piros zónába, ha a pontszámom alapján nem kellene?",
+    category: "egeszseg-es-balesetbiztositas",
+    description:
+      "Néhány válaszkombináció önmagában is olyan kockázatot jelent, amit egy átlagolt pontszám elfedne. Ilyen például, ha valaki anyagilag függ tőled, de nincs életbiztosításod. Ugyanígy piros jelzést kapsz, ha jelentős hiteled van fedezet nélkül, vagy ha egy hónapnál kevesebb a tartalékod, miközben a család a te jövedelmedből él. Ezekben az esetekben a kalkulátor a pontszámtól függetlenül jelez, és az eredménynél azt is megmutatja, melyik válaszod miatt.",
+  },
+  {
+    title: "Mekkora életbiztosítási összeg számít megfelelőnek?",
+    category: "egeszseg-es-balesetbiztositas",
+    description:
+      "Jó kiindulópont, ha a biztosítási összeg legalább 3 évnyi nettó jövedelmedet fedezi, de a pontos szükséglet élethelyzettől függ. Hozzá kell számolni a fennálló hitelek tartozását, a gyerekek taníttatásának várható költségét és azt, hogy a család mennyi ideig élne a kieső jövedelem nélkül. Gyakori hiba, hogy a szerződés évekkel ezelőtt készült, és az összeg azóta nem követte sem a hitelfelvételt, sem a család bővülését.",
+  },
+  {
+    title:
+      "Mi a különbség a kockázati életbiztosítás, a balesetbiztosítás és az egészségbiztosítás között?",
+    category: "egeszseg-es-balesetbiztositas",
+    description:
+      "A kockázati életbiztosítás halál esetén fizet a kedvezményezettnek, és elsősorban a család megélhetését és a hitelek törlesztését védi. A balesetbiztosítás baleseti halál, maradandó egészségkárosodás, kórházi ápolás vagy műtét esetén nyújt térítést. Az egészségbiztosítás magánorvosi ellátáshoz, gyorsabb diagnosztikához vagy súlyos betegség esetén egyösszegű kifizetéshez ad hozzáférést. Ezek nem helyettesítik egymást, ezért a valódi védelemhez általában a három kombinációja kell.",
+  },
+  {
+    title:
+      "Nem elég a munkahelyi, banki vagy lakásbiztosításhoz kapott balesetbiztosítás?",
+    category: "egeszseg-es-balesetbiztositas",
+    description:
+      "Ezek a csomagok jellemzően alacsony biztosítási összeggel és szűk feltételekkel működnek. Sokszor csak bizonyos helyzetekre érvényesek, például utazásra vagy munkahelyi balesetre. A munkahelyi biztosítás ráadásul a munkaviszonnyal együtt megszűnik, így pont akkor maradhatsz védelem nélkül, amikor váltasz vagy kiesel a munkából. Érdemes összeírni, pontosan mire és mekkora összeggel fizetnek. Legtöbbször kiderül, hogy kiegészítésnek jók, de alapvédelemnek nem elegendők.",
+  },
+  {
+    title: "Mennyi pénzből élne a család, ha hónapokig nem tudnék dolgozni?",
+    category: "egeszseg-es-balesetbiztositas",
+    description:
+      "Az állami táppénz a kieső jövedelemnek csak egy részét pótolja, és felső korlátja is van, így magasabb fizetésnél a kiesés aránya még nagyobb. A fix kiadások, mint a hiteltörlesztés, a rezsi és a gyerekek költségei, közben változatlanok maradnak. Ezért fontos, hogy legyen legalább 3-6 havi tartalék, vagy olyan biztosítás, amely keresőképtelenség esetén napi vagy havi térítést fizet. Egy konzultáción kiszámoljuk, mekkora a te esetedben a havi hiány.",
+  },
+  {
+    title:
+      "Köthetek még biztosítást, ha már volt komolyabb egészségügyi problémám?",
+    category: "egeszseg-es-balesetbiztositas",
+    description:
+      "Igen, a legtöbb esetben igen, de a feltételek eltérhetnek. A biztosító egészségi nyilatkozatot kér, és az előzmény alapján dönthet pótdíjról, bizonyos betegségek kizárásáról vagy ritkán az elutasításról. A biztosítók megítélése jelentősen különbözik egymástól, ezért ugyanarra az előzményre teljesen eltérő ajánlatot kaphatsz. Független tanácsadóként több biztosító feltételeit is összevetjük, hogy a lehető legkedvezőbb konstrukciót találjuk meg.",
+  },
+  {
+    title: "Vállalkozóként mire kell különösen figyelnem?",
+    category: "egeszseg-es-balesetbiztositas",
+    description:
+      "Vállalkozóknál az állami ellátások, köztük a táppénz, a bevallott járulékalaphoz igazodnak, ami gyakran jóval alacsonyabb a tényleges jövedelemnél. Ha a cég működése rajtad múlik, egy hosszabb kiesés egyszerre veszélyezteti a családi bevételt és a vállalkozást. Ilyenkor nemcsak a magánszemélyre szóló élet- és balesetbiztosítás fontos, hanem a cég oldalán a kulcsemberre kötött védelem is.",
+  },
+  {
+    title: "Kell életbiztosítás a lakáshitel mellé?",
+    category: "egeszseg-es-balesetbiztositas",
+    description:
+      "Kötelező nem minden esetben, de erősen ajánlott, különösen ha a hitelt egy fő jövedelméből törlesztitek. Halál vagy tartós munkaképtelenség esetén a tartozás nem szűnik meg, a család viszont elveszítheti a bevételét és akár az otthonát is. A bank által ajánlott hitelfedezeti biztosítás kényelmes, de nem mindig a legkedvezőbb. Egy külön kötött kockázati életbiztosítás sokszor olcsóbb, rugalmasabb, és a kedvezményezettet is te választod meg.",
+  },
+  {
+    title: "Milyen gyakran érdemes felülvizsgálni a meglévő biztosításaimat?",
+    category: "egeszseg-es-balesetbiztositas",
+    description:
+      "Évente egyszer mindenképp, és minden nagyobb élethelyzet-változás után soron kívül is. Ilyen a gyerek születése, a házasság vagy a válás, egy új hitel, a munkahelyváltás vagy a vállalkozás indítása. Ilyenkor érdemes ellenőrizni a biztosítási összegeket, a kedvezményezetteket és azt, hogy a szolgáltatások még mindig a mostani helyzetedhez illenek-e. Gyakran kiderül, hogy több szerződés fedi ugyanazt, míg más kockázatokra egyáltalán nincs védelem.",
+  },
 ];
 
 export default faqData;

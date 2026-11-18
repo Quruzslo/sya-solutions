@@ -82,10 +82,6 @@ export default function StepByStepCalculator({
     <section className="w-full pt-[120px] md:pt-[150px] min-h-screen font-sans">
       <div className="w-[90%] max-w-[2560px] mx-auto">
         <div className="mb-10 md:mb-14 max-w-2xl">
-          <SectionTitles
-            title={"Készülj fel tudatosan az időskorra"}
-            bgText={"Nyugdíj"}
-          />
           <p className="mt-3 text-[15px] font-bold text-zinc-800">
             {description}
           </p>
