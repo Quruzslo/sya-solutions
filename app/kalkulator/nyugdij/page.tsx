@@ -5,6 +5,7 @@ import Hero from "@/components/hero/hero";
 import Faq from "../../../components/faq/faq";
 
 const breadcrumbItems = [
+  { label: "Kalkulátorok", url: "/#kalkulatorok" },
   { label: "Nyugdíj kalkulátor", url: "/kalkulator/nyugdij" },
 ];
 

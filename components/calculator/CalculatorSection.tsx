@@ -12,7 +12,7 @@ export default function CalculatorSection() {
   const [active, setActive] = useState<Tab>("nyugdij");
 
   return (
-    <section className="my-[50px] flex w-full flex-col">
+    <section id="kalkulatorok" className="my-[50px] flex w-full flex-col">
       <div className="mx-auto flex w-[90%] flex-col">
         <SectionTitles title={"Velünk számolhatsz!"} bgText={"Kalkulátorunk"} />
 
