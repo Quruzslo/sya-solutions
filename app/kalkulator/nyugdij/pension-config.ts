@@ -1,5 +1,10 @@
 export type Answer = { text: string; points: number };
-export type Question = { id: number; question: string; answers: Answer[] };
+export type Question = {
+  id: number;
+  question: string;
+  type?: "choice" | "slider"; // csak megjelenítés, alapértelmezett: choice
+  answers: Answer[];
+};
 export type ZoneType = "green" | "yellow" | "red";
 
 export interface EvaluationResult {
@@ -14,6 +19,7 @@ export const pensionQuestions: Question[] = [
   {
     id: 1,
     question: "Hány éves vagy?",
+    type: "slider",
     answers: [
       { text: "25-35", points: 0 },
       { text: "36-45", points: 1 },
@@ -24,6 +30,7 @@ export const pensionQuestions: Question[] = [
   {
     id: 2,
     question: "Nagyjából hány év van még a nyugdíjig?",
+    type: "slider",
     answers: [
       { text: "25 évnél több", points: 0 },
       { text: "15-25 év", points: 1 },
@@ -34,6 +41,7 @@ export const pensionQuestions: Question[] = [
   {
     id: 3,
     question: "Mekkora a jelenlegi havi nettó jövedelmed?",
+    type: "slider",
     answers: [
       { text: "1 millió Ft felett", points: 0 },
       { text: "600 ezer - 1 millió Ft", points: 1 },
@@ -67,6 +75,7 @@ export const pensionQuestions: Question[] = [
   {
     id: 6,
     question: "Havonta mennyit teszel félre nyugdíjcélra?",
+    type: "slider",
     answers: [
       { text: "Nettó jövedelmem 10%-a felett", points: 0 },
       { text: "5-10%", points: 1 },
@@ -141,44 +150,70 @@ export const pensionQuestions: Question[] = [
   },
 ];
 
+// Ponthatárok a teljes (12 kérdéses) kitöltésre
+const YELLOW_ABOVE = 10;
+const RED_ABOVE = 22;
+
 // Valós idejű kiértékelő logika
 export const evaluatePension = (
   answers: Record<number, number>,
   score: number,
 ): EvaluationResult => {
-  let zone: ZoneType = "green";
-  if (score > 10 && score <= 22) zone = "yellow";
-  if (score > 22) zone = "red";
+  const answeredCount = Object.keys(answers).length;
 
-  let isCritical = false;
-
-  // Piros zászlós kivételek ellenőrzése
-  const q1 = answers[1];
-  const q2 = answers[2];
-  const q5 = answers[5];
-  const q6 = answers[6];
-  const q7 = answers[7];
-  const q8 = answers[8];
-  const q10 = answers[10];
-
-  const flag1 = q2 === 3 && q5 === 3;
-  const flag2 = (q1 === 2 || q1 === 3) && q6 === 3;
-  const flag3 = q7 === 3 && (q8 === 3 || q10 === 3);
-
-  if (flag1 || flag2 || flag3) {
-    zone = "red";
-    isCritical = true;
+  if (answeredCount === 0) {
+    return {
+      zone: "green",
+      title: "Kezdjük!",
+      text: "Válaszolj a kérdésekre, és a mutató minden lépés után megmutatja, hol tartasz.",
+    };
   }
 
-  // Szövegek generálása a jelenlegi zóna alapján
+  // Menet közben a határokat a megválaszolt kérdések arányában skálázzuk,
+  // így pl. 3 db maximális pontú válasz után nem "zöld" az eredmény.
+  // A teljes kitöltésnél ez pontosan a 10 / 22 pontos határ.
+  const scale = answeredCount / pensionQuestions.length;
+  let scoreZone: ZoneType = "green";
+  if (score > YELLOW_ABOVE * scale) scoreZone = "yellow";
+  if (score > RED_ABOVE * scale) scoreZone = "red";
+
+  // Piros zászlós kivételek – mindegyikhez saját indoklás
+  const reasons: string[] = [];
+
+  if (answers[2] === 3 && answers[5] === 3) {
+    reasons.push(
+      "10 éven belül nyugdíjba mész, és még nincs nyugdíjcélú megtakarításod. Ennyi idő alatt is lehet érdemben javítani a helyzeten, de csak akkor, ha most kezded el.",
+    );
+  }
+  if ((answers[1] === 2 || answers[1] === 3) && answers[6] === 3) {
+    reasons.push(
+      "46 év felett vagy, és jelenleg nem teszel félre nyugdíjra. Ebben a korban minden halogatott év különösen sokat számít.",
+    );
+  }
+  if (answers[7] === 3 && (answers[8] === 3 || answers[10] === 3)) {
+    reasons.push(
+      "Teljesen az állami nyugdíjra számítasz, és nincs mögötte olyan tartalék, ami megfogna, ha a bevételed kiesik.",
+    );
+  }
+
+  const isCritical = reasons.length > 0;
+  const zone: ZoneType = isCritical ? "red" : scoreZone;
+
   if (zone === "red") {
     return {
       zone,
-      title: "Piros zóna: Magas kockázat!",
-      text: "A jelenlegi válaszaid alapján magas nyugdíjkockázatban vagy. Azonnali beavatkozás szükséges, a következő lépés egy konkrét, számszerű nyugdíjterv elkészítése.",
+      title: "Magas nyugdíjkockázat",
+      text: "A válaszaid alapján komoly esély van rá, hogy az állami nyugdíj nem lesz elég a mostani életszínvonaladhoz. A jó hír: minél előbb lépsz, annál több lehetőséged marad. Egy ingyenes konzultáción kiszámoljuk, mekkora a várható hiány, és havonta mennyit érdemes félretenned.",
       isCritical,
       criticalMessage: isCritical
-        ? "Kritikus tényező észlelve! Bár a pontjaid alapján még jobb helyzetben lennél, egy konkrét válaszod (pl. közeli nyugdíj megtakarítás nélkül) miatt a helyzet azonnali figyelmet igényel."
+        ? [
+            // csak akkor mondjuk, ha tényleg a kivétel miatt piros
+            scoreZone !== "red" &&
+              "A pontszámod önmagában nem indokolná a piros zónát, egy válaszod miatt mégis ide kerültél.",
+            ...reasons,
+          ]
+            .filter(Boolean)
+            .join(" ")
         : undefined,
     };
   }
@@ -186,14 +221,14 @@ export const evaluatePension = (
   if (zone === "yellow") {
     return {
       zone,
-      title: "Sárga zóna: Figyelmeztetés",
-      text: "Válaszaid alapján már szabad szemmel látható nyugdíjkockázatod van. Nincs pánikhelyzet, de nem is érdemes tovább halogatni a tudatos megtakarítást.",
+      title: "Közepes kockázat – most még könnyű korrigálni",
+      text: "Már látszik egy rés aközött, amire számíthatsz, és amire szükséged lesz. Ez nem vészhelyzet, de minden halogatott év drágábbá teszi a pótlást. Egy ingyenes beszélgetésen megnézzük, hol a legnagyobb a hiány, és mi a legkisebb lépés, amivel elkezdheted bezárni.",
     };
   }
 
   return {
     zone,
-    title: "Zöld zóna: Kezelhető helyzet",
-    text: "Jelenlegi válaszaid alapján nem vagy sürgős kockázati helyzetben. Érdemes évente egyszer felülvizsgálni a céljaidat.",
+    title: "Jó úton jársz",
+    text: "A válaszaid alapján most nincs sürgős teendőd. A jó alapot viszont érdemes karbantartani: egy ingyenes átnézésen ellenőrizzük, hogy a megtakarításaid tényleg elérik-e a céljaidat, és hol lehet többet kihozni belőlük, például az állami adójóváírással.",
   };
 };

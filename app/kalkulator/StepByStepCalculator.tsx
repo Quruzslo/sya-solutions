@@ -2,6 +2,17 @@
 import { useState } from "react";
 import { Question, EvaluationResult, ZoneType } from "./nyugdij/pension-config";
 import SectionTitles from "@/components/sectionTitles";
+import { motion, type Variants } from "motion/react";
+
+const servicesList: Variants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.08, delayChildren: 0.2 } },
+};
+
+const serviceItem: Variants = {
+  hidden: { opacity: 0, y: 10 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.35, ease: "easeOut" } },
+};
 
 interface CalculatorProps {
   title: string;
@@ -38,27 +49,37 @@ export default function StepByStepCalculator({
 }: CalculatorProps) {
   // kérdés id -> kiválasztott válasz indexe
   const [selected, setSelected] = useState<Record<number, number>>({});
+  const [currentStep, setCurrentStep] = useState(0);
 
-  // Az onEvaluate ugyanúgy id -> pont formát kap, mint eddig
+  const isComplete = currentStep >= questions.length;
+  const activeQuestion = questions[currentStep];
+  const progressPercent = (currentStep / questions.length) * 100;
+
+  // Csak a már leadott (továbbléptetett) válaszok számítanak bele,
+  // így az aktuális kérdésnél nem lehet a mutatót figyelve válaszolni.
   const answers: Record<number, number> = {};
-  for (const q of questions) {
-    const idx = selected[q.id];
-    if (idx !== undefined) answers[q.id] = q.answers[idx].points;
+  for (const q of questions.slice(0, currentStep)) {
+    answers[q.id] = q.answers[selected[q.id]].points;
   }
 
   const currentScore = Object.values(answers).reduce((a, b) => a + b, 0);
   const evaluation = onEvaluate(answers, currentScore);
   const currentColor = zoneColors[evaluation.zone];
-  const answeredCount = Object.keys(answers).length;
-  const isComplete = answeredCount === questions.length;
   const scorePercent =
     maxScore > 0 ? Math.min(100, (currentScore / maxScore) * 100) : 0;
+
+  const hasSelection = !isComplete && selected[activeQuestion.id] !== undefined;
+  const isLast = currentStep === questions.length - 1;
 
   const select = (questionId: number, index: number) =>
     setSelected((prev) => ({ ...prev, [questionId]: index }));
 
+  const handleNext = () => {
+    if (hasSelection) setCurrentStep((prev) => prev + 1);
+  };
+
   return (
-    <section className="w-full  pb-28 md:pb-20 min-h-screen font-sans">
+    <section className="w-full pt-[120px] md:pt-[150px] pb-28 md:pb-20 min-h-screen font-sans">
       <div className="w-[90%] max-w-[2560px] mx-auto">
         <div className="mb-10 md:mb-14 max-w-2xl">
           <SectionTitles
@@ -71,40 +92,126 @@ export default function StepByStepCalculator({
         </div>
 
         <div className="grid items-start gap-6 lg:gap-8 md:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)]">
-          {/* Kérdések egymás alatt */}
-          <div className="overflow-hidden rounded-2xl border border-zinc-200 bg-white">
-            <ol className="divide-y divide-zinc-100">
-              {questions.map((q) => (
-                <li key={q.id} className="px-6 py-8 md:px-10 md:py-9">
-                  <h3 className="mb-5 text-[17px] font-semibold leading-snug text-zinc-900">
-                    {q.question}
+          {/* Bal oldal: egy kérdés egyszerre */}
+          <div className="overflow-hidden rounded-[10px] shadow-[5px_5px_10px_0px_rgba(0,0,0,0.4)] bg-white">
+            {!isComplete ? (
+              <>
+                <div className="p-[10px]">
+                  <div className="flex items-baseline justify-between gap-4 text-sm">
+                    <span className="font-medium text-zinc-900">
+                      Kérdés {currentStep + 1}
+                      <span className="text-zinc-400">
+                        {" "}
+                        / {questions.length}
+                      </span>
+                    </span>
+                    <span className="tabular-nums text-zinc-500">
+                      {Math.round(progressPercent)}%
+                    </span>
+                  </div>
+                  <div className="mt-3 h-[15px] w-full overflow-hidden rounded-full bg-zinc-300">
+                    <div
+                      className="h-full rounded-full transition-all duration-500 ease-out"
+                      style={{
+                        width: `${progressPercent}%`,
+                        backgroundColor: currentColor,
+                      }}
+                    />
+                  </div>
+                </div>
+
+                <div
+                  key={activeQuestion.id}
+                  className="animate-fade-in px-6 py-8 md:px-10 md:py-10"
+                >
+                  <h3 className="mb-6 text-xl md:text-[22px] font-semibold leading-snug text-zinc-900">
+                    {activeQuestion.question}
                   </h3>
 
                   <ChoiceGroup
-                    question={q}
-                    value={selected[q.id]}
-                    onSelect={(i) => select(q.id, i)}
+                    question={activeQuestion}
+                    value={selected[activeQuestion.id]}
+                    onSelect={(i) => select(activeQuestion.id, i)}
                   />
-                </li>
-              ))}
-            </ol>
+                </div>
 
-            <div className="border-t border-zinc-100 bg-zinc-50/60 px-6 py-6 md:px-10">
-              <p className="text-sm font-medium text-zinc-900">
-                Nem csak a nyugdíjban számíthatsz ránk, hanem:
-              </p>
-              <p className="mt-1.5 text-sm text-zinc-600">
-                {services.join(" · ")} és még sok más.
-              </p>
-            </div>
+                <div className="flex items-center justify-between gap-4 border-t border-zinc-100 bg-zinc-50/60 px-6 py-4 md:px-10">
+                  <p className="hidden text-sm text-zinc-500 sm:block">
+                    A válaszod a továbblépéssel véglegesül.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={handleNext}
+                    disabled={!hasSelection}
+                    className="ml-auto h-11 rounded-full bg-zold px-6 text-[15px] font-semibold text-white transition-colors hover:bg-arany focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zold/40 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:bg-zinc-200 disabled:text-zinc-400"
+                  >
+                    {isLast ? "Kiértékelés" : "Tovább"}
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="animate-fade-in px-6 py-10 md:px-10 md:py-14">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-full bg-zold/10 text-zold shadow-[5px_5px_10px_0px_rgba(0,0,0,0.4)]">
+                    <svg
+                      className="h-5 w-5"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2.5}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>
+                  </div>
+                  <h3 className="mt-5 text-2xl font-semibold text-zinc-900">
+                    Sikeresen kitöltötted!
+                  </h3>
+                  <p className="mt-2 max-w-md text-[15px] leading-relaxed text-zinc-600">
+                    Nézd meg a kiértékelést, és tedd meg a következő lépést a
+                    jövőd érdekében.
+                  </p>
+                </div>
+
+                <div className="bg-zold/50 px-6 py-6 md:px-10">
+                  <p className="text-[15px] font-medium text-white">
+                    Nem csak a nyugdíjban számíthatsz ránk, hanem:
+                  </p>
+                  <motion.ul
+                    variants={servicesList}
+                    initial="hidden"
+                    animate="show"
+                    className="mt-3 flex flex-wrap gap-2"
+                  >
+                    {services.map((service) => (
+                      <motion.li
+                        key={service}
+                        variants={serviceItem}
+                        className="rounded-[10px] bg-zold px-3 py-2 text-sm font-medium text-white"
+                      >
+                        {service}
+                      </motion.li>
+                    ))}
+                    <motion.li
+                      variants={serviceItem}
+                      className="px-1 py-2 text-sm text-white/80"
+                    >
+                      és még sok más…
+                    </motion.li>
+                  </motion.ul>
+                </div>
+              </>
+            )}
           </div>
 
           {/* Eredmény – sticky */}
           <aside
             id="eredmeny"
-            className="scroll-mt-[100px] md:sticky md:top-[120px]"
+            className="scroll-mt-[100px] md:sticky md:top-[100px]"
           >
-            <div className="overflow-hidden rounded-2xl border border-zinc-200 bg-white">
+            <div className="overflow-hidden rounded-[10px] shadow-[5px_5px_10px_0px_rgba(0,0,0,0.4)] bg-white">
               <div
                 className="px-6 pt-6 pb-8 md:px-8"
                 style={{
@@ -118,7 +225,7 @@ export default function StepByStepCalculator({
                   <span className="text-sm tabular-nums text-zinc-500">
                     {isComplete
                       ? "Kitöltve"
-                      : `${answeredCount} / ${questions.length} kérdés`}
+                      : `${currentStep} / ${questions.length} kérdés`}
                   </span>
                 </div>
 
@@ -175,25 +282,27 @@ export default function StepByStepCalculator({
         </div>
       </div>
 
-      {/* Mobilon az eredmény a kérdések alá kerül, ez a sáv mutatja közben a pontot */}
-      <a
-        href="#eredmeny"
-        className="fixed inset-x-3 bottom-3 z-40 flex items-center justify-between gap-3 rounded-xl border border-zinc-200 bg-white/95 px-4 py-3 shadow-lg backdrop-blur md:hidden"
-      >
-        <span className="flex min-w-0 items-center gap-2 text-sm font-medium text-zinc-900">
-          <span
-            className="h-2.5 w-2.5 shrink-0 rounded-full"
-            style={{ backgroundColor: currentColor }}
-          />
-          <span className="truncate">{evaluation.title}</span>
-        </span>
-        <span
-          className="shrink-0 text-sm font-semibold tabular-nums"
-          style={{ color: currentColor }}
+      {/* Mobilon az eredmény a kérdés alá kerül, ez a sáv mutatja közben a pontot */}
+      {!isComplete && (
+        <a
+          href="#eredmeny"
+          className="fixed inset-x-3 bottom-3 z-40 flex items-center justify-between gap-3 rounded-xl border border-zinc-200 bg-white/95 px-4 py-3 shadow-lg backdrop-blur md:hidden"
         >
-          {currentScore} / {maxScore}
-        </span>
-      </a>
+          <span className="flex min-w-0 items-center gap-2 text-sm font-medium text-zinc-900">
+            <span
+              className="h-2.5 w-2.5 shrink-0 rounded-full"
+              style={{ backgroundColor: currentColor }}
+            />
+            <span className="truncate">{evaluation.title}</span>
+          </span>
+          <span
+            className="shrink-0 text-sm font-semibold tabular-nums"
+            style={{ color: currentColor }}
+          >
+            {currentScore} / {maxScore}
+          </span>
+        </a>
+      )}
     </section>
   );
 }
@@ -248,6 +357,7 @@ function ChoiceGroup({ question, value, onSelect }: InputProps) {
   );
 }
 
+// Minden válasz egy lépés a csúszkán (pl. "25 alatt" = 0, "25–35" = 1, ...)
 function StepSlider({ question, value, onSelect }: InputProps) {
   const n = question.answers.length;
   const hasValue = value !== undefined;
